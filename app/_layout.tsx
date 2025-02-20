@@ -54,7 +54,25 @@ export default function RootLayout() {
               headerTitleAlign: "center",
             }}
           />
-          <Stack.Screen name="modal" options={{ presentation: "modal" }} />
+          <Stack.Screen
+            name="modal"
+            options={{
+              presentation: "modal",
+              headerLeft: LogoCmp,
+              headerRight: () => <HamburgerCmp setOpen={setOpen} />,
+              headerTitle: "Modal",
+              headerTitleAlign: "center",
+            }}
+          />
+          <Stack.Screen
+            name="+not-found"
+            options={{
+              headerLeft: LogoCmp,
+              headerRight: () => <HamburgerCmp setOpen={setOpen} />,
+              headerTitle: "Page not found",
+              headerTitleAlign: "center",
+            }}
+          />
         </Stack>
       </Drawer>
     </ThemeProvider>

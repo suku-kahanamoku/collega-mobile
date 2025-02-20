@@ -4,7 +4,6 @@ export function useMenus() {
   const menus = [
     { title: "Home", href: "/" },
     { title: "User", href: "/user" },
-    { title: "Settings", href: "/settings" },
   ];
 
   const pathname = usePathname();
