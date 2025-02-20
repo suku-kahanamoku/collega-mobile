@@ -1,9 +1,12 @@
-import { Link, Stack } from "expo-router";
-import { StyleSheet, Text, View } from "react-native";
+import { Link } from "expo-router";
+import { StyleSheet, Text } from "react-native";
+import { LinearGradient } from "expo-linear-gradient";
+
+import { View } from "@/components/Themed";
 
 export default function NotFoundScreen() {
   return (
-    <>
+    <LinearGradient colors={["#333", "#000"]} style={{ flex: 1 }}>
       <View style={styles.container}>
         <Text style={styles.title}>This screen doesn't exist.</Text>
 
@@ -11,7 +14,7 @@ export default function NotFoundScreen() {
           <Text style={styles.linkText}>Go to home screen!</Text>
         </Link>
       </View>
-    </>
+    </LinearGradient>
   );
 }
 

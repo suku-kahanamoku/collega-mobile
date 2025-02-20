@@ -33,7 +33,7 @@ export default function Drawer({
               style={{
                 marginVertical: 10,
                 fontSize: 18,
-                color: menu.active ? colors.text : colors.text,
+                color: colors.text,
                 backgroundColor: menu.active ? colors.primary : "transparent",
                 padding: 10,
                 borderRadius: 5,

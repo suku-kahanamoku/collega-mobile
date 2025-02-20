@@ -54,10 +54,10 @@ export default function RootLayout() {
             options={{
               headerLeft: LogoCmp,
               headerRight: () => (
-                <View style={{ flexDirection: "row", alignItems: "center" }}>
+                <>
                   <ThemeToggleCmp toggleTheme={toggleTheme} theme={theme} />
                   <HamburgerCmp setOpen={setOpen} theme={theme} />
-                </View>
+                </>
               ),
               headerTitle: activeMenu.title,
               headerTitleAlign: "center",

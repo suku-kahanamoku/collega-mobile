@@ -1,14 +1,18 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text } from "react-native";
+import { LinearGradient } from "expo-linear-gradient";
 
 import EditScreenInfo from "@/components/EditScreenInfo";
+import { View } from "@/components/Themed";
 
 export default function TabOneScreen() {
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Page One</Text>
-      <View style={styles.separator} />
-      <EditScreenInfo path="app/(pages)/index.tsx" />
-    </View>
+    <LinearGradient colors={["#333", "#000"]} style={{ flex: 1 }}>
+      <View style={styles.container}>
+        <Text style={styles.title}>Page One</Text>
+        <View style={styles.separator} />
+        <EditScreenInfo path="app/(pages)/index.tsx" />
+      </View>
+    </LinearGradient>
   );
 }
 
