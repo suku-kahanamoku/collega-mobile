@@ -25,7 +25,9 @@ export default function Drawer({
       onOpen={() => setOpen(true)}
       onClose={() => setOpen(false)}
       renderDrawerContent={() => (
-        <View style={{ padding: 20, backgroundColor: colors.background }}>
+        <View
+          style={{ flex: 1, padding: 20, backgroundColor: colors.background }}
+        >
           {menus.map((menu, index) => (
             <Link
               key={index}
