@@ -1,7 +1,9 @@
 import React from "react";
 import { Drawer as DefaultDrawer } from "react-native-drawer-layout";
-import { Text, View } from "@/components/Themed";
 import { Link } from "expo-router";
+import { View } from "react-native";
+import { useTheme } from "@react-navigation/native";
+
 import { IMenu } from "@/hooks/useMenus";
 
 export default function Drawer({
@@ -15,13 +17,15 @@ export default function Drawer({
   setOpen: (open: boolean) => void;
   menus: IMenu[];
 }) {
+  const { colors } = useTheme();
+
   return (
     <DefaultDrawer
       open={open}
       onOpen={() => setOpen(true)}
       onClose={() => setOpen(false)}
       renderDrawerContent={() => (
-        <View style={{ padding: 20 }}>
+        <View style={{ padding: 20, backgroundColor: colors.background }}>
           {menus.map((menu, index) => (
             <Link
               key={index}
@@ -29,8 +33,8 @@ export default function Drawer({
               style={{
                 marginVertical: 10,
                 fontSize: 18,
-                color: menu.active ? "white" : "black",
-                backgroundColor: menu.active ? "#007bff" : "transparent",
+                color: menu.active ? colors.text : colors.text,
+                backgroundColor: menu.active ? colors.primary : "transparent",
                 padding: 10,
                 borderRadius: 5,
               }}

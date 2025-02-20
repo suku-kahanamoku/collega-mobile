@@ -10,9 +10,8 @@ import { Stack, Link } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
 import "react-native-reanimated";
 import "react-native-gesture-handler";
-import { Image, TouchableOpacity } from "react-native";
+import { Image, TouchableOpacity, View } from "react-native";
 
-import { useColorScheme } from "@/components/useColorScheme";
 import Drawer from "@/components/Drawer";
 import logo from "@/assets/images/logo.png";
 import { useMenus } from "@/hooks/useMenus";
@@ -22,9 +21,9 @@ SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
   const [loaded, error] = useFonts(FontAwesome.font);
-  const colorScheme = useColorScheme();
   const [open, setOpen] = useState(false);
   const { menus, activeMenu } = useMenus();
+  const [theme, setTheme] = useState("dark");
 
   // Expo Router uses Error Boundaries to catch errors in the navigation tree.
   useEffect(() => {
@@ -41,15 +40,24 @@ export default function RootLayout() {
     return null;
   }
 
+  const toggleTheme = () => {
+    setTheme((prevTheme) => (prevTheme === "dark" ? "light" : "dark"));
+  };
+
   return (
-    <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
+    <ThemeProvider value={theme === "dark" ? DarkTheme : DefaultTheme}>
       <Drawer open={open} setOpen={setOpen} menus={menus}>
         <Stack>
           <Stack.Screen
             name="(pages)"
             options={{
               headerLeft: LogoCmp,
-              headerRight: () => <HamburgerCmp setOpen={setOpen} />,
+              headerRight: () => (
+                <View style={{ flexDirection: "row", alignItems: "center" }}>
+                  <ThemeToggleCmp toggleTheme={toggleTheme} theme={theme} />
+                  <HamburgerCmp setOpen={setOpen} theme={theme} />
+                </View>
+              ),
               headerTitle: activeMenu.title,
               headerTitleAlign: "center",
             }}
@@ -59,7 +67,12 @@ export default function RootLayout() {
             options={{
               presentation: "modal",
               headerLeft: LogoCmp,
-              headerRight: () => <HamburgerCmp setOpen={setOpen} />,
+              headerRight: () => (
+                <View style={{ flexDirection: "row", alignItems: "center" }}>
+                  <ThemeToggleCmp toggleTheme={toggleTheme} theme={theme} />
+                  <HamburgerCmp setOpen={setOpen} theme={theme} />
+                </View>
+              ),
               headerTitle: "Modal",
               headerTitleAlign: "center",
             }}
@@ -68,7 +81,12 @@ export default function RootLayout() {
             name="+not-found"
             options={{
               headerLeft: LogoCmp,
-              headerRight: () => <HamburgerCmp setOpen={setOpen} />,
+              headerRight: () => (
+                <View style={{ flexDirection: "row", alignItems: "center" }}>
+                  <ThemeToggleCmp toggleTheme={toggleTheme} theme={theme} />
+                  <HamburgerCmp setOpen={setOpen} theme={theme} />
+                </View>
+              ),
               headerTitle: "Page not found",
               headerTitleAlign: "center",
             }}
@@ -93,12 +111,36 @@ function LogoCmp() {
 
 function HamburgerCmp({
   setOpen,
+  theme,
 }: {
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  theme: string;
 }) {
   return (
     <TouchableOpacity onPress={() => setOpen((prevOpen) => !prevOpen)}>
-      <FontAwesome name="bars" size={24} />
+      <FontAwesome
+        name="bars"
+        size={24}
+        color={theme === "dark" ? "#fff" : "#000"}
+      />
+    </TouchableOpacity>
+  );
+}
+
+function ThemeToggleCmp({
+  toggleTheme,
+  theme,
+}: {
+  toggleTheme: () => void;
+  theme: string;
+}) {
+  return (
+    <TouchableOpacity onPress={toggleTheme} style={{ marginRight: 16 }}>
+      <FontAwesome
+        name={theme === "dark" ? "sun-o" : "moon-o"}
+        size={24}
+        color={theme === "dark" ? "#FFD700" : "#4B0082"}
+      />
     </TouchableOpacity>
   );
 }
