@@ -2,11 +2,7 @@ import React from "react";
 import { Drawer as DefaultDrawer } from "react-native-drawer-layout";
 import { Text, View } from "@/components/Themed";
 import { Link } from "expo-router";
-
-type Menu = {
-  title: string;
-  href: string;
-};
+import { IMenu } from "@/hooks/useMenus";
 
 export default function Drawer({
   children,
@@ -17,7 +13,7 @@ export default function Drawer({
   children: React.ReactNode;
   open: boolean;
   setOpen: (open: boolean) => void;
-  menus: Menu[];
+  menus: IMenu[];
 }) {
   return (
     <DefaultDrawer
@@ -30,7 +26,14 @@ export default function Drawer({
             <Link
               key={index}
               href={menu.href}
-              style={{ marginVertical: 10, fontSize: 18 }}
+              style={{
+                marginVertical: 10,
+                fontSize: 18,
+                color: menu.active ? "white" : "black",
+                backgroundColor: menu.active ? "#007bff" : "transparent",
+                padding: 10,
+                borderRadius: 5,
+              }}
             >
               {menu.title}
             </Link>

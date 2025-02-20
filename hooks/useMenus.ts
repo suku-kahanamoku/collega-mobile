@@ -1,7 +1,13 @@
 import { usePathname } from "expo-router";
 
+export type IMenu = {
+  title: string;
+  href: any;
+  active?: boolean;
+};
+
 export function useMenus() {
-  const menus = [
+  const menus: IMenu[] = [
     { title: "Home", href: "/" },
     { title: "User", href: "/user" },
   ];
@@ -9,5 +15,11 @@ export function useMenus() {
   const pathname = usePathname();
   const activeMenu = menus.find((menu) => menu.href === pathname) || menus[0];
 
-  return { menus, activeMenu };
+  // Přidání atributu `active` do aktivního menu
+  const updatedMenus = menus.map((menu) => ({
+    ...menu,
+    active: menu.href === activeMenu.href,
+  }));
+
+  return { menus: updatedMenus, activeMenu };
 }
