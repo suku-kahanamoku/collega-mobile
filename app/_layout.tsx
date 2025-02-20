@@ -10,9 +10,10 @@ import { Stack, Link } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
 import "react-native-reanimated";
 import "react-native-gesture-handler";
-import { Image, TouchableOpacity, View } from "react-native";
+import { Image, TouchableOpacity } from "react-native";
 
 import Drawer from "@/components/Drawer";
+import { View } from "@/components/Themed";
 import logo from "@/assets/images/logo.png";
 import { useMenus } from "@/hooks/useMenus";
 

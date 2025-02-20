@@ -1,8 +1,8 @@
 import React from "react";
 import { Drawer as DefaultDrawer } from "react-native-drawer-layout";
 import { Link } from "expo-router";
-import { View } from "react-native";
 import { useTheme } from "@react-navigation/native";
+import { View } from "@/components/Themed";
 
 import { IMenu } from "@/hooks/useMenus";
 
@@ -25,9 +25,7 @@ export default function Drawer({
       onOpen={() => setOpen(true)}
       onClose={() => setOpen(false)}
       renderDrawerContent={() => (
-        <View
-          style={{ flex: 1, padding: 20, backgroundColor: colors.background }}
-        >
+        <View style={{ flex: 1, padding: 20 }}>
           {menus.map((menu, index) => (
             <Link
               key={index}
