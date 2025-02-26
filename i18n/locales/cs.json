@@ -1,5 +1,5 @@
 {
-  "translation": {
+  "home": {
     "CANCEL": "Zrušit",
     "GROUP_NAME": "Název skupiny",
     "BOOKED_DATE": "Datum rezervace",
@@ -11,6 +11,8 @@
     "LANGUAGE": "Jazyk",
     "SELECT": "Vybrat",
     "SAVE": "Uložit",
-    "hello": "Ahoj"
+    "HELLO": {
+      "neco": "Ahoj"
+    }
   }
 }

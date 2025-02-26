@@ -1,5 +1,5 @@
 {
-  "translation": {
+  "home": {
     "CANCEL": "Cancel",
     "GROUP_NAME": "Group Name",
     "BOOKED_DATE": "Booked Date",
@@ -11,6 +11,8 @@
     "LANGUAGE": "Language",
     "SELECT": "Select",
     "SAVE": "Save",
-    "hello": "Hello"
+    "HELLO": {
+      "neco": "Hellow"
+    }
   }
 }

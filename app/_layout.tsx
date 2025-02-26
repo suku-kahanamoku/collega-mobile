@@ -7,34 +7,19 @@ import {
 import { Stack } from "expo-router";
 import { StatusBar } from "react-native";
 import { I18nextProvider } from "react-i18next";
-import AsyncStorage from "@react-native-async-storage/async-storage";
 
 import { useMenus } from "@/hooks/useMenus";
 import DrawerCmp from "@/components/Drawer";
 import ThemeToggleCmp from "@/components/ThemeToggle";
 import HamburgerCmp from "@/components/Hamburger";
 import LogoCmp from "@/components/Logo";
-import LangSwitchCmp from "@/components/LangSwitch";
-import i18n from "../lang/i18n";
+import LangSwitchCmp from "@/components/LangSwitchCmp";
+import i18n from "@/i18n/config";
 
 export default function RootLayout() {
   const [theme, setTheme] = useState("");
   const [open, setOpen] = useState(false);
   const { menus, activeMenu } = useMenus();
-
-  useEffect(() => {
-    const loadLanguage = async () => {
-      try {
-        const storedLanguage = await AsyncStorage.getItem("LANGUAGE");
-        if (storedLanguage) {
-          i18n.changeLanguage(storedLanguage);
-        }
-      } catch (e) {
-        console.log(e);
-      }
-    };
-    loadLanguage();
-  }, []);
 
   return (
     <I18nextProvider i18n={i18n}>
