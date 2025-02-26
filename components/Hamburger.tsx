@@ -1,30 +1,18 @@
 import React from "react";
-import { TouchableOpacity, View, StyleSheet } from "react-native";
+import { TouchableOpacity } from "react-native";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
+import { useTheme } from "@react-navigation/native";
 
 export default function HamburgerCmp({
   setOpen,
-  theme,
 }: {
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
-  theme: string;
 }) {
+  const { colors } = useTheme();
+
   return (
     <TouchableOpacity onPress={() => setOpen((prevOpen) => !prevOpen)}>
-      <FontAwesome
-        name="bars"
-        size={24}
-        color={theme === "dark" ? "#fff" : "#000"}
-      />
+      <FontAwesome name="bars" size={24} color={colors.text} />
     </TouchableOpacity>
   );
 }
-
-const styles = StyleSheet.create({
-  line: {
-    width: 30,
-    height: 3,
-    backgroundColor: "#000",
-    marginVertical: 2,
-  },
-});

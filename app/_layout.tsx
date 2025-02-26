@@ -9,7 +9,6 @@ import { StatusBar } from "react-native";
 
 import { useMenus } from "@/hooks/useMenus";
 import DrawerCmp from "@/components/Drawer";
-import { ViewCmp } from "@/components/Themed";
 import ThemeToggleCmp from "@/components/ThemeToggle";
 import HamburgerCmp from "@/components/Hamburger";
 import LogoCmp from "@/components/Logo";
@@ -35,7 +34,7 @@ export default function RootLayout() {
               headerRight: () => (
                 <>
                   <ThemeToggleCmp toggleTheme={toggleTheme} theme={theme} />
-                  <HamburgerCmp setOpen={setOpen} theme={theme} />
+                  <HamburgerCmp setOpen={setOpen} />
                 </>
               ),
               headerTitle: activeMenu.title,
@@ -48,10 +47,10 @@ export default function RootLayout() {
               presentation: "modal",
               headerLeft: LogoCmp,
               headerRight: () => (
-                <ViewCmp style={{ flexDirection: "row", alignItems: "center" }}>
+                <>
                   <ThemeToggleCmp toggleTheme={toggleTheme} theme={theme} />
-                  <HamburgerCmp setOpen={setOpen} theme={theme} />
-                </ViewCmp>
+                  <HamburgerCmp setOpen={setOpen} />
+                </>
               ),
               headerTitle: "Modal",
               headerTitleAlign: "center",
@@ -62,10 +61,10 @@ export default function RootLayout() {
             options={{
               headerLeft: LogoCmp,
               headerRight: () => (
-                <ViewCmp style={{ flexDirection: "row", alignItems: "center" }}>
+                <>
                   <ThemeToggleCmp toggleTheme={toggleTheme} theme={theme} />
-                  <HamburgerCmp setOpen={setOpen} theme={theme} />
-                </ViewCmp>
+                  <HamburgerCmp setOpen={setOpen} />
+                </>
               ),
               headerTitle: "Page not found",
               headerTitleAlign: "center",

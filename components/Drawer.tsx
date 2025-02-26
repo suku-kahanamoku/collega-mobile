@@ -1,4 +1,5 @@
 import React from "react";
+import { StyleSheet } from "react-native";
 import { Drawer } from "react-native-drawer-layout";
 import { Link } from "expo-router";
 import { useTheme } from "@react-navigation/native";
@@ -25,19 +26,18 @@ export default function DrawerCmp({
       onOpen={() => setOpen(true)}
       onClose={() => setOpen(false)}
       renderDrawerContent={() => (
-        <ViewCmp style={{ flex: 1, padding: 20 }}>
+        <ViewCmp style={styles.container}>
           {menus.map((menu, index) => (
             <Link
               key={index}
               href={menu.href}
-              style={{
-                marginVertical: 10,
-                fontSize: 18,
-                color: colors.text,
-                backgroundColor: menu.active ? colors.primary : "transparent",
-                padding: 10,
-                borderRadius: 5,
-              }}
+              style={[
+                styles.link,
+                {
+                  color: colors.text,
+                  backgroundColor: menu.active ? colors.primary : "transparent",
+                },
+              ]}
             >
               {menu.title}
             </Link>
@@ -50,3 +50,16 @@ export default function DrawerCmp({
     </Drawer>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    padding: 20,
+  },
+  link: {
+    marginVertical: 10,
+    fontSize: 18,
+    padding: 10,
+    borderRadius: 5,
+  },
+});
