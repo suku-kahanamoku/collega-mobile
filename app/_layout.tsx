@@ -14,11 +14,12 @@ import { Image, TouchableOpacity } from "react-native";
 
 import Drawer from "@/components/Drawer";
 import { View } from "@/components/Themed";
-import logo from "@/assets/images/logo.png";
 import { useMenus } from "@/hooks/useMenus";
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
+
+const logoImg = require("@/assets/images/logo.png");
 
 export default function RootLayout() {
   const [loaded, error] = useFonts(FontAwesome.font);
@@ -102,7 +103,7 @@ function LogoCmp() {
   return (
     <Link href="/">
       <Image
-        source={logo}
+        source={logoImg}
         style={{ width: 60, height: 30 }}
         resizeMode="contain"
       />
@@ -140,7 +141,7 @@ function ThemeToggleCmp({
       <FontAwesome
         name={theme === "dark" ? "sun-o" : "moon-o"}
         size={24}
-        color={theme === "dark" ? "#FFD700" : "#4B0082"}
+        color={theme === "dark" ? "#FFD700" : "#000"}
       />
     </TouchableOpacity>
   );
