@@ -38,6 +38,7 @@ export default function DrawerCmp({
                   backgroundColor: menu.active ? colors.primary : "transparent",
                 },
               ]}
+              onPress={() => setOpen(false)}
             >
               {menu.title}
             </Link>

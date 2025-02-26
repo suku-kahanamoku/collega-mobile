@@ -1,20 +1,25 @@
 import React from "react";
 import { TouchableOpacity } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
+import { useTheme } from "@react-navigation/native";
 
 export default function ThemeToggleCmp({
-  toggleTheme,
-  theme,
+  setTheme,
 }: {
-  toggleTheme: () => void;
-  theme: string;
+  setTheme: (value: "dark" | "light") => void;
 }) {
+  const { dark } = useTheme();
+
+  const toggleTheme = () => {
+    setTheme(dark ? "light" : "dark");
+  };
+
   return (
     <TouchableOpacity onPress={toggleTheme} style={{ marginRight: 16 }}>
       <FontAwesome
-        name={theme === "dark" ? "sun-o" : "moon-o"}
+        name={dark ? "sun-o" : "moon-o"}
         size={24}
-        color={theme === "dark" ? "#FFD700" : "#000"}
+        color={dark ? "#FFD700" : "#000"}
       />
     </TouchableOpacity>
   );

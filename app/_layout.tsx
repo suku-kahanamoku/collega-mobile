@@ -14,17 +14,14 @@ import HamburgerCmp from "@/components/Hamburger";
 import LogoCmp from "@/components/Logo";
 
 export default function RootLayout() {
+  const [theme, setTheme] = useState("");
   const [open, setOpen] = useState(false);
   const { menus, activeMenu } = useMenus();
-  const [theme, setTheme] = useState("");
-
-  const toggleTheme = () => {
-    setTheme((prevTheme) => (prevTheme === "dark" ? "light" : "dark"));
-  };
 
   return (
     <ThemeProvider value={theme === "dark" ? DarkTheme : DefaultTheme}>
       <StatusBar barStyle={"default"} />
+
       <DrawerCmp open={open} setOpen={setOpen} menus={menus}>
         <Stack>
           <Stack.Screen
@@ -33,7 +30,7 @@ export default function RootLayout() {
               headerLeft: LogoCmp,
               headerRight: () => (
                 <>
-                  <ThemeToggleCmp toggleTheme={toggleTheme} theme={theme} />
+                  <ThemeToggleCmp setTheme={setTheme} />
                   <HamburgerCmp setOpen={setOpen} />
                 </>
               ),
@@ -48,7 +45,7 @@ export default function RootLayout() {
               headerLeft: LogoCmp,
               headerRight: () => (
                 <>
-                  <ThemeToggleCmp toggleTheme={toggleTheme} theme={theme} />
+                  <ThemeToggleCmp setTheme={setTheme} />
                   <HamburgerCmp setOpen={setOpen} />
                 </>
               ),
@@ -62,7 +59,7 @@ export default function RootLayout() {
               headerLeft: LogoCmp,
               headerRight: () => (
                 <>
-                  <ThemeToggleCmp toggleTheme={toggleTheme} theme={theme} />
+                  <ThemeToggleCmp setTheme={setTheme} />
                   <HamburgerCmp setOpen={setOpen} />
                 </>
               ),
