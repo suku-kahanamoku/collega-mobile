@@ -1,20 +1,19 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import {
   DarkTheme,
   DefaultTheme,
   ThemeProvider,
 } from "@react-navigation/native";
 import { Stack } from "expo-router";
-import { StatusBar } from "react-native";
+import { StatusBar, View, StyleSheet } from "react-native";
 import { I18nextProvider } from "react-i18next";
 
+import i18n from "@/i18n/config";
 import { useMenus } from "@/hooks/useMenus";
 import DrawerCmp from "@/components/Drawer";
-import ThemeToggleCmp from "@/components/ThemeToggle";
 import HamburgerCmp from "@/components/Hamburger";
 import LogoCmp from "@/components/Logo";
-import LangSwitchCmp from "@/components/LangSwitchCmp";
-import i18n from "@/i18n/config";
+import SettingsCmp from "@/components/Settings";
 
 export default function RootLayout() {
   const [theme, setTheme] = useState("");
@@ -33,11 +32,10 @@ export default function RootLayout() {
               options={{
                 headerLeft: LogoCmp,
                 headerRight: () => (
-                  <>
-                    <ThemeToggleCmp setTheme={setTheme} />
-                    <LangSwitchCmp />
+                  <View style={styles.rightMenu}>
+                    <SettingsCmp setTheme={setTheme} />
                     <HamburgerCmp setOpen={setOpen} />
-                  </>
+                  </View>
                 ),
                 headerTitle: activeMenu.title,
                 headerTitleAlign: "center",
@@ -49,11 +47,10 @@ export default function RootLayout() {
                 presentation: "modal",
                 headerLeft: LogoCmp,
                 headerRight: () => (
-                  <>
-                    <ThemeToggleCmp setTheme={setTheme} />
-                    <LangSwitchCmp />
+                  <View style={styles.rightMenu}>
+                    <SettingsCmp setTheme={setTheme} />
                     <HamburgerCmp setOpen={setOpen} />
-                  </>
+                  </View>
                 ),
                 headerTitle: "Modal",
                 headerTitleAlign: "center",
@@ -64,11 +61,10 @@ export default function RootLayout() {
               options={{
                 headerLeft: LogoCmp,
                 headerRight: () => (
-                  <>
-                    <ThemeToggleCmp setTheme={setTheme} />
-                    <LangSwitchCmp />
+                  <View style={styles.rightMenu}>
+                    <SettingsCmp setTheme={setTheme} />
                     <HamburgerCmp setOpen={setOpen} />
-                  </>
+                  </View>
                 ),
                 headerTitle: "Page not found",
                 headerTitleAlign: "center",
@@ -80,3 +76,7 @@ export default function RootLayout() {
     </I18nextProvider>
   );
 }
+
+const styles = StyleSheet.create({
+  rightMenu: { flexDirection: "row", gap: 12 },
+});

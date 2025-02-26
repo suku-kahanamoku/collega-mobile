@@ -8,10 +8,12 @@ import cs from "./locales/cs.json";
 export const locales = [
   {
     code: "en",
+    mark: "GB",
     iso: "en-GB",
   },
   {
     code: "cs",
+    mark: "CZ",
     iso: "cs-CZ",
   },
 ];
