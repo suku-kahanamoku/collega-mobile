@@ -1,0 +1,16 @@
+{
+  "translation": {
+    "CANCEL": "Zrušit",
+    "GROUP_NAME": "Název skupiny",
+    "BOOKED_DATE": "Datum rezervace",
+    "ADD_BOOKING": "Přidat rezervaci",
+    "ADD_COURT": "Přidat soud",
+    "SHARE": "Sdílet",
+    "BLOCK": "Blok",
+    "TOTAL_INCOME": "Celkový příjem",
+    "LANGUAGE": "Jazyk",
+    "SELECT": "Vybrat",
+    "SAVE": "Uložit",
+    "hello": "Ahoj"
+  }
+}
