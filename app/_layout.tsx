@@ -1,46 +1,23 @@
-import { useEffect, useState } from "react";
-import FontAwesome from "@expo/vector-icons/FontAwesome";
+import { useState } from "react";
 import {
   DarkTheme,
   DefaultTheme,
   ThemeProvider,
 } from "@react-navigation/native";
-import { useFonts } from "expo-font";
-import { Stack, Link } from "expo-router";
-import * as SplashScreen from "expo-splash-screen";
-import "react-native-reanimated";
-import "react-native-gesture-handler";
-import { Image, TouchableOpacity } from "react-native";
+import { Stack } from "expo-router";
+import { StatusBar } from "react-native";
 
-import Drawer from "@/components/Drawer";
-import { View } from "@/components/Themed";
 import { useMenus } from "@/hooks/useMenus";
-
-// Prevent the splash screen from auto-hiding before asset loading is complete.
-SplashScreen.preventAutoHideAsync();
-
-const logoImg = require("@/assets/images/logo.png");
+import DrawerCmp from "@/components/Drawer";
+import { ViewCmp } from "@/components/Themed";
+import ThemeToggleCmp from "@/components/ThemeToggle";
+import HamburgerCmp from "@/components/Hamburger";
+import LogoCmp from "@/components/Logo";
 
 export default function RootLayout() {
-  const [loaded, error] = useFonts(FontAwesome.font);
   const [open, setOpen] = useState(false);
   const { menus, activeMenu } = useMenus();
-  const [theme, setTheme] = useState("dark");
-
-  // Expo Router uses Error Boundaries to catch errors in the navigation tree.
-  useEffect(() => {
-    if (error) throw error;
-  }, [error]);
-
-  useEffect(() => {
-    if (loaded) {
-      SplashScreen.hideAsync();
-    }
-  }, [loaded]);
-
-  if (!loaded) {
-    return null;
-  }
+  const [theme, setTheme] = useState("");
 
   const toggleTheme = () => {
     setTheme((prevTheme) => (prevTheme === "dark" ? "light" : "dark"));
@@ -48,7 +25,8 @@ export default function RootLayout() {
 
   return (
     <ThemeProvider value={theme === "dark" ? DarkTheme : DefaultTheme}>
-      <Drawer open={open} setOpen={setOpen} menus={menus}>
+      <StatusBar barStyle={"default"} />
+      <DrawerCmp open={open} setOpen={setOpen} menus={menus}>
         <Stack>
           <Stack.Screen
             name="(pages)"
@@ -70,10 +48,10 @@ export default function RootLayout() {
               presentation: "modal",
               headerLeft: LogoCmp,
               headerRight: () => (
-                <View style={{ flexDirection: "row", alignItems: "center" }}>
+                <ViewCmp style={{ flexDirection: "row", alignItems: "center" }}>
                   <ThemeToggleCmp toggleTheme={toggleTheme} theme={theme} />
                   <HamburgerCmp setOpen={setOpen} theme={theme} />
-                </View>
+                </ViewCmp>
               ),
               headerTitle: "Modal",
               headerTitleAlign: "center",
@@ -84,65 +62,17 @@ export default function RootLayout() {
             options={{
               headerLeft: LogoCmp,
               headerRight: () => (
-                <View style={{ flexDirection: "row", alignItems: "center" }}>
+                <ViewCmp style={{ flexDirection: "row", alignItems: "center" }}>
                   <ThemeToggleCmp toggleTheme={toggleTheme} theme={theme} />
                   <HamburgerCmp setOpen={setOpen} theme={theme} />
-                </View>
+                </ViewCmp>
               ),
               headerTitle: "Page not found",
               headerTitleAlign: "center",
             }}
           />
         </Stack>
-      </Drawer>
+      </DrawerCmp>
     </ThemeProvider>
-  );
-}
-
-function LogoCmp() {
-  return (
-    <Link href="/">
-      <Image
-        source={logoImg}
-        style={{ width: 60, height: 30 }}
-        resizeMode="contain"
-      />
-    </Link>
-  );
-}
-
-function HamburgerCmp({
-  setOpen,
-  theme,
-}: {
-  setOpen: React.Dispatch<React.SetStateAction<boolean>>;
-  theme: string;
-}) {
-  return (
-    <TouchableOpacity onPress={() => setOpen((prevOpen) => !prevOpen)}>
-      <FontAwesome
-        name="bars"
-        size={24}
-        color={theme === "dark" ? "#fff" : "#000"}
-      />
-    </TouchableOpacity>
-  );
-}
-
-function ThemeToggleCmp({
-  toggleTheme,
-  theme,
-}: {
-  toggleTheme: () => void;
-  theme: string;
-}) {
-  return (
-    <TouchableOpacity onPress={toggleTheme} style={{ marginRight: 16 }}>
-      <FontAwesome
-        name={theme === "dark" ? "sun-o" : "moon-o"}
-        size={24}
-        color={theme === "dark" ? "#FFD700" : "#000"}
-      />
-    </TouchableOpacity>
   );
 }

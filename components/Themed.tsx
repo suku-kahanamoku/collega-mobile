@@ -1,18 +1,16 @@
 import React from "react";
-import { Text as DefaultText, View as DefaultView } from "react-native";
+import { Text, View } from "react-native";
 import { useTheme } from "@react-navigation/native";
 
-export function Text(props: DefaultText["props"]) {
+export function TextCmp(props: Text["props"]) {
   const { colors } = useTheme();
-  return (
-    <DefaultText {...props} style={[props.style, { color: colors.text }]} />
-  );
+  return <Text {...props} style={[props.style, { color: colors.text }]} />;
 }
 
-export function View(props: DefaultView["props"]) {
+export function ViewCmp(props: View["props"]) {
   const { colors } = useTheme();
   return (
-    <DefaultView
+    <View
       {...props}
       style={[props.style, { backgroundColor: colors.background }]}
     />

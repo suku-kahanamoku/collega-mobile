@@ -1,4 +1,6 @@
 import { ScrollViewStyleReset } from "expo-router/html";
+import "react-native-reanimated";
+import "react-native-gesture-handler";
 
 // This file is web-only and used to configure the root HTML for every
 // web page during static rendering.
@@ -20,22 +22,8 @@ export default function Root({ children }: { children: React.ReactNode }) {
           However, body scrolling is often nice to have for mobile web. If you want to enable it, remove this line.
         */}
         <ScrollViewStyleReset />
-
-        {/* Using raw CSS styles as an escape-hatch to ensure the background color never flickers in dark-mode. */}
-        <style dangerouslySetInnerHTML={{ __html: responsiveBackground }} />
-        {/* Add any additional <head> elements that you want globally available on web... */}
       </head>
       <body>{children}</body>
     </html>
   );
 }
-
-const responsiveBackground = `
-body {
-  background-color: #fff;
-}
-@media (prefers-color-scheme: dark) {
-  body {
-    background-color: #000;
-  }
-}`;

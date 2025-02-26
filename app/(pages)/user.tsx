@@ -1,20 +1,22 @@
-import { StyleSheet, Text } from "react-native";
+import { StyleSheet } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 
-import { View } from "@/components/Themed";
+import { ViewCmp, TextCmp } from "@/components/Themed";
 
-export default function TabTwoScreen() {
+export default function TabOneScreen() {
   return (
-    <LinearGradient colors={["#333", "#000"]} style={{ flex: 1 }}>
-      <View style={styles.container}>
-        <Text style={styles.title}>Page Two</Text>
-        <View style={styles.separator} />
-      </View>
+    <LinearGradient colors={["#333", "#000"]} style={styles.wrapper}>
+      <ViewCmp style={styles.container}>
+        <TextCmp style={styles.title}>User page</TextCmp>
+      </ViewCmp>
     </LinearGradient>
   );
 }
 
 const styles = StyleSheet.create({
+  wrapper: {
+    flex: 1,
+  },
   container: {
     flex: 1,
     alignItems: "center",
@@ -23,10 +25,5 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 20,
     fontWeight: "bold",
-  },
-  separator: {
-    marginVertical: 30,
-    height: 1,
-    width: "80%",
   },
 });

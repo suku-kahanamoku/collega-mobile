@@ -1,31 +1,31 @@
 import React from "react";
-import { Drawer as DefaultDrawer } from "react-native-drawer-layout";
+import { Drawer } from "react-native-drawer-layout";
 import { Link } from "expo-router";
 import { useTheme } from "@react-navigation/native";
-import { View } from "@/components/Themed";
 
+import { ViewCmp } from "@/components/Themed";
 import { IMenu } from "@/hooks/useMenus";
 
-export default function Drawer({
+export default function DrawerCmp({
   children,
   open,
-  setOpen,
   menus,
+  setOpen,
 }: {
   children: React.ReactNode;
   open: boolean;
-  setOpen: (open: boolean) => void;
   menus: IMenu[];
+  setOpen: (open: boolean) => void;
 }) {
   const { colors } = useTheme();
 
   return (
-    <DefaultDrawer
+    <Drawer
       open={open}
       onOpen={() => setOpen(true)}
       onClose={() => setOpen(false)}
       renderDrawerContent={() => (
-        <View style={{ flex: 1, padding: 20 }}>
+        <ViewCmp style={{ flex: 1, padding: 20 }}>
           {menus.map((menu, index) => (
             <Link
               key={index}
@@ -42,11 +42,11 @@ export default function Drawer({
               {menu.title}
             </Link>
           ))}
-        </View>
+        </ViewCmp>
       )}
       drawerPosition="right"
     >
       {children}
-    </DefaultDrawer>
+    </Drawer>
   );
 }
