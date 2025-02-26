@@ -2,7 +2,6 @@ import { StatusBar } from "expo-status-bar";
 import { Platform, StyleSheet, Text } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 
-import EditScreenInfo from "@/components/EditScreenInfo";
 import { View } from "@/components/Themed";
 
 export default function ModalScreen() {
@@ -11,7 +10,6 @@ export default function ModalScreen() {
       <View style={styles.container}>
         <Text style={styles.title}>Modal</Text>
         <View style={styles.separator} />
-        <EditScreenInfo path="app/modal.tsx" />
 
         {/* Use a light status bar on iOS to account for the black space above the modal */}
         <StatusBar style={Platform.OS === "ios" ? "light" : "auto"} />

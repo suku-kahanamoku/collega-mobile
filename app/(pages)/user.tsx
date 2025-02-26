@@ -1,7 +1,6 @@
 import { StyleSheet, Text } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 
-import EditScreenInfo from "@/components/EditScreenInfo";
 import { View } from "@/components/Themed";
 
 export default function TabTwoScreen() {
@@ -10,7 +9,6 @@ export default function TabTwoScreen() {
       <View style={styles.container}>
         <Text style={styles.title}>Page Two</Text>
         <View style={styles.separator} />
-        <EditScreenInfo path="app/(pages)/user.tsx" />
       </View>
     </LinearGradient>
   );
