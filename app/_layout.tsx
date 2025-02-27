@@ -13,12 +13,17 @@ import { useMenus } from "@/hooks/useMenus";
 import DrawerCmp from "@/components/Drawer";
 import HamburgerCmp from "@/components/Hamburger";
 import LogoCmp from "@/components/Logo";
-import SettingsCmp from "@/components/Settings";
+import SettingBtnCmp from "@/components/SettingBtn";
 
 export default function RootLayout() {
+  const { menuList, menus, activeMenu } = useMenus();
+
   const [theme, setTheme] = useState("");
   const [open, setOpen] = useState(false);
-  const { menus, activeMenu } = useMenus();
+
+  const page404 = menuList["404"];
+
+  console.log(activeMenu)
 
   return (
     <I18nextProvider i18n={i18n}>
@@ -33,7 +38,7 @@ export default function RootLayout() {
                 headerLeft: LogoCmp,
                 headerRight: () => (
                   <View style={styles.rightMenu}>
-                    <SettingsCmp setTheme={setTheme} />
+                    <SettingBtnCmp />
                     <HamburgerCmp setOpen={setOpen} />
                   </View>
                 ),
@@ -42,31 +47,16 @@ export default function RootLayout() {
               }}
             />
             <Stack.Screen
-              name="modal"
-              options={{
-                presentation: "modal",
-                headerLeft: LogoCmp,
-                headerRight: () => (
-                  <View style={styles.rightMenu}>
-                    <SettingsCmp setTheme={setTheme} />
-                    <HamburgerCmp setOpen={setOpen} />
-                  </View>
-                ),
-                headerTitle: "Modal",
-                headerTitleAlign: "center",
-              }}
-            />
-            <Stack.Screen
-              name="+not-found"
+              name={page404.name}
               options={{
                 headerLeft: LogoCmp,
                 headerRight: () => (
                   <View style={styles.rightMenu}>
-                    <SettingsCmp setTheme={setTheme} />
+                    <SettingBtnCmp />
                     <HamburgerCmp setOpen={setOpen} />
                   </View>
                 ),
-                headerTitle: "Page not found",
+                headerTitle: page404.title,
                 headerTitleAlign: "center",
               }}
             />

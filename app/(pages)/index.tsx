@@ -5,7 +5,7 @@ import { useTranslation } from "react-i18next";
 import { ViewCmp, TextCmp } from "@/components/Themed";
 
 export default function TabOneScreen() {
-  const { t } = useTranslation("home");
+  const { t } = useTranslation();
 
   return (
     <LinearGradient colors={["#333", "#000"]} style={styles.wrapper}>
