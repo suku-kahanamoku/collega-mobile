@@ -1,6 +1,7 @@
 import React from "react";
 import { Text, View } from "react-native";
-import { useTheme } from "@react-navigation/native";
+
+import { useTheme } from "@/providers/ThemeProvider";
 
 export function TextCmp(props: Text["props"]) {
   const { colors } = useTheme();

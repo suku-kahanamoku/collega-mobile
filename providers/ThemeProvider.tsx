@@ -9,6 +9,7 @@ import {
   ThemeProvider,
   DarkTheme,
   DefaultTheme,
+  Theme,
 } from "@react-navigation/native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
@@ -17,6 +18,8 @@ export type ITheme = "light" | "dark";
 interface ThemeContextProps {
   theme: ITheme;
   changeTheme: (value: ITheme) => Promise<void>;
+  colors: Theme["colors"];
+  dark: boolean;
 }
 
 const ThemeContext = createContext<ThemeContextProps | undefined>(undefined);
@@ -37,7 +40,7 @@ export const ThemeProviderCmp = ({ children }: { children: ReactNode }) => {
     setTheme(value);
   };
 
-  const _loadTheme = async () => {
+  const loadTheme = async () => {
     try {
       const storedTheme = await AsyncStorage.getItem("THEME");
       if (storedTheme) {
@@ -49,14 +52,21 @@ export const ThemeProviderCmp = ({ children }: { children: ReactNode }) => {
   };
 
   useEffect(() => {
-    _loadTheme();
+    loadTheme();
   }, []);
 
+  const currentTheme = theme === "dark" ? DarkTheme : DefaultTheme;
+
   return (
-    <ThemeContext.Provider value={{ theme, changeTheme }}>
-      <ThemeProvider value={theme === "dark" ? DarkTheme : DefaultTheme}>
-        {children}
-      </ThemeProvider>
+    <ThemeContext.Provider
+      value={{
+        theme,
+        changeTheme,
+        colors: currentTheme.colors,
+        dark: theme === "dark",
+      }}
+    >
+      <ThemeProvider value={currentTheme}>{children}</ThemeProvider>
     </ThemeContext.Provider>
   );
 };

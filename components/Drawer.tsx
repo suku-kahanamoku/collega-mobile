@@ -2,10 +2,10 @@ import React from "react";
 import { StyleSheet } from "react-native";
 import { Drawer } from "react-native-drawer-layout";
 import { Link } from "expo-router";
-import { useTheme } from "@react-navigation/native";
 
-import { ViewCmp } from "@/components/Themed";
 import { IMenu } from "@/hooks/useMenus";
+import { useTheme } from "@/providers/ThemeProvider";
+import { ViewCmp } from "@/components/Themed";
 
 export default function DrawerCmp({
   children,

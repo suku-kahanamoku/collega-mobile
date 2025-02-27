@@ -2,15 +2,12 @@ import { StyleSheet } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 
 import { ViewCmp, TextCmp } from "@/components/Themed";
-import { useLocale } from "@/providers/LocaleProvider";
 
 export default function TabOneScreen() {
-  const { t } = useLocale();
-
   return (
     <LinearGradient colors={["#333", "#000"]} style={styles.wrapper}>
       <ViewCmp style={styles.container}>
-        <TextCmp style={styles.title}>{t("dashboard.title")}</TextCmp>
+        <TextCmp style={styles.title}>Users page</TextCmp>
       </ViewCmp>
     </LinearGradient>
   );
