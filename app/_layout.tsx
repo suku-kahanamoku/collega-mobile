@@ -46,7 +46,7 @@ export default function RootLayout() {
                 headerLeft: LogoCmp,
                 headerRight: () => (
                   <View style={styles.rightMenu}>
-                    <SettingBtnCmp menu={settingsPage} />
+                    <SettingBtnCmp menu={page404} />
                     <HamburgerCmp setOpen={setOpen} />
                   </View>
                 ),

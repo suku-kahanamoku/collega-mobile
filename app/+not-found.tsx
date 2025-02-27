@@ -1,27 +1,21 @@
 import { Link } from "expo-router";
 import { StyleSheet } from "react-native";
-import { LinearGradient } from "expo-linear-gradient";
 
 import { ViewCmp, TextCmp } from "@/components/Themed";
 
 export default function NotFoundScreen() {
   return (
-    <LinearGradient colors={["#333", "#000"]} style={styles.wrapper}>
-      <ViewCmp style={styles.container}>
-        <TextCmp style={styles.title}>This screen doesn't exist.</TextCmp>
+    <ViewCmp style={styles.container}>
+      <TextCmp style={styles.title}>This screen doesn't exist.</TextCmp>
 
-        <Link href="/" style={styles.link}>
-          <TextCmp>Go to home screen!</TextCmp>
-        </Link>
-      </ViewCmp>
-    </LinearGradient>
+      <Link href="/" style={styles.link}>
+        <TextCmp>Go to home screen!</TextCmp>
+      </Link>
+    </ViewCmp>
   );
 }
 
 const styles = StyleSheet.create({
-  wrapper: {
-    flex: 1,
-  },
   container: {
     flex: 1,
     alignItems: "center",
