@@ -6,7 +6,7 @@ import { useMenus } from "@/hooks/useMenus";
 import DrawerCmp from "@/components/Drawer";
 import LogoCmp from "@/components/Logo";
 import HamburgerCmp from "@/components/HamburgerBtn";
-import SettingBtnCmp from "@/components/SettingBtn";
+import SettingBtnCmp from "@/components/settings/SettingBtn";
 import { ThemeProviderCmp } from "@/providers/ThemeProvider";
 import { LocaleProviderCmp } from "@/providers/LocaleProvider";
 
