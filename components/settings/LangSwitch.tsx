@@ -1,16 +1,17 @@
 import React from "react";
-import { View, TouchableOpacity, StyleSheet, Text } from "react-native";
+import { TouchableOpacity, StyleSheet } from "react-native";
 import Flag from "react-native-flags";
 
-import useLocale from "@/i18n/useLocale";
+import { useLocale } from "@/providers/LocaleProvider";
+import { TextCmp, ViewCmp } from "@/components/Themed";
 
 const LangSwitchCmp = () => {
-  const { locale, locales, changeLanguage } = useLocale();
+  const { locale, locales, t, changeLanguage } = useLocale();
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.label}>Language:</Text>
-      <View style={styles.flagsContainer}>
+    <ViewCmp style={styles.container}>
+      <TextCmp style={styles.label}>{t("settings.language")}:</TextCmp>
+      <ViewCmp style={styles.flagsContainer}>
         {locales.map((loc) => (
           <TouchableOpacity
             key={loc.code}
@@ -23,8 +24,8 @@ const LangSwitchCmp = () => {
             />
           </TouchableOpacity>
         ))}
-      </View>
-    </View>
+      </ViewCmp>
+    </ViewCmp>
   );
 };
 

@@ -1,13 +1,18 @@
 import { StyleSheet } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 
-import { ViewCmp, TextCmp } from "@/components/Themed";
+import { ViewCmp } from "@/components/Themed";
+import ThemeSwitchCmp from "@/components/settings/ThemeSwitch";
+import LangSwitchCmp from "@/components/settings/LangSwitch";
 
 export default function ModalScreen() {
   return (
     <LinearGradient colors={["#333", "#000"]} style={styles.wrapper}>
       <ViewCmp style={styles.container}>
-        <TextCmp style={styles.title}>Modal</TextCmp>
+        <ViewCmp style={styles.content}>
+          <ThemeSwitchCmp />
+          <LangSwitchCmp />
+        </ViewCmp>
       </ViewCmp>
     </LinearGradient>
   );
@@ -19,16 +24,9 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
+    padding: 20,
   },
-  title: {
-    fontSize: 20,
-    fontWeight: "bold",
-  },
-  separator: {
-    marginVertical: 30,
-    height: 1,
-    width: "80%",
+  content: {
+    gap: 8,
   },
 });

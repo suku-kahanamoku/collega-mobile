@@ -1,18 +1,18 @@
 {
-  "home": {
-    "CANCEL": "Zrušit",
-    "GROUP_NAME": "Název skupiny",
-    "BOOKED_DATE": "Datum rezervace",
-    "ADD_BOOKING": "Přidat rezervaci",
-    "ADD_COURT": "Přidat soud",
-    "SHARE": "Sdílet",
-    "BLOCK": "Blok",
-    "TOTAL_INCOME": "Celkový příjem",
-    "LANGUAGE": "Jazyk",
-    "SELECT": "Vybrat",
-    "SAVE": "Uložit",
-    "HELLO": {
-      "neco": "Ahoj"
+  "$": {
+    "404": {
+      "title": "Stránka nenalezena"
+    },
+    "settings": {
+      "title": "Nastavení",
+      "language": "Jazyk",
+      "dark_mode": "Tmavý režim"
+    },
+    "dashboard": {
+      "title": "Přehled"
+    },
+    "users": {
+      "title": "Uživatelé"
     }
   }
 }

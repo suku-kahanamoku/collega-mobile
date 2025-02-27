@@ -4,7 +4,9 @@
       "title": "Page not found"
     },
     "settings": {
-      "title": "Settings"
+      "title": "Settings",
+      "language": "Language",
+      "dark_mode": "Dark mode"
     },
     "dashboard": {
       "title": "Dashboard"

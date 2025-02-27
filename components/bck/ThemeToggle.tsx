@@ -3,10 +3,12 @@ import { TouchableOpacity } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
 import { useTheme } from "@react-navigation/native";
 
+import { ITheme } from "@/providers/ThemeProvider";
+
 export default function ThemeToggleCmp({
   setTheme,
 }: {
-  setTheme: (value: "dark" | "light") => void;
+  setTheme: (value: ITheme) => void;
 }) {
   const { dark } = useTheme();
 

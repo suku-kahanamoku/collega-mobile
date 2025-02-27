@@ -1,6 +1,5 @@
 import { usePathname } from "expo-router";
-
-import useLocale from "@/i18n/useLocale";
+import { useTranslation } from "react-i18next";
 
 export type IMenu = {
   syscode: string;
@@ -11,7 +10,7 @@ export type IMenu = {
 };
 
 export function useMenus() {
-  const { t } = useLocale();
+  const { t } = useTranslation("$");
   const pathname = usePathname();
 
   /**
