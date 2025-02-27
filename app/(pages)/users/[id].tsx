@@ -1,22 +1,13 @@
 import { StyleSheet } from "react-native";
-import { RouteProp } from "@react-navigation/native";
+import { useLocalSearchParams } from "expo-router";
 
 import { ViewCmp, TextCmp } from "@/components/Themed";
 import { useUser } from "@/providers/UserProvider";
 
-type UserProfileScreenRouteProp = RouteProp<
-  { params: { userId: string } },
-  "params"
->;
-
-export default function UserScreen({
-  route,
-}: {
-  route: UserProfileScreenRouteProp;
-}) {
-  const { userId } = route.params;
+export default function UserScreen() {
+  const { id } = useLocalSearchParams();
   const { users } = useUser();
-  const user = users.find((u) => u.id === Number(userId));
+  const user = users.find((u) => u.id === Number(id));
 
   if (!user) {
     return (

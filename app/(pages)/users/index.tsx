@@ -1,4 +1,5 @@
 import { StyleSheet, FlatList } from "react-native";
+import { Link } from "expo-router";
 
 import { ViewCmp, TextCmp } from "@/components/Themed";
 import { useUser } from "@/providers/UserProvider";
@@ -28,10 +29,12 @@ export default function UsersScreen() {
         data={users}
         keyExtractor={(item) => item.id.toString()}
         renderItem={({ item }) => (
-          <ViewCmp style={styles.item}>
-            <TextCmp style={styles.title}>{item.name}</TextCmp>
-            <TextCmp>{item.email}</TextCmp>
-          </ViewCmp>
+          <Link href={`/users/${item.id}`}>
+            <ViewCmp style={styles.item}>
+              <TextCmp style={styles.title}>{item.name}</TextCmp>
+              <TextCmp>{item.email}</TextCmp>
+            </ViewCmp>
+          </Link>
         )}
       />
     </ViewCmp>

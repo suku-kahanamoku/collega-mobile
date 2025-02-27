@@ -45,7 +45,7 @@ export default function UsersLayout() {
           }}
         />
         <Tabs.Screen
-          name="user"
+          name="[id]"
           options={{
             title: "User",
             tabBarIcon: ({ color }) => <TabBarIcon name="user" color={color} />,
