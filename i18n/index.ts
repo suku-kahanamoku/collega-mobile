@@ -4,6 +4,7 @@ import { getLocales } from "expo-localization";
 
 import en from "./locales/en.json";
 import cs from "./locales/cs.json";
+import sk from "./locales/sk.json";
 
 export const locales = [
   {
@@ -15,6 +16,11 @@ export const locales = [
     code: "cs",
     mark: "CZ",
     iso: "cs-CZ",
+  },
+  {
+    code: "sk",
+    mark: "SK",
+    iso: "sk-SK",
   },
 ];
 
@@ -29,6 +35,7 @@ i18n.use(initReactI18next).init({
   resources: {
     en,
     cs,
+    sk,
   },
   lng: defaultLocale,
   fallbackLng: defaultLocale,

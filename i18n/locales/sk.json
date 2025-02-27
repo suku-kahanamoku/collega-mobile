@@ -1,0 +1,18 @@
+{
+  "$": {
+    "404": {
+      "title": "Stránka nenájdená"
+    },
+    "settings": {
+      "title": "Nastavenia",
+      "language": "Jazyk",
+      "dark_mode": "Tmavý režim"
+    },
+    "dashboard": {
+      "title": "Prehľad"
+    },
+    "users": {
+      "title": "Používatelia"
+    }
+  }
+}
