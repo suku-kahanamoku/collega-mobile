@@ -2,7 +2,7 @@ import { Stack } from "expo-router";
 
 import { useMenus } from "@/hooks/useMenus";
 
-export default function StackLayout() {
+export default function PagesLayout() {
   const { menuList, menus } = useMenus();
   const settingsPage = menuList.settings;
 
@@ -21,7 +21,7 @@ export default function StackLayout() {
       <Stack.Screen
         name={settingsPage.name}
         options={{
-          headerTitle: 'Nazev prihlaseneho uzivatele',
+          headerTitle: "Nazev prihlaseneho uzivatele",
           presentation: "modal",
         }}
       />

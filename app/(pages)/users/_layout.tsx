@@ -3,19 +3,26 @@ import { Tabs } from "expo-router";
 import React from "react";
 import { Platform } from "react-native";
 
+import { useMenus } from "@/hooks/useMenus";
+import { useTheme } from "@/providers/ThemeProvider";
+
 // You can explore the built-in icon families and icons on the web at https://icons.expo.fyi/
 function TabBarIcon(props: {
-  name: React.ComponentProps<typeof FontAwesome>['name'];
   color: string;
+  name?: React.ComponentProps<typeof FontAwesome>["name"];
 }) {
-  return <FontAwesome size={28} style={{ marginBottom: -3 }} {...props} />;
+  return <FontAwesome size={24} {...props} />;
 }
 
-export default function TabLayout() {
+export default function UsersLayout() {
+  const { colors } = useTheme();
+  const { menuList } = useMenus();
+  const usersPage = menuList.users;
+
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: "red",
+        tabBarActiveTintColor: colors.secondary,
         headerShown: false,
         tabBarStyle: Platform.select({
           ios: {
@@ -29,9 +36,10 @@ export default function TabLayout() {
       <Tabs.Screen
         name="index"
         options={{
-          title: "Users",
-          headerShown: false,
-          tabBarIcon: ({ color }) => <TabBarIcon name="list" color={color} />,
+          title: usersPage.title,
+          tabBarIcon: ({ color }) => (
+            <TabBarIcon name={usersPage.icon} color={color} />
+          ),
         }}
       />
       <Tabs.Screen

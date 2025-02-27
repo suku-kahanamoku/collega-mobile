@@ -12,13 +12,14 @@ import {
   Theme,
 } from "@react-navigation/native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import Colors from "@/constants/Colors";
 
 export type ITheme = "light" | "dark";
 
 interface ThemeContextProps {
   theme: ITheme;
   changeTheme: (value: ITheme) => Promise<void>;
-  colors: Theme["colors"];
+  colors: Theme["colors"] & typeof Colors.light;
   dark: boolean;
 }
 
@@ -56,13 +57,22 @@ export const ThemeProviderCmp = ({ children }: { children: ReactNode }) => {
   }, []);
 
   const currentTheme = theme === "dark" ? DarkTheme : DefaultTheme;
+  const colors = {
+    ...currentTheme.colors,
+    secondary:
+      theme === "dark" ? Colors.dark.secondary : Colors.light.secondary,
+    info: theme === "dark" ? Colors.dark.info : Colors.light.info,
+    warning: theme === "dark" ? Colors.dark.warning : Colors.light.warning,
+    error: theme === "dark" ? Colors.dark.error : Colors.light.error,
+    success: theme === "dark" ? Colors.dark.success : Colors.light.success,
+  };
 
   return (
     <ThemeContext.Provider
       value={{
         theme,
         changeTheme,
-        colors: currentTheme.colors,
+        colors,
         dark: theme === "dark",
       }}
     >

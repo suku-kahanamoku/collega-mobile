@@ -30,7 +30,9 @@ export default function RootLayout() {
                 headerLeft: LogoCmp,
                 headerRight: () => (
                   <View style={styles.rightMenu}>
-                    {activeMenu !== settingsPage && <SettingBtnCmp />}
+                    {activeMenu !== settingsPage && (
+                      <SettingBtnCmp menu={settingsPage} />
+                    )}
                     <HamburgerCmp setOpen={setOpen} />
                   </View>
                 ),
@@ -44,7 +46,7 @@ export default function RootLayout() {
                 headerLeft: LogoCmp,
                 headerRight: () => (
                   <View style={styles.rightMenu}>
-                    <SettingBtnCmp />
+                    <SettingBtnCmp menu={settingsPage} />
                     <HamburgerCmp setOpen={setOpen} />
                   </View>
                 ),

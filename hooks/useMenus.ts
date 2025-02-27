@@ -1,3 +1,4 @@
+import FontAwesome from "@expo/vector-icons/FontAwesome";
 import { usePathname } from "expo-router";
 import { useTranslation } from "react-i18next";
 
@@ -7,6 +8,7 @@ export type IMenu = {
   title: string;
   href: any;
   active?: boolean;
+  icon?: React.ComponentProps<typeof FontAwesome>["name"];
 };
 
 export function useMenus() {
@@ -28,18 +30,21 @@ export function useMenus() {
       name: "settings",
       title: t("settings.title"),
       href: "/settings",
+      icon: "cog",
     },
     dashboard: {
       syscode: "dashboard",
       name: "index",
       title: t("dashboard.title"),
       href: "/",
+      icon: "dashboard",
     },
     users: {
       syscode: "users",
       name: "users",
       title: t("users.title"),
       href: "/users",
+      icon: "users",
     },
   };
 
