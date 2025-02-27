@@ -3,7 +3,7 @@ import { StyleSheet } from "react-native";
 import { ViewCmp, TextCmp } from "@/components/Themed";
 import { useLocale } from "@/providers/LocaleProvider";
 
-export default function TabOneScreen() {
+export default function DashboardScreen() {
   const { t } = useLocale();
 
   return (

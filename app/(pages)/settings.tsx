@@ -4,7 +4,7 @@ import { ViewCmp } from "@/components/Themed";
 import ThemeSwitchCmp from "@/components/settings/ThemeSwitch";
 import LangSwitchCmp from "@/components/settings/LangSwitch";
 
-export default function ModalScreen() {
+export default function SettingsScreen() {
   return (
     <ViewCmp style={styles.container}>
       <ViewCmp style={styles.content}>

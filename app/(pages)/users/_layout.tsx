@@ -5,6 +5,7 @@ import { Platform } from "react-native";
 
 import { useMenus } from "@/hooks/useMenus";
 import { useTheme } from "@/providers/ThemeProvider";
+import { UserProviderCmp } from "@/providers/UserProvider";
 
 // You can explore the built-in icon families and icons on the web at https://icons.expo.fyi/
 function TabBarIcon(props: {
@@ -20,35 +21,37 @@ export default function UsersLayout() {
   const usersPage = menuList.users;
 
   return (
-    <Tabs
-      screenOptions={{
-        tabBarActiveTintColor: colors.secondary,
-        headerShown: false,
-        tabBarStyle: Platform.select({
-          ios: {
-            // Use a transparent background on iOS to show the blur effect
-            position: "absolute",
-          },
-          default: {},
-        }),
-      }}
-    >
-      <Tabs.Screen
-        name="index"
-        options={{
-          title: usersPage.title,
-          tabBarIcon: ({ color }) => (
-            <TabBarIcon name={usersPage.icon} color={color} />
-          ),
+    <UserProviderCmp>
+      <Tabs
+        screenOptions={{
+          tabBarActiveTintColor: colors.secondary,
+          headerShown: false,
+          tabBarStyle: Platform.select({
+            ios: {
+              // Use a transparent background on iOS to show the blur effect
+              position: "absolute",
+            },
+            default: {},
+          }),
         }}
-      />
-      <Tabs.Screen
-        name="user"
-        options={{
-          title: "User",
-          tabBarIcon: ({ color }) => <TabBarIcon name="user" color={color} />,
-        }}
-      />
-    </Tabs>
+      >
+        <Tabs.Screen
+          name="index"
+          options={{
+            title: usersPage.title,
+            tabBarIcon: ({ color }) => (
+              <TabBarIcon name={usersPage.icon} color={color} />
+            ),
+          }}
+        />
+        <Tabs.Screen
+          name="user"
+          options={{
+            title: "User",
+            tabBarIcon: ({ color }) => <TabBarIcon name="user" color={color} />,
+          }}
+        />
+      </Tabs>
+    </UserProviderCmp>
   );
 }

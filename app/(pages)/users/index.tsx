@@ -1,11 +1,39 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet, FlatList } from "react-native";
 
 import { ViewCmp, TextCmp } from "@/components/Themed";
+import { useUser } from "@/providers/UserProvider";
 
-export default function TabOneScreen() {
+export default function UsersScreen() {
+  const { users, loading, error } = useUser();
+
+  if (loading) {
+    return (
+      <ViewCmp style={styles.container}>
+        <TextCmp>Loading...</TextCmp>
+      </ViewCmp>
+    );
+  }
+
+  if (error) {
+    return (
+      <ViewCmp style={styles.container}>
+        <TextCmp>{error}</TextCmp>
+      </ViewCmp>
+    );
+  }
+
   return (
     <ViewCmp style={styles.container}>
-      <TextCmp style={styles.title}>Users page</TextCmp>
+      <FlatList
+        data={users}
+        keyExtractor={(item) => item.id.toString()}
+        renderItem={({ item }) => (
+          <ViewCmp style={styles.item}>
+            <TextCmp style={styles.title}>{item.name}</TextCmp>
+            <TextCmp>{item.email}</TextCmp>
+          </ViewCmp>
+        )}
+      />
     </ViewCmp>
   );
 }
@@ -15,6 +43,11 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
+  },
+  item: {
+    padding: 10,
+    borderBottomWidth: 1,
+    borderBottomColor: "#ccc",
   },
   title: {
     fontSize: 20,
