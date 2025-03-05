@@ -13,6 +13,9 @@
     },
     "users": {
       "title": "Uživatelé"
+    },
+    "contracts": {
+      "title": "Smlouvy"
     }
   }
 }

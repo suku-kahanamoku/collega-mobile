@@ -13,6 +13,9 @@
     },
     "users": {
       "title": "Používatelia"
+    },
+    "contracts": {
+      "title": "Zmluvy "
     }
   }
 }

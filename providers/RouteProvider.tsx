@@ -69,6 +69,13 @@ export const RouteProviderCmp = ({ children }: { children: ReactNode }) => {
       href: "/users",
       icon: "users",
     },
+    contracts: {
+      syscode: "contracts",
+      name: "contracts",
+      title: t("contracts.title"),
+      href: "/contracts",
+      icon: "files-o",
+    },
   };
 
   /**
