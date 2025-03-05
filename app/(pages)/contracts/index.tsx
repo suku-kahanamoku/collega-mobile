@@ -3,9 +3,12 @@ import { Link } from "expo-router";
 
 import { ViewCmp, TextCmp } from "@/components/Themed";
 import { useContract } from "@/providers/ContractProvider";
+import { useRoute } from "@/providers/RouteProvider";
 
 export default function ContractsScreen() {
   const { contracts, loading, error } = useContract();
+  const { menuList } = useRoute();
+  const contractsMenu = menuList.contracts;
 
   if (loading) {
     return (
@@ -29,7 +32,7 @@ export default function ContractsScreen() {
         data={contracts}
         keyExtractor={(item) => item.id.toString()}
         renderItem={({ item }) => (
-          <Link href={`/contracts/${item.id}`}>
+          <Link href={`${contractsMenu.href}/${item.id}` as any}>
             <ViewCmp style={styles.item}>
               <TextCmp style={styles.title}>{item.id}</TextCmp>
             </ViewCmp>

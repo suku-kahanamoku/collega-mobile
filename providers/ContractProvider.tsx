@@ -6,8 +6,36 @@ import React, {
   ReactNode,
 } from "react";
 
+interface Instruction {
+  id: number;
+}
+
+interface Document {
+  link: string;
+  name: string;
+  type: string;
+}
+
 interface Contract {
   id: number;
+  client: { id: string; name?: string };
+  account_number?: string;
+  consultant1: { id: string; name?: string };
+  consultant2?: { id: string; name?: string };
+  consultant3?: { id: string; name?: string };
+  documents?: Document[];
+  effectiveDate: string;
+  endDate: string;
+  expected_commission_date: string;
+  instructions: Instruction[];
+  insurance: number;
+  partner_logo: string;
+  partner_name: string;
+  payment_day: string;
+  points: string;
+  productVersionId: number;
+  product_name: string;
+  status: "paid" | "";
 }
 
 interface ContractContextProps {
@@ -36,7 +64,7 @@ export const ContractProviderCmp = ({ children }: { children: ReactNode }) => {
   const fetchContracts = async () => {
     try {
       const response = await fetch(
-        "https://collega.cz/security/api/get-contract",
+        "https://collega.cz/security/api/get-contract?consultant=550",
         {
           method: "GET",
           headers: {
