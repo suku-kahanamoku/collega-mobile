@@ -1,3 +1,10 @@
+import React, {
+  createContext,
+  useContext,
+  useState,
+  useEffect,
+  ReactNode,
+} from "react";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 import { usePathname } from "expo-router";
 import { useTranslation } from "react-i18next";
@@ -11,7 +18,23 @@ export type IMenu = {
   icon?: React.ComponentProps<typeof FontAwesome>["name"];
 };
 
-export function useMenus() {
+interface RouteContextProps {
+  menuList: Record<string, IMenu>;
+  menus: IMenu[];
+  activeMenu: IMenu;
+}
+
+const RouteContext = createContext<RouteContextProps | undefined>(undefined);
+
+export const useRoute = () => {
+  const context = useContext(RouteContext);
+  if (!context) {
+    throw new Error("useRoute must be used within a RouteProviderCmp");
+  }
+  return context;
+};
+
+export const RouteProviderCmp = ({ children }: { children: ReactNode }) => {
   const { t } = useTranslation("$");
   const pathname = usePathname();
 
@@ -62,9 +85,17 @@ export function useMenus() {
   // Prida active
   activeMenu.active = true;
 
-  return {
-    menuList,
-    menus: menus.filter((menu) => !["404", "settings"].includes(menu.syscode)),
-    activeMenu,
-  };
-}
+  return (
+    <RouteContext.Provider
+      value={{
+        menuList,
+        menus: menus.filter(
+          (menu) => !["404", "settings"].includes(menu.syscode)
+        ),
+        activeMenu,
+      }}
+    >
+      {children}
+    </RouteContext.Provider>
+  );
+};

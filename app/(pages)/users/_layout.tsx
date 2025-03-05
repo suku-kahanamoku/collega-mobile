@@ -3,9 +3,9 @@ import { Tabs } from "expo-router";
 import React from "react";
 import { Platform } from "react-native";
 
-import { useMenus } from "@/hooks/useMenus";
 import { useTheme } from "@/providers/ThemeProvider";
 import { UserProviderCmp } from "@/providers/UserProvider";
+import { useRoute } from "@/providers/RouteProvider";
 
 // You can explore the built-in icon families and icons on the web at https://icons.expo.fyi/
 function TabBarIcon(props: {
@@ -17,7 +17,7 @@ function TabBarIcon(props: {
 
 export default function UsersLayout() {
   const { colors } = useTheme();
-  const { menuList } = useMenus();
+  const { menuList } = useRoute();
   const usersPage = menuList.users;
 
   return (
