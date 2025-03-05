@@ -4,7 +4,7 @@ import { useRoute } from "@/providers/RouteProvider";
 
 export default function PagesLayout() {
   const { menuList, menus } = useRoute();
-  const settingsPage = menuList.settings;
+  const settingsMenu = menuList.settings;
 
   return (
     <Stack>
@@ -19,7 +19,7 @@ export default function PagesLayout() {
       ))}
 
       <Stack.Screen
-        name={settingsPage.name}
+        name={settingsMenu.name}
         options={{
           headerTitle: "Nazev prihlaseneho uzivatele",
           presentation: "modal",

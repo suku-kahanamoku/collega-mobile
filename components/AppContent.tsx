@@ -36,7 +36,7 @@ export default function AppContent() {
   const { menuList, menus, activeMenu } = useRoute();
 
   const [open, setOpen] = useState(false);
-  const page404 = menuList["404"];
+  const notFoundMenu = menuList["404"];
   const settingsMenu = menuList.settings;
 
   return (
@@ -53,12 +53,12 @@ export default function AppContent() {
           }}
         />
         <Stack.Screen
-          name={page404.name}
+          name={notFoundMenu.name}
           options={{
             headerLeft: LogoCmp,
             headerRight: () =>
               HeaderRightCmp({ activeMenu, settingsMenu, setOpen }),
-            headerTitle: page404.title,
+            headerTitle: notFoundMenu.title,
             headerTitleAlign: "center",
           }}
         />

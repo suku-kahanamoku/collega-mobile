@@ -18,7 +18,7 @@ function TabBarIcon(props: {
 export default function UsersLayout() {
   const { colors } = useTheme();
   const { menuList } = useRoute();
-  const usersPage = menuList.users;
+  const userMenu = menuList.users;
 
   return (
     <UserProviderCmp>
@@ -38,9 +38,9 @@ export default function UsersLayout() {
         <Tabs.Screen
           name="index"
           options={{
-            title: usersPage.title,
+            title: userMenu.title,
             tabBarIcon: ({ color }) => (
-              <TabBarIcon name={usersPage.icon} color={color} />
+              <TabBarIcon name={userMenu.icon} color={color} />
             ),
           }}
         />
