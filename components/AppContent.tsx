@@ -21,9 +21,12 @@ const HeaderRightCmp: React.FC<HeaderRightProps> = ({
 }) => {
   return (
     <View style={{ flexDirection: "row", gap: 16 }}>
+      {/* pokud aktivni menu neni settings, tak zobrazi ozubene kolecko, presmeruje na settings */}
       {activeMenu !== settingsMenu && (
         <IconLinkCmp name={settingsMenu.icon!} href={settingsMenu.href} />
       )}
+
+      {/* hamburger btn, po kliku zobrazi bocni menu */}
       <IconBtnCmp
         name="bars"
         onPress={() => setOpen((prevOpen) => !prevOpen)}
@@ -42,6 +45,7 @@ export default function AppContent() {
   return (
     <SideMenuCmp open={open} setOpen={setOpen} menus={menus}>
       <Stack>
+        {/* vsechny podstranky */}
         <Stack.Screen
           name="(pages)"
           options={{
@@ -52,6 +56,8 @@ export default function AppContent() {
             headerTitleAlign: "center",
           }}
         />
+
+        {/* not found 404 stranka */}
         <Stack.Screen
           name={notFoundMenu.name}
           options={{
