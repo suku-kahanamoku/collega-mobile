@@ -3,9 +3,12 @@ import { Link } from "expo-router";
 
 import { ViewCmp, TextCmp } from "@/components/Themed";
 import { useUser } from "@/providers/UserProvider";
+import { useRoute } from "@/providers/RouteProvider";
 
 export default function UsersScreen() {
   const { users, loading, error } = useUser();
+  const { menuList } = useRoute();
+  const usersMenu = menuList.users;
 
   if (loading) {
     return (
@@ -29,7 +32,7 @@ export default function UsersScreen() {
         data={users}
         keyExtractor={(item) => item.id.toString()}
         renderItem={({ item }) => (
-          <Link href={`/users/${item.id}`}>
+          <Link href={`${usersMenu.href}/${item.id}`}>
             <ViewCmp style={styles.item}>
               <TextCmp style={styles.title}>{item.name}</TextCmp>
               <TextCmp>{item.email}</TextCmp>

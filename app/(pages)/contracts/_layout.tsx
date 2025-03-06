@@ -18,7 +18,8 @@ function TabBarIcon(props: {
 export default function ContractsLayout() {
   const { colors } = useTheme();
   const { menuList } = useRoute();
-  const contractMenu = menuList.contracts;
+  const contractsMenu = menuList.contracts;
+  const contractMenu = menuList.contract;
 
   return (
     <ContractProviderCmp>
@@ -38,18 +39,18 @@ export default function ContractsLayout() {
         <Tabs.Screen
           name="index"
           options={{
-            title: contractMenu.title,
+            title: contractsMenu.title,
             tabBarIcon: ({ color }) => (
-              <TabBarIcon name={contractMenu.icon} color={color} />
+              <TabBarIcon name={contractsMenu.icon} color={color} />
             ),
           }}
         />
         <Tabs.Screen
           name="[id]"
           options={{
-            title: "Contract",
+            title: contractMenu.title,
             tabBarIcon: ({ color }) => (
-              <TabBarIcon name="file-text" color={color} />
+              <TabBarIcon name={contractMenu.icon} color={color} />
             ),
           }}
         />

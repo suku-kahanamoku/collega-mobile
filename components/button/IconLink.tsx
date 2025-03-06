@@ -1,14 +1,13 @@
 import React from "react";
 import { FontAwesome } from "@expo/vector-icons";
 import { Link } from "expo-router";
+import { LinkProps } from "expo-router/build/link/Link";
 
 import { useTheme } from "@/providers/ThemeProvider";
-import { RedirectProps } from "expo-router/build/link/Link";
 
-interface IconLinkProps extends RedirectProps {
-  name: string;
+interface IconLinkProps extends LinkProps {
+  name: keyof typeof FontAwesome.glyphMap;
   size?: number;
-  onPress?: () => void;
 }
 
 const IconLinkCmp: React.FC<IconLinkProps> = ({
@@ -22,7 +21,7 @@ const IconLinkCmp: React.FC<IconLinkProps> = ({
 
   return (
     <Link href={href} onPress={onPress} {...rest}>
-      <FontAwesome name={name as any} size={size} color={colors.text} />
+      <FontAwesome name={name} size={size} color={colors.text} />
     </Link>
   );
 };

@@ -32,9 +32,16 @@ export default function ContractsScreen() {
         data={contracts}
         keyExtractor={(item) => item.id.toString()}
         renderItem={({ item }) => (
-          <Link href={`${contractsMenu.href}/${item.id}` as any}>
+          <Link href={`${contractsMenu.href}/${item.id}`}>
             <ViewCmp style={styles.item}>
-              <TextCmp style={styles.title}>{item.id}</TextCmp>
+              <TextCmp style={styles.title}>
+                {item.partner_name}
+                {item.product_name}
+              </TextCmp>
+              <TextCmp style={styles.title}>
+                {item.contract_number}
+                {item.client}
+              </TextCmp>
             </ViewCmp>
           </Link>
         )}

@@ -14,8 +14,67 @@
     "users": {
       "title": "Users"
     },
+    "user": {
+      "title": "User"
+    },
     "contracts": {
       "title": "Contracts"
+    },
+    "contract": {
+      "title": "Contract",
+      "status": {
+        "accepted": "Accepted",
+        "send": "Send",
+        "canceled": "Canceled",
+        "denied": "Denied",
+        "paid": "Paid",
+        "urgent": "Urgent",
+        "imported": "Imported",
+        "free": "Free",
+        "missing": "Missing"
+      },
+      "commission_status": {
+        "can-ask-for-urgency": "Can ask for urgency",
+        "can-expect-commission": "Can expect commission",
+        "commission-posted": "Commission posted",
+        "commission-paid-out": "Commission paid out",
+        "commission-suspended": "Commission suspended",
+        "can-not-urgency": "Cannot urgency",
+        "payment-to-sp-account": "Payment to SP account",
+        "too-early": "Too early",
+        "unprofitable-business": "Unprofitable business",
+        "working-on-earlier-urgency": "Working on earlier urgency"
+      },
+      "frequency_type": {
+        "annually": "Annually",
+        "biannually": "Biannually",
+        "quarterly": "Quarterly",
+        "monthly": "Monthly",
+        "weekly": "Weekly",
+        "one-time": "One-time",
+        "unspecified": "Unspecified"
+      },
+      "attr": {
+        "client": "Client",
+        "account_number": "Account Number",
+        "consultant1": "Consultant 1",
+        "consultant2": "Consultant 2",
+        "consultant3": "Consultant 3",
+        "contract_number": "Contract Number",
+        "effectiveDate": "Effective Date",
+        "endDate": "End Date",
+        "expected_commission_date": "Expected Commission Date",
+        "insurance": "Insurance",
+        "partner_logo": "Partner Logo",
+        "partner_name": "Partner Name",
+        "payment_day": "Payment Day",
+        "points": "Points",
+        "productVersionId": "Product Version ID",
+        "product_name": "Product Name",
+        "status": "Status",
+        "commission_status": "Commission Status",
+        "frequency_type": "Frequency Type"
+      }
     }
   }
 }

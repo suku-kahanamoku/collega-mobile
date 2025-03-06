@@ -1,13 +1,12 @@
 import React from "react";
-import { TouchableOpacity } from "react-native";
+import { TouchableOpacity, TouchableOpacityProps } from "react-native";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 
 import { useTheme } from "@/providers/ThemeProvider";
 
-interface IconBtnProps {
-  name: string;
+interface IconBtnProps extends TouchableOpacityProps {
+  name: keyof typeof FontAwesome.glyphMap;
   size?: number;
-  onPress?: () => void;
 }
 
 const IconBtnCmp: React.FC<IconBtnProps> = ({
@@ -20,7 +19,7 @@ const IconBtnCmp: React.FC<IconBtnProps> = ({
 
   return (
     <TouchableOpacity onPress={onPress} {...rest}>
-      <FontAwesome name={name as any} size={size} color={colors.text} />
+      <FontAwesome name={name} size={size} color={colors.text} />
     </TouchableOpacity>
   );
 };
