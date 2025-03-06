@@ -1,5 +1,5 @@
 import FontAwesome from "@expo/vector-icons/FontAwesome";
-import { Tabs } from "expo-router";
+import { Stack, Tabs } from "expo-router";
 import React from "react";
 import { Platform } from "react-native";
 
@@ -20,6 +20,7 @@ export default function ContractsLayout() {
   const { menuList } = useRoute();
   const contractsMenu = menuList.contracts;
   const contractMenu = menuList.contract;
+  const filterMenu = menuList.contract_filter;
 
   return (
     <ContractProviderCmp>
@@ -45,12 +46,23 @@ export default function ContractsLayout() {
             ),
           }}
         />
+
         <Tabs.Screen
           name="[id]"
           options={{
             title: contractMenu.title,
             tabBarIcon: ({ color }) => (
               <TabBarIcon name={contractMenu.icon} color={color} />
+            ),
+          }}
+        />
+
+        <Tabs.Screen
+          name="filter"
+          options={{
+            title: filterMenu.title,
+            tabBarIcon: ({ color }) => (
+              <TabBarIcon name={filterMenu.icon} color={color} />
             ),
           }}
         />

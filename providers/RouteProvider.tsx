@@ -10,6 +10,8 @@ export type IMenu = {
   href: RelativePathString;
   active?: boolean;
   icon?: React.ComponentProps<typeof FontAwesome>["name"];
+  children?: IMenu[];
+  parentSyscode?: string;
 };
 
 interface RouteContextProps {
@@ -65,10 +67,11 @@ export const RouteProviderCmp = ({ children }: { children: ReactNode }) => {
     },
     user: {
       syscode: "user",
-      name: "[id]",
+      name: "users/[id]",
       title: t("user.title"),
       href: "/user/[id]" as RelativePathString,
       icon: "user",
+      parentSyscode: "users",
     },
     contracts: {
       syscode: "contracts",
@@ -79,17 +82,39 @@ export const RouteProviderCmp = ({ children }: { children: ReactNode }) => {
     },
     contract: {
       syscode: "contract",
-      name: "[id]",
+      name: "contracts/[id]",
       title: t("contract.title"),
       href: "/contracts/[id]" as RelativePathString,
       icon: "file-o",
+      parentSyscode: "contracts",
+    },
+    contract_filter: {
+      syscode: "contract_filter",
+      name: "contracts/filter",
+      title: t("contract.filter"),
+      href: "/contracts/filter" as RelativePathString,
+      icon: "filter",
+      parentSyscode: "contracts",
     },
   };
 
   /**
+   * Vlozi potomky do rodicu (vytvori strom)
+   */
+  for (const menu of Object.values(menuList)) {
+    const parentMenu = menuList[menu.parentSyscode!];
+    if (parentMenu) {
+      parentMenu.children = parentMenu.children || [];
+      parentMenu.children.push(menu);
+    }
+  }
+
+  /**
    * Menus, ktera maji byt videt v navigaci
    */
-  const menus: IMenu[] = Object.values(menuList);
+  const menus: IMenu[] = Object.values(menuList).filter(
+    (menu) => !menu.parentSyscode
+  );
 
   /**
    * Aktivni menu
@@ -108,7 +133,7 @@ export const RouteProviderCmp = ({ children }: { children: ReactNode }) => {
       value={{
         menuList,
         menus: menus.filter(
-          (menu) => !["+not-found", "settings", "[id]"].includes(menu.name)
+          (menu) => !["404", "settings"].includes(menu.syscode)
         ),
         activeMenu,
       }}

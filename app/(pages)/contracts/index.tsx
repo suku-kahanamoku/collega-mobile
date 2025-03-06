@@ -27,42 +27,43 @@ export default function ContractsScreen() {
   }
 
   return (
-    <ViewCmp style={styles.container}>
-      <FlatList
-        data={contracts}
-        keyExtractor={(item) => item.id.toString()}
-        renderItem={({ item }) => (
-          <Link href={`${contractsMenu.href}/${item.id}`}>
-            <ViewCmp style={styles.item}>
-              <TextCmp style={styles.title}>
-                {item.partner_name}
-                {item.product_name}
-              </TextCmp>
-              <TextCmp style={styles.title}>
-                {item.contract_number}
-                {item.client}
-              </TextCmp>
-            </ViewCmp>
-          </Link>
-        )}
-      />
-    </ViewCmp>
+    <FlatList
+      data={contracts}
+      keyExtractor={(item) => item.id.toString()}
+      renderItem={({ item }) => (
+        <Link href={`${contractsMenu.href}/${item.id}`}>
+          <ViewCmp style={styles.item}>
+            <TextCmp style={styles.title}>
+              {item.partner_name}
+              {item.product_name}
+            </TextCmp>
+            <TextCmp style={styles.subtitle}>
+              {item.contract_number}
+              {item.client}
+            </TextCmp>
+          </ViewCmp>
+        </Link>
+      )}
+      style={styles.container}
+    />
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
+    padding: 10,
   },
   item: {
-    padding: 10,
     borderBottomWidth: 1,
     borderBottomColor: "#ccc",
   },
   title: {
     fontSize: 20,
+    fontWeight: "bold",
+  },
+  subtitle: {
+    fontSize: 16,
     fontWeight: "bold",
   },
 });

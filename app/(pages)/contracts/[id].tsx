@@ -4,6 +4,7 @@ import { useTranslation } from "react-i18next";
 
 import { ViewCmp, TextCmp } from "@/components/Themed";
 import { useContract } from "@/providers/ContractProvider";
+import RowCmp from "@/components/Row";
 
 export default function ContractScreen() {
   const { t } = useTranslation("$");
@@ -47,10 +48,9 @@ export default function ContractScreen() {
   return (
     <ScrollView contentContainerStyle={styles.container}>
       {attributes.map((attr) => (
-        <ViewCmp style={styles.row} key={attr.key}>
-          <TextCmp style={styles.label}>{attr.label}:</TextCmp>
-          <TextCmp style={styles.value}>{contract[attr.key] || "---"}</TextCmp>
-        </ViewCmp>
+        <RowCmp key={attr.key} label={attr.label}>
+          <TextCmp>{contract[attr.key] || "---"}</TextCmp>
+        </RowCmp>
       ))}
     </ScrollView>
   );
@@ -60,27 +60,5 @@ const styles = StyleSheet.create({
   container: {
     flexGrow: 1,
     padding: 20,
-  },
-  row: {
-    flexDirection: "row",
-    marginVertical: 5,
-  },
-  label: {
-    justifyContent: "center",
-    alignSelf: "center",
-    fontWeight: "bold",
-    marginRight: 10,
-    width: "30%",
-    fontSize: 16,
-  },
-  value: {
-    flex: 1,
-    justifyContent: "center",
-    alignSelf: "center",
-    fontSize: 18,
-  },
-  title: {
-    fontSize: 20,
-    fontWeight: "bold",
   },
 });
