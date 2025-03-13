@@ -1,8 +1,7 @@
-import React, { createContext, ReactNode } from "react";
+import React, { createContext, useContext, ReactNode } from "react";
 import { RelativePathString, usePathname } from "expo-router";
 import { useTranslation } from "react-i18next";
-
-import { IMenu } from "../type";
+import { IMenu } from "@/types/menu";
 
 interface RouteContextProps {
   menuList: Record<string, IMenu>;
@@ -14,7 +13,7 @@ export const RouteContext = createContext<RouteContextProps | undefined>(
   undefined
 );
 
-export const RouterProvider = ({ children }: { children: ReactNode }) => {
+export const RouteProvider = ({ children }: { children: ReactNode }) => {
   const { t } = useTranslation("$");
   const pathname = usePathname();
 

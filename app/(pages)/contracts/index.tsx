@@ -1,13 +1,13 @@
 import { StyleSheet, FlatList } from "react-native";
 import { Link } from "expo-router";
 
+import { useRoute } from "@/hooks/useRoute";
 import { UiView, UiText } from "@/modules/Ui/components/Themed";
-import { useRouter } from "@/modules/Router/hooks/useRouter";
 import { useContract } from "@/modules/Contract/hooks/useContract";
 
 export default function ContractsScreen() {
   const { contracts, loading, error } = useContract();
-  const { menuList } = useRouter();
+  const { menuList } = useRoute();
   const contractsMenu = menuList.contracts;
 
   if (loading) {

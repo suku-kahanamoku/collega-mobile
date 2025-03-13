@@ -3,9 +3,9 @@ import { Stack, Tabs } from "expo-router";
 import React from "react";
 import { Platform } from "react-native";
 
+import { useRoute } from "@/hooks/useRoute";
 import { useTheme } from "@/providers/ThemeProvider";
 import { ContractProviderCmp } from "@/modules/Contract/providers/ContractProvider";
-import { useRouter } from "@/modules/Router/hooks/useRouter";
 
 // You can explore the built-in icon families and icons on the web at https://icons.expo.fyi/
 function TabBarIcon(props: {
@@ -17,7 +17,7 @@ function TabBarIcon(props: {
 
 export default function ContractsLayout() {
   const { colors } = useTheme();
-  const { menuList } = useRouter();
+  const { menuList } = useRoute();
   const contractsMenu = menuList.contracts;
   const contractMenu = menuList.contract;
   const filterMenu = menuList.contract_filter;

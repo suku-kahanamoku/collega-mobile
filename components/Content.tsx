@@ -2,12 +2,12 @@ import React, { useState } from "react";
 import { View } from "react-native";
 import { Stack } from "expo-router";
 
+import { useRoute } from "@/hooks/useRoute";
 import LogoCmp from "@/components/Logo";
 import UiIconBtn from "@/modules/Ui/components/button/IconBtn";
 import UiIconLink from "@/modules/Ui/components/button/IconLink";
-import SideMenuCmp from "@/modules/Router/components/SideMenu";
-import { IMenu } from "@/modules/Router/type";
-import { useRouter } from "@/modules/Router/hooks/useRouter";
+import SideMenuCmp from "@/components/menu/SideMenu";
+import { IMenu } from "@/types/menu";
 
 interface HeaderRightProps {
   activeMenu: IMenu;
@@ -34,7 +34,7 @@ const HeaderRightCmp: React.FC<HeaderRightProps> = ({
 };
 
 export default function Content() {
-  const { menuList, menus, activeMenu } = useRouter();
+  const { menuList, menus, activeMenu } = useRoute();
 
   const [open, setOpen] = useState(false);
   const notFoundMenu = menuList["404"];

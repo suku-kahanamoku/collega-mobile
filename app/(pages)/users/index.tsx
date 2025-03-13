@@ -1,13 +1,13 @@
 import { StyleSheet, FlatList } from "react-native";
 import { Link } from "expo-router";
 
+import { useRoute } from "@/hooks/useRoute";
 import { UiView, UiText } from "@/modules/Ui/components/Themed";
 import { useUser } from "@/providers/UserProvider";
-import { useRouter } from "@/modules/Router/hooks/useRouter";
 
 export default function UsersScreen() {
   const { users, loading, error } = useUser();
-  const { menuList } = useRouter();
+  const { menuList } = useRoute();
   const usersMenu = menuList.users;
 
   if (loading) {

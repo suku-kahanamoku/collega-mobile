@@ -1,9 +1,9 @@
 import { Stack } from "expo-router";
 
-import { useRouter } from "@/modules/Router/hooks/useRouter";
+import { useRoute } from "@/hooks/useRoute";
 
 export default function PagesLayout() {
-  const { menuList, menus } = useRouter();
+  const { menuList, menus } = useRoute();
   const settingsMenu = menuList.settings;
 
   return (
