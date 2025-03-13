@@ -1,6 +1,6 @@
 import React from "react";
-import { StyleSheet, Text } from "react-native";
-import { ViewCmp, TextCmp } from "@/components/Themed";
+import { StyleSheet } from "react-native";
+import { UiView, UiText } from "@/modules/Ui/components/Themed";
 
 interface RowProps {
   label: string;
@@ -9,17 +9,17 @@ interface RowProps {
 
 export default function RowCmp({ label, children }: RowProps) {
   return (
-    <ViewCmp style={styles.row}>
-      <Text style={styles.label}>{label}:</Text>
-      <ViewCmp style={styles.value}>{children}</ViewCmp>
-    </ViewCmp>
+    <UiView style={styles.row}>
+      <UiText style={styles.label}>{label}:</UiText>
+      <UiView style={styles.value}>{children}</UiView>
+    </UiView>
   );
 }
 
 const styles = StyleSheet.create({
   row: {
     flexDirection: "row",
-    padding: 10
+    padding: 10,
   },
   label: {
     justifyContent: "center",

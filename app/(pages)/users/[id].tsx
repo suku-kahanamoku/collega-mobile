@@ -1,7 +1,7 @@
 import { StyleSheet } from "react-native";
 import { useLocalSearchParams } from "expo-router";
 
-import { ViewCmp, TextCmp } from "@/components/Themed";
+import { UiView, UiText } from "@/modules/Ui/components/Themed";
 import { useUser } from "@/providers/UserProvider";
 
 export default function UserScreen() {
@@ -11,18 +11,18 @@ export default function UserScreen() {
 
   if (!user) {
     return (
-      <ViewCmp style={styles.container}>
-        <TextCmp>User not found</TextCmp>
-      </ViewCmp>
+      <UiView style={styles.container}>
+        <UiText>User not found</UiText>
+      </UiView>
     );
   }
 
   return (
-    <ViewCmp style={styles.container}>
-      <TextCmp style={styles.title}>{user.name}</TextCmp>
-      <TextCmp>{user.email}</TextCmp>
-      <TextCmp>{user.username}</TextCmp>
-    </ViewCmp>
+    <UiView style={styles.container}>
+      <UiText style={styles.title}>{user.name}</UiText>
+      <UiText>{user.email}</UiText>
+      <UiText>{user.username}</UiText>
+    </UiView>
   );
 }
 

@@ -1,17 +1,17 @@
 import { Link } from "expo-router";
 import { StyleSheet } from "react-native";
 
-import { ViewCmp, TextCmp } from "@/components/Themed";
+import { UiView, UiText } from "@/modules/Ui/components/Themed";
 
 export default function NotFoundScreen() {
   return (
-    <ViewCmp style={styles.container}>
-      <TextCmp style={styles.title}>This screen doesn't exist.</TextCmp>
+    <UiView style={styles.container}>
+      <UiText style={styles.title}>This screen doesn't exist.</UiText>
 
       <Link href="/" style={styles.link}>
-        <TextCmp>Go to home screen!</TextCmp>
+        <UiText>Go to home screen!</UiText>
       </Link>
-    </ViewCmp>
+    </UiView>
   );
 }
 

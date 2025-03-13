@@ -3,7 +3,7 @@ import { StyleSheet, ScrollView, TextInput } from "react-native";
 import { Picker } from "@react-native-picker/picker";
 
 import RowCmp from "@/components/Row";
-import { ViewCmp } from "@/components/Themed";
+import { UiView } from "@/modules/Ui/components/Themed";
 import { useContract } from "@/modules/Contract/hooks/useContract";
 
 export default function FilterScreen() {
@@ -16,7 +16,7 @@ export default function FilterScreen() {
       {fields.map((field) => (
         <RowCmp key={field.name} label={field.label}>
           {field.type === "select" ? (
-            <ViewCmp style={styles.input}>
+            <UiView style={styles.input}>
               <Picker
                 selectedValue={selectedLanguage}
                 onValueChange={(itemValue) => setSelectedLanguage(itemValue)}
@@ -30,7 +30,7 @@ export default function FilterScreen() {
                   />
                 ))}
               </Picker>
-            </ViewCmp>
+            </UiView>
           ) : (
             <TextInput
               style={styles.input}

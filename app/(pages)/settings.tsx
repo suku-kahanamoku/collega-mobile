@@ -1,17 +1,17 @@
 import { StyleSheet } from "react-native";
 
-import { ViewCmp } from "@/components/Themed";
+import { UiView } from "@/modules/Ui/components/Themed";
 import ThemeSwitchCmp from "@/components/settings/ThemeSwitch";
 import LangSwitchCmp from "@/components/settings/LangSwitch";
 
 export default function SettingsScreen() {
   return (
-    <ViewCmp style={styles.container}>
-      <ViewCmp style={styles.content}>
+    <UiView style={styles.container}>
+      <UiView style={styles.content}>
         <ThemeSwitchCmp />
         <LangSwitchCmp />
-      </ViewCmp>
-    </ViewCmp>
+      </UiView>
+    </UiView>
   );
 }
 

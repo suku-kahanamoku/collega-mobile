@@ -1,7 +1,7 @@
 import { StyleSheet, ScrollView } from "react-native";
 import { useLocalSearchParams } from "expo-router";
 
-import { ViewCmp, TextCmp } from "@/components/Themed";
+import { UiView, UiText } from "@/modules/Ui/components/Themed";
 import RowCmp from "@/components/Row";
 import { useContract } from "@/modules/Contract/hooks/useContract";
 
@@ -12,9 +12,9 @@ export default function ContractScreen() {
 
   if (!contract) {
     return (
-      <ViewCmp style={styles.container}>
-        <TextCmp>Contract not found</TextCmp>
-      </ViewCmp>
+      <UiView style={styles.container}>
+        <UiText>Contract not found</UiText>
+      </UiView>
     );
   }
 
@@ -22,7 +22,7 @@ export default function ContractScreen() {
     <ScrollView contentContainerStyle={styles.container}>
       {fields.map((field) => (
         <RowCmp key={field.name} label={field.label}>
-          <TextCmp>{contract[field.name] || "---"}</TextCmp>
+          <UiText>{contract[field.name] || "---"}</UiText>
         </RowCmp>
       ))}
     </ScrollView>

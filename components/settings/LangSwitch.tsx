@@ -3,15 +3,15 @@ import { TouchableOpacity, StyleSheet } from "react-native";
 import Flag from "react-native-flags";
 
 import { useLocale } from "@/providers/LocaleProvider";
-import { TextCmp, ViewCmp } from "@/components/Themed";
+import { UiText, UiView } from "@/modules/Ui/components/Themed";
 
 const LangSwitchCmp = () => {
   const { locale, locales, t, changeLanguage } = useLocale();
 
   return (
-    <ViewCmp style={styles.container}>
-      <TextCmp style={styles.label}>{t("settings.language")}:</TextCmp>
-      <ViewCmp style={styles.flagsContainer}>
+    <UiView style={styles.container}>
+      <UiText style={styles.label}>{t("settings.language")}:</UiText>
+      <UiView style={styles.flagsContainer}>
         {locales.map((loc) => (
           <TouchableOpacity
             key={loc.code}
@@ -24,8 +24,8 @@ const LangSwitchCmp = () => {
             />
           </TouchableOpacity>
         ))}
-      </ViewCmp>
-    </ViewCmp>
+      </UiView>
+    </UiView>
   );
 };
 

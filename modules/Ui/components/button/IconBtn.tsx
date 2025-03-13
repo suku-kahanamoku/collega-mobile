@@ -9,7 +9,7 @@ interface IconBtnProps extends TouchableOpacityProps {
   size?: number;
 }
 
-const IconBtnCmp: React.FC<IconBtnProps> = ({
+const UiIconBtn: React.FC<IconBtnProps> = ({
   name,
   size = 24,
   onPress,
@@ -24,4 +24,4 @@ const IconBtnCmp: React.FC<IconBtnProps> = ({
   );
 };
 
-export default IconBtnCmp;
+export default UiIconBtn;

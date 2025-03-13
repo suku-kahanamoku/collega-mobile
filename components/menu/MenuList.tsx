@@ -3,7 +3,7 @@ import { StyleSheet } from "react-native";
 import { Link } from "expo-router";
 
 import { useTheme } from "@/providers/ThemeProvider";
-import { ViewCmp } from "@/components/Themed";
+import { UiView } from "@/modules/Ui/components/Themed";
 import { IMenu } from "@/providers/RouteProvider";
 
 interface MenuListProps {
@@ -15,7 +15,7 @@ const MenuListCmp: React.FC<MenuListProps> = ({ menus, onPress }) => {
   const { colors } = useTheme();
 
   return (
-    <ViewCmp style={styles.container}>
+    <UiView style={styles.container}>
       {menus.map((menu, index) => (
         <Link
           key={index}
@@ -32,7 +32,7 @@ const MenuListCmp: React.FC<MenuListProps> = ({ menus, onPress }) => {
           {menu.title}
         </Link>
       ))}
-    </ViewCmp>
+    </UiView>
   );
 };
 

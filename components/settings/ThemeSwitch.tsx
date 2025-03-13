@@ -3,7 +3,7 @@ import { Switch, StyleSheet } from "react-native";
 
 import { useLocale } from "@/providers/LocaleProvider";
 import { useTheme } from "@/providers/ThemeProvider";
-import { TextCmp, ViewCmp } from "@/components/Themed";
+import { UiText, UiView } from "@/modules/Ui/components/Themed";
 
 const ThemeSwitchCmp = () => {
   const { t } = useLocale();
@@ -14,10 +14,10 @@ const ThemeSwitchCmp = () => {
   };
 
   return (
-    <ViewCmp style={styles.container}>
-      <TextCmp style={styles.label}>{t("settings.dark_mode")}:</TextCmp>
+    <UiView style={styles.container}>
+      <UiText style={styles.label}>{t("settings.dark_mode")}:</UiText>
       <Switch value={theme === "dark"} onValueChange={toggleDarkMode} />
-    </ViewCmp>
+    </UiView>
   );
 };
 

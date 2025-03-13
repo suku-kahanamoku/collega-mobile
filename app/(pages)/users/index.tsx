@@ -1,7 +1,7 @@
 import { StyleSheet, FlatList } from "react-native";
 import { Link } from "expo-router";
 
-import { ViewCmp, TextCmp } from "@/components/Themed";
+import { UiView, UiText } from "@/modules/Ui/components/Themed";
 import { useUser } from "@/providers/UserProvider";
 import { useRoute } from "@/providers/RouteProvider";
 
@@ -12,35 +12,35 @@ export default function UsersScreen() {
 
   if (loading) {
     return (
-      <ViewCmp style={styles.container}>
-        <TextCmp>Loading...</TextCmp>
-      </ViewCmp>
+      <UiView style={styles.container}>
+        <UiText>Loading...</UiText>
+      </UiView>
     );
   }
 
   if (error) {
     return (
-      <ViewCmp style={styles.container}>
-        <TextCmp>{error}</TextCmp>
-      </ViewCmp>
+      <UiView style={styles.container}>
+        <UiText>{error}</UiText>
+      </UiView>
     );
   }
 
   return (
-    <ViewCmp style={styles.container}>
+    <UiView style={styles.container}>
       <FlatList
         data={users}
         keyExtractor={(item) => item.id.toString()}
         renderItem={({ item }) => (
           <Link href={`${usersMenu.href}/${item.id}`}>
-            <ViewCmp style={styles.item}>
-              <TextCmp style={styles.title}>{item.name}</TextCmp>
-              <TextCmp>{item.email}</TextCmp>
-            </ViewCmp>
+            <UiView style={styles.item}>
+              <UiText style={styles.title}>{item.name}</UiText>
+              <UiText>{item.email}</UiText>
+            </UiView>
           </Link>
         )}
       />
-    </ViewCmp>
+    </UiView>
   );
 }
 

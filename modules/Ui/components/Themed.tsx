@@ -3,12 +3,12 @@ import { Text, View } from "react-native";
 
 import { useTheme } from "@/providers/ThemeProvider";
 
-export function TextCmp(props: Text["props"]) {
+export function UiText(props: Text["props"]) {
   const { colors } = useTheme();
   return <Text {...props} style={[props.style, { color: colors.text }]} />;
 }
 
-export function ViewCmp(props: View["props"]) {
+export function UiView(props: View["props"]) {
   const { colors } = useTheme();
   return (
     <View

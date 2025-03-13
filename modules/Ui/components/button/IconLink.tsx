@@ -10,7 +10,7 @@ interface IconLinkProps extends LinkProps {
   size?: number;
 }
 
-const IconLinkCmp: React.FC<IconLinkProps> = ({
+const UiIconLink: React.FC<IconLinkProps> = ({
   name,
   href,
   size = 24,
@@ -25,4 +25,4 @@ const IconLinkCmp: React.FC<IconLinkProps> = ({
     </Link>
   );
 };
-export default IconLinkCmp;
+export default UiIconLink;

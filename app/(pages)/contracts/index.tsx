@@ -1,7 +1,7 @@
 import { StyleSheet, FlatList } from "react-native";
 import { Link } from "expo-router";
 
-import { ViewCmp, TextCmp } from "@/components/Themed";
+import { UiView, UiText } from "@/modules/Ui/components/Themed";
 import { useRoute } from "@/providers/RouteProvider";
 import { useContract } from "@/modules/Contract/hooks/useContract";
 
@@ -12,17 +12,17 @@ export default function ContractsScreen() {
 
   if (loading) {
     return (
-      <ViewCmp style={styles.container}>
-        <TextCmp>Loading...</TextCmp>
-      </ViewCmp>
+      <UiView style={styles.container}>
+        <UiText>Loading...</UiText>
+      </UiView>
     );
   }
 
   if (error) {
     return (
-      <ViewCmp style={styles.container}>
-        <TextCmp>{error}</TextCmp>
-      </ViewCmp>
+      <UiView style={styles.container}>
+        <UiText>{error}</UiText>
+      </UiView>
     );
   }
 
@@ -32,16 +32,16 @@ export default function ContractsScreen() {
       keyExtractor={(item) => item.id.toString()}
       renderItem={({ item }) => (
         <Link href={`${contractsMenu.href}/${item.id}`}>
-          <ViewCmp style={styles.item}>
-            <TextCmp style={styles.title}>
+          <UiView style={styles.item}>
+            <UiText style={styles.title}>
               {item.partner_name}
               {item.product_name}
-            </TextCmp>
-            <TextCmp style={styles.subtitle}>
+            </UiText>
+            <UiText style={styles.subtitle}>
               {item.contract_number}
               {item.client}
-            </TextCmp>
-          </ViewCmp>
+            </UiText>
+          </UiView>
         </Link>
       )}
       style={styles.container}

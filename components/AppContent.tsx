@@ -4,8 +4,8 @@ import { Stack } from "expo-router";
 
 import { IMenu, useRoute } from "@/providers/RouteProvider";
 import LogoCmp from "@/components/Logo";
-import IconBtnCmp from "@/components/button/IconBtn";
-import IconLinkCmp from "@/components/button/IconLink";
+import UiIconBtn from "@/modules/Ui/components/button/IconBtn";
+import UiIconLink from "@/modules/Ui/components/button/IconLink";
 import SideMenuCmp from "@/components/menu/SideMenu";
 
 interface HeaderRightProps {
@@ -23,11 +23,11 @@ const HeaderRightCmp: React.FC<HeaderRightProps> = ({
     <View style={{ flexDirection: "row", gap: 16 }}>
       {/* pokud aktivni menu neni settings, tak zobrazi ozubene kolecko, presmeruje na settings */}
       {activeMenu !== settingsMenu && (
-        <IconLinkCmp name={settingsMenu.icon!} href={settingsMenu.href} />
+        <UiIconLink name={settingsMenu.icon!} href={settingsMenu.href} />
       )}
 
       {/* hamburger btn, po kliku zobrazi bocni menu */}
-      <IconBtnCmp
+      <UiIconBtn
         name="bars"
         onPress={() => setOpen((prevOpen) => !prevOpen)}
       />
