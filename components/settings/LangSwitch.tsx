@@ -2,8 +2,8 @@ import React from "react";
 import { TouchableOpacity, StyleSheet } from "react-native";
 import Flag from "react-native-flags";
 
-import { useLocale } from "@/providers/LocaleProvider";
 import { UiText, UiView } from "@/modules/Ui/components/Themed";
+import { useLocale } from "@/modules/Lang/hooks/useLocale";
 
 const LangSwitchCmp = () => {
   const { locale, locales, t, changeLanguage } = useLocale();

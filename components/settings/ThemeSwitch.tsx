@@ -1,9 +1,9 @@
 import React from "react";
 import { Switch, StyleSheet } from "react-native";
 
-import { useLocale } from "@/providers/LocaleProvider";
 import { useTheme } from "@/providers/ThemeProvider";
 import { UiText, UiView } from "@/modules/Ui/components/Themed";
+import { useLocale } from "@/modules/Lang/hooks/useLocale";
 
 const ThemeSwitchCmp = () => {
   const { t } = useLocale();

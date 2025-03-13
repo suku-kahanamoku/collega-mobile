@@ -1,5 +1,6 @@
 import React, { createContext, ReactNode } from "react";
-import { usePathname } from "expo-router";
+import { RelativePathString, usePathname } from "expo-router";
+import { useTranslation } from "react-i18next";
 
 import { IMenu } from "../type";
 
@@ -13,13 +14,73 @@ export const RouteContext = createContext<RouteContextProps | undefined>(
   undefined
 );
 
-interface RouterProviderProps {
-  children: ReactNode;
-  menuList: Record<string, IMenu>;
-}
-
-export const RouterProvider = ({ children, menuList }: RouterProviderProps) => {
+export const RouterProvider = ({ children }: { children: ReactNode }) => {
+  const { t } = useTranslation("$");
   const pathname = usePathname();
+
+  /**
+   * Vsechna existujici menu
+   */
+  const menuList: Record<string, IMenu> = {
+    404: {
+      syscode: "404",
+      name: "+not-found",
+      title: t("404.title"),
+      href: "/not-found" as RelativePathString,
+    },
+    settings: {
+      syscode: "settings",
+      name: "settings",
+      title: t("settings.title"),
+      href: "/settings" as RelativePathString,
+      icon: "cog",
+    },
+    dashboard: {
+      syscode: "dashboard",
+      name: "index",
+      title: t("dashboard.title"),
+      href: "/" as RelativePathString,
+      icon: "dashboard",
+    },
+    users: {
+      syscode: "users",
+      name: "users",
+      title: t("users.title"),
+      href: "/users" as RelativePathString,
+      icon: "users",
+    },
+    user: {
+      syscode: "user",
+      name: "users/[id]",
+      title: t("user.title"),
+      href: "/user/[id]" as RelativePathString,
+      icon: "user",
+      parentSyscode: "users",
+    },
+    contracts: {
+      syscode: "contracts",
+      name: "contracts",
+      title: t("contracts.title"),
+      href: "/contracts" as RelativePathString,
+      icon: "files-o",
+    },
+    contract: {
+      syscode: "contract",
+      name: "contracts/[id]",
+      title: t("contract.title"),
+      href: "/contracts/[id]" as RelativePathString,
+      icon: "file-o",
+      parentSyscode: "contracts",
+    },
+    contract_filter: {
+      syscode: "contract_filter",
+      name: "contracts/filter",
+      title: t("contract.filter"),
+      href: "/contracts/filter" as RelativePathString,
+      icon: "filter",
+      parentSyscode: "contracts",
+    },
+  };
 
   /**
    * Vlozi potomky do rodicu (vytvori strom)

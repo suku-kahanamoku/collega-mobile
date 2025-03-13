@@ -22,7 +22,9 @@ export const ContractProviderCmp = ({ children }: { children: ReactNode }) => {
   const [error, setError] = useState<string | null>(null);
 
   const fields = FIELDS.map((field) => {
+    // provede preklad
     const result = { ...field, label: t(field.label) } as SelectField;
+    // provede preklad option.label
     result.options?.forEach(
       (option) => (option.label = option.label ? t(option.label) : option.label)
     );

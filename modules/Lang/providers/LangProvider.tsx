@@ -1,10 +1,4 @@
-import React, {
-  createContext,
-  useContext,
-  useState,
-  useEffect,
-  ReactNode,
-} from "react";
+import React, { createContext, useState, useEffect, ReactNode } from "react";
 import { I18nextProvider } from "react-i18next";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useTranslation } from "react-i18next";
@@ -18,17 +12,11 @@ interface LocaleContextProps {
   locales: typeof locales;
 }
 
-const LocaleContext = createContext<LocaleContextProps | undefined>(undefined);
+export const LocaleContext = createContext<LocaleContextProps | undefined>(
+  undefined
+);
 
-export const useLocale = () => {
-  const context = useContext(LocaleContext);
-  if (!context) {
-    throw new Error("useLocale must be used within a LocaleProviderCmp");
-  }
-  return context;
-};
-
-export const LocaleProviderCmp = ({ children }: { children: ReactNode }) => {
+export const LangProvider = ({ children }: { children: ReactNode }) => {
   const { t } = useTranslation("$");
   const [locale, setLocale] = useState(i18n.language);
 

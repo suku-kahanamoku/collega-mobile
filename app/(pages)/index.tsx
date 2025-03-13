@@ -1,7 +1,7 @@
 import { StyleSheet } from "react-native";
 
 import { UiView, UiText } from "@/modules/Ui/components/Themed";
-import { useLocale } from "@/providers/LocaleProvider";
+import { useLocale } from "@/modules/Lang/hooks/useLocale";
 
 export default function DashboardScreen() {
   const { t } = useLocale();
