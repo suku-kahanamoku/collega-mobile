@@ -2,8 +2,8 @@ import { StyleSheet, FlatList } from "react-native";
 import { Link } from "expo-router";
 
 import { ViewCmp, TextCmp } from "@/components/Themed";
-import { useContract } from "@/providers/ContractProvider";
 import { useRoute } from "@/providers/RouteProvider";
+import { useContract } from "@/modules/Contract/hooks/useContract";
 
 export default function ContractsScreen() {
   const { contracts, loading, error } = useContract();

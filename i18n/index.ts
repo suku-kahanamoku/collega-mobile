@@ -1,10 +1,19 @@
 import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
 import { getLocales } from "expo-localization";
+import defu from "defu";
 
-import en from "./locales/en.json";
-import cs from "./locales/cs.json";
-import sk from "./locales/sk.json";
+import _en from "./locales/en.json";
+import _cs from "./locales/cs.json";
+import _sk from "./locales/sk.json";
+
+import cEn from "@/modules/Contract/locales/en.json";
+import cCs from "@/modules/Contract/locales/cs.json";
+import cSk from "@/modules/Contract/locales/sk.json";
+
+const en = defu(_en, cEn);
+const cs = defu(_cs, cCs);
+const sk = defu(_sk, cSk);
 
 export const locales = [
   {

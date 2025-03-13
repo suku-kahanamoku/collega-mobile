@@ -4,7 +4,7 @@ import React from "react";
 import { Platform } from "react-native";
 
 import { useTheme } from "@/providers/ThemeProvider";
-import { ContractProviderCmp } from "@/providers/ContractProvider";
+import { ContractProviderCmp } from "@/modules/Contract/providers/ContractProvider";
 import { useRoute } from "@/providers/RouteProvider";
 
 // You can explore the built-in icon families and icons on the web at https://icons.expo.fyi/

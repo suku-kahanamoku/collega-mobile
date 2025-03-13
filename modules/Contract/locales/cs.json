@@ -1,0 +1,64 @@
+{
+  "$": {
+    "contracts": {
+      "title": "Smlouvy"
+    },
+    "contract": {
+      "title": "Smlouva",
+      "status": {
+        "accepted": "Přijato",
+        "send": "Odesláno",
+        "canceled": "Zrušeno",
+        "denied": "Odmítnuto",
+        "paid": "Zaplaceno",
+        "urgent": "Urgentní",
+        "imported": "Importováno",
+        "free": "Volný",
+        "missing": "Chybí"
+      },
+      "commission_status": {
+        "can-ask-for-urgency": "Může požádat o urgentnost",
+        "can-expect-commission": "Může očekávat provizi",
+        "commission-posted": "Provize odeslána",
+        "commission-paid-out": "Provize vyplacena",
+        "commission-suspended": "Provize pozastavena",
+        "can-not-urgency": "Nelze urgentně",
+        "payment-to-sp-account": "Platba na SP účet",
+        "too-early": "Příliš brzy",
+        "unprofitable-business": "Nevýnosný obchod",
+        "working-on-earlier-urgency": "Práce na dřívější urgentnosti"
+      },
+      "frequency_type": {
+        "annually": "Ročně",
+        "biannually": "Pololetně",
+        "quarterly": "Čtvrtletně",
+        "monthly": "Měsíčně",
+        "weekly": "Týdně",
+        "one-time": "Jednorázově",
+        "unspecified": "Nespecifikováno"
+      },
+      "attr": {
+        "client": "Klient",
+        "account_number": "Číslo účtu",
+        "consultant1": "Konzultant 1",
+        "consultant2": "Konzultant 2",
+        "consultant3": "Konzultant 3",
+        "contract_number": "Číslo smlouvy",
+        "effectiveDate": "Datum účinnosti",
+        "endDate": "Datum ukončení",
+        "expected_commission_date": "Očekávané datum provize",
+        "insurance": "Pojištění",
+        "partner_logo": "Logo partnera",
+        "partner_name": "Název partnera",
+        "payment_day": "Den platby",
+        "points": "Body",
+        "productVersionId": "ID verze produktu",
+        "product_name": "Název produktu",
+        "status": "Stav",
+        "commission_status": "Stav provize",
+        "frequency_type": "Typ frekvence",
+        "filter": "Filtr"
+      }
+    }
+  }
+}

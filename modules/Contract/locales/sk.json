@@ -1,0 +1,64 @@
+{
+  "$": {
+    "contracts": {
+      "title": "Zmluvy "
+    },
+    "contract": {
+      "title": "Zmluva",
+      "status": {
+        "accepted": "Prijaté",
+        "send": "Odoslané",
+        "canceled": "Zrušené",
+        "denied": "Odmietnuté",
+        "paid": "Zaplatené",
+        "urgent": "Urgentné",
+        "imported": "Importované",
+        "free": "Voľné",
+        "missing": "Chýbajúce"
+      },
+      "commission_status": {
+        "can-ask-for-urgency": "Môže požiadať o urgentnosť",
+        "can-expect-commission": "Môže očakávať províziu",
+        "commission-posted": "Provízia odoslaná",
+        "commission-paid-out": "Provízia vyplatená",
+        "commission-suspended": "Provízia pozastavená",
+        "can-not-urgency": "Nemožno urgentne",
+        "payment-to-sp-account": "Platba na SP účet",
+        "too-early": "Príliš skoro",
+        "unprofitable-business": "Nevýnosný obchod",
+        "working-on-earlier-urgency": "Práca na skoršej urgentnosti"
+      },
+      "frequency_type": {
+        "annually": "Ročne",
+        "biannually": "Polročne",
+        "quarterly": "Štvrťročne",
+        "monthly": "Mesačne",
+        "weekly": "Týždenne",
+        "one-time": "Jednorazovo",
+        "unspecified": "Nešpecifikované"
+      },
+      "attr": {
+        "client": "Klient",
+        "account_number": "Číslo účtu",
+        "consultant1": "Konzultant 1",
+        "consultant2": "Konzultant 2",
+        "consultant3": "Konzultant 3",
+        "contract_number": "Číslo zmluvy",
+        "effectiveDate": "Dátum účinnosti",
+        "endDate": "Dátum ukončenia",
+        "expected_commission_date": "Očakávaný dátum provízie",
+        "insurance": "Poistenie",
+        "partner_logo": "Logo partnera",
+        "partner_name": "Názov partnera",
+        "payment_day": "Deň platby",
+        "points": "Body",
+        "productVersionId": "ID verzie produktu",
+        "product_name": "Názov produktu",
+        "status": "Stav",
+        "commission_status": "Stav provízie",
+        "frequency_type": "Typ frekvencie"
+      },
+      "filter": "Filter"
+    }
+  }
+}
