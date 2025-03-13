@@ -5,7 +5,7 @@ import { Platform } from "react-native";
 
 import { useRoute } from "@/hooks/useRoute";
 import { useTheme } from "@/providers/ThemeProvider";
-import { UserProvider } from "@/providers/UserProvider";
+import { UserProvider } from "@/modules/User/providers/UserProvider";
 
 // You can explore the built-in icon families and icons on the web at https://icons.expo.fyi/
 function TabBarIcon(props: {

@@ -1,0 +1,22 @@
+{
+  "$": {
+    "users": {
+      "title": "Users"
+    },
+    "user": {
+      "title": "User",
+      "status": {
+        "active": "Active",
+        "inactive": "Inactive",
+        "pending": "Pending"
+      },
+      "attr": {
+        "name": "Name",
+        "username": "Username",
+        "email": "Email",
+        "status": "Status"
+      },
+      "filter": "Filter"
+    }
+  }
+}

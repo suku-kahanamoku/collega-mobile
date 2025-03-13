@@ -3,7 +3,7 @@ import { Link } from "expo-router";
 
 import { useRoute } from "@/hooks/useRoute";
 import { UiView, UiText } from "@/modules/Ui/components/Themed";
-import { useUser } from "@/providers/UserProvider";
+import { useUser } from "@/modules/User/hooks/useUser";
 
 export default function UsersScreen() {
   const { users, loading, error } = useUser();

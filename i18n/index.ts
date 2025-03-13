@@ -11,9 +11,13 @@ import cEn from "@/modules/Contract/locales/en.json";
 import cCs from "@/modules/Contract/locales/cs.json";
 import cSk from "@/modules/Contract/locales/sk.json";
 
-const en = defu(_en, cEn);
-const cs = defu(_cs, cCs);
-const sk = defu(_sk, cSk);
+import uEn from "@/modules/User/locales/en.json";
+import uCs from "@/modules/User/locales/cs.json";
+import uSk from "@/modules/User/locales/sk.json";
+
+const en = defu(_en, cEn, uEn);
+const cs = defu(_cs, cCs, uCs);
+const sk = defu(_sk, cSk, uSk);
 
 export const locales = [
   {
@@ -34,9 +38,11 @@ export const locales = [
 ];
 
 const deviceLocales = getLocales();
+
 const deviceLocale = deviceLocales.length
   ? deviceLocales[0]?.languageCode
   : locales[0].code;
+
 const defaultLocale =
   locales?.find((loc) => loc.code === deviceLocale)?.code || locales[0].code;
 

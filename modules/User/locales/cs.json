@@ -1,0 +1,22 @@
+{
+  "$": {
+    "users": {
+      "title": "Uživatelé"
+    },
+    "user": {
+      "title": "Uživatel",
+      "status": {
+        "active": "Aktivní",
+        "inactive": "Neaktivní",
+        "pending": "Čekající"
+      },
+      "attr": {
+        "name": "Jméno",
+        "username": "Uživatelské jméno",
+        "email": "Email",
+        "status": "Stav"
+      },
+      "filter": "Filtr"
+    }
+  }
+}

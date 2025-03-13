@@ -2,7 +2,7 @@ import { StyleSheet } from "react-native";
 import { useLocalSearchParams } from "expo-router";
 
 import { UiView, UiText } from "@/modules/Ui/components/Themed";
-import { useUser } from "@/providers/UserProvider";
+import { useUser } from "@/modules/User/hooks/useUser";
 
 export default function UserScreen() {
   const { id } = useLocalSearchParams();
