@@ -1,45 +1,18 @@
-import React, { useState } from "react";
-import { StyleSheet, ScrollView, TextInput } from "react-native";
-import { Picker } from "@react-native-picker/picker";
+import React from "react";
+import { StyleSheet, ScrollView } from "react-native";
 
 import RowCmp from "@/modules/Ui/components/Row";
-import { UiView } from "@/modules/Ui/components/Themed";
 import { useContract } from "@/modules/Contract/hooks/useContract";
+import Field from "@/modules/Form/components/fields/Field";
 
 export default function FilterScreen() {
   const { fields } = useContract();
-
-  const [selectedLanguage, setSelectedLanguage] = useState();
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
       {fields.map((field) => (
         <RowCmp key={field.name} label={field.label}>
-          {field.type === "select" ? (
-            <UiView style={styles.input}>
-              <Picker
-                selectedValue={selectedLanguage}
-                onValueChange={(itemValue) => setSelectedLanguage(itemValue)}
-                prompt="Pick one, just one"
-              >
-                {field.options?.map((option) => (
-                  <Picker.Item
-                    key={option.value}
-                    label={option.label}
-                    value={option.value}
-                  />
-                ))}
-              </Picker>
-            </UiView>
-          ) : (
-            <TextInput
-              style={styles.input}
-              placeholder={field.placeholder}
-              inputMode={field.inputMode}
-              autoComplete={field.autoComplete}
-              autoFocus={field.autoFocus}
-            />
-          )}
+          <Field field={field} />
         </RowCmp>
       ))}
     </ScrollView>
