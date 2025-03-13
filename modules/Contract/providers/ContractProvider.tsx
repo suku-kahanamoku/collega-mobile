@@ -15,7 +15,7 @@ export const ContractContext = createContext<ContractContextProps | undefined>(
   undefined
 );
 
-export const ContractProviderCmp = ({ children }: { children: ReactNode }) => {
+export const ContractProvider = ({ children }: { children: ReactNode }) => {
   const { t } = useTranslation("$");
   const [contracts, setContracts] = useState<Contract[]>([]);
   const [loading, setLoading] = useState<boolean>(true);

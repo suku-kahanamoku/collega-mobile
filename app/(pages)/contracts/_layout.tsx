@@ -5,7 +5,7 @@ import { Platform } from "react-native";
 
 import { useRoute } from "@/hooks/useRoute";
 import { useTheme } from "@/providers/ThemeProvider";
-import { ContractProviderCmp } from "@/modules/Contract/providers/ContractProvider";
+import { ContractProvider } from "@/modules/Contract/providers/ContractProvider";
 
 // You can explore the built-in icon families and icons on the web at https://icons.expo.fyi/
 function TabBarIcon(props: {
@@ -23,7 +23,7 @@ export default function ContractsLayout() {
   const filterMenu = menuList.contract_filter;
 
   return (
-    <ContractProviderCmp>
+    <ContractProvider>
       <Tabs
         screenOptions={{
           tabBarActiveTintColor: colors.secondary,
@@ -67,6 +67,6 @@ export default function ContractsLayout() {
           }}
         />
       </Tabs>
-    </ContractProviderCmp>
+    </ContractProvider>
   );
 }

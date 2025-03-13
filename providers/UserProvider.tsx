@@ -25,12 +25,12 @@ const UserContext = createContext<UserContextProps | undefined>(undefined);
 export const useUser = () => {
   const context = useContext(UserContext);
   if (!context) {
-    throw new Error("useUser must be used within a UserProviderCmp");
+    throw new Error("useUser must be used within a UserProvider");
   }
   return context;
 };
 
-export const UserProviderCmp = ({ children }: { children: ReactNode }) => {
+export const UserProvider = ({ children }: { children: ReactNode }) => {
   const [users, setUsers] = useState<User[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);

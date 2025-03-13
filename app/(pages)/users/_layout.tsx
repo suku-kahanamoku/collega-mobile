@@ -5,7 +5,7 @@ import { Platform } from "react-native";
 
 import { useRoute } from "@/hooks/useRoute";
 import { useTheme } from "@/providers/ThemeProvider";
-import { UserProviderCmp } from "@/providers/UserProvider";
+import { UserProvider } from "@/providers/UserProvider";
 
 // You can explore the built-in icon families and icons on the web at https://icons.expo.fyi/
 function TabBarIcon(props: {
@@ -21,7 +21,7 @@ export default function UsersLayout() {
   const userMenu = menuList.users;
 
   return (
-    <UserProviderCmp>
+    <UserProvider>
       <Tabs
         screenOptions={{
           tabBarActiveTintColor: colors.secondary,
@@ -52,6 +52,6 @@ export default function UsersLayout() {
           }}
         />
       </Tabs>
-    </UserProviderCmp>
+    </UserProvider>
   );
 }
