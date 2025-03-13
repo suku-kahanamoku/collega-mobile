@@ -1,18 +1,7 @@
-import React, { createContext, useContext, ReactNode } from "react";
-import FontAwesome from "@expo/vector-icons/FontAwesome";
+import React, { createContext, ReactNode } from "react";
 import { RelativePathString, usePathname } from "expo-router";
 import { useTranslation } from "react-i18next";
-
-export type IMenu = {
-  syscode: string;
-  name: string;
-  title: string;
-  href: RelativePathString;
-  active?: boolean;
-  icon?: React.ComponentProps<typeof FontAwesome>["name"];
-  children?: IMenu[];
-  parentSyscode?: string;
-};
+import { IMenu } from "../type";
 
 interface RouteContextProps {
   menuList: Record<string, IMenu>;
@@ -20,17 +9,11 @@ interface RouteContextProps {
   activeMenu: IMenu;
 }
 
-const RouteContext = createContext<RouteContextProps | undefined>(undefined);
+export const RouteContext = createContext<RouteContextProps | undefined>(
+  undefined
+);
 
-export const useRoute = () => {
-  const context = useContext(RouteContext);
-  if (!context) {
-    throw new Error("useRoute must be used within a RouteProviderCmp");
-  }
-  return context;
-};
-
-export const RouteProviderCmp = ({ children }: { children: ReactNode }) => {
+export const RouterProvider = ({ children }: { children: ReactNode }) => {
   const { t } = useTranslation("$");
   const pathname = usePathname();
 

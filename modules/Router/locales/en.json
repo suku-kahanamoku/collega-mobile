@@ -1,0 +1,28 @@
+{
+  "$": {
+    "404": {
+      "title": "Page Not Found"
+    },
+    "settings": {
+      "title": "Settings"
+    },
+    "dashboard": {
+      "title": "Dashboard"
+    },
+    "users": {
+      "title": "Users"
+    },
+    "user": {
+      "title": "User"
+    },
+    "contracts": {
+      "title": "Contracts"
+    },
+    "contract": {
+      "title": "Contract"
+    },
+    "contract_filter": {
+      "title": "Contract Filter"
+    }
+  }
+}

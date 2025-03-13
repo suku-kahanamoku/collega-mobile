@@ -2,18 +2,18 @@ import { StatusBar } from "react-native";
 
 import { ThemeProviderCmp } from "@/providers/ThemeProvider";
 import { LocaleProviderCmp } from "@/providers/LocaleProvider";
-import { RouteProviderCmp } from "@/providers/RouteProvider";
-import AppContent from "@/components/AppContent";
+import { RouterProvider } from "@/modules/Router/providers/RouterProvider";
+import Content from "@/modules/Router/components/Content";
 
 export default function RootLayout() {
   return (
     <LocaleProviderCmp>
-      <RouteProviderCmp>
+      <RouterProvider>
         <ThemeProviderCmp>
           <StatusBar barStyle={"default"} />
-          <AppContent />
+          <Content />
         </ThemeProviderCmp>
-      </RouteProviderCmp>
+      </RouterProvider>
     </LocaleProviderCmp>
   );
 }

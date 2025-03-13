@@ -3,11 +3,11 @@ import { Link } from "expo-router";
 
 import { UiView, UiText } from "@/modules/Ui/components/Themed";
 import { useUser } from "@/providers/UserProvider";
-import { useRoute } from "@/providers/RouteProvider";
+import { useRouter } from "@/modules/Router/hooks/useRouter";
 
 export default function UsersScreen() {
   const { users, loading, error } = useUser();
-  const { menuList } = useRoute();
+  const { menuList } = useRouter();
   const usersMenu = menuList.users;
 
   if (loading) {

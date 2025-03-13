@@ -1,8 +1,8 @@
 import React from "react";
 import { Drawer } from "react-native-drawer-layout";
 
-import { IMenu } from "@/providers/RouteProvider";
 import MenuListCmp from "./MenuList";
+import { IMenu } from "../type";
 
 interface SideMenuProps {
   children: React.ReactNode;

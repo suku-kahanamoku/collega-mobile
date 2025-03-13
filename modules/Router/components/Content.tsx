@@ -2,11 +2,12 @@ import React, { useState } from "react";
 import { View } from "react-native";
 import { Stack } from "expo-router";
 
-import { IMenu, useRoute } from "@/providers/RouteProvider";
 import LogoCmp from "@/components/Logo";
 import UiIconBtn from "@/modules/Ui/components/button/IconBtn";
 import UiIconLink from "@/modules/Ui/components/button/IconLink";
-import SideMenuCmp from "@/components/menu/SideMenu";
+import SideMenuCmp from "@/modules/Router/components/SideMenu";
+import { IMenu } from "@/modules/Router/type";
+import { useRouter } from "@/modules/Router/hooks/useRouter";
 
 interface HeaderRightProps {
   activeMenu: IMenu;
@@ -27,16 +28,13 @@ const HeaderRightCmp: React.FC<HeaderRightProps> = ({
       )}
 
       {/* hamburger btn, po kliku zobrazi bocni menu */}
-      <UiIconBtn
-        name="bars"
-        onPress={() => setOpen((prevOpen) => !prevOpen)}
-      />
+      <UiIconBtn name="bars" onPress={() => setOpen((prevOpen) => !prevOpen)} />
     </View>
   );
 };
 
-export default function AppContent() {
-  const { menuList, menus, activeMenu } = useRoute();
+export default function Content() {
+  const { menuList, menus, activeMenu } = useRouter();
 
   const [open, setOpen] = useState(false);
   const notFoundMenu = menuList["404"];

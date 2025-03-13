@@ -4,7 +4,7 @@ import { Link } from "expo-router";
 
 import { useTheme } from "@/providers/ThemeProvider";
 import { UiView } from "@/modules/Ui/components/Themed";
-import { IMenu } from "@/providers/RouteProvider";
+import { IMenu } from "../type";
 
 interface MenuListProps {
   menus: IMenu[];
