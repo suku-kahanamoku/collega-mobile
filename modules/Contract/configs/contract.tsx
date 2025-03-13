@@ -34,6 +34,7 @@ export const FIELDS: (
     autoComplete: "name",
     autoFocus: true,
     placeholder: "Enter partner name",
+    variant: "inline",
   },
   {
     type: "text",
@@ -42,6 +43,7 @@ export const FIELDS: (
     inputMode: "text",
     autoComplete: "off",
     placeholder: "Enter product name",
+    variant: "inline",
   },
   {
     type: "text",
@@ -50,6 +52,7 @@ export const FIELDS: (
     inputMode: "text",
     autoComplete: "off",
     placeholder: "Enter contract number",
+    variant: "inline",
   },
   {
     type: "text",
@@ -58,6 +61,7 @@ export const FIELDS: (
     inputMode: "text",
     autoComplete: "name",
     placeholder: "Enter client name",
+    variant: "inline",
   },
   {
     type: "text",
@@ -66,6 +70,7 @@ export const FIELDS: (
     inputMode: "text",
     autoComplete: "off",
     placeholder: "Enter account number",
+    variant: "inline",
   },
   {
     type: "text",
@@ -74,6 +79,7 @@ export const FIELDS: (
     inputMode: "text",
     autoComplete: "name",
     placeholder: "Enter consultant 1 name",
+    variant: "inline",
   },
   {
     type: "text",
@@ -82,6 +88,7 @@ export const FIELDS: (
     inputMode: "text",
     autoComplete: "name",
     placeholder: "Enter consultant 2 name",
+    variant: "inline",
   },
   {
     type: "text",
@@ -90,6 +97,7 @@ export const FIELDS: (
     inputMode: "text",
     autoComplete: "name",
     placeholder: "Enter consultant 3 name",
+    variant: "inline",
   },
   {
     type: "select",
@@ -98,6 +106,7 @@ export const FIELDS: (
     inputMode: "text",
     autoComplete: "off",
     options: STATUS_OPTIONS,
+    variant: "inline",
   },
   {
     type: "text",
@@ -106,6 +115,7 @@ export const FIELDS: (
     inputMode: "text",
     autoComplete: "off",
     placeholder: "Enter commission status",
+    variant: "inline",
   },
   {
     type: "text",
@@ -114,11 +124,13 @@ export const FIELDS: (
     inputMode: "text",
     autoComplete: "off",
     placeholder: "Enter frequency type",
+    variant: "inline",
   },
   {
     type: "checkbox",
     name: "is_active",
     label: "contract.attr.is_active",
+    variant: "inline",
   },
   {
     type: "radio",
@@ -129,11 +141,13 @@ export const FIELDS: (
       { value: "medium", label: "Medium" },
       { value: "low", label: "Low" },
     ],
+    variant: "inline",
   },
   {
     type: "textarea",
     name: "description",
     label: "contract.attr.description",
     placeholder: "Enter description",
+    variant: "inline",
   },
 ];

@@ -11,9 +11,7 @@ export default function FilterScreen() {
   return (
     <ScrollView contentContainerStyle={styles.container}>
       {fields.map((field) => (
-        <RowCmp key={field.name} label={field.label}>
-          <Field field={field} />
-        </RowCmp>
+        <Field key={field.name} field={field} />
       ))}
     </ScrollView>
   );

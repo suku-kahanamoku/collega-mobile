@@ -9,6 +9,7 @@ export interface FieldItem {
   name: string;
   label: string;
   type?: "text" | "select" | "checkbox" | "radio" | "textarea";
+  variant?: "inline";
 }
 
 export interface TextField extends FieldItem, TextInputProps {}
