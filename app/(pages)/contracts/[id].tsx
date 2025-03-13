@@ -2,7 +2,7 @@ import { StyleSheet, ScrollView } from "react-native";
 import { useLocalSearchParams } from "expo-router";
 
 import { UiView, UiText } from "@/modules/Ui/components/Themed";
-import RowCmp from "@/components/Row";
+import RowCmp from "@/modules/Ui/components/Row";
 import { useContract } from "@/modules/Contract/hooks/useContract";
 
 export default function ContractScreen() {
