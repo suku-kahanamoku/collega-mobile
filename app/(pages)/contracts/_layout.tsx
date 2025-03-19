@@ -20,7 +20,7 @@ export default function ContractsLayout() {
   const { menuList } = useRoute();
   const contractsMenu = menuList.contracts;
   const contractMenu = menuList.contract;
-  const filterMenu = menuList.contract_filter;
+  const filterMenu = menuList.contracts_filter;
 
   return (
     <ContractProvider>

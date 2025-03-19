@@ -52,7 +52,7 @@ export const RouteProvider = ({ children }: { children: ReactNode }) => {
       syscode: "user",
       name: "users/[id]",
       title: t("user.title"),
-      href: "/user/[id]" as RelativePathString,
+      href: "/users/[id]" as RelativePathString,
       icon: "user",
       parentSyscode: "users",
     },
@@ -63,20 +63,20 @@ export const RouteProvider = ({ children }: { children: ReactNode }) => {
       href: "/contracts" as RelativePathString,
       icon: "files-o",
     },
+    contracts_filter: {
+      syscode: "contracts_filter",
+      name: "contracts/filter",
+      title: t("contract.filter"),
+      href: "/contracts/filter" as RelativePathString,
+      icon: "filter",
+      parentSyscode: "contracts",
+    },
     contract: {
       syscode: "contract",
       name: "contracts/[id]",
       title: t("contract.title"),
       href: "/contracts/[id]" as RelativePathString,
       icon: "file-o",
-      parentSyscode: "contracts",
-    },
-    contract_filter: {
-      syscode: "contract_filter",
-      name: "contracts/filter",
-      title: t("contract.filter"),
-      href: "/contracts/filter" as RelativePathString,
-      icon: "filter",
       parentSyscode: "contracts",
     },
   };
@@ -103,8 +103,14 @@ export const RouteProvider = ({ children }: { children: ReactNode }) => {
    * Aktivni menu
    */
   const activeMenu =
-    menus.find((menu) => {
-      const regex = new RegExp(`^${menu.href.replace(/\[.*?\]/g, ".*")}$`);
+    Object.values(menuList).find((menu) => {
+      console.log(menu.href, pathname, '--------------------')
+      // Exact match first
+      if (menu.href === pathname) {
+        return true;
+      }
+      // Dynamic segment match
+      const regex = new RegExp(`^${menu.href.replace(/\[.*?\]/g, "[^/]+")}$`);
       return regex.test(pathname);
     }) || menuList.dashboard;
 
