@@ -1,4 +1,5 @@
-import { TextInputProps } from "react-native";
+import { TextInputProps, SwitchProps } from "react-native";
+import { PickerProps } from "@react-native-picker/picker";
 
 export interface Option {
   value: any;
@@ -14,21 +15,20 @@ export interface FieldItem {
 
 export interface TextField extends FieldItem, TextInputProps {}
 
-export interface SelectField extends FieldItem {
+export interface SelectField extends FieldItem, PickerProps {
   options?: Option[];
 }
 
-export interface CheckboxField extends FieldItem {}
+export interface CheckboxField extends FieldItem, SwitchProps {}
 
 export interface RadioField extends FieldItem {
   options?: Option[];
 }
 
-export interface TextareaField extends FieldItem, TextInputProps {}
+export interface TextareaField extends FieldItem {}
 
-export type Field =
-  | TextField
-  | SelectField
-  | CheckboxField
-  | RadioField
-  | TextareaField;
+export type Field = TextField &
+  SelectField &
+  CheckboxField &
+  RadioField &
+  TextareaField;

@@ -1,7 +1,7 @@
 import React, { createContext, useState, useEffect, ReactNode } from "react";
 import { Contract } from "../type";
 import { useTranslation } from "react-i18next";
-import { FIELDS } from "../configs/contract";
+import { FETCH_OPTIONS, FIELDS } from "../configs/contract";
 import { Field, SelectField } from "@/modules/Form/type";
 
 interface ContractContextProps {
@@ -33,17 +33,11 @@ export const ContractProvider = ({ children }: { children: ReactNode }) => {
 
   const fetchContracts = async () => {
     try {
-      const response = await fetch(
-        "https://collega.cz/security/api/get-contract?consultant=550",
-        {
-          method: "GET",
-          headers: {
-            Authorization:
-              "Bearer def502008981ffa1a5d0e2b112f1068de8d9d25ee43f46a16fd0ade32cd376315cb88882e0b931b7932816acd88bbffb3974b282250c88a4c634b649e87153f6d520d716570fedc68562a94489fd5aff5adc1867fb7a27d4",
-          },
-          /* params: { ...query }, */
-        }
-      );
+      const response = await fetch(FETCH_OPTIONS.url, {
+        method: FETCH_OPTIONS.method,
+        headers: FETCH_OPTIONS.headers,
+        /* params: { ...query }, */
+      });
       const data = await response.json();
       setContracts(data);
       setLoading(false);

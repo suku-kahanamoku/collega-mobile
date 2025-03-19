@@ -7,6 +7,15 @@ import {
   TextareaField,
 } from "@/modules/Form/type";
 
+export const FETCH_OPTIONS = {
+  url: "https://collega.cz/security/api/get-contract?consultant=550",
+  method: "GET",
+  headers: {
+    Authorization:
+      "Bearer def502008981ffa1a5d0e2b112f1068de8d9d25ee43f46a16fd0ade32cd376315cb88882e0b931b7932816acd88bbffb3974b282250c88a4c634b649e87153f6d520d716570fedc68562a94489fd5aff5adc1867fb7a27d4",
+  },
+};
+
 export const STATUS_OPTIONS: Option[] = [
   { value: "accepted", label: "contract.status.accepted" },
   { value: "send", label: "contract.status.send" },
@@ -107,6 +116,7 @@ export const FIELDS: (
     autoComplete: "off",
     options: STATUS_OPTIONS,
     variant: "inline",
+    prompt: "Pick one, just one",
   },
   {
     type: "text",
@@ -131,6 +141,7 @@ export const FIELDS: (
     name: "is_active",
     label: "contract.attr.is_active",
     variant: "inline",
+    value: true,
   },
   {
     type: "radio",

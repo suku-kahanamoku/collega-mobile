@@ -1,53 +1,52 @@
 import React, { useState } from "react";
-import { Picker } from "@react-native-picker/picker";
 import { StyleSheet } from "react-native";
-import { UiView, UiText } from "@/modules/Ui/components/Themed";
+import { Picker } from "@react-native-picker/picker";
+
+import { StyleProps } from "@/types/component";
 import RowCmp from "@/modules/Ui/components/Row";
 import { SelectField as SelectFieldType } from "../../type";
 
-const SelectField: React.FC<{ field: SelectFieldType }> = ({ field }) => {
-  const [selectedValue, setSelectedValue] = useState();
+interface FieldProps {
+  field: SelectFieldType;
+  style?: StyleProps;
+  [rest: string]: any;
+}
 
-  const inputElement = (
-    <Picker
-      selectedValue={selectedValue}
-      onValueChange={(itemValue) => setSelectedValue(itemValue)}
-      prompt="Pick one, just one"
-    >
-      {field.options?.map((option) => (
-        <Picker.Item
-          key={option.value}
-          label={option.label}
-          value={option.value}
-        />
-      ))}
-    </Picker>
-  );
-
-  if (field.variant === "inline") {
-    return <RowCmp label={field.label}>{inputElement}</RowCmp>;
-  }
+const SelectField: React.FC<FieldProps> = ({ field, style, ...rest }) => {
+  const [selectedValue, setSelectedValue] = useState("canceled");
 
   return (
-    <UiView style={styles.container}>
-      <UiText style={styles.label}>{field.label}</UiText>
-      {inputElement}
-    </UiView>
+    <RowCmp
+      label={field.label}
+      variant={field.variant}
+      style={{ ...styles, ...style }}
+      {...rest}
+    >
+      <Picker
+        selectedValue={selectedValue}
+        onValueChange={(itemValue) => setSelectedValue(itemValue)}
+        prompt={field.prompt}
+        accessibilityLabel="fdas"
+        style={{ marginLeft: -12 }}
+      >
+        {field.options?.map((option) => (
+          <Picker.Item
+            key={option.value}
+            label={option.label}
+            value={option.value}
+          />
+        ))}
+      </Picker>
+    </RowCmp>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    marginBottom: 15,
-  },
-  label: {
-    marginBottom: 5,
-    fontWeight: "bold",
-  },
-  input: {
+  children: {
     flex: 1,
     borderWidth: 1,
     borderColor: "#ccc",
+    height: 44,
   },
 });
 

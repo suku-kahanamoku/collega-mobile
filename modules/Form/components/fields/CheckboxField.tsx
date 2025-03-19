@@ -1,42 +1,39 @@
 import React, { useState } from "react";
-import { Switch, StyleSheet } from "react-native";
-import { CheckboxField as CheckboxFieldType } from "../../type";
-import { UiView, UiText } from "@/modules/Ui/components/Themed";
+import { StyleSheet, Switch } from "react-native";
+
+import { StyleProps } from "@/types/component";
 import RowCmp from "@/modules/Ui/components/Row";
+import { CheckboxField as CheckboxFieldType } from "../../type";
 
-const CheckboxField: React.FC<{ field: CheckboxFieldType }> = ({ field }) => {
-  const [isChecked, setIsChecked] = useState(false);
+interface FieldProps {
+  field: CheckboxFieldType;
+  style?: StyleProps;
+  [rest: string]: any;
+}
 
-  const inputElement = (
-    <Switch value={isChecked} style={styles.switch} onValueChange={(value) => setIsChecked(value)} />
-  );
-
-  if (field.variant === "inline") {
-    return <RowCmp label={field.label}>{inputElement}</RowCmp>;
-  }
+const CheckboxField: React.FC<FieldProps> = ({ field, style, ...rest }) => {
+  const [isChecked, setIsChecked] = useState(field.value);
 
   return (
-    <UiView style={styles.container}>
-      <UiText style={styles.label}>{field.label}</UiText>
-      <UiView style={styles.switchContainer}>{inputElement}</UiView>
-    </UiView>
+    <RowCmp
+      label={field.label}
+      variant={field.variant}
+      style={{ ...styles, ...style }}
+      {...rest}
+    >
+      <Switch
+        value={isChecked}
+        onValueChange={(value) => setIsChecked(value)}
+      />
+    </RowCmp>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    marginBottom: 15,
-  },
-  label: {
-    marginBottom: 5,
-    fontWeight: "bold",
-  },
-  switchContainer: {
+  children: {
     flexDirection: "row",
-    alignItems: "center",
-  },
-  switch: {
-    marginLeft: 10,
+    justifyContent: "flex-start",
+    height: 44
   },
 });
 

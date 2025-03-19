@@ -1,5 +1,5 @@
 import React from "react";
-import { TouchableOpacity, StyleSheet } from "react-native";
+import { TouchableOpacity, StyleSheet, View } from "react-native";
 import Flag from "react-native-flags";
 
 import { UiText, UiView } from "@/modules/Ui/components/Themed";
@@ -11,7 +11,7 @@ const LangSwitchCmp = () => {
   return (
     <UiView style={styles.container}>
       <UiText style={styles.label}>{t("settings.language")}:</UiText>
-      <UiView style={styles.flagsContainer}>
+      <View style={styles.flagsContainer}>
         {locales.map((loc) => (
           <TouchableOpacity
             key={loc.code}
@@ -24,7 +24,7 @@ const LangSwitchCmp = () => {
             />
           </TouchableOpacity>
         ))}
-      </UiView>
+      </View>
     </UiView>
   );
 };

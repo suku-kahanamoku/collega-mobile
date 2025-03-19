@@ -1,35 +1,59 @@
 import React from "react";
-import { StyleSheet } from "react-native";
-import { UiView, UiText } from "@/modules/Ui/components/Themed";
+import { StyleSheet, View } from "react-native";
+
+import { StyleProps } from "@/types/component";
+import { UiText } from "@/modules/Ui/components/Themed";
 
 interface RowProps {
   label: string;
+  variant?: "inline";
+  style?: StyleProps;
   children: React.ReactNode;
+  [rest: string]: any;
 }
 
-export default function RowCmp({ label, children }: RowProps) {
+export default function RowCmp({
+  label,
+  variant,
+  style,
+  children,
+  ...rest
+}: RowProps) {
+  if (variant === "inline") {
+    return (
+      <View style={[styles.container, style?.container]} {...rest}>
+        <UiText style={[styles.label, styles.inlineLabel, style?.label]}>
+          {label}:
+        </UiText>
+        <View style={[styles.children, style?.children]}>{children}</View>
+      </View>
+    );
+  }
+
   return (
-    <UiView style={styles.row}>
-      <UiText style={styles.label}>{label}:</UiText>
-      <UiView style={styles.value}>{children}</UiView>
-    </UiView>
+    <View style={style?.container} {...rest}>
+      <UiText style={[styles.label, style?.label]}>{label}</UiText>
+      <View style={style?.children}>{children}</View>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
-  row: {
+  container: {
     flexDirection: "row",
-    padding: 10,
+    paddingVertical: 10,
   },
   label: {
-    justifyContent: "center",
-    alignSelf: "center",
     fontWeight: "bold",
-    marginRight: 10,
-    width: "30%",
     fontSize: 16,
   },
-  value: {
+  inlineLabel: {
+    justifyContent: "center",
+    alignSelf: "center",
+    marginRight: 10,
+    width: "30%",
+  },
+  children: {
     flex: 1,
     justifyContent: "center",
     alignSelf: "center",

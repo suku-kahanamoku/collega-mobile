@@ -1,44 +1,38 @@
 import React from "react";
-import { TextInput, StyleSheet, View, Text } from "react-native";
-import { TextField as TextFieldType } from "../../type";
-import { UiView, UiText } from "@/modules/Ui/components/Themed";
+import { TextInput, StyleSheet } from "react-native";
+
+import { StyleProps } from "@/types/component";
 import RowCmp from "@/modules/Ui/components/Row";
+import { TextField as TextFieldType } from "../../type";
 
-const TextField: React.FC<{ field: TextFieldType }> = ({ field }) => {
-  const inputElement = (
-    <TextInput
-      style={styles.input}
-      placeholder={field.placeholder}
-      inputMode={field.inputMode}
-      autoComplete={field.autoComplete}
-      autoFocus={field.autoFocus}
-    />
-  );
+interface FieldProps {
+  field: TextFieldType;
+  style?: StyleProps;
+  [rest: string]: any;
+}
 
-  if (field.variant === "inline") {
-    return <RowCmp label={field.label}>{inputElement}</RowCmp>;
-  }
-
+const TextField: React.FC<FieldProps> = ({ field, style, ...rest }) => {
   return (
-    <UiView style={styles.container}>
-      <UiText style={styles.label}>{field.label}</UiText>
-      {inputElement}
-    </UiView>
+    <RowCmp label={field.label} variant={field.variant} style={style} {...rest}>
+      <TextInput
+        style={styles.input}
+        placeholder={field.placeholder}
+        inputMode={field.inputMode}
+        autoComplete={field.autoComplete}
+        autoFocus={field.autoFocus}
+        value={field.value}
+      />
+    </RowCmp>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    marginBottom: 15,
-  },
-  label: {
-    marginBottom: 5,
-    fontWeight: "bold",
-  },
   input: {
     flex: 1,
     borderWidth: 1,
     borderColor: "#ccc",
+    fontSize: 16,
+    height: 44,
   },
 });
 

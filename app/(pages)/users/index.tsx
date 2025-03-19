@@ -1,4 +1,4 @@
-import { StyleSheet, FlatList } from "react-native";
+import { StyleSheet, FlatList, View } from "react-native";
 import { Link } from "expo-router";
 
 import { useRoute } from "@/hooks/useRoute";
@@ -33,10 +33,10 @@ export default function UsersScreen() {
         keyExtractor={(item) => item.id.toString()}
         renderItem={({ item }) => (
           <Link href={`${usersMenu.href}/${item.id}`}>
-            <UiView style={styles.item}>
+            <View style={styles.item}>
               <UiText style={styles.title}>{item.name}</UiText>
               <UiText>{item.email}</UiText>
-            </UiView>
+            </View>
           </Link>
         )}
       />
