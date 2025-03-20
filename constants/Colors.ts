@@ -10,7 +10,7 @@ export default {
     success: "#28a745",
   },
   dark: {
-    text: "#fff",
+    text: "#eee",
     background: "#000",
     primary: "#264C6C",
     secondary: "#80CE1B",

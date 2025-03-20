@@ -1,5 +1,5 @@
 import FontAwesome from "@expo/vector-icons/FontAwesome";
-import { RelativePathString, Stack } from "expo-router";
+import { RelativePathString, Stack, useLocalSearchParams } from "expo-router";
 import React from "react";
 import { StyleSheet, View, Text, TouchableOpacity } from "react-native";
 
@@ -9,6 +9,7 @@ import { ContractProvider } from "@/modules/Contract/providers/ContractProvider"
 import Field from "@/modules/Form/components/fields/Field";
 import { UiView } from "@/modules/Ui/components/Themed";
 import { IMenu } from "@/types/menu";
+import { useContract } from "@/modules/Contract/hooks/useContract";
 
 // You can explore the built-in icon families and icons on the web at https://icons.expo.fyi/
 function TabBarIcon(props: {
@@ -72,9 +73,16 @@ export default function ContractsLayout() {
 
           <Stack.Screen
             name="[id]"
-            options={{
-              title: contractMenu.title,
-              headerTitleAlign: "center",
+            options={() => {
+              const { id } = useLocalSearchParams();
+              const { contracts, fields } = useContract();
+              const contract = contracts.find((c) => c.id === Number(id));
+              console.log(contract?.client);
+
+              return {
+                title: contract?.partner_name || contractMenu.title,
+                headerTitleAlign: "center",
+              };
             }}
           />
 

@@ -5,6 +5,7 @@ import { StyleProps } from "@/types/component";
 import RowCmp from "@/modules/Ui/components/Row";
 import { TextField as TextFieldType } from "../../type";
 import { DEBOUNCE } from "@/modules/Common/utils/delay";
+import { useTheme } from "@/providers/ThemeProvider";
 
 interface FieldProps {
   field: TextFieldType;
@@ -19,6 +20,8 @@ const TextField: React.FC<FieldProps> = ({
   onChange,
   ...rest
 }) => {
+  const { colors } = useTheme();
+
   const handleChange = useCallback(
     DEBOUNCE((text: string) => {
       onChange && onChange(text);
@@ -29,8 +32,9 @@ const TextField: React.FC<FieldProps> = ({
   return (
     <RowCmp label={field.label} variant={field.variant} style={style} {...rest}>
       <TextInput
-        style={styles.input}
+        style={{ ...styles.input, color: colors.text }}
         placeholder={field.placeholder}
+        placeholderTextColor="gray"
         inputMode={field.inputMode}
         autoComplete={field.autoComplete}
         autoFocus={field.autoFocus}

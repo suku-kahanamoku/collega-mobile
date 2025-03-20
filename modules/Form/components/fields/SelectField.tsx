@@ -5,6 +5,7 @@ import { Picker } from "@react-native-picker/picker";
 import { StyleProps } from "@/types/component";
 import RowCmp from "@/modules/Ui/components/Row";
 import { SelectField as SelectFieldType } from "../../type";
+import { useTheme } from "@/providers/ThemeProvider";
 
 interface FieldProps {
   field: SelectFieldType;
@@ -19,6 +20,7 @@ const SelectField: React.FC<FieldProps> = ({
   onChange,
   ...rest
 }) => {
+  const { colors } = useTheme();
   const [selectedValue, setSelectedValue] = useState("canceled");
 
   const handleChange = (value: string) => {
@@ -36,7 +38,7 @@ const SelectField: React.FC<FieldProps> = ({
       <Picker
         selectedValue={selectedValue}
         prompt={field.prompt}
-        style={{ marginLeft: -12 }}
+        style={{ marginLeft: -12, color: colors.text }}
         onValueChange={handleChange}
       >
         {field.options?.map((option) => (

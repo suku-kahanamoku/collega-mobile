@@ -32,7 +32,11 @@ const CheckboxField: React.FC<FieldProps> = ({
       style={{ ...styles, ...style }}
       {...rest}
     >
-      <Switch value={isChecked} onValueChange={handleChange} />
+      <Switch
+        value={isChecked}
+        trackColor={{ false: "gray" }}
+        onValueChange={handleChange}
+      />
     </RowCmp>
   );
 };
