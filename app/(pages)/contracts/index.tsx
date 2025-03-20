@@ -1,20 +1,14 @@
-import { StyleSheet, FlatList, ScrollView, View } from "react-native";
+import { StyleSheet, FlatList, View } from "react-native";
 import { Link } from "expo-router";
 
 import { useRoute } from "@/hooks/useRoute";
 import { UiView, UiText } from "@/modules/Ui/components/Themed";
 import { useContract } from "@/modules/Contract/hooks/useContract";
-import Field from "@/modules/Form/components/fields/Field";
 
 export default function ContractsScreen() {
   const { contracts, loading, error } = useContract();
   const { menuList } = useRoute();
   const contractsMenu = menuList.contracts;
-  const searchField = {
-    name: "search",
-    label: "",
-    placeholder: "Search",
-  };
 
   if (loading) {
     return (
@@ -34,15 +28,6 @@ export default function ContractsScreen() {
 
   return (
     <UiView style={styles.container}>
-      <Field
-        key={searchField.name}
-        field={searchField}
-        style={{
-          container: { marginVertical: 10 },
-          label: { height: 0 },
-          children: { height: 44 },
-        }}
-      />
       <FlatList
         data={contracts}
         keyExtractor={(item) => item.id.toString()}

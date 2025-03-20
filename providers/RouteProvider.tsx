@@ -104,7 +104,6 @@ export const RouteProvider = ({ children }: { children: ReactNode }) => {
    */
   const activeMenu =
     Object.values(menuList).find((menu) => {
-      console.log(menu.href, pathname, '--------------------')
       // Exact match first
       if (menu.href === pathname) {
         return true;

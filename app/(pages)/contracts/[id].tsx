@@ -21,7 +21,7 @@ export default function ContractScreen() {
   return (
     <ScrollView contentContainerStyle={styles.container}>
       {fields.map((field) => (
-        <RowCmp key={field.name} label={field.label}>
+        <RowCmp key={field.name} label={field.label} variant="inline">
           <UiText>{contract[field.name] || "---"}</UiText>
         </RowCmp>
       ))}

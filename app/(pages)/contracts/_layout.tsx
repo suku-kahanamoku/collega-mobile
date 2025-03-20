@@ -1,11 +1,15 @@
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 import { Stack, Tabs } from "expo-router";
 import React from "react";
-import { Platform } from "react-native";
+import { StyleSheet, Platform, View } from "react-native";
 
 import { useRoute } from "@/hooks/useRoute";
 import { useTheme } from "@/providers/ThemeProvider";
 import { ContractProvider } from "@/modules/Contract/providers/ContractProvider";
+import Field from "@/modules/Form/components/fields/Field";
+import UiIconBtn from "@/modules/Ui/components/button/IconBtn";
+import { UiText } from "@/modules/Ui/components/Themed";
+import UiIconLink from "@/modules/Ui/components/button/IconLink";
 
 // You can explore the built-in icon families and icons on the web at https://icons.expo.fyi/
 function TabBarIcon(props: {
@@ -21,13 +25,17 @@ export default function ContractsLayout() {
   const contractsMenu = menuList.contracts;
   const contractMenu = menuList.contract;
   const filterMenu = menuList.contracts_filter;
+  const searchField = {
+    name: "search",
+    label: "",
+    placeholder: "Search",
+  };
 
   return (
     <ContractProvider>
       <Tabs
         screenOptions={{
           tabBarActiveTintColor: colors.secondary,
-          headerShown: false,
           tabBarStyle: Platform.select({
             ios: {
               // Use a transparent background on iOS to show the blur effect
@@ -40,10 +48,22 @@ export default function ContractsLayout() {
         <Tabs.Screen
           name="index"
           options={{
-            title: contractsMenu.title,
             tabBarIcon: ({ color }) => (
               <TabBarIcon name={contractsMenu.icon} color={color} />
             ),
+            headerTitle: () => (
+              <Field
+                key={searchField.name}
+                field={searchField}
+                style={{
+                  label: { height: 0 },
+                  children: { height: 44 },
+                }}
+              />
+            ),
+            headerTitleContainerStyle: {
+              width: "100%",
+            },
           }}
         />
 
@@ -60,10 +80,30 @@ export default function ContractsLayout() {
         <Tabs.Screen
           name="filter"
           options={{
-            title: filterMenu.title,
             tabBarIcon: ({ color }) => (
               <TabBarIcon name={filterMenu.icon} color={color} />
             ),
+            title: filterMenu.title,
+            headerStyle: {
+              height: 56,
+            },
+            headerTitleStyle: {
+              margin: "auto",
+            },
+            headerTitleContainerStyle: {
+              width: "100%",
+            },
+            headerLeft: ({ href }) => (
+              <UiIconBtn
+                name="arrow-left"
+                onPress={() => {
+                  console.log(href);
+                }}
+              />
+            ),
+            headerLeftContainerStyle: {
+              paddingLeft: 20,
+            },
           }}
         />
       </Tabs>
