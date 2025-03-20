@@ -1,4 +1,5 @@
 import React, { createContext, useState, useEffect, ReactNode } from "react";
+
 import { Contract } from "../type";
 import { useTranslation } from "react-i18next";
 import { FETCH_OPTIONS, FIELDS } from "../configs/contract";
@@ -28,7 +29,7 @@ export const ContractProvider = ({ children }: { children: ReactNode }) => {
     result.options?.forEach(
       (option) => (option.label = option.label ? t(option.label) : option.label)
     );
-    return result;
+    return result as Field;
   });
 
   const fetchContracts = async () => {

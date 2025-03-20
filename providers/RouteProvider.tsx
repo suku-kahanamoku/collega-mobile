@@ -1,5 +1,5 @@
-import React, { createContext, useContext, ReactNode } from "react";
-import { RelativePathString, usePathname } from "expo-router";
+import React, { createContext, ReactNode } from "react";
+import { RelativePathString, usePathname, useRouter } from "expo-router";
 import { useTranslation } from "react-i18next";
 import { IMenu } from "@/types/menu";
 
@@ -7,6 +7,7 @@ interface RouteContextProps {
   menuList: Record<string, IMenu>;
   menus: IMenu[];
   activeMenu: IMenu;
+  navigate: (href: RelativePathString) => void; // Add navigate function type
 }
 
 export const RouteContext = createContext<RouteContextProps | undefined>(
@@ -16,6 +17,7 @@ export const RouteContext = createContext<RouteContextProps | undefined>(
 export const RouteProvider = ({ children }: { children: ReactNode }) => {
   const { t } = useTranslation("$");
   const pathname = usePathname();
+  const router = useRouter();
 
   /**
    * Vsechna existujici menu
@@ -116,6 +118,11 @@ export const RouteProvider = ({ children }: { children: ReactNode }) => {
   // Prida active
   activeMenu.active = true;
 
+  // Define navigate function
+  const navigate = (href: RelativePathString) => {
+    router.push(href);
+  };
+
   return (
     <RouteContext.Provider
       value={{
@@ -124,6 +131,7 @@ export const RouteProvider = ({ children }: { children: ReactNode }) => {
           (menu) => !["404", "settings"].includes(menu.syscode)
         ),
         activeMenu,
+        navigate,
       }}
     >
       {children}

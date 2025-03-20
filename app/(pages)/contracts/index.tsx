@@ -57,14 +57,13 @@ const styles = StyleSheet.create({
   item: {
     borderBottomWidth: 1,
     borderBottomColor: "#ccc",
-    paddingVertical: 10,
+    paddingVertical: 8,
   },
   title: {
-    fontSize: 20,
+    fontSize: 16,
     fontWeight: "bold",
   },
   subtitle: {
-    fontSize: 16,
     fontWeight: "bold",
   },
 });

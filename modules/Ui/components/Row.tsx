@@ -45,7 +45,6 @@ const styles = StyleSheet.create({
   },
   label: {
     fontWeight: "bold",
-    fontSize: 16,
   },
   inlineLabel: {
     justifyContent: "center",

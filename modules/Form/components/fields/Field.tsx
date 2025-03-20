@@ -9,17 +9,34 @@ import CheckboxField from "./CheckboxField";
 interface FieldProps {
   field: FieldType;
   style?: StyleProps;
+  onChange?: (value: any) => void;
   [rest: string]: any;
 }
 
-const Field: React.FC<FieldProps> = ({ field, style, ...rest }) => {
+const Field: React.FC<FieldProps> = ({ field, style, onChange, ...rest }) => {
   switch (field.type) {
     case "select":
-      return <SelectField field={field} style={style} {...rest} />;
+      return (
+        <SelectField
+          field={field}
+          style={style}
+          onChange={onChange}
+          {...rest}
+        />
+      );
     case "checkbox":
-      return <CheckboxField field={field} style={style} {...rest} />;
+      return (
+        <CheckboxField
+          field={field}
+          style={style}
+          onChange={onChange}
+          {...rest}
+        />
+      );
     default:
-      return <TextField field={field} style={style} {...rest} />;
+      return (
+        <TextField field={field} style={style} onChange={onChange} {...rest} />
+      );
   }
 };
 

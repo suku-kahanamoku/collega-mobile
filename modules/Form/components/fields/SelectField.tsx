@@ -9,11 +9,22 @@ import { SelectField as SelectFieldType } from "../../type";
 interface FieldProps {
   field: SelectFieldType;
   style?: StyleProps;
+  onChange?: (text: string) => void;
   [rest: string]: any;
 }
 
-const SelectField: React.FC<FieldProps> = ({ field, style, ...rest }) => {
+const SelectField: React.FC<FieldProps> = ({
+  field,
+  style,
+  onChange,
+  ...rest
+}) => {
   const [selectedValue, setSelectedValue] = useState("canceled");
+
+  const handleChange = (value: string) => {
+    setSelectedValue(value);
+    onChange && onChange(value);
+  };
 
   return (
     <RowCmp
@@ -24,10 +35,9 @@ const SelectField: React.FC<FieldProps> = ({ field, style, ...rest }) => {
     >
       <Picker
         selectedValue={selectedValue}
-        onValueChange={(itemValue) => setSelectedValue(itemValue)}
         prompt={field.prompt}
-        accessibilityLabel="fdas"
         style={{ marginLeft: -12 }}
+        onValueChange={handleChange}
       >
         {field.options?.map((option) => (
           <Picker.Item

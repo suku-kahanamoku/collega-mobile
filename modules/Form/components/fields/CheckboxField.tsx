@@ -8,11 +8,22 @@ import { CheckboxField as CheckboxFieldType } from "../../type";
 interface FieldProps {
   field: CheckboxFieldType;
   style?: StyleProps;
+  onChange?: (value: boolean) => void;
   [rest: string]: any;
 }
 
-const CheckboxField: React.FC<FieldProps> = ({ field, style, ...rest }) => {
+const CheckboxField: React.FC<FieldProps> = ({
+  field,
+  style,
+  onChange,
+  ...rest
+}) => {
   const [isChecked, setIsChecked] = useState(field.value);
+
+  const handleChange = (value: boolean) => {
+    setIsChecked(value);
+    onChange && onChange(value);
+  };
 
   return (
     <RowCmp
@@ -21,10 +32,7 @@ const CheckboxField: React.FC<FieldProps> = ({ field, style, ...rest }) => {
       style={{ ...styles, ...style }}
       {...rest}
     >
-      <Switch
-        value={isChecked}
-        onValueChange={(value) => setIsChecked(value)}
-      />
+      <Switch value={isChecked} onValueChange={handleChange} />
     </RowCmp>
   );
 };
@@ -33,7 +41,7 @@ const styles = StyleSheet.create({
   children: {
     flexDirection: "row",
     justifyContent: "flex-start",
-    height: 44
+    height: 44,
   },
 });
 

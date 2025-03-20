@@ -7,9 +7,6 @@ import { useRoute } from "@/hooks/useRoute";
 import { useTheme } from "@/providers/ThemeProvider";
 import { ContractProvider } from "@/modules/Contract/providers/ContractProvider";
 import Field from "@/modules/Form/components/fields/Field";
-import UiIconBtn from "@/modules/Ui/components/button/IconBtn";
-import { UiText } from "@/modules/Ui/components/Themed";
-import UiIconLink from "@/modules/Ui/components/button/IconLink";
 
 // You can explore the built-in icon families and icons on the web at https://icons.expo.fyi/
 function TabBarIcon(props: {
@@ -35,6 +32,7 @@ export default function ContractsLayout() {
     <ContractProvider>
       <Tabs
         screenOptions={{
+          headerShown: false,
           tabBarActiveTintColor: colors.secondary,
           tabBarStyle: Platform.select({
             ios: {
@@ -48,6 +46,8 @@ export default function ContractsLayout() {
         <Tabs.Screen
           name="index"
           options={{
+            headerShown: true,
+            title: contractsMenu.title,
             tabBarIcon: ({ color }) => (
               <TabBarIcon name={contractsMenu.icon} color={color} />
             ),
@@ -80,30 +80,10 @@ export default function ContractsLayout() {
         <Tabs.Screen
           name="filter"
           options={{
+            title: filterMenu.title,
             tabBarIcon: ({ color }) => (
               <TabBarIcon name={filterMenu.icon} color={color} />
             ),
-            title: filterMenu.title,
-            headerStyle: {
-              height: 56,
-            },
-            headerTitleStyle: {
-              margin: "auto",
-            },
-            headerTitleContainerStyle: {
-              width: "100%",
-            },
-            headerLeft: ({ href }) => (
-              <UiIconBtn
-                name="arrow-left"
-                onPress={() => {
-                  console.log(href);
-                }}
-              />
-            ),
-            headerLeftContainerStyle: {
-              paddingLeft: 20,
-            },
           }}
         />
       </Tabs>

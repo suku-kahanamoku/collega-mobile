@@ -1,17 +1,31 @@
-import React from "react";
+import React, { useCallback } from "react";
 import { TextInput, StyleSheet } from "react-native";
 
 import { StyleProps } from "@/types/component";
 import RowCmp from "@/modules/Ui/components/Row";
 import { TextField as TextFieldType } from "../../type";
+import { DEBOUNCE } from "@/modules/Common/utils/delay";
 
 interface FieldProps {
   field: TextFieldType;
   style?: StyleProps;
+  onChange?: (text: string) => void;
   [rest: string]: any;
 }
 
-const TextField: React.FC<FieldProps> = ({ field, style, ...rest }) => {
+const TextField: React.FC<FieldProps> = ({
+  field,
+  style,
+  onChange,
+  ...rest
+}) => {
+  const handleChange = useCallback(
+    DEBOUNCE((text: string) => {
+      onChange && onChange(text);
+    }),
+    []
+  );
+
   return (
     <RowCmp label={field.label} variant={field.variant} style={style} {...rest}>
       <TextInput
@@ -21,6 +35,7 @@ const TextField: React.FC<FieldProps> = ({ field, style, ...rest }) => {
         autoComplete={field.autoComplete}
         autoFocus={field.autoFocus}
         value={field.value}
+        onChangeText={handleChange}
       />
     </RowCmp>
   );
