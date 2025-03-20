@@ -3,7 +3,7 @@ import { Text, View } from "react-native";
 
 import { useTheme } from "@/providers/ThemeProvider";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
-import { Icon, IconProps } from "@expo/vector-icons/build/createIconSet";
+import { Icon } from "@expo/vector-icons/build/createIconSet";
 
 export function UiText(props: Text["props"]) {
   const { colors } = useTheme();
@@ -24,7 +24,7 @@ export function UiIcon(props: Icon<string, string>["defaultProps"]) {
   const { colors } = useTheme();
   return (
     <FontAwesome
-      name={props.name}
+      {...props}
       size={props.size || 24}
       color={props.color || colors.text}
     />
