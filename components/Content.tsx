@@ -1,13 +1,12 @@
 import React, { useState } from "react";
-import { View } from "react-native";
-import { Stack } from "expo-router";
+import { TouchableOpacity, View } from "react-native";
+import { Link, Stack } from "expo-router";
 
 import { useRoute } from "@/hooks/useRoute";
 import LogoCmp from "@/components/Logo";
-import UiIconBtn from "@/modules/Ui/components/button/IconBtn";
-import UiIconLink from "@/modules/Ui/components/button/IconLink";
 import SideMenuCmp from "@/components/menu/SideMenu";
 import { IMenu } from "@/types/menu";
+import { UiIcon } from "@/modules/Ui/components/Themed";
 
 interface HeaderRightProps {
   activeMenu: IMenu;
@@ -24,11 +23,15 @@ const HeaderRightCmp: React.FC<HeaderRightProps> = ({
     <View style={{ flexDirection: "row", gap: 16 }}>
       {/* pokud aktivni menu neni settings, tak zobrazi ozubene kolecko, presmeruje na settings */}
       {activeMenu !== settingsMenu && (
-        <UiIconLink name={settingsMenu.icon!} href={settingsMenu.href} />
+        <Link href={settingsMenu.href}>
+          <UiIcon name={settingsMenu.icon!} />
+        </Link>
       )}
 
       {/* hamburger btn, po kliku zobrazi bocni menu */}
-      <UiIconBtn name="bars" onPress={() => setOpen((prevOpen) => !prevOpen)} />
+      <TouchableOpacity onPress={() => setOpen((prevOpen) => !prevOpen)}>
+        <UiIcon name="bars" />
+      </TouchableOpacity>
     </View>
   );
 };

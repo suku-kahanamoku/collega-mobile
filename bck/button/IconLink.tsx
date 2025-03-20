@@ -4,7 +4,7 @@ import { Link } from "expo-router";
 import { LinkProps } from "expo-router/build/link/Link";
 
 import { useTheme } from "@/providers/ThemeProvider";
-import { UiIcon } from "../Themed";
+import { UiIcon } from "../../modules/Ui/components/Themed";
 
 interface IconLinkProps extends LinkProps {
   name: keyof typeof FontAwesome.glyphMap;
