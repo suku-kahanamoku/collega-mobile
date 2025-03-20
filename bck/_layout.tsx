@@ -1,4 +1,3 @@
-import FontAwesome from "@expo/vector-icons/FontAwesome";
 import { RelativePathString, Stack, useLocalSearchParams } from "expo-router";
 import React from "react";
 import { StyleSheet, View, Text, TouchableOpacity } from "react-native";
@@ -7,17 +6,9 @@ import { useRoute } from "@/hooks/useRoute";
 import { useTheme } from "@/providers/ThemeProvider";
 import { ContractProvider } from "@/modules/Contract/providers/ContractProvider";
 import Field from "@/modules/Form/components/fields/Field";
-import { UiView } from "@/modules/Ui/components/Themed";
+import { UiIcon, UiView } from "@/modules/Ui/components/Themed";
 import { IMenu } from "@/types/menu";
 import { useContract } from "@/modules/Contract/hooks/useContract";
-
-// You can explore the built-in icon families and icons on the web at https://icons.expo.fyi/
-function TabBarIcon(props: {
-  color: string;
-  name?: React.ComponentProps<typeof FontAwesome>["name"];
-}) {
-  return <FontAwesome size={24} {...props} />;
-}
 
 function TabBar(props: {
   menu: IMenu;
@@ -31,7 +22,7 @@ function TabBar(props: {
       }}
       onPress={() => props.navigate(props.menu.href)}
     >
-      <TabBarIcon name={props.menu.icon} color={props.color} />
+      <UiIcon name={props.menu.icon} color={props.color} />
       <Text style={{ color: props.color }}>{props.menu.title}</Text>
     </TouchableOpacity>
   );

@@ -4,6 +4,7 @@ import { Link } from "expo-router";
 import { LinkProps } from "expo-router/build/link/Link";
 
 import { useTheme } from "@/providers/ThemeProvider";
+import { UiIcon } from "../Themed";
 
 interface IconLinkProps extends LinkProps {
   name: keyof typeof FontAwesome.glyphMap;
@@ -21,7 +22,7 @@ const UiIconLink: React.FC<IconLinkProps> = ({
 
   return (
     <Link href={href} onPress={onPress} {...rest}>
-      <FontAwesome name={name} size={size} color={colors.text} />
+      <UiIcon name={name} size={size} color={colors.text} />
     </Link>
   );
 };

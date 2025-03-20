@@ -1,4 +1,3 @@
-import FontAwesome from "@expo/vector-icons/FontAwesome";
 import { Tabs } from "expo-router";
 import React from "react";
 import { Platform } from "react-native";
@@ -6,14 +5,7 @@ import { Platform } from "react-native";
 import { useRoute } from "@/hooks/useRoute";
 import { useTheme } from "@/providers/ThemeProvider";
 import { UserProvider } from "@/modules/User/providers/UserProvider";
-
-// You can explore the built-in icon families and icons on the web at https://icons.expo.fyi/
-function TabBarIcon(props: {
-  color: string;
-  name?: React.ComponentProps<typeof FontAwesome>["name"];
-}) {
-  return <FontAwesome size={24} {...props} />;
-}
+import { UiIcon } from "@/modules/Ui/components/Themed";
 
 export default function UsersLayout() {
   const { colors } = useTheme();
@@ -40,7 +32,7 @@ export default function UsersLayout() {
           options={{
             title: userMenu.title,
             tabBarIcon: ({ color }) => (
-              <TabBarIcon name={userMenu.icon} color={color} />
+              <UiIcon name={userMenu.icon} color={color} />
             ),
           }}
         />
@@ -48,7 +40,7 @@ export default function UsersLayout() {
           name="[id]"
           options={{
             title: "User",
-            tabBarIcon: ({ color }) => <TabBarIcon name="user" color={color} />,
+            tabBarIcon: ({ color }) => <UiIcon name="user" color={color} />,
           }}
         />
       </Tabs>

@@ -1,8 +1,8 @@
 import React from "react";
 import { TouchableOpacity } from "react-native";
-import { FontAwesome } from "@expo/vector-icons";
 
 import { ITheme, useTheme } from "@/providers/ThemeProvider";
+import { UiIcon } from "@/modules/Ui/components/Themed";
 
 export default function ThemeToggleCmp({
   setTheme,
@@ -17,9 +17,8 @@ export default function ThemeToggleCmp({
 
   return (
     <TouchableOpacity onPress={toggleTheme} style={{ marginRight: 16 }}>
-      <FontAwesome
+      <UiIcon
         name={dark ? "sun-o" : "moon-o"}
-        size={24}
         color={dark ? "#FFD700" : "#000"}
       />
     </TouchableOpacity>

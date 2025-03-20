@@ -3,6 +3,7 @@ import { TouchableOpacity, TouchableOpacityProps } from "react-native";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 
 import { useTheme } from "@/providers/ThemeProvider";
+import { UiIcon } from "../Themed";
 
 interface IconBtnProps extends TouchableOpacityProps {
   name: keyof typeof FontAwesome.glyphMap;
@@ -19,7 +20,7 @@ const UiIconBtn: React.FC<IconBtnProps> = ({
 
   return (
     <TouchableOpacity onPress={onPress} {...rest}>
-      <FontAwesome name={name} size={size} color={colors.text} />
+      <UiIcon name={name} size={size} color={colors.text} />
     </TouchableOpacity>
   );
 };
