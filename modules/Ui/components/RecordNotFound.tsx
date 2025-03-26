@@ -5,7 +5,7 @@ import { UiView, UiText } from "./Themed";
 import { useLocale } from "@/modules/Lang/hooks/useLocale";
 
 export default function LoadingPage({
-  message = "global.loading",
+  message = "global.record_404",
 }: {
   message?: string;
 }) {

@@ -3,6 +3,7 @@ import { useLocalSearchParams } from "expo-router";
 
 import { UiView, UiText } from "@/modules/Ui/components/Themed";
 import { useUser } from "@/modules/User/hooks/useUser";
+import RecordNotFound from "@/modules/Ui/components/RecordNotFound";
 
 export default function UserScreen() {
   const { id } = useLocalSearchParams();
@@ -10,11 +11,7 @@ export default function UserScreen() {
   const user = users.find((u) => u.id === Number(id));
 
   if (!user) {
-    return (
-      <UiView style={styles.container}>
-        <UiText>User not found</UiText>
-      </UiView>
-    );
+    return <RecordNotFound />;
   }
 
   return (

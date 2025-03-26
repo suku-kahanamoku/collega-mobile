@@ -1,9 +1,10 @@
 import { StyleSheet, ScrollView } from "react-native";
 import { useLocalSearchParams } from "expo-router";
 
-import { UiView, UiText } from "@/modules/Ui/components/Themed";
+import { UiText } from "@/modules/Ui/components/Themed";
 import RowCmp from "@/modules/Ui/components/Row";
 import { useContract } from "@/modules/Contract/hooks/useContract";
+import RecordNotFound from "@/modules/Ui/components/RecordNotFound";
 
 export default function ContractScreen() {
   const { id } = useLocalSearchParams();
@@ -11,11 +12,7 @@ export default function ContractScreen() {
   const contract = contracts.find((c) => c.id === Number(id));
 
   if (!contract) {
-    return (
-      <UiView style={styles.container}>
-        <UiText>Contract not found</UiText>
-      </UiView>
-    );
+    return <RecordNotFound />;
   }
 
   return (

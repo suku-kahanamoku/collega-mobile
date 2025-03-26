@@ -1,6 +1,9 @@
 {
   "$": {
-    "loading": "Načítanie...",
+    "global": {
+      "loading": "Načítanie...",
+      "record_404": "Záznam nebol nájdený"
+    },
     "404": {
       "title": "Stránka nenájdená"
     },

@@ -1,6 +1,9 @@
 {
   "$": {
-    "loading": "Načítání...",
+    "global": {
+      "loading": "Načítání...",
+      "record_404": "Záznam nenalezen"
+    },
     "404": {
       "title": "Stránka nenalezena"
     },
