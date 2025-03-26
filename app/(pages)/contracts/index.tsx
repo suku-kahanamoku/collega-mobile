@@ -4,6 +4,7 @@ import { Link } from "expo-router";
 import { useRoute } from "@/hooks/useRoute";
 import { UiView, UiText } from "@/modules/Ui/components/Themed";
 import { useContract } from "@/modules/Contract/hooks/useContract";
+import LoadingCmp from "@/modules/Ui/components/Loading";
 
 export default function ContractsScreen() {
   const { contracts, loading, error } = useContract();
@@ -11,11 +12,7 @@ export default function ContractsScreen() {
   const contractsMenu = menuList.contracts;
 
   if (loading) {
-    return (
-      <UiView style={styles.container}>
-        <UiText>Loading...</UiText>
-      </UiView>
-    );
+    return <LoadingCmp />;
   }
 
   if (error) {

@@ -4,6 +4,7 @@ import { Link } from "expo-router";
 import { useRoute } from "@/hooks/useRoute";
 import { UiView, UiText } from "@/modules/Ui/components/Themed";
 import { useUser } from "@/modules/User/hooks/useUser";
+import LoadingCmp from "@/modules/Ui/components/Loading";
 
 export default function UsersScreen() {
   const { users, loading, error } = useUser();
@@ -11,11 +12,7 @@ export default function UsersScreen() {
   const usersMenu = menuList.users;
 
   if (loading) {
-    return (
-      <UiView style={styles.container}>
-        <UiText>Loading...</UiText>
-      </UiView>
-    );
+    return <LoadingCmp />;
   }
 
   if (error) {

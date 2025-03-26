@@ -1,5 +1,6 @@
 {
   "$": {
+    "loading": "Načítání...",
     "404": {
       "title": "Stránka nenalezena"
     },
