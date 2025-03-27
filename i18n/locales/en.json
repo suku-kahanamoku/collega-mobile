@@ -2,7 +2,8 @@
   "$": {
     "global": {
       "loading": "Loading...",
-      "record_404": "Record not found"
+      "record_404": "Record not found",
+      "records_404": "Records not found"
     },
     "404": {
       "title": "Page not found"

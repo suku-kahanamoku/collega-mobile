@@ -5,6 +5,7 @@ import { useRoute } from "@/hooks/useRoute";
 import { UiView, UiText } from "@/modules/Ui/components/Themed";
 import { useContract } from "@/modules/Contract/hooks/useContract";
 import LoadingCmp from "@/modules/Ui/components/Loading";
+import RecordNotFound from "@/modules/Ui/components/RecordNotFound";
 
 export default function ContractsScreen() {
   const { contracts, loading, error } = useContract();
@@ -16,11 +17,7 @@ export default function ContractsScreen() {
   }
 
   if (error) {
-    return (
-      <UiView style={styles.container}>
-        <UiText>{error}</UiText>
-      </UiView>
-    );
+    return <RecordNotFound message="global.records_404" />;
   }
 
   return (
