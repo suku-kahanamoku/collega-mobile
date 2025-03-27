@@ -1,5 +1,6 @@
-import { StyleSheet, FlatList, View } from "react-native";
+import { StyleSheet } from "react-native";
 import { Link } from "expo-router";
+import { ListItem } from "@rneui/themed";
 
 import { useRoute } from "@/hooks/useRoute";
 import { UiView, UiText } from "@/modules/Ui/components/Themed";
@@ -21,43 +22,24 @@ export default function ContractsScreen() {
   }
 
   return (
-    <UiView style={styles.container}>
-      <FlatList
-        data={contracts}
-        keyExtractor={(item) => item.id.toString()}
-        renderItem={({ item }) => (
+    <UiView>
+      {contracts.map((item, i) => (
+        <ListItem key={i} bottomDivider>
           <Link href={`${contractsMenu.href}/${item.id}`} style={styles.item}>
-            <View>
-              <UiText style={styles.title}>
-                {item.partner_name}
-                {item.product_name}
-              </UiText>
-              <UiText style={styles.subtitle}>
-                {item.contract_number}
-                {item.client}
-              </UiText>
-            </View>
+            <ListItem.Content>
+              <ListItem.Title>{item.partner_name}</ListItem.Title>
+              <ListItem.Title>{item.product_name}</ListItem.Title>
+              <ListItem.Subtitle>{item.client}</ListItem.Subtitle>
+            </ListItem.Content>
           </Link>
-        )}
-      />
+        </ListItem>
+      ))}
     </UiView>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    padding: 10,
-  },
   item: {
-    borderBottomWidth: 1,
-    borderBottomColor: "#ccc",
-    paddingVertical: 8,
-  },
-  title: {
-    fontSize: 16,
-    fontWeight: "bold",
-  },
-  subtitle: {
-    fontWeight: "bold",
+    width: "100%",
   },
 });

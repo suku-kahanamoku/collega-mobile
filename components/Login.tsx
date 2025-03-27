@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { StyleSheet, Button, TouchableOpacity, View } from "react-native";
+import { StyleSheet, TouchableOpacity, View } from "react-native";
 import { Link } from "expo-router";
+import { Button } from "@rneui/themed";
 
 import { UiView, UiText, UiIcon } from "@/modules/Ui/components/Themed";
 import Field from "@/modules/Form/components/fields/Field";
@@ -46,12 +47,19 @@ const LoginCmp = () => {
 
       <View style={styles.content}>
         <View style={styles.socialButtons}>
-          <TouchableOpacity style={[styles.iconButton, styles.facebookButton]}>
-            <UiIcon name="facebook" size={28} color="#fff" />
-          </TouchableOpacity>
-          <TouchableOpacity style={[styles.iconButton, styles.googleButton]}>
-            <UiIcon name="google" size={28} color="#fff" />
-          </TouchableOpacity>
+          <Button
+            radius="sm"
+            type="clear"
+          >
+            <UiIcon name="facebook" size={32} color="#1877F2" />
+          </Button>
+          <Button
+            radius="sm"
+            type="clear"
+            style={[styles.iconButton, styles.googleButton]}
+          >
+            <UiIcon name="google" size={32} color="#DB4437" />
+          </Button>
         </View>
 
         <View style={styles.divider} />
@@ -99,7 +107,7 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: "bold",
     textAlign: "center",
-    marginVertical: 12
+    marginVertical: 12,
   },
   content: {
     width: "100%",

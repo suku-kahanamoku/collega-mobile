@@ -1,12 +1,13 @@
 import React, { useState } from "react";
-import { TouchableOpacity, View } from "react-native";
-import { Link, Stack } from "expo-router";
+import { View } from "react-native";
+import { Stack } from "expo-router";
 
 import { useRoute } from "@/hooks/useRoute";
 import LogoCmp from "@/components/Logo";
 import SideMenuCmp from "@/components/menu/SideMenu";
 import { IMenu } from "@/types/menu";
 import { UiIcon } from "@/modules/Ui/components/Themed";
+import { Button, Icon } from "@rneui/themed";
 
 interface HeaderRightProps {
   activeMenu: IMenu;
@@ -19,19 +20,29 @@ const HeaderRightCmp: React.FC<HeaderRightProps> = ({
   settingsMenu,
   setOpen,
 }) => {
+  const { navigate } = useRoute();
+
   return (
-    <View style={{ flexDirection: "row", gap: 16 }}>
+    <View style={{ flexDirection: "row", gap: 4 }}>
       {/* pokud aktivni menu neni settings, tak zobrazi ozubene kolecko, presmeruje na settings */}
       {activeMenu !== settingsMenu && (
-        <Link href={settingsMenu.href}>
+        <Button
+          radius="sm"
+          type="clear"
+          onPress={() => navigate(settingsMenu.href)}
+        >
           <UiIcon name={settingsMenu.icon!} />
-        </Link>
+        </Button>
       )}
 
       {/* hamburger btn, po kliku zobrazi bocni menu */}
-      <TouchableOpacity onPress={() => setOpen((prevOpen) => !prevOpen)}>
+      <Button
+        radius="sm"
+        type="clear"
+        onPress={() => setOpen((prevOpen) => !prevOpen)}
+      >
         <UiIcon name="bars" />
-      </TouchableOpacity>
+      </Button>
     </View>
   );
 };

@@ -12,6 +12,8 @@ import {
   Theme,
 } from "@react-navigation/native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { createTheme, ThemeProvider as UiThemeProvider } from "@rneui/themed";
+
 import Colors from "@/constants/Colors";
 
 export type ITheme = "light" | "dark";
@@ -67,6 +69,12 @@ export const ThemeProviderCmp = ({ children }: { children: ReactNode }) => {
     success: theme === "dark" ? Colors.dark.success : Colors.light.success,
   };
 
+  const uiTheme = createTheme({
+    lightColors: Colors.light,
+    darkColors: Colors.dark,
+    mode: theme,
+  });
+
   return (
     <ThemeContext.Provider
       value={{
@@ -76,7 +84,9 @@ export const ThemeProviderCmp = ({ children }: { children: ReactNode }) => {
         dark: theme === "dark",
       }}
     >
-      <ThemeProvider value={currentTheme}>{children}</ThemeProvider>
+      <ThemeProvider value={currentTheme}>
+        <UiThemeProvider theme={uiTheme}>{children}</UiThemeProvider>
+      </ThemeProvider>
     </ThemeContext.Provider>
   );
 };

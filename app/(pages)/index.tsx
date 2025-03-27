@@ -2,13 +2,14 @@ import { StyleSheet } from "react-native";
 
 import { UiView, UiText } from "@/modules/Ui/components/Themed";
 import { useLocale } from "@/modules/Lang/hooks/useLocale";
+import LoginCmp from "@/components/Login";
 
 export default function DashboardScreen() {
   const { t } = useLocale();
 
   return (
     <UiView style={styles.container}>
-      <UiText style={styles.title}>{t("dashboard.title")}</UiText>
+      <LoginCmp />
     </UiView>
   );
 }
