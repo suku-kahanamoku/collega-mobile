@@ -34,7 +34,7 @@ export const RouteProvider = ({ children }: { children: ReactNode }) => {
       name: "settings",
       title: t("settings.title"),
       href: "/settings" as RelativePathString,
-      icon: "cog",
+      icon: "settings",
     },
     dashboard: {
       syscode: "dashboard",
@@ -48,14 +48,14 @@ export const RouteProvider = ({ children }: { children: ReactNode }) => {
       name: "users",
       title: t("users.title"),
       href: "/users" as RelativePathString,
-      icon: "users",
+      icon: "list-alt",
     },
     user: {
       syscode: "user",
       name: "users/[id]",
       title: t("user.title"),
       href: "/users/[id]" as RelativePathString,
-      icon: "user",
+      icon: "person",
       parentSyscode: "users",
     },
     contracts: {
@@ -63,14 +63,14 @@ export const RouteProvider = ({ children }: { children: ReactNode }) => {
       name: "contracts",
       title: t("contracts.title"),
       href: "/contracts" as RelativePathString,
-      icon: "files-o",
+      icon: "list-alt",
     },
     contracts_filter: {
       syscode: "contracts_filter",
       name: "contracts/filter",
       title: t("contract.filter"),
       href: "/contracts/filter" as RelativePathString,
-      icon: "filter",
+      icon: "filter-alt",
       parentSyscode: "contracts",
     },
     contract: {
@@ -78,7 +78,7 @@ export const RouteProvider = ({ children }: { children: ReactNode }) => {
       name: "contracts/[id]",
       title: t("contract.title"),
       href: "/contracts/[id]" as RelativePathString,
-      icon: "file-o",
+      icon: "description",
       parentSyscode: "contracts",
     },
   };

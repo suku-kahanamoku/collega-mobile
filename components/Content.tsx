@@ -1,13 +1,12 @@
 import React, { useState } from "react";
 import { View } from "react-native";
 import { Stack } from "expo-router";
+import { Button, Icon } from "@rneui/themed";
 
 import { useRoute } from "@/hooks/useRoute";
 import LogoCmp from "@/components/Logo";
 import SideMenuCmp from "@/components/menu/SideMenu";
 import { IMenu } from "@/types/menu";
-import { UiIcon } from "@/modules/Ui/components/Themed";
-import { Button, Icon } from "@rneui/themed";
 
 interface HeaderRightProps {
   activeMenu: IMenu;
@@ -23,26 +22,24 @@ const HeaderRightCmp: React.FC<HeaderRightProps> = ({
   const { navigate } = useRoute();
 
   return (
-    <View style={{ flexDirection: "row", gap: 4 }}>
+    <View style={{ flexDirection: "row" }}>
       {/* pokud aktivni menu neni settings, tak zobrazi ozubene kolecko, presmeruje na settings */}
       {activeMenu !== settingsMenu && (
         <Button
           radius="sm"
           type="clear"
+          icon={<Icon name={settingsMenu.icon!} />}
           onPress={() => navigate(settingsMenu.href)}
-        >
-          <UiIcon name={settingsMenu.icon!} />
-        </Button>
+        />
       )}
 
       {/* hamburger btn, po kliku zobrazi bocni menu */}
       <Button
         radius="sm"
         type="clear"
+        icon={<Icon name="menu" />}
         onPress={() => setOpen((prevOpen) => !prevOpen)}
-      >
-        <UiIcon name="bars" />
-      </Button>
+      />
     </View>
   );
 };

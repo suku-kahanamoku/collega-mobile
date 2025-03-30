@@ -2,8 +2,6 @@ import React from "react";
 import { View } from "react-native";
 
 import { useTheme } from "@/providers/ThemeProvider";
-import FontAwesome from "@expo/vector-icons/FontAwesome";
-import { Icon } from "@expo/vector-icons/build/createIconSet";
 
 export function UiView(props: View["props"]) {
   const { colors } = useTheme();
@@ -11,17 +9,6 @@ export function UiView(props: View["props"]) {
     <View
       {...props}
       style={[props.style, { backgroundColor: colors.background }]}
-    />
-  );
-}
-
-export function UiIcon(props: Icon<string, string>["defaultProps"]) {
-  const { colors } = useTheme();
-  return (
-    <FontAwesome
-      {...props}
-      size={props.size || 24}
-      color={props.color || colors.text}
     />
   );
 }

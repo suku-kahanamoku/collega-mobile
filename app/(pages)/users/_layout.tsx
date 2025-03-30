@@ -1,16 +1,17 @@
 import { Tabs } from "expo-router";
 import React from "react";
 import { Platform } from "react-native";
+import { Icon } from "@rneui/themed";
 
 import { useRoute } from "@/hooks/useRoute";
 import { useTheme } from "@/providers/ThemeProvider";
 import { UserProvider } from "@/modules/User/providers/UserProvider";
-import { UiIcon } from "@/modules/Ui/components/Themed";
 
 export default function UsersLayout() {
   const { colors } = useTheme();
   const { menuList } = useRoute();
-  const userMenu = menuList.users;
+  const usersMenu = menuList.users;
+  const userMenu = menuList.user;
 
   return (
     <UserProvider>
@@ -30,9 +31,9 @@ export default function UsersLayout() {
         <Tabs.Screen
           name="index"
           options={{
-            title: userMenu.title,
+            title: usersMenu.title,
             tabBarIcon: ({ color }) => (
-              <UiIcon name={userMenu.icon} color={color} />
+              <Icon name={usersMenu.icon!} color={color} />
             ),
           }}
         />
@@ -40,7 +41,9 @@ export default function UsersLayout() {
           name="[id]"
           options={{
             title: "User",
-            tabBarIcon: ({ color }) => <UiIcon name="user" color={color} />,
+            tabBarIcon: ({ color }) => (
+              <Icon name={userMenu.icon!} color={color} />
+            ),
           }}
         />
       </Tabs>

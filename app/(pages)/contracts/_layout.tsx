@@ -1,12 +1,12 @@
 import { Tabs } from "expo-router";
 import React from "react";
 import { Platform } from "react-native";
+import { Icon } from "@rneui/themed";
 
 import { useRoute } from "@/hooks/useRoute";
 import { useTheme } from "@/providers/ThemeProvider";
 import { ContractProvider } from "@/modules/Contract/providers/ContractProvider";
 import Field from "@/modules/Form/components/fields/Field";
-import { UiIcon } from "@/modules/Ui/components/Themed";
 
 export default function ContractsLayout() {
   const { colors } = useTheme();
@@ -41,7 +41,7 @@ export default function ContractsLayout() {
             headerShown: true,
             title: contractsMenu.title,
             tabBarIcon: ({ color }) => (
-              <UiIcon name={contractsMenu.icon} color={color} />
+              <Icon name={contractsMenu.icon!} color={color} />
             ),
             headerTitle: () => (
               <Field
@@ -64,7 +64,7 @@ export default function ContractsLayout() {
           options={{
             title: contractMenu.title,
             tabBarIcon: ({ color }) => (
-              <UiIcon name={contractMenu.icon} color={color} />
+              <Icon name={contractMenu.icon!} color={color} />
             ),
           }}
         />
@@ -74,7 +74,7 @@ export default function ContractsLayout() {
           options={{
             title: filterMenu.title,
             tabBarIcon: ({ color }) => (
-              <UiIcon name={filterMenu.icon} color={color} />
+              <Icon name={filterMenu.icon!} color={color} />
             ),
           }}
         />

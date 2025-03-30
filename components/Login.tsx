@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { StyleSheet, View } from "react-native";
 import { Link } from "expo-router";
-import { Text, Button } from "@rneui/themed";
+import { Text, Button, SocialIcon } from "@rneui/themed";
 
-import { UiView, UiIcon } from "@/modules/Ui/components/Themed";
+import { UiView } from "@/modules/Ui/components/Themed";
 import Field from "@/modules/Form/components/fields/Field";
 import { Field as FieldType } from "@/modules/Form/type";
 
@@ -47,16 +47,12 @@ const LoginCmp = () => {
 
       <View style={styles.content}>
         <View style={styles.socialButtons}>
-          <Button radius="sm" type="clear">
-            <UiIcon name="facebook" size={32} color="#1877F2" />
-          </Button>
           <Button
-            radius="sm"
+            size="sm"
             type="clear"
-            style={[styles.iconButton, styles.googleButton]}
-          >
-            <UiIcon name="google" size={32} color="#DB4437" />
-          </Button>
+            icon={<SocialIcon type="facebook" />}
+          />
+          <Button size="sm" type="clear" icon={<SocialIcon type="google" />} />
         </View>
 
         <View style={styles.divider} />
@@ -114,19 +110,7 @@ const styles = StyleSheet.create({
   socialButtons: {
     flexDirection: "row",
     gap: 20,
-    justifyContent: "space-between",
-  },
-  iconButton: {
-    flex: 1,
-    padding: 8,
-    borderRadius: 5,
-    alignItems: "center",
-  },
-  facebookButton: {
-    backgroundColor: "#1877F2",
-  },
-  googleButton: {
-    backgroundColor: "#DB4437",
+    justifyContent: "space-around",
   },
   divider: {
     height: 1,
