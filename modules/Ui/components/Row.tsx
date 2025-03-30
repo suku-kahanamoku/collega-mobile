@@ -1,8 +1,8 @@
 import React from "react";
 import { StyleSheet, View } from "react-native";
+import { Text } from "@rneui/themed";
 
 import { StyleProps } from "@/types/component";
-import { UiText } from "@/modules/Ui/components/Themed";
 
 interface RowProps {
   label: string;
@@ -22,9 +22,9 @@ export default function RowCmp({
   if (variant === "inline") {
     return (
       <View style={[styles.container, style?.container]} {...rest}>
-        <UiText style={[styles.label, styles.inlineLabel, style?.label]}>
+        <Text style={[styles.label, styles.inlineLabel, style?.label]}>
           {label}:
-        </UiText>
+        </Text>
         <View style={[styles.children, style?.children]}>{children}</View>
       </View>
     );
@@ -32,7 +32,7 @@ export default function RowCmp({
 
   return (
     <View style={style?.container} {...rest}>
-      <UiText style={[styles.label, style?.label]}>{label}</UiText>
+      <Text style={[styles.label, style?.label]}>{label}</Text>
       <View style={style?.children}>{children}</View>
     </View>
   );

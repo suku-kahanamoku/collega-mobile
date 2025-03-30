@@ -3,7 +3,7 @@ import { Link } from "expo-router";
 import { ListItem } from "@rneui/themed";
 
 import { useRoute } from "@/hooks/useRoute";
-import { UiView, UiText } from "@/modules/Ui/components/Themed";
+import { UiView } from "@/modules/Ui/components/Themed";
 import { useContract } from "@/modules/Contract/hooks/useContract";
 import LoadingCmp from "@/modules/Ui/components/Loading";
 import RecordNotFound from "@/modules/Ui/components/RecordNotFound";

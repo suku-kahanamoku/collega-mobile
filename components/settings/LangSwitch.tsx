@@ -1,5 +1,5 @@
 import React from "react";
-import { TouchableOpacity, StyleSheet, View } from "react-native";
+import { TouchableOpacity, StyleSheet } from "react-native";
 import Flag from "react-native-flags";
 
 import { useLocale } from "@/modules/Lang/hooks/useLocale";

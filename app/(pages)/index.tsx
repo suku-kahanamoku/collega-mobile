@@ -1,6 +1,6 @@
 import { StyleSheet } from "react-native";
 
-import { UiView, UiText } from "@/modules/Ui/components/Themed";
+import { UiView } from "@/modules/Ui/components/Themed";
 import { useLocale } from "@/modules/Lang/hooks/useLocale";
 import LoginCmp from "@/components/Login";
 

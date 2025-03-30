@@ -1,7 +1,8 @@
 import { StyleSheet } from "react-native";
 import { useLocalSearchParams } from "expo-router";
+import { Text } from "@rneui/themed";
 
-import { UiView, UiText } from "@/modules/Ui/components/Themed";
+import { UiView } from "@/modules/Ui/components/Themed";
 import { useUser } from "@/modules/User/hooks/useUser";
 import RecordNotFound from "@/modules/Ui/components/RecordNotFound";
 
@@ -16,9 +17,9 @@ export default function UserScreen() {
 
   return (
     <UiView style={styles.container}>
-      <UiText style={styles.title}>{user.name}</UiText>
-      <UiText>{user.email}</UiText>
-      <UiText>{user.username}</UiText>
+      <Text style={styles.title}>{user.name}</Text>
+      <Text>{user.email}</Text>
+      <Text>{user.username}</Text>
     </UiView>
   );
 }

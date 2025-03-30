@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { StyleSheet, TouchableOpacity, View } from "react-native";
+import { StyleSheet, View } from "react-native";
 import { Link } from "expo-router";
-import { Button } from "@rneui/themed";
+import { Text, Button } from "@rneui/themed";
 
-import { UiView, UiText, UiIcon } from "@/modules/Ui/components/Themed";
+import { UiView, UiIcon } from "@/modules/Ui/components/Themed";
 import Field from "@/modules/Form/components/fields/Field";
 import { Field as FieldType } from "@/modules/Form/type";
 
@@ -43,14 +43,11 @@ const LoginCmp = () => {
 
   return (
     <UiView style={styles.container}>
-      <UiText style={styles.title}>Log in to your account</UiText>
+      <Text style={styles.title}>Log in to your account</Text>
 
       <View style={styles.content}>
         <View style={styles.socialButtons}>
-          <Button
-            radius="sm"
-            type="clear"
-          >
+          <Button radius="sm" type="clear">
             <UiIcon name="facebook" size={32} color="#1877F2" />
           </Button>
           <Button
@@ -80,9 +77,9 @@ const LoginCmp = () => {
         </View>
 
         <View style={styles.info}>
-          <UiText>Don't have an account?</UiText>
+          <Text>Don't have an account?</Text>
           <Link href="/signup" style={styles.signupLink}>
-            <UiText>Sign up</UiText>
+            <Text>Sign up</Text>
           </Link>
         </View>
       </View>
