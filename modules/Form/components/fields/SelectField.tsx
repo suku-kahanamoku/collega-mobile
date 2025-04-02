@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { StyleSheet } from "react-native";
 import { Picker } from "@react-native-picker/picker";
+import { Input } from "@rneui/themed";
 
 import { StyleProps } from "@/types/component";
-import RowCmp from "@/modules/Ui/components/Row";
 import { SelectField as SelectFieldType } from "../../type";
 import { useTheme } from "@/providers/ThemeProvider";
 
@@ -21,6 +21,7 @@ const SelectField: React.FC<FieldProps> = ({
   ...rest
 }) => {
   const { colors } = useTheme();
+  const [value, setValue] = useState(field.value);
   const [selectedValue, setSelectedValue] = useState("canceled");
 
   const handleChange = (value: string) => {
@@ -28,38 +29,37 @@ const SelectField: React.FC<FieldProps> = ({
     onChange && onChange(value);
   };
 
-  return (
-    <RowCmp
-      label={field.label}
-      variant={field.variant}
-      style={{ ...styles, ...style }}
-      {...rest}
+  const PickerComponent = React.forwardRef((props, ref) => (
+    <Picker
+      ref={ref as any} // Cast ref to any to avoid type errors
+      selectedValue={selectedValue}
+      prompt={field.prompt}
+      style={{
+        color: colors.text,
+        width: "100%",
+      }}
+      onValueChange={handleChange}
     >
-      <Picker
-        selectedValue={selectedValue}
-        prompt={field.prompt}
-        style={{ marginLeft: -12, color: colors.text }}
-        onValueChange={handleChange}
-      >
-        {field.options?.map((option) => (
-          <Picker.Item
-            key={option.value}
-            label={option.label}
-            value={option.value}
-          />
-        ))}
-      </Picker>
-    </RowCmp>
+      {field.options?.map((option) => (
+        <Picker.Item
+          key={option.value}
+          label={option.label}
+          value={option.value}
+        />
+      ))}
+    </Picker>
+  ));
+
+  return (
+    <>
+      <Input
+        label={field.label}
+        placeholder={field.placeholder}
+        InputComponent={PickerComponent}
+        {...rest}
+      />
+    </>
   );
 };
-
-const styles = StyleSheet.create({
-  children: {
-    flex: 1,
-    borderWidth: 1,
-    borderColor: "#ccc",
-    height: 44,
-  },
-});
 
 export default SelectField;

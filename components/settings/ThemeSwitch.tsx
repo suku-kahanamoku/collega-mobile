@@ -3,8 +3,9 @@ import { StyleSheet } from "react-native";
 
 import { useTheme } from "@/providers/ThemeProvider";
 import { useLocale } from "@/modules/Lang/hooks/useLocale";
-import Field from "@/modules/Form/components/fields/Field";
 import { Field as FieldType } from "@/modules/Form/type";
+import RowCmp from "@/modules/Ui/components/Row";
+import { Switch } from "@rneui/themed";
 
 const ThemeSwitchCmp = () => {
   const { t } = useLocale();
@@ -21,7 +22,15 @@ const ThemeSwitchCmp = () => {
     changeTheme(theme === "dark" ? "light" : "dark");
   };
 
-  return <Field field={field} style={styles} onChange={toggleDarkMode} />;
+  return (
+    <RowCmp label={field.label} variant={field.variant} style={styles}>
+      <Switch
+        value={field.value}
+        trackColor={{ false: "gray" }}
+        onValueChange={toggleDarkMode}
+      />
+    </RowCmp>
+  );
 };
 
 export default ThemeSwitchCmp;

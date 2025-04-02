@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { StyleSheet, Switch } from "react-native";
+import { StyleSheet } from "react-native";
 
 import { StyleProps } from "@/types/component";
-import RowCmp from "@/modules/Ui/components/Row";
 import { CheckboxField as CheckboxFieldType } from "../../type";
+import { CheckBox } from "@rneui/themed";
 
 interface FieldProps {
   field: CheckboxFieldType;
@@ -18,35 +18,29 @@ const CheckboxField: React.FC<FieldProps> = ({
   onChange,
   ...rest
 }) => {
-  const [isChecked, setIsChecked] = useState(field.value);
+  const [isChecked, setIsChecked] = useState(field.value || false);
 
-  const handleChange = (value: boolean) => {
+  const handleChange = () => {
+    const value = !isChecked;
     setIsChecked(value);
     onChange && onChange(value);
   };
 
   return (
-    <RowCmp
-      label={field.label}
-      variant={field.variant}
-      style={{ ...styles, ...style }}
+    <CheckBox
+      checked={isChecked}
+      title={field.label}
+      containerStyle={styles.container}
       {...rest}
-    >
-      <Switch
-        value={isChecked}
-        trackColor={{ false: "gray" }}
-        onValueChange={handleChange}
-      />
-    </RowCmp>
+      onPress={handleChange}
+    />
   );
 };
 
+export default CheckboxField;
+
 const styles = StyleSheet.create({
-  children: {
-    flexDirection: "row",
-    justifyContent: "flex-start",
-    height: 44,
+  container: {
+    backgroundColor: "transparent",
   },
 });
-
-export default CheckboxField;
