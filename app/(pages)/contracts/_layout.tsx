@@ -47,10 +47,7 @@ export default function ContractsLayout() {
               <Field
                 key={searchField.name}
                 field={searchField}
-                style={{
-                  label: { height: 0 },
-                  children: { height: 44 },
-                }}
+                renderErrorMessage={false}
               />
             ),
             headerTitleContainerStyle: {
