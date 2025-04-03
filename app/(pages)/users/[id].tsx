@@ -15,7 +15,7 @@ export default function UserScreen() {
   }
 
   return (
-    <ScrollView style={styles.container}>
+    <ScrollView>
       <Text style={styles.title}>{user.name}</Text>
       <Text>{user.email}</Text>
       <Text>{user.username}</Text>

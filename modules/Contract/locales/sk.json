@@ -57,8 +57,7 @@
         "status": "Stav",
         "commission_status": "Stav provízie",
         "frequency_type": "Typ frekvencie"
-      },
-      "filter": "Filter"
+      }
     }
   }
 }

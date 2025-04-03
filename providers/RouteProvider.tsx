@@ -68,7 +68,7 @@ export const RouteProvider = ({ children }: { children: ReactNode }) => {
     contracts_filter: {
       syscode: "contracts_filter",
       name: "contracts/filter",
-      title: t("contract.filter"),
+      title: t("global.filter"),
       href: "/contracts/filter" as RelativePathString,
       icon: "filter-alt",
       parentSyscode: "contracts",

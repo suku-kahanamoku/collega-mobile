@@ -3,7 +3,9 @@
     "global": {
       "loading": "Loading...",
       "record_404": "Record not found",
-      "records_404": "Records not found"
+      "records_404": "Records not found",
+      "filter": "Filter",
+      "documents": "Documents"
     },
     "404": {
       "title": "Page not found"

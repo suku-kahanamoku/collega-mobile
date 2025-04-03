@@ -1,4 +1,4 @@
-export default {
+export const Colors = {
   light: {
     text: "#000",
     background: "#fff",
@@ -20,5 +20,20 @@ export default {
     warning: "#856404",
     error: "#721c24",
     success: "#155724",
+  },
+};
+
+export const FontSizes = {
+  h1Style: {
+    fontSize: 28,
+  },
+  h2Style: {
+    fontSize: 24,
+  },
+  h3Style: {
+    fontSize: 20,
+  },
+  h4Style: {
+    fontSize: 16,
   },
 };

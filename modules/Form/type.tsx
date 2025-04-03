@@ -17,6 +17,7 @@ export interface TextField extends FieldItem, TextInputProps {}
 
 export interface SelectField extends FieldItem, PickerProps {
   options?: Option[];
+  optionList?: Record<string, string>;
   value?: any;
 }
 

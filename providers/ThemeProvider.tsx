@@ -14,7 +14,7 @@ import {
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { createTheme, ThemeProvider as UiThemeProvider } from "@rneui/themed";
 
-import Colors from "@/constants/Colors";
+import { Colors, FontSizes } from "@/constants/Theme";
 
 export type ITheme = "light" | "dark";
 
@@ -68,12 +68,17 @@ export const ThemeProviderCmp = ({ children }: { children: ReactNode }) => {
     warning: isDark ? Colors.dark.warning : Colors.light.warning,
     error: isDark ? Colors.dark.error : Colors.light.error,
     success: isDark ? Colors.dark.success : Colors.light.success,
+    primary2: isDark ? Colors.dark.primary2 : Colors.light.primary2,
   };
 
   const uiTheme = createTheme({
     lightColors: Colors.light,
     darkColors: Colors.dark,
     mode: theme,
+    components: {
+      Text: FontSizes,
+      CardTitle: FontSizes,
+    },
   });
 
   return (

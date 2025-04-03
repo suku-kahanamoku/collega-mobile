@@ -42,7 +42,9 @@ const LoginCmp = () => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Log in to your account</Text>
+      <Text h2 h2Style={styles.title}>
+        Log in to your account
+      </Text>
 
       <View style={styles.content}>
         <View style={styles.socialButtons}>
@@ -96,10 +98,7 @@ const styles = StyleSheet.create({
     gap: 20,
   },
   title: {
-    fontSize: 24,
-    fontWeight: "bold",
-    textAlign: "center",
-    marginVertical: 12,
+    marginTop: 12,
   },
   content: {
     width: "100%",

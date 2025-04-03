@@ -2,10 +2,10 @@ import React from "react";
 import { ScrollView, StyleSheet } from "react-native";
 import { ListItem, Text } from "@rneui/themed";
 import TouchableScale from "react-native-touchable-scale";
+import { LinearGradient } from "expo-linear-gradient";
 
 import { useTheme } from "@/providers/ThemeProvider";
 import { IMenu } from "@/types/menu";
-import { LinearGradient } from "expo-linear-gradient";
 
 interface MenuListProps {
   menus: IMenu[];

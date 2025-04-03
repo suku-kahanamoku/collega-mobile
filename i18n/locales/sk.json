@@ -3,7 +3,9 @@
     "global": {
       "loading": "Načítanie...",
       "record_404": "Záznam nebol nájdený",
-      "records_404": "Záznamy neboli nájdené"
+      "records_404": "Záznamy neboli nájdené",
+      "filter": "Filter",
+      "documents": "Dokumenty"
     },
     "404": {
       "title": "Stránka nenájdená"

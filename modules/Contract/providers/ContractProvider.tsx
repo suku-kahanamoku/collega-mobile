@@ -10,6 +10,7 @@ interface ContractContextProps {
   loading: boolean;
   error: string | null;
   fields: Field[];
+  fieldList: Record<string, Field>;
 }
 
 export const ContractContext = createContext<ContractContextProps | undefined>(
@@ -32,6 +33,21 @@ export const ContractProvider = ({ children }: { children: ReactNode }) => {
     return result as Field;
   });
 
+  const fieldList = fields.reduce((acc, field) => {
+    acc[field.name] = {
+      ...field,
+      optionList: field.options
+        ? field.options.reduce((optionAcc, option) => {
+            if (option.value && option.label) {
+              optionAcc[option.value] = option.label;
+            }
+            return optionAcc;
+          }, {} as Record<string, string>)
+        : undefined,
+    };
+    return acc;
+  }, {} as Record<string, Field & { optionList?: Record<string, string> }>);
+
   const fetchContracts = async () => {
     try {
       const response = await fetch(FETCH_OPTIONS.url, {
@@ -53,7 +69,9 @@ export const ContractProvider = ({ children }: { children: ReactNode }) => {
   }, []);
 
   return (
-    <ContractContext.Provider value={{ contracts, loading, error, fields }}>
+    <ContractContext.Provider
+      value={{ contracts, loading, error, fields, fieldList }}
+    >
       {children}
     </ContractContext.Provider>
   );

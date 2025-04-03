@@ -57,8 +57,7 @@
         "status": "Status",
         "commission_status": "Commission Status",
         "frequency_type": "Frequency Type"
-      },
-      "filter": "Filter"
+      }
     }
   }
 }

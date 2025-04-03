@@ -56,8 +56,7 @@
         "product_name": "Název produktu",
         "status": "Stav",
         "commission_status": "Stav provize",
-        "frequency_type": "Typ frekvence",
-        "filter": "Filtr"
+        "frequency_type": "Typ frekvence"
       }
     }
   }

@@ -8,11 +8,11 @@ import {
 } from "@/modules/Form/type";
 
 export const FETCH_OPTIONS = {
-  url: "https://collega.cz/security/api/get-contract?consultant=550",
+  url: "https://collega.cz/security/hook/get-contract?client_id=4703",
   method: "GET",
   headers: {
     Authorization:
-      "Bearer def502008981ffa1a5d0e2b112f1068de8d9d25ee43f46a16fd0ade32cd376315cb88882e0b931b7932816acd88bbffb3974b282250c88a4c634b649e87153f6d520d716570fedc68562a94489fd5aff5adc1867fb7a27d4",
+      "Bearer def50200b939e8396d98ef29a9ae1eee3050929dc56f3aecdce7a001de95a4aa9431ff3486f47e20c86127bb3316ddb5db6ee8a2990b1b2f9fe03d7d37d0f5ca0eb001f80893412a3f4fce7d130272a804d9bf3a4598ed8e",
   },
 };
 
