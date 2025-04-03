@@ -1,7 +1,7 @@
 import React from "react";
-import { View } from "react-native";
-import { Button, Icon, Header } from "@rneui/themed";
-import { useTheme } from "@react-navigation/native";
+import { StyleSheet, View } from "react-native";
+import { Button, Icon, Header, Text } from "@rneui/themed";
+import { useTheme } from "@/providers/ThemeProvider";
 import LogoCmp from "@/components/Logo";
 import { useRoute } from "@/hooks/useRoute";
 import { IMenu } from "@/types/menu";
@@ -17,7 +17,7 @@ const HeaderComponent: React.FC<HeaderComponentProps> = ({
   settingsMenu,
   setOpen,
 }) => {
-  const { colors } = useTheme();
+  const { Colors } = useTheme();
   const { navigate } = useRoute();
 
   const HeaderRightCmp = () => (
@@ -26,14 +26,14 @@ const HeaderComponent: React.FC<HeaderComponentProps> = ({
         <Button
           radius="sm"
           type="clear"
-          icon={<Icon name={settingsMenu.icon!} />}
+          icon={<Icon name={settingsMenu.icon!} color={Colors.dark.text} />}
           onPress={() => navigate(settingsMenu.href)}
         />
       )}
       <Button
         radius="sm"
         type="clear"
-        icon={<Icon name="menu" />}
+        icon={<Icon name="menu" color={Colors.dark.text} />}
         onPress={() => setOpen((prevOpen) => !prevOpen)}
       />
     </View>
@@ -43,9 +43,20 @@ const HeaderComponent: React.FC<HeaderComponentProps> = ({
     <Header
       leftComponent={<LogoCmp />}
       rightComponent={<HeaderRightCmp />}
-      backgroundColor={colors.background}
+      centerComponent={
+        <Text h1 h1Style={[styles.title, { color: Colors.dark.secondary }]}>
+          {activeMenu.title}
+        </Text>
+      }
     />
   );
 };
+
+const styles = StyleSheet.create({
+  title: {
+    fontSize: 26,
+    fontWeight: 600,
+  },
+});
 
 export default HeaderComponent;

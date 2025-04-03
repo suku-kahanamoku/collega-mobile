@@ -20,9 +20,10 @@ export type ITheme = "light" | "dark";
 
 interface ThemeContextProps {
   theme: ITheme;
-  changeTheme: (value: ITheme) => Promise<void>;
+  isDark: boolean;
   colors: Theme["colors"] & typeof Colors.light;
-  dark: boolean;
+  Colors: typeof Colors;
+  changeTheme: (value: ITheme) => Promise<void>;
 }
 
 const ThemeContext = createContext<ThemeContextProps | undefined>(undefined);
@@ -58,15 +59,15 @@ export const ThemeProviderCmp = ({ children }: { children: ReactNode }) => {
     loadTheme();
   }, []);
 
-  const currentTheme = theme === "dark" ? DarkTheme : DefaultTheme;
+  const isDark = theme === "dark";
+  const currentTheme = isDark ? DarkTheme : DefaultTheme;
   const colors = {
     ...currentTheme.colors,
-    secondary:
-      theme === "dark" ? Colors.dark.secondary : Colors.light.secondary,
-    info: theme === "dark" ? Colors.dark.info : Colors.light.info,
-    warning: theme === "dark" ? Colors.dark.warning : Colors.light.warning,
-    error: theme === "dark" ? Colors.dark.error : Colors.light.error,
-    success: theme === "dark" ? Colors.dark.success : Colors.light.success,
+    secondary: isDark ? Colors.dark.secondary : Colors.light.secondary,
+    info: isDark ? Colors.dark.info : Colors.light.info,
+    warning: isDark ? Colors.dark.warning : Colors.light.warning,
+    error: isDark ? Colors.dark.error : Colors.light.error,
+    success: isDark ? Colors.dark.success : Colors.light.success,
   };
 
   const uiTheme = createTheme({
@@ -79,9 +80,10 @@ export const ThemeProviderCmp = ({ children }: { children: ReactNode }) => {
     <ThemeContext.Provider
       value={{
         theme,
-        changeTheme,
+        isDark,
         colors,
-        dark: theme === "dark",
+        Colors,
+        changeTheme,
       }}
     >
       <ThemeProvider value={currentTheme}>

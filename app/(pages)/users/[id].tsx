@@ -1,10 +1,9 @@
-import { StyleSheet } from "react-native";
+import { ScrollView, StyleSheet } from "react-native";
 import { useLocalSearchParams } from "expo-router";
 import { Text } from "@rneui/themed";
 
-import { UiView } from "@/modules/Ui/components/Themed";
 import { useUser } from "@/modules/User/hooks/useUser";
-import RecordNotFound from "@/modules/Ui/components/RecordNotFound";
+import RecordNotFoundPage from "@/modules/Ui/components/RecordNotFound";
 
 export default function UserScreen() {
   const { id } = useLocalSearchParams();
@@ -12,15 +11,15 @@ export default function UserScreen() {
   const user = users.find((u) => u.id === Number(id));
 
   if (!user) {
-    return <RecordNotFound />;
+    return <RecordNotFoundPage />;
   }
 
   return (
-    <UiView style={styles.container}>
+    <ScrollView style={styles.container}>
       <Text style={styles.title}>{user.name}</Text>
       <Text>{user.email}</Text>
       <Text>{user.username}</Text>
-    </UiView>
+    </ScrollView>
   );
 }
 

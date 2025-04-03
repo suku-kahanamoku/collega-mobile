@@ -3,6 +3,7 @@ import { Drawer } from "react-native-drawer-layout";
 
 import MenuListCmp from "./MenuList";
 import { IMenu } from "@/types/menu";
+import { useRoute } from "@/hooks/useRoute";
 
 interface SideMenuProps {
   children: React.ReactNode;
@@ -17,15 +18,20 @@ const SideMenuCmp: React.FC<SideMenuProps> = ({
   setOpen,
   menus,
 }) => {
+  const { navigate } = useRoute();
+
+  const onPress = (menu: IMenu) => {
+    navigate(menu.href);
+    setOpen(false);
+  };
+
   return (
     <Drawer
       open={open}
+      drawerPosition="right"
+      renderDrawerContent={() => MenuListCmp({ menus, onPress })}
       onOpen={() => setOpen(true)}
       onClose={() => setOpen(false)}
-      renderDrawerContent={() =>
-        MenuListCmp({ menus, onPress: () => setOpen(false) })
-      }
-      drawerPosition="right"
     >
       {children}
     </Drawer>

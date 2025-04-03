@@ -1,8 +1,7 @@
 import React from "react";
-import { StyleSheet } from "react-native";
+import { StyleSheet, View } from "react-native";
 import { Text } from "@rneui/themed";
 
-import { UiView } from "./Themed";
 import { useLocale } from "@/modules/Lang/hooks/useLocale";
 
 export default function LoadingPage({
@@ -13,9 +12,9 @@ export default function LoadingPage({
   const { t } = useLocale();
 
   return (
-    <UiView style={styles.container}>
+    <View style={styles.container}>
       <Text style={styles.title}>{t(message)}</Text>
-    </UiView>
+    </View>
   );
 }
 

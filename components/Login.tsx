@@ -3,7 +3,6 @@ import { StyleSheet, View } from "react-native";
 import { Link } from "expo-router";
 import { Text, Button, SocialIcon } from "@rneui/themed";
 
-import { UiView } from "@/modules/Ui/components/Themed";
 import Field from "@/modules/Form/components/fields/Field";
 import { Field as FieldType } from "@/modules/Form/type";
 
@@ -42,7 +41,7 @@ const LoginCmp = () => {
   };
 
   return (
-    <UiView style={styles.container}>
+    <View style={styles.container}>
       <Text style={styles.title}>Log in to your account</Text>
 
       <View style={styles.content}>
@@ -83,7 +82,7 @@ const LoginCmp = () => {
       <View style={styles.footer}>
         <Button title="Login" onPress={handleSubmit} />
       </View>
-    </UiView>
+    </View>
   );
 };
 

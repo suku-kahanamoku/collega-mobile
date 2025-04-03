@@ -1,38 +1,51 @@
 import React from "react";
-import { StyleSheet } from "react-native";
-import { Link } from "expo-router";
+import { ScrollView, StyleSheet } from "react-native";
+import { ListItem, Text } from "@rneui/themed";
+import TouchableScale from "react-native-touchable-scale";
 
 import { useTheme } from "@/providers/ThemeProvider";
-import { UiView } from "@/modules/Ui/components/Themed";
 import { IMenu } from "@/types/menu";
+import { LinearGradient } from "expo-linear-gradient";
 
 interface MenuListProps {
   menus: IMenu[];
-  onPress?: () => void;
+  onPress?: (menu: IMenu) => void;
 }
 
 const MenuListCmp: React.FC<MenuListProps> = ({ menus, onPress }) => {
-  const { colors } = useTheme();
+  const { Colors } = useTheme();
 
   return (
-    <UiView style={styles.container}>
+    <ScrollView
+      style={[styles.container, { backgroundColor: Colors.dark.primary }]}
+    >
       {menus.map((menu, index) => (
-        <Link
+        <ListItem
+          Component={TouchableScale}
+          ViewComponent={LinearGradient}
+          linearGradientProps={{
+            colors: [Colors.dark.primary2, Colors.dark.primary],
+            start: { x: 2, y: 0 },
+            end: { x: 0.2, y: 0 },
+          }}
+          bottomDivider
           key={index}
-          href={menu.href}
-          style={[
-            styles.link,
-            {
-              color: colors.text,
-              backgroundColor: menu.active ? colors.primary : "transparent",
-            },
-          ]}
-          onPress={onPress}
+          onPress={() => onPress && onPress(menu)}
         >
-          {menu.title}
-        </Link>
+          <ListItem.Content>
+            <ListItem.Title>
+              <Text
+                style={{
+                  color: Colors.dark.secondary,
+                }}
+              >
+                {menu.title}
+              </Text>
+            </ListItem.Title>
+          </ListItem.Content>
+        </ListItem>
       ))}
-    </UiView>
+    </ScrollView>
   );
 };
 
@@ -41,12 +54,6 @@ export default MenuListCmp;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 20,
-  },
-  link: {
-    marginVertical: 10,
-    fontSize: 18,
-    padding: 10,
-    borderRadius: 5,
+    paddingVertical: 30,
   },
 });

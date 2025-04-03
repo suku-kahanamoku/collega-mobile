@@ -9,17 +9,17 @@ import { Switch } from "@rneui/themed";
 
 const ThemeSwitchCmp = () => {
   const { t } = useLocale();
-  const { changeTheme, theme } = useTheme();
+  const { changeTheme, isDark } = useTheme();
   const field = {
     type: "checkbox",
     name: "theme",
     label: t("settings.dark_mode"),
     variant: "inline",
-    value: theme === "dark",
+    value: isDark,
   } as FieldType;
 
   const toggleDarkMode = () => {
-    changeTheme(theme === "dark" ? "light" : "dark");
+    changeTheme(isDark ? "light" : "dark");
   };
 
   return (

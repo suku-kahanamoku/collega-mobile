@@ -1,18 +1,16 @@
 import { Link } from "expo-router";
-import { StyleSheet } from "react-native";
+import { StyleSheet, View } from "react-native";
 import { Text } from "@rneui/themed";
-
-import { UiView } from "@/modules/Ui/components/Themed";
 
 export default function NotFoundScreen() {
   return (
-    <UiView style={styles.container}>
+    <View style={styles.container}>
       <Text style={styles.title}>This screen doesn't exist.</Text>
 
       <Link href="/" style={styles.link}>
         <Text>Go to home screen!</Text>
       </Link>
-    </UiView>
+    </View>
   );
 }
 

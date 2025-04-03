@@ -4,7 +4,7 @@ import { Text } from "@rneui/themed";
 
 import RowCmp from "@/modules/Ui/components/Row";
 import { useContract } from "@/modules/Contract/hooks/useContract";
-import RecordNotFound from "@/modules/Ui/components/RecordNotFound";
+import RecordNotFoundPage from "@/modules/Ui/components/RecordNotFound";
 
 export default function ContractScreen() {
   const { id } = useLocalSearchParams();
@@ -12,7 +12,7 @@ export default function ContractScreen() {
   const contract = contracts.find((c) => c.id === Number(id));
 
   if (!contract) {
-    return <RecordNotFound />;
+    return <RecordNotFoundPage />;
   }
 
   return (
