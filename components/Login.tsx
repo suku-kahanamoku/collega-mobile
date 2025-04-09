@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import { StyleSheet, View } from "react-native";
 import { Link } from "expo-router";
-import { Text, Button, SocialIcon } from "@rneui/themed";
+import { Text, Button, SocialIcon, Divider } from "@rneui/themed";
 
 import Field from "@/modules/Form/components/fields/Field";
 import { Field as FieldType } from "@/modules/Form/type";
+import { useLocale } from "@/modules/Lang/hooks/useLocale";
 
 const LoginCmp = () => {
+  const { t } = useLocale();
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -16,18 +18,18 @@ const LoginCmp = () => {
     {
       type: "text",
       name: "email",
-      label: "Email",
+      label: t("form.email"),
       inputMode: "email",
       autoComplete: "email",
-      placeholder: "Enter your email",
+      placeholder: t("placeholder.email"),
     },
     {
-      type: "text",
+      type: "password",
       name: "password",
-      label: "Password",
+      label: t("form.password"),
       inputMode: "text",
       autoComplete: "password",
-      placeholder: "Enter your password",
+      placeholder: t("placeholder.password"),
       secureTextEntry: true,
     },
   ];
@@ -42,47 +44,44 @@ const LoginCmp = () => {
 
   return (
     <View style={styles.container}>
-      <Text h2 h2Style={styles.title}>
-        Log in to your account
+      <Text h1 h1Style={styles.title}>
+        {t("login.title")}
       </Text>
 
-      <View style={styles.content}>
-        <View style={styles.socialButtons}>
-          <Button
-            size="sm"
-            type="clear"
-            icon={<SocialIcon type="facebook" />}
+      <Divider style={styles.divider} />
+
+      <View style={styles.field}>
+        {fields.map((field) => (
+          <Field
+            key={field.name}
+            field={field}
+            style={{
+              container: { gap: 4 },
+              label: { fontSize: 16 },
+              children: { height: 46 },
+            }}
+            onChange={(value) => handleChange(field.name, value)}
           />
-          <Button size="sm" type="clear" icon={<SocialIcon type="google" />} />
-        </View>
+        ))}
+      </View>
 
-        <View style={styles.divider} />
-
-        <View style={styles.field}>
-          {fields.map((field) => (
-            <Field
-              key={field.name}
-              field={field}
-              style={{
-                container: { gap: 4 },
-                label: { fontSize: 16 },
-                children: { height: 46 },
-              }}
-              onChange={(value) => handleChange(field.name, value)}
-            />
-          ))}
-        </View>
+      <View style={styles.button}>
+        <Button title={t("btn.login")} onPress={handleSubmit} />
 
         <View style={styles.info}>
-          <Text>Don't have an account?</Text>
+          <Text>{t("login.account")}</Text>
           <Link href="/signup" style={styles.signupLink}>
-            <Text>Sign up</Text>
+            <Text h4>{t("btn.signup")}</Text>
           </Link>
         </View>
       </View>
 
-      <View style={styles.footer}>
-        <Button title="Login" onPress={handleSubmit} />
+      <Divider style={styles.divider} />
+
+      <View style={styles.socialButtons}>
+        <Button size="lg" type="clear" icon={<SocialIcon type="facebook" />} />
+        <Button size="lg" type="clear" icon={<SocialIcon type="google" />} />
+        <Button size="lg" type="clear" icon={<SocialIcon type="linkedin" />} />
       </View>
     </View>
   );
@@ -97,36 +96,32 @@ const styles = StyleSheet.create({
     alignItems: "center",
     gap: 20,
   },
-  title: {
-    marginTop: 12,
-  },
-  content: {
-    width: "100%",
-    maxWidth: 400,
-    gap: 20,
-  },
-  socialButtons: {
-    flexDirection: "row",
-    gap: 20,
-    justifyContent: "space-around",
-  },
   divider: {
-    height: 1,
-    backgroundColor: "#ccc",
+    width: "100%",
+  },
+  title: {
+    marginTop: 20,
   },
   field: {
+    width: "100%",
     gap: 16,
+  },
+  button: {
+    width: "100%",
+    justifyContent: "center",
+    gap: 30,
   },
   info: {
     flexDirection: "row",
+    alignItems: "center",
   },
   signupLink: {
     fontWeight: "bold",
     marginLeft: 4,
   },
-  footer: {
-    width: "100%",
-    justifyContent: "center",
-    marginTop: 10,
+  socialButtons: {
+    flexDirection: "row",
+    justifyContent: "space-around",
+    gap: 20,
   },
 });

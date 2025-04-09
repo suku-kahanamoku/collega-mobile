@@ -33,6 +33,7 @@ const TextField: React.FC<FieldProps> = ({
       autoComplete={field.autoComplete}
       autoFocus={field.autoFocus}
       value={field.value}
+      secureTextEntry={field.type === 'password' ? true : false}
       {...rest}
       onChangeText={handleChange}
     />

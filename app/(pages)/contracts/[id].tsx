@@ -1,6 +1,6 @@
 import { StyleSheet, ScrollView, View } from "react-native";
 import { Link, useLocalSearchParams } from "expo-router";
-import { Card, Icon, ListItem, Text } from "@rneui/themed";
+import { Card, Icon, ListItem, Rating, Text } from "@rneui/themed";
 
 import RowCmp from "@/modules/Ui/components/Row";
 import { useContract } from "@/modules/Contract/hooks/useContract";
@@ -63,11 +63,11 @@ export default function ContractScreen() {
           <Text h4>{t("global.documents")}</Text>
 
           {contract.documents?.map((doc, index) => (
-            <ListItem key={index}>
-              <Icon name="picture-as-pdf" />
+            <ListItem bottomDivider key={index}>
+              <Icon name="picture-as-pdf" color={colors.secondary} />
               <ListItem.Content>
                 <ListItem.Title>
-                  <Link href={doc.link}>{doc.name}</Link>
+                  <Link href={doc.link as any}>{doc.name}</Link>
                 </ListItem.Title>
               </ListItem.Content>
             </ListItem>

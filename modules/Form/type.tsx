@@ -9,7 +9,7 @@ export interface Option {
 export interface FieldItem {
   name: string;
   label: string;
-  type?: "text" | "select" | "checkbox" | "radio" | "textarea";
+  type?: "text" | 'password' | "select" | "checkbox" | "radio" | "textarea";
   variant?: "inline";
 }
 

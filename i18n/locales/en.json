@@ -17,6 +17,22 @@
     },
     "dashboard": {
       "title": "Dashboard"
+    },
+    "login": {
+      "title": "Log in to your account",
+      "account": "Don't have an account?"
+    },
+    "form": {
+      "email": "Email",
+      "password": "Password"
+    },
+    "placeholder": {
+      "email": "Enter your email",
+      "password": "Enter your password"
+    },
+    "btn": {
+      "login": "Login",
+      "signup": "Sign up"
     }
   }
 }

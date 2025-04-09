@@ -17,6 +17,22 @@
     },
     "dashboard": {
       "title": "Přehled"
+    },
+    "login": {
+      "title": "Přihlaste se ke svému účtu",
+      "account": "Nemáte účet?"
+    },
+    "form": {
+      "email": "Email",
+      "password": "Heslo"
+    },
+    "placeholder": {
+      "email": "Zadejte svůj email",
+      "password": "Zadejte své heslo"
+    },
+    "btn": {
+      "login": "Přihlásit se",
+      "signup": "Zaregistrujte se"
     }
   }
 }
