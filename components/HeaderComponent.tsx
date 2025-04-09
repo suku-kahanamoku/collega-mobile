@@ -44,9 +44,11 @@ const HeaderComponent: React.FC<HeaderComponentProps> = ({
       leftComponent={<LogoCmp />}
       rightComponent={<HeaderRightCmp />}
       centerComponent={
-        <Text h1 h1Style={[styles.title, { color: Colors.dark.secondary }]}>
-          {activeMenu.title}
-        </Text>
+        activeMenu.title ? (
+          <Text h1 h1Style={[styles.title, { color: Colors.dark.secondary }]}>
+            {activeMenu.title}
+          </Text>
+        ) : undefined
       }
     />
   );

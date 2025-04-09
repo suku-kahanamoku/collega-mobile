@@ -51,13 +51,11 @@ export default function Content() {
           options={{
             header: () => (
               <HeaderComponent
-                activeMenu={activeMenu}
+                activeMenu={{ ...activeMenu, title: "" }}
                 settingsMenu={settingsMenu}
                 setOpen={setOpen}
               />
             ),
-            headerTitle: menuList.login.title,
-            headerTitleAlign: "center",
           }}
         />
 
@@ -67,13 +65,11 @@ export default function Content() {
           options={{
             header: () => (
               <HeaderComponent
-                activeMenu={activeMenu}
+                activeMenu={{ ...activeMenu, title: "" }}
                 settingsMenu={settingsMenu}
                 setOpen={setOpen}
               />
             ),
-            headerTitle: menuList.signup.title,
-            headerTitleAlign: "center",
           }}
         />
 
@@ -83,13 +79,11 @@ export default function Content() {
           options={{
             header: () => (
               <HeaderComponent
-                activeMenu={activeMenu}
+                activeMenu={{ ...activeMenu, title: "" }}
                 settingsMenu={settingsMenu}
                 setOpen={setOpen}
               />
             ),
-            headerTitle: menuList.reset_password.title,
-            headerTitleAlign: "center",
           }}
         />
       </Stack>

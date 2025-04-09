@@ -68,7 +68,7 @@ const LoginCmp = () => {
       <View style={styles.button}>
         <Button title={t("btn.login")} onPress={handleSubmit} />
 
-        <View style={styles.info}>
+        <View style={styles.toSignup}>
           <Text>{t("login.account")}</Text>
           <Link href="/signup">
             <Text h4>{t("btn.signup")}</Text>
@@ -111,9 +111,10 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     gap: 30,
   },
-  info: {
+  toSignup: {
     flexDirection: "row",
     alignItems: "center",
+    gap: 8,
   },
   socialButtons: {
     flexDirection: "row",
