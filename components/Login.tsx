@@ -64,7 +64,12 @@ const LoginCmp = () => {
       </View>
 
       <View style={styles.forgotPassword}>
-        <Link href="/reset-password">
+        <Link
+          href="/reset-password"
+          style={{
+            textDecorationLine: "underline",
+          }}
+        >
           <Text h4>{t("btn.forgot_password")}</Text>
         </Link>
       </View>
@@ -73,7 +78,12 @@ const LoginCmp = () => {
 
       <View style={styles.toSignup}>
         <Text>{t("login.account")}</Text>
-        <Link href="/signup">
+        <Link
+          href="/signup"
+          style={{
+            textDecorationLine: "underline",
+          }}
+        >
           <Text h4>{t("btn.signup")}</Text>
         </Link>
       </View>

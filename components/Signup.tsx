@@ -101,7 +101,9 @@ const SignupCmp = () => {
       <Link href="/login">
         <View style={styles.backLinkContent}>
           <Icon name="chevron-left" size={20} />
-          <Text h4>{t("btn.back_login")}</Text>
+          <Text h4 style={styles.backLinkText}>
+            {t("btn.back_login")}
+          </Text>
         </View>
       </Link>
     </Card>
@@ -123,5 +125,8 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     gap: 6,
+  },
+  backLinkText: {
+    textDecorationLine: "underline",
   },
 });
