@@ -1,17 +1,20 @@
 import React, { useState } from "react";
 import { StyleSheet, View } from "react-native";
 import { Link } from "expo-router";
-import { Text, Button, SocialIcon, Divider } from "@rneui/themed";
+import { Text, Button, SocialIcon, Divider, Icon } from "@rneui/themed";
 
 import Field from "@/modules/Form/components/fields/Field";
 import { Field as FieldType } from "@/modules/Form/type";
 import { useLocale } from "@/modules/Lang/hooks/useLocale";
 
-const LoginCmp = () => {
+const SignupCmp = () => {
   const { t } = useLocale();
   const [formData, setFormData] = useState({
+    firstname: "",
+    lastname: "",
     email: "",
     password: "",
+    repeat_password: "",
   });
 
   const fields: FieldType[] = [
@@ -22,14 +25,44 @@ const LoginCmp = () => {
       inputMode: "email",
       autoComplete: "email",
       placeholder: t("placeholder.email"),
+      required: true,
+    },
+    {
+      type: "text",
+      name: "firstname",
+      label: t("form.firstname"),
+      inputMode: "text",
+      autoComplete: "given-name",
+      placeholder: t("placeholder.firstname"),
+      required: true,
+    },
+    {
+      type: "text",
+      name: "lastname",
+      label: t("form.lastname"),
+      inputMode: "text",
+      autoComplete: "family-name",
+      placeholder: t("placeholder.lastname"),
+      required: true,
     },
     {
       type: "password",
       name: "password",
       label: t("form.password"),
       inputMode: "text",
-      autoComplete: "password",
+      autoComplete: "new-password",
       placeholder: t("placeholder.password"),
+      required: true,
+      secureTextEntry: true,
+    },
+    {
+      type: "password",
+      name: "repeat_password",
+      label: t("form.repeat_password"),
+      inputMode: "text",
+      autoComplete: "new-password",
+      placeholder: t("placeholder.repeat_password"),
+      required: true,
       secureTextEntry: true,
     },
   ];
@@ -45,7 +78,7 @@ const LoginCmp = () => {
   return (
     <View style={styles.container}>
       <Text h1 h1Style={styles.title}>
-        {t("login.title")}
+        {t("signup.title")}
       </Text>
 
       <Divider style={styles.divider} />
@@ -66,14 +99,16 @@ const LoginCmp = () => {
       </View>
 
       <View style={styles.button}>
-        <Button title={t("btn.login")} onPress={handleSubmit} />
+        <Button title={t("btn.signup")} onPress={handleSubmit} />
 
-        <View style={styles.info}>
-          <Text>{t("login.account")}</Text>
-          <Link href="/signup">
-            <Text h4>{t("btn.signup")}</Text>
-          </Link>
-        </View>
+        <Link href="/login">
+          <View style={styles.backLinkContent}>
+            <Icon name="chevron-left" size={20} />
+            <Text h4 style={styles.backLinkText}>
+              {t("btn.back_login")}
+            </Text>
+          </View>
+        </Link>
       </View>
 
       <Divider style={styles.divider} />
@@ -87,7 +122,7 @@ const LoginCmp = () => {
   );
 };
 
-export default LoginCmp;
+export default SignupCmp;
 
 const styles = StyleSheet.create({
   container: {
@@ -111,13 +146,17 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     gap: 30,
   },
-  info: {
-    flexDirection: "row",
-    alignItems: "center",
-  },
   socialButtons: {
     flexDirection: "row",
     justifyContent: "space-around",
     gap: 20,
+  },
+  backLinkContent: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 8,
+  },
+  backLinkText: {
+    fontSize: 16,
   },
 });

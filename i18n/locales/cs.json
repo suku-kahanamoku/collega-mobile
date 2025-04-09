@@ -22,17 +22,27 @@
       "title": "Přihlaste se ke svému účtu",
       "account": "Nemáte účet?"
     },
+    "signup": {
+      "title": "Zaregistrujte se k účtu"
+    },
     "form": {
       "email": "Email",
-      "password": "Heslo"
+      "password": "Heslo",
+      "firstname": "Jméno",
+      "lastname": "Příjmení",
+      "repeat_password": "Zopakujte heslo"
     },
     "placeholder": {
       "email": "Zadejte svůj email",
-      "password": "Zadejte své heslo"
+      "password": "Zadejte své heslo",
+      "firstname": "Zadejte své jméno",
+      "lastname": "Zadejte své příjmení",
+      "repeat_password": "Zopakujte své heslo"
     },
     "btn": {
       "login": "Přihlásit se",
-      "signup": "Zaregistrujte se"
+      "signup": "Zaregistrujte se",
+      "back_login": "Zpět na přihlášení"
     }
   }
 }
