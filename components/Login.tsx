@@ -68,10 +68,16 @@ const LoginCmp = () => {
       <View style={styles.button}>
         <Button title={t("btn.login")} onPress={handleSubmit} />
 
-        <View style={styles.toSignup}>
-          <Text>{t("login.account")}</Text>
-          <Link href="/signup">
-            <Text h4>{t("btn.signup")}</Text>
+        <View style={styles.info}>
+          <View style={styles.toSignup}>
+            <Text>{t("login.account")}</Text>
+            <Link href="/signup">
+              <Text h4>{t("btn.signup")}</Text>
+            </Link>
+          </View>
+
+          <Link href="/reset-password">
+            <Text h4>{t("btn.forgot_password")}</Text>
           </Link>
         </View>
       </View>
@@ -111,10 +117,14 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     gap: 30,
   },
+  info: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+  },
   toSignup: {
     flexDirection: "row",
     alignItems: "center",
-    gap: 8,
+    gap: 6,
   },
   socialButtons: {
     flexDirection: "row",

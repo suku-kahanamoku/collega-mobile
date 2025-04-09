@@ -44,7 +44,8 @@
       "signup": "Sign up",
       "back_login": "Back to login",
       "reset_password": "Reset password",
-      "submit": "Submit"
+      "submit": "Submit",
+      "forgot_password": "Forgot password"
     },
     "forgot_password": {
       "title": "Forgot your password?"

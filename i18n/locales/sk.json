@@ -44,7 +44,8 @@
       "signup": "Zaregistrujte sa",
       "back_login": "Späť na prihlásenie",
       "reset_password": "Obnoviť heslo",
-      "submit": "Odoslať"
+      "submit": "Odoslať",
+      "forgot_password": "Zabudnuté heslo"
     },
     "forgot_password": {
       "title": "Zabudli ste svoje heslo?"

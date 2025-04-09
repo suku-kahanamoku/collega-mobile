@@ -154,7 +154,7 @@ const styles = StyleSheet.create({
   backLinkContent: {
     flexDirection: "row",
     alignItems: "center",
-    gap: 8,
+    gap: 6,
   },
   backLinkText: {
     fontSize: 16,
