@@ -42,7 +42,12 @@
     "btn": {
       "login": "Prihlásiť sa",
       "signup": "Zaregistrujte sa",
-      "back_login": "Späť na prihlásenie"
+      "back_login": "Späť na prihlásenie",
+      "reset_password": "Obnoviť heslo",
+      "submit": "Odoslať"
+    },
+    "forgot_password": {
+      "title": "Zabudli ste svoje heslo?"
     }
   }
 }

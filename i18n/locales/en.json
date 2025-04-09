@@ -42,7 +42,12 @@
     "btn": {
       "login": "Login",
       "signup": "Sign up",
-      "back_login": "Back to login"
+      "back_login": "Back to login",
+      "reset_password": "Reset password",
+      "submit": "Submit"
+    },
+    "forgot_password": {
+      "title": "Forgot your password?"
     }
   }
 }
