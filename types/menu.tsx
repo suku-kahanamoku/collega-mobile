@@ -10,4 +10,5 @@ export type IMenu = {
   icon?: React.ComponentProps<typeof Icon>["name"];
   children?: IMenu[];
   parentSyscode?: string;
+  group?: "system";
 };

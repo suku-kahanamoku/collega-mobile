@@ -28,6 +28,28 @@ export const RouteProvider = ({ children }: { children: ReactNode }) => {
       name: "+not-found",
       title: t("404.title"),
       href: "/not-found" as RelativePathString,
+      group: "system",
+    },
+    login: {
+      syscode: "login",
+      name: "login",
+      title: t("login.title"),
+      href: "/login" as RelativePathString,
+      group: "system",
+    },
+    signup: {
+      syscode: "signup",
+      name: "signup",
+      title: t("signup.title"),
+      href: "/signup" as RelativePathString,
+      group: "system",
+    },
+    reset_password: {
+      syscode: "reset_password",
+      name: "reset-password",
+      title: t("forgot_password.title"),
+      href: "/reset-password" as RelativePathString,
+      group: "system",
     },
     settings: {
       syscode: "settings",
@@ -35,6 +57,7 @@ export const RouteProvider = ({ children }: { children: ReactNode }) => {
       title: t("settings.title"),
       href: "/settings" as RelativePathString,
       icon: "settings",
+      group: "system",
     },
     dashboard: {
       syscode: "dashboard",
@@ -81,24 +104,6 @@ export const RouteProvider = ({ children }: { children: ReactNode }) => {
       icon: "description",
       parentSyscode: "contracts",
     },
-    login: {
-      syscode: "login",
-      name: "login",
-      title: t("login.title"),
-      href: "/login" as RelativePathString,
-    },
-    signup: {
-      syscode: "signup",
-      name: "signup",
-      title: t("signup.title"),
-      href: "/signup" as RelativePathString,
-    },
-    reset_password: {
-      syscode: "reset_password",
-      name: "reset-password",
-      title: t("forgot_password.title"),
-      href: "/reset-password" as RelativePathString,
-    },
   };
 
   /**
@@ -116,7 +121,7 @@ export const RouteProvider = ({ children }: { children: ReactNode }) => {
    * Menus, ktera maji byt videt v navigaci
    */
   const menus: IMenu[] = Object.values(menuList).filter(
-    (menu) => !menu.parentSyscode
+    (menu) => !menu.parentSyscode && menu.group !== "system"
   );
 
   /**
@@ -145,9 +150,7 @@ export const RouteProvider = ({ children }: { children: ReactNode }) => {
     <RouteContext.Provider
       value={{
         menuList,
-        menus: menus.filter(
-          (menu) => !["404", "settings"].includes(menu.syscode)
-        ),
+        menus,
         activeMenu,
         navigate,
       }}
