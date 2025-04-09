@@ -44,6 +44,54 @@ export default function Content() {
             headerTitleAlign: "center",
           }}
         />
+
+        {/* login screen */}
+        <Stack.Screen
+          name="login"
+          options={{
+            header: () => (
+              <HeaderComponent
+                activeMenu={activeMenu}
+                settingsMenu={settingsMenu}
+                setOpen={setOpen}
+              />
+            ),
+            headerTitle: menuList.login.title,
+            headerTitleAlign: "center",
+          }}
+        />
+
+        {/* signup screen */}
+        <Stack.Screen
+          name="signup"
+          options={{
+            header: () => (
+              <HeaderComponent
+                activeMenu={activeMenu}
+                settingsMenu={settingsMenu}
+                setOpen={setOpen}
+              />
+            ),
+            headerTitle: menuList.signup.title,
+            headerTitleAlign: "center",
+          }}
+        />
+
+        {/* reset-password screen */}
+        <Stack.Screen
+          name="reset-password"
+          options={{
+            header: () => (
+              <HeaderComponent
+                activeMenu={activeMenu}
+                settingsMenu={settingsMenu}
+                setOpen={setOpen}
+              />
+            ),
+            headerTitle: menuList.reset_password.title,
+            headerTitleAlign: "center",
+          }}
+        />
       </Stack>
     </SideMenuCmp>
   );

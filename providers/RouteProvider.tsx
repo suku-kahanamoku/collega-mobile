@@ -81,6 +81,24 @@ export const RouteProvider = ({ children }: { children: ReactNode }) => {
       icon: "description",
       parentSyscode: "contracts",
     },
+    login: {
+      syscode: "login",
+      name: "login",
+      title: t("login.title"),
+      href: "/login" as RelativePathString,
+    },
+    signup: {
+      syscode: "signup",
+      name: "signup",
+      title: t("signup.title"),
+      href: "/signup" as RelativePathString,
+    },
+    reset_password: {
+      syscode: "reset_password",
+      name: "reset-password",
+      title: t("forgot_password.title"),
+      href: "/reset-password" as RelativePathString,
+    },
   };
 
   /**
