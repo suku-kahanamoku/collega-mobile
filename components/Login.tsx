@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { StyleSheet, View } from "react-native";
 import { Link } from "expo-router";
-import { Text, Button, SocialIcon, Divider } from "@rneui/themed";
+import { Text, Button, SocialIcon, Divider, Card } from "@rneui/themed";
 
 import Field from "@/modules/Form/components/fields/Field";
 import { Field as FieldType } from "@/modules/Form/type";
@@ -43,12 +43,10 @@ const LoginCmp = () => {
   };
 
   return (
-    <View style={styles.container}>
-      <Text h1 h1Style={styles.title}>
-        {t("login.title")}
-      </Text>
+    <Card wrapperStyle={styles.wrapper}>
+      <Card.Title h1>{t("login.title")}</Card.Title>
 
-      <Divider style={styles.divider} />
+      <Card.Divider />
 
       <View style={styles.field}>
         {fields.map((field) => (
@@ -65,61 +63,44 @@ const LoginCmp = () => {
         ))}
       </View>
 
-      <View style={styles.button}>
-        <Button title={t("btn.login")} onPress={handleSubmit} />
-
-        <View style={styles.info}>
-          <View style={styles.toSignup}>
-            <Text>{t("login.account")}</Text>
-            <Link href="/signup">
-              <Text h4>{t("btn.signup")}</Text>
-            </Link>
-          </View>
-
-          <Link href="/reset-password">
-            <Text h4>{t("btn.forgot_password")}</Text>
-          </Link>
-        </View>
+      <View style={styles.forgotPassword}>
+        <Link href="/reset-password">
+          <Text h4>{t("btn.forgot_password")}</Text>
+        </Link>
       </View>
 
-      <Divider style={styles.divider} />
+      <Button title={t("btn.login")} onPress={handleSubmit} />
+
+      <View style={styles.toSignup}>
+        <Text>{t("login.account")}</Text>
+        <Link href="/signup">
+          <Text h4>{t("btn.signup")}</Text>
+        </Link>
+      </View>
 
       <View style={styles.socialButtons}>
         <Button size="lg" type="clear" icon={<SocialIcon type="facebook" />} />
         <Button size="lg" type="clear" icon={<SocialIcon type="google" />} />
         <Button size="lg" type="clear" icon={<SocialIcon type="linkedin" />} />
       </View>
-    </View>
+    </Card>
   );
 };
 
 export default LoginCmp;
 
 const styles = StyleSheet.create({
-  container: {
-    width: "100%",
-    height: "100%",
-    alignItems: "center",
+  wrapper: {
+    flexDirection: "column",
+    marginTop: 20,
     gap: 20,
   },
-  divider: {
-    width: "100%",
-  },
-  title: {
-    marginTop: 20,
-  },
   field: {
-    width: "100%",
-    gap: 16,
+    gap: 8,
   },
-  button: {
-    width: "100%",
-    justifyContent: "center",
-    gap: 30,
-  },
-  info: {
-    flexDirection: "row",
-    justifyContent: "space-between",
+  forgotPassword: {
+    alignSelf: "flex-end",
+    marginRight: 4,
   },
   toSignup: {
     flexDirection: "row",
