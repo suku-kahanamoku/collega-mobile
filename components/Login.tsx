@@ -92,7 +92,7 @@ export default LoginCmp;
 const styles = StyleSheet.create({
   wrapper: {
     flexDirection: "column",
-    marginTop: 20,
+    paddingVertical: 20,
     gap: 20,
   },
   field: {

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { StyleSheet, View } from "react-native";
 import { Link } from "expo-router";
-import { Text, Button, Divider, Icon } from "@rneui/themed";
+import { Text, Button, Divider, Icon, Card } from "@rneui/themed";
 
 import Field from "@/modules/Form/components/fields/Field";
 import { Field as FieldType } from "@/modules/Form/type";
@@ -34,12 +34,10 @@ const ResetPasswordCmp = () => {
   };
 
   return (
-    <View style={styles.container}>
-      <Text h1 h1Style={styles.title}>
-        {t("forgot_password.title")}
-      </Text>
+    <Card wrapperStyle={styles.wrapper}>
+      <Card.Title h1>{t("forgot_password.title")}</Card.Title>
 
-      <Divider style={styles.divider} />
+      <Card.Divider />
 
       <View style={styles.field}>
         {fields.map((field) => (
@@ -56,45 +54,30 @@ const ResetPasswordCmp = () => {
         ))}
       </View>
 
-      <View style={styles.button}>
-        <Button title={t("btn.submit")} onPress={handleSubmit} />
+      <Button title={t("btn.submit")} onPress={handleSubmit} />
 
-        <Link href="/login">
-          <View style={styles.backLinkContent}>
-            <Icon name="chevron-left" size={20} />
-            <Text h4 style={styles.backLinkText}>
-              {t("btn.back_login")}
-            </Text>
-          </View>
-        </Link>
-      </View>
-    </View>
+      <Link href="/login">
+        <View style={styles.backLinkContent}>
+          <Icon name="chevron-left" size={20} />
+          <Text h4 style={styles.backLinkText}>
+            {t("btn.back_login")}
+          </Text>
+        </View>
+      </Link>
+    </Card>
   );
 };
 
 export default ResetPasswordCmp;
 
 const styles = StyleSheet.create({
-  container: {
-    width: "100%",
-    height: "100%",
-    alignItems: "center",
+  wrapper: {
+    flexDirection: "column",
+    paddingVertical: 20,
     gap: 20,
   },
-  divider: {
-    width: "100%",
-  },
-  title: {
-    marginTop: 20,
-  },
   field: {
-    width: "100%",
-    gap: 16,
-  },
-  button: {
-    width: "100%",
-    justifyContent: "center",
-    gap: 30,
+    gap: 8,
   },
   backLinkContent: {
     flexDirection: "row",

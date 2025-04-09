@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { StyleSheet, View } from "react-native";
 import { Link } from "expo-router";
-import { Text, Button, SocialIcon, Divider, Icon } from "@rneui/themed";
+import { Text, Button, SocialIcon, Divider, Icon, Card } from "@rneui/themed";
 
 import Field from "@/modules/Form/components/fields/Field";
 import { Field as FieldType } from "@/modules/Form/type";
@@ -76,12 +76,10 @@ const SignupCmp = () => {
   };
 
   return (
-    <View style={styles.container}>
-      <Text h1 h1Style={styles.title}>
-        {t("signup.title")}
-      </Text>
+    <Card wrapperStyle={styles.wrapper}>
+      <Card.Title h1>{t("signup.title")}</Card.Title>
 
-      <Divider style={styles.divider} />
+      <Card.Divider />
 
       <View style={styles.field}>
         {fields.map((field) => (
@@ -98,65 +96,32 @@ const SignupCmp = () => {
         ))}
       </View>
 
-      <View style={styles.button}>
-        <Button title={t("btn.signup")} onPress={handleSubmit} />
+      <Button title={t("btn.signup")} onPress={handleSubmit} />
 
-        <Link href="/login">
-          <View style={styles.backLinkContent}>
-            <Icon name="chevron-left" size={20} />
-            <Text h4 style={styles.backLinkText}>
-              {t("btn.back_login")}
-            </Text>
-          </View>
-        </Link>
-      </View>
-
-      <Divider style={styles.divider} />
-
-      <View style={styles.socialButtons}>
-        <Button size="lg" type="clear" icon={<SocialIcon type="facebook" />} />
-        <Button size="lg" type="clear" icon={<SocialIcon type="google" />} />
-        <Button size="lg" type="clear" icon={<SocialIcon type="linkedin" />} />
-      </View>
-    </View>
+      <Link href="/login">
+        <View style={styles.backLinkContent}>
+          <Icon name="chevron-left" size={20} />
+          <Text h4>{t("btn.back_login")}</Text>
+        </View>
+      </Link>
+    </Card>
   );
 };
 
 export default SignupCmp;
 
 const styles = StyleSheet.create({
-  container: {
-    width: "100%",
-    height: "100%",
-    alignItems: "center",
+  wrapper: {
+    flexDirection: "column",
+    paddingVertical: 20,
     gap: 20,
-  },
-  divider: {
-    width: "100%",
-  },
-  title: {
-    marginTop: 20,
   },
   field: {
-    width: "100%",
-    gap: 16,
-  },
-  button: {
-    width: "100%",
-    justifyContent: "center",
-    gap: 30,
-  },
-  socialButtons: {
-    flexDirection: "row",
-    justifyContent: "space-around",
-    gap: 20,
+    gap: 8,
   },
   backLinkContent: {
     flexDirection: "row",
     alignItems: "center",
     gap: 6,
-  },
-  backLinkText: {
-    fontSize: 16,
   },
 });
