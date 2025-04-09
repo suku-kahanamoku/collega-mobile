@@ -1,21 +1,24 @@
 import { StyleSheet, View } from "react-native";
 import { Link } from "expo-router";
 
-import { useLocale } from "@/modules/Lang/hooks/useLocale";
+import { useRoute } from "@/hooks/useRoute";
 
 export default function DashboardScreen() {
-  const { t } = useLocale();
+  const { menuList } = useRoute();
+  const loginMenu = menuList.login;
+  const signupMenu = menuList.signup;
+  const resetPasswordMenu = menuList.reset_password;
 
   return (
     <View style={styles.container}>
-      <Link href="/login" style={styles.link}>
-        {t("btn.login")}
+      <Link href={loginMenu.href} style={styles.link}>
+        {loginMenu.title}
       </Link>
-      <Link href="/signup" style={styles.link}>
-        {t("btn.signup")}
+      <Link href={signupMenu.href} style={styles.link}>
+        {signupMenu.title}
       </Link>
-      <Link href="/reset-password" style={styles.link}>
-        {t("forgot_password.title")}
+      <Link href={resetPasswordMenu.href} style={styles.link}>
+        {resetPasswordMenu.title}
       </Link>
     </View>
   );

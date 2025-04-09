@@ -1,14 +1,18 @@
 import React, { useState } from "react";
 import { StyleSheet, View } from "react-native";
 import { Link } from "expo-router";
-import { Text, Button, Divider, Icon, Card } from "@rneui/themed";
+import { Text, Button, Icon, Card } from "@rneui/themed";
 
+import { useLocale } from "@/modules/Lang/hooks/useLocale";
+import { useRoute } from "@/hooks/useRoute";
 import Field from "@/modules/Form/components/fields/Field";
 import { Field as FieldType } from "@/modules/Form/type";
-import { useLocale } from "@/modules/Lang/hooks/useLocale";
 
 const ResetPasswordCmp = () => {
   const { t } = useLocale();
+  const { menuList } = useRoute();
+  const loginMenu = menuList.login;
+
   const [formData, setFormData] = useState({
     email: "",
   });
@@ -56,7 +60,7 @@ const ResetPasswordCmp = () => {
 
       <Button title={t("btn.submit")} onPress={handleSubmit} />
 
-      <Link href="/login">
+      <Link href={loginMenu.href}>
         <View style={styles.backLinkContent}>
           <Icon name="chevron-left" size={20} />
           <Text h4 style={styles.backLinkText}>

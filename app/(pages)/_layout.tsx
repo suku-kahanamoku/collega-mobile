@@ -1,10 +1,16 @@
-import { Stack } from "expo-router";
+import { Redirect, Stack } from "expo-router";
 
+import { useSession } from "@/modules/Auth/hooks/useAuth";
 import { useRoute } from "@/hooks/useRoute";
 
 export default function PagesLayout() {
+  const { session, isLoading } = useSession();
   const { menuList, menus } = useRoute();
   const settingsMenu = menuList.settings;
+
+  if (!session) {
+    return <Redirect href={menuList.login.href} />;
+  }
 
   return (
     <Stack>

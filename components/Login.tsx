@@ -1,14 +1,19 @@
 import React, { useState } from "react";
 import { StyleSheet, View } from "react-native";
 import { Link } from "expo-router";
-import { Text, Button, SocialIcon, Divider, Card } from "@rneui/themed";
+import { Text, Button, SocialIcon, Card } from "@rneui/themed";
 
+import { useLocale } from "@/modules/Lang/hooks/useLocale";
+import { useRoute } from "@/hooks/useRoute";
 import Field from "@/modules/Form/components/fields/Field";
 import { Field as FieldType } from "@/modules/Form/type";
-import { useLocale } from "@/modules/Lang/hooks/useLocale";
 
 const LoginCmp = () => {
   const { t } = useLocale();
+  const { menuList } = useRoute();
+  const signupMenu = menuList.signup;
+  const resetPasswordMenu = menuList.reset_password;
+
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -65,7 +70,7 @@ const LoginCmp = () => {
 
       <View style={styles.forgotPassword}>
         <Link
-          href="/reset-password"
+          href={resetPasswordMenu.href}
           style={{
             textDecorationLine: "underline",
           }}
@@ -79,7 +84,7 @@ const LoginCmp = () => {
       <View style={styles.toSignup}>
         <Text>{t("login.account")}</Text>
         <Link
-          href="/signup"
+          href={signupMenu.href}
           style={{
             textDecorationLine: "underline",
           }}
