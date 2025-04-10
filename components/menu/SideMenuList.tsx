@@ -9,12 +9,12 @@ import { useLocale } from "@/modules/Lang/hooks/useLocale";
 import { useRoute } from "@/hooks/useRoute";
 import MenuListCmp from "./MenuList";
 
-interface SideMenuListProps {
+interface ISideMenuListProps {
   menus: IMenu[];
   setOpen?: (value: boolean) => void;
 }
 
-const SideMenuListCmp: React.FC<SideMenuListProps> = ({ menus, setOpen }) => {
+const SideMenuListCmp: React.FC<ISideMenuListProps> = ({ menus, setOpen }) => {
   const { t } = useLocale();
   const { session, signOut } = useAuth();
   const { Colors } = useTheme();

@@ -4,14 +4,14 @@ import { Drawer } from "react-native-drawer-layout";
 import { IMenu } from "@/types/menu";
 import SideMenuListCmp from "./SideMenuList";
 
-interface SideMenuProps {
+interface ISideMenuProps {
   children: React.ReactNode;
   open: boolean;
   setOpen: (open: boolean) => void;
   menus: IMenu[];
 }
 
-const SideMenuCmp: React.FC<SideMenuProps> = ({
+const SideMenuCmp: React.FC<ISideMenuProps> = ({
   children,
   open,
   setOpen,

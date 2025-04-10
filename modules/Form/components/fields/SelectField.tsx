@@ -3,18 +3,18 @@ import { StyleSheet } from "react-native";
 import { Picker } from "@react-native-picker/picker";
 import { Input } from "@rneui/themed";
 
-import { StyleProps } from "@/types/component";
-import { SelectField as SelectFieldType } from "../../type";
+import { IStyleProps } from "@/types/component";
+import { ISelectField } from "../../type";
 import { useTheme } from "@/hooks/useTheme";
 
-interface FieldProps {
-  field: SelectFieldType;
-  style?: StyleProps;
+interface IFieldProps {
+  field: ISelectField;
+  style?: IStyleProps;
   onChange?: (text: string) => void;
   [rest: string]: any;
 }
 
-const SelectField: React.FC<FieldProps> = ({
+const SelectField: React.FC<IFieldProps> = ({
   field,
   style,
   onChange,
@@ -31,7 +31,7 @@ const SelectField: React.FC<FieldProps> = ({
 
   const PickerComponent = React.forwardRef((props, ref) => (
     <Picker
-      ref={ref as any} // Cast ref to any to avoid type errors
+      ref={ref as any}
       selectedValue={selectedValue}
       prompt={field.prompt}
       style={{

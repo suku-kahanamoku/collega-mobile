@@ -6,13 +6,13 @@ import LogoCmp from "@/components/Logo";
 import { useRoute } from "@/hooks/useRoute";
 import { IMenu } from "@/types/menu";
 
-interface HeaderComponentProps {
+interface IHeaderComponentProps {
   activeMenu: IMenu;
   settingsMenu: IMenu;
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const HeaderComponent: React.FC<HeaderComponentProps> = ({
+const HeaderComponent: React.FC<IHeaderComponentProps> = ({
   activeMenu,
   settingsMenu,
   setOpen,

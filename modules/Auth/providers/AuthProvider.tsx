@@ -1,22 +1,22 @@
 import { createContext, useState, type PropsWithChildren } from "react";
 import { useTranslation } from "react-i18next";
 
-import { Field, SelectField } from "@/modules/Form/type";
+import { IField, ISelectField } from "@/modules/Form/type";
 
 import { useStorageState } from "../hooks/useStorageState";
 import { FETCH_OPTIONS, FIELDS } from "../configs/auth";
-import { Session } from "../types/auth";
+import { ISession } from "../types/auth";
 
-interface AuthContextProps {
+interface IAuthContextProps {
   signIn: () => void;
   signOut: () => void;
-  session?: Session | null;
+  session?: ISession | null;
   loading: boolean;
-  fields: Field[];
-  fieldList: Record<string, Field>;
+  fields: IField[];
+  fieldList: Record<string, IField>;
 }
 
-export const AuthContext = createContext<AuthContextProps | undefined>(
+export const AuthContext = createContext<IAuthContextProps | undefined>(
   undefined
 );
 
@@ -28,15 +28,15 @@ export function AuthProvider({ children }: PropsWithChildren) {
 
   const fields = FIELDS.map((field) => {
     // provede preklad
-    const result = { ...field, label: t(field.label) } as SelectField;
+    const result = { ...field, label: t(field.label) } as ISelectField;
     if (result.placeholder) {
-      result.placeholder = t((field as Field).placeholder!);
+      result.placeholder = t((field as IField).placeholder!);
     }
     // provede preklad option.label
     result.options?.forEach(
       (option) => (option.label = option.label ? t(option.label) : option.label)
     );
-    return result as Field;
+    return result as IField;
   });
 
   const fieldList = fields.reduce((acc, field) => {
@@ -52,12 +52,14 @@ export function AuthProvider({ children }: PropsWithChildren) {
         : undefined,
     };
     return acc;
-  }, {} as Record<string, Field & { optionList?: Record<string, string> }>);
+  }, {} as Record<string, IField & { optionList?: Record<string, string> }>);
 
   const signIn = async () => {
     try {
       const body = new FormData();
-      
+      body.append("login", "collega promo");
+      body.append("pass", "CollegaPromo2024");
+
       const response = await fetch(FETCH_OPTIONS.url, {
         method: FETCH_OPTIONS.method,
         headers: {

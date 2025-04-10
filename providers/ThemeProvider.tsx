@@ -10,9 +10,9 @@ import { createTheme, ThemeProvider as UiThemeProvider } from "@rneui/themed";
 
 import { Colors, FontSizes } from "@/constants/Theme";
 
-export type ITheme = "light" | "dark";
+type ITheme = "light" | "dark";
 
-interface ThemeContextProps {
+interface IThemeContextProps {
   theme: ITheme;
   isDark: boolean;
   colors: typeof Colors.light;
@@ -20,7 +20,7 @@ interface ThemeContextProps {
   changeTheme: (value: ITheme) => Promise<void>;
 }
 
-export const ThemeContext = createContext<ThemeContextProps | undefined>(
+export const ThemeContext = createContext<IThemeContextProps | undefined>(
   undefined
 );
 

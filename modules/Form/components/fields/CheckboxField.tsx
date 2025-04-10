@@ -1,18 +1,18 @@
 import React, { useState } from "react";
 import { StyleSheet } from "react-native";
 
-import { StyleProps } from "@/types/component";
-import { CheckboxField as CheckboxFieldType } from "../../type";
+import { IStyleProps } from "@/types/component";
+import { ICheckboxField } from "../../type";
 import { CheckBox } from "@rneui/themed";
 
-interface FieldProps {
-  field: CheckboxFieldType;
-  style?: StyleProps;
+interface IFieldProps {
+  field: ICheckboxField;
+  style?: IStyleProps;
   onChange?: (value: boolean) => void;
   [rest: string]: any;
 }
 
-const CheckboxField: React.FC<FieldProps> = ({
+const CheckboxField: React.FC<IFieldProps> = ({
   field,
   style,
   onChange,

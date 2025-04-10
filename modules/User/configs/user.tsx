@@ -1,12 +1,12 @@
-import { Option, SelectField, TextField } from "@/modules/Form/type";
+import { IOption, ISelectField, ITextField } from "@/modules/Form/type";
 
-export const STATUS_OPTIONS: Option[] = [
+export const STATUS_OPTIONS: IOption[] = [
   { value: "active", label: "user.status.active" },
   { value: "inactive", label: "user.status.inactive" },
   { value: "pending", label: "user.status.pending" },
 ];
 
-export const FIELDS: (TextField | SelectField)[] = [
+export const FIELDS: (ITextField | ISelectField)[] = [
   {
     name: "name",
     label: "user.attr.name",

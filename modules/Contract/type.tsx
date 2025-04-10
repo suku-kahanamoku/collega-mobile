@@ -1,14 +1,14 @@
-export interface Instruction {
+export interface IInstruction {
   id: number;
 }
 
-export interface Document {
+export interface IDocument {
   link: string;
   name: string;
   type: string;
 }
 
-export type Status =
+export type IStatus =
   | "accepted"
   | "send"
   | "canceled"
@@ -19,7 +19,7 @@ export type Status =
   | "free"
   | "missing";
 
-export type CommissionStatus =
+export type ICommissionStatus =
   | "can-ask-for-urgency"
   | "can-expect-commission"
   | "commission-posted"
@@ -31,7 +31,7 @@ export type CommissionStatus =
   | "unprofitable-business"
   | "working-on-earlier-urgency";
 
-export type FrequencyType =
+export type IFrequencyType =
   | "annually"
   | "biannually"
   | "quarterly"
@@ -40,7 +40,7 @@ export type FrequencyType =
   | "one-time"
   | "unspecified";
 
-export interface Contract {
+export interface IContract {
   id: number;
   /* client: { id: string; name?: string }; */
   client: string;
@@ -52,11 +52,11 @@ export interface Contract {
   consultant2?: string;
   consultant3?: string;
   contract_number?: string;
-  documents?: Document[];
+  documents?: IDocument[];
   effectiveDate?: string;
   endDate?: string;
   expected_commission_date?: string;
-  instructions?: Instruction[];
+  instructions?: IInstruction[];
   insurance?: number;
   partner_logo?: string;
   partner_name?: string;
@@ -64,8 +64,8 @@ export interface Contract {
   points?: string;
   productVersionId?: number;
   product_name?: string;
-  status?: Status;
-  commission_status?: CommissionStatus;
-  frequency_type?: FrequencyType;
+  status?: IStatus;
+  commission_status?: ICommissionStatus;
+  frequency_type?: IFrequencyType;
   [key: string]: any;
 }

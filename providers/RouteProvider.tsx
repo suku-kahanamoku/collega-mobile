@@ -3,14 +3,14 @@ import { RelativePathString, usePathname, useRouter } from "expo-router";
 import { useTranslation } from "react-i18next";
 import { IMenu } from "@/types/menu";
 
-interface RouteContextProps {
+interface IRouteContextProps {
   menuList: Record<string, IMenu>;
   menus: IMenu[];
   activeMenu: IMenu;
   navigate: (href: RelativePathString) => void; // Add navigate function type
 }
 
-export const RouteContext = createContext<RouteContextProps | undefined>(
+export const RouteContext = createContext<IRouteContextProps | undefined>(
   undefined
 );
 

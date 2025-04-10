@@ -1,6 +1,6 @@
 import React, { createContext, useState, useEffect, ReactNode } from "react";
 
-interface User {
+interface IUser {
   id: number;
   name: string;
   username: string;
@@ -8,18 +8,18 @@ interface User {
   [key: string]: any;
 }
 
-interface UserContextProps {
-  users: User[];
+interface IUserContextProps {
+  users: IUser[];
   loading: boolean;
   error: string | null;
 }
 
-export const UserContext = createContext<UserContextProps | undefined>(
+export const UserContext = createContext<IUserContextProps | undefined>(
   undefined
 );
 
 export const UserProvider = ({ children }: { children: ReactNode }) => {
-  const [users, setUsers] = useState<User[]>([]);
+  const [users, setUsers] = useState<IUser[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 

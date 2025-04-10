@@ -1,12 +1,12 @@
-export interface User {
+export interface IUser {
   name: string;
   email: string;
   phone: string;
   img: string;
 }
 
-export interface Session {
+export interface ISession {
   login: string;
   bearer: string;
-  user: User;
+  user: IUser;
 }

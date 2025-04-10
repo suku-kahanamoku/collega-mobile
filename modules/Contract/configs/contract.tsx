@@ -1,10 +1,10 @@
 import {
-  Option,
-  SelectField,
-  TextField,
-  CheckboxField,
-  RadioField,
-  TextareaField,
+  IOption,
+  ISelectField,
+  ITextField,
+  ICheckboxField,
+  IRadioField,
+  ITextareaField,
 } from "@/modules/Form/type";
 
 export const FETCH_OPTIONS = {
@@ -12,7 +12,7 @@ export const FETCH_OPTIONS = {
   method: "GET",
 };
 
-export const STATUS_OPTIONS: Option[] = [
+export const STATUS_OPTIONS: IOption[] = [
   { value: "accepted", label: "contract.status.accepted" },
   { value: "send", label: "contract.status.send" },
   { value: "canceled", label: "contract.status.canceled" },
@@ -25,11 +25,11 @@ export const STATUS_OPTIONS: Option[] = [
 ];
 
 export const FIELDS: (
-  | TextField
-  | SelectField
-  | CheckboxField
-  | RadioField
-  | TextareaField
+  | ITextField
+  | ISelectField
+  | ICheckboxField
+  | IRadioField
+  | ITextareaField
 )[] = [
   {
     type: "text",

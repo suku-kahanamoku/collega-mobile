@@ -1,7 +1,7 @@
 import { useEffect, useCallback, useReducer } from "react";
 import * as SecureStore from "expo-secure-store";
 import { Platform } from "react-native";
-import { Session } from "../types/auth"; // Import the new Session type
+import { ISession } from "../types/auth";
 
 type UseStateHook<T> = [[boolean, T | null], (value: T | null) => void];
 
@@ -37,7 +37,7 @@ async function _setStorageItemAsync(key: string, value: string | null) {
   }
 }
 
-export function useStorageState<T = Session>(key: string): UseStateHook<T> {
+export function useStorageState<T = ISession>(key: string): UseStateHook<T> {
   const [state, setState] = _useAsyncState<T>();
 
   useEffect(() => {

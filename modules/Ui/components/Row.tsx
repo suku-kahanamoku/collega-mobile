@@ -2,12 +2,12 @@ import React from "react";
 import { StyleSheet, View } from "react-native";
 import { Text } from "@rneui/themed";
 
-import { StyleProps } from "@/types/component";
+import { IStyleProps } from "@/types/component";
 
-interface RowProps {
+interface IRowProps {
   label: string;
   variant?: "inline";
-  style?: StyleProps;
+  style?: IStyleProps;
   children: React.ReactNode;
   [rest: string]: any;
 }
@@ -18,7 +18,7 @@ export default function RowCmp({
   style,
   children,
   ...rest
-}: RowProps) {
+}: IRowProps) {
   if (variant === "inline") {
     return (
       <View style={[styles.container, style?.container]} {...rest}>

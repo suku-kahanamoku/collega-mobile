@@ -5,14 +5,14 @@ import { useTranslation } from "react-i18next";
 
 import i18n, { locales } from "@/i18n";
 
-interface LocaleContextProps {
+interface ILocaleContextProps {
   locale: string;
   changeLanguage: (value: string) => Promise<void>;
   t: (key: string) => string;
   locales: typeof locales;
 }
 
-export const LocaleContext = createContext<LocaleContextProps | undefined>(
+export const LocaleContext = createContext<ILocaleContextProps | undefined>(
   undefined
 );
 

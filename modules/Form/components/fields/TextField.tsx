@@ -1,18 +1,18 @@
 import React, { useCallback } from "react";
 import { Input } from "@rneui/themed";
 
-import { StyleProps } from "@/types/component";
-import { TextField as TextFieldType } from "../../type";
+import { IStyleProps } from "@/types/component";
+import { ITextField } from "../../type";
 import { DEBOUNCE } from "@/modules/Common/utils/delay";
 
-interface FieldProps {
-  field: TextFieldType;
-  style?: StyleProps;
+interface IFieldProps {
+  field: ITextField;
+  style?: IStyleProps;
   onChange?: (text: string) => void;
   [rest: string]: any;
 }
 
-const TextField: React.FC<FieldProps> = ({
+const TextField: React.FC<IFieldProps> = ({
   field,
   style,
   onChange,
@@ -33,7 +33,7 @@ const TextField: React.FC<FieldProps> = ({
       autoComplete={field.autoComplete}
       autoFocus={field.autoFocus}
       value={field.value}
-      secureTextEntry={field.type === 'password' ? true : false}
+      secureTextEntry={field.type === "password" ? true : false}
       {...rest}
       onChangeText={handleChange}
     />

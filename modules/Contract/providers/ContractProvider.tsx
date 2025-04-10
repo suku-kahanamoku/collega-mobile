@@ -1,38 +1,38 @@
 import React, { createContext, useState, useEffect, ReactNode } from "react";
 
-import { Contract } from "../type";
+import { IContract } from "../type";
 import { useTranslation } from "react-i18next";
 import { FETCH_OPTIONS, FIELDS } from "../configs/contract";
-import { Field, SelectField } from "@/modules/Form/type";
+import { IField, ISelectField } from "@/modules/Form/type";
 import { useAuth } from "@/modules/Auth/hooks/useAuth";
 
-interface ContractContextProps {
-  contracts: Contract[];
+interface IContractContextProps {
+  contracts: IContract[];
   loading: boolean;
   error: string | null;
-  fields: Field[];
-  fieldList: Record<string, Field>;
+  fields: IField[];
+  fieldList: Record<string, IField>;
 }
 
-export const ContractContext = createContext<ContractContextProps | undefined>(
+export const ContractContext = createContext<IContractContextProps | undefined>(
   undefined
 );
 
 export const ContractProvider = ({ children }: { children: ReactNode }) => {
   const { t } = useTranslation("$");
   const { session } = useAuth();
-  const [contracts, setContracts] = useState<Contract[]>([]);
+  const [contracts, setContracts] = useState<IContract[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
   const fields = FIELDS.map((field) => {
     // provede preklad
-    const result = { ...field, label: t(field.label) } as SelectField;
+    const result = { ...field, label: t(field.label) } as ISelectField;
     // provede preklad option.label
     result.options?.forEach(
       (option) => (option.label = option.label ? t(option.label) : option.label)
     );
-    return result as Field;
+    return result as IField;
   });
 
   const fieldList = fields.reduce((acc, field) => {
@@ -48,7 +48,7 @@ export const ContractProvider = ({ children }: { children: ReactNode }) => {
         : undefined,
     };
     return acc;
-  }, {} as Record<string, Field & { optionList?: Record<string, string> }>);
+  }, {} as Record<string, IField & { optionList?: Record<string, string> }>);
 
   const fetchContracts = async () => {
     try {

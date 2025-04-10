@@ -1,9 +1,9 @@
 import {
-  SelectField,
-  TextField,
-  CheckboxField,
-  RadioField,
-  TextareaField,
+  ISelectField,
+  ITextField,
+  ICheckboxField,
+  IRadioField,
+  ITextareaField,
 } from "@/modules/Form/type";
 
 export const FETCH_OPTIONS = {
@@ -12,11 +12,11 @@ export const FETCH_OPTIONS = {
 };
 
 export const FIELDS: (
-  | TextField
-  | SelectField
-  | CheckboxField
-  | RadioField
-  | TextareaField
+  | ITextField
+  | ISelectField
+  | ICheckboxField
+  | IRadioField
+  | ITextareaField
 )[] = [
   {
     type: "text",

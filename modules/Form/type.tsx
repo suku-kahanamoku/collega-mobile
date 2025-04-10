@@ -1,7 +1,7 @@
 import { TextInputProps, SwitchProps } from "react-native";
 import { PickerProps } from "@react-native-picker/picker";
 
-export interface FieldItem {
+export interface IFieldItem {
   name: string;
   label: string;
   type?: "text" | "password" | "select" | "checkbox" | "radio" | "textarea";
@@ -9,29 +9,29 @@ export interface FieldItem {
   required?: boolean;
 }
 
-export interface TextField extends FieldItem, TextInputProps {}
+export interface ITextField extends IFieldItem, TextInputProps {}
 
-export interface Option {
+export interface IOption {
   value: any;
   label?: string;
 }
 
-export interface SelectField extends FieldItem, PickerProps {
-  options?: Option[];
+export interface ISelectField extends IFieldItem, PickerProps {
+  options?: IOption[];
   optionList?: Record<string, string>;
   value?: any;
 }
 
-export interface CheckboxField extends FieldItem, SwitchProps {}
+export interface ICheckboxField extends IFieldItem, SwitchProps {}
 
-export interface RadioField extends FieldItem {
-  options?: Option[];
+export interface IRadioField extends IFieldItem {
+  options?: IOption[];
 }
 
-export interface TextareaField extends FieldItem {}
+export interface ITextareaField extends IFieldItem {}
 
-export type Field = TextField &
-  SelectField &
-  CheckboxField &
-  RadioField &
-  TextareaField;
+export type IField = ITextField &
+  ISelectField &
+  ICheckboxField &
+  IRadioField &
+  ITextareaField;

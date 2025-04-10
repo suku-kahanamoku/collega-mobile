@@ -7,12 +7,12 @@ import { LinearGradient } from "expo-linear-gradient";
 import { useTheme } from "@/hooks/useTheme";
 import { IMenu } from "@/types/menu";
 
-interface MenuListProps {
+interface IMenuListProps {
   menus: IMenu[];
   onPress?: (menu: IMenu) => void;
 }
 
-const MenuListCmp: React.FC<MenuListProps> = ({ menus, onPress }) => {
+const MenuListCmp: React.FC<IMenuListProps> = ({ menus, onPress }) => {
   const { Colors } = useTheme();
 
   return (

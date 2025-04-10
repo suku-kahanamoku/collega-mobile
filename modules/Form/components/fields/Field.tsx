@@ -1,19 +1,19 @@
 import React from "react";
 
-import { StyleProps } from "@/types/component";
-import { Field as FieldType } from "../../type";
+import { IStyleProps } from "@/types/component";
+import { IField } from "../../type";
 import TextField from "./TextField";
 import SelectField from "./SelectField";
 import CheckboxField from "./CheckboxField";
 
-interface FieldProps {
-  field: FieldType;
-  style?: StyleProps;
+interface IFieldProps {
+  field: IField;
+  style?: IStyleProps;
   onChange?: (value: any) => void;
   [rest: string]: any;
 }
 
-const Field: React.FC<FieldProps> = ({ field, style, onChange, ...rest }) => {
+const Field: React.FC<IFieldProps> = ({ field, style, onChange, ...rest }) => {
   switch (field.type) {
     case "select":
       return (
