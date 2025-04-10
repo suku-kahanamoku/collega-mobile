@@ -4,12 +4,14 @@ import { Link } from "expo-router";
 import { Text, Button, SocialIcon, Card } from "@rneui/themed";
 
 import { useLocale } from "@/modules/Lang/hooks/useLocale";
+import { useAuth } from "@/modules/Auth/hooks/useAuth";
 import { useRoute } from "@/hooks/useRoute";
 import Field from "@/modules/Form/components/fields/Field";
 import { Field as FieldType } from "@/modules/Form/type";
 
 const LoginCmp = () => {
   const { t } = useLocale();
+  const { session, signIn } = useAuth();
   const { menuList } = useRoute();
   const signupMenu = menuList.signup;
   const resetPasswordMenu = menuList.reset_password;
@@ -79,7 +81,12 @@ const LoginCmp = () => {
         </Link>
       </View>
 
-      <Button title={t("btn.login")} onPress={handleSubmit} />
+      <Button
+        title={t("btn.login")}
+        uppercase={true}
+        titleStyle={styles.button}
+        onPress={handleSubmit}
+      />
 
       <View style={styles.toSignup}>
         <Text>{t("login.account")}</Text>
@@ -94,7 +101,12 @@ const LoginCmp = () => {
       </View>
 
       <View style={styles.socialButtons}>
-        <Button size="lg" type="clear" icon={<SocialIcon type="facebook" />} />
+        <Button
+          size="lg"
+          type="clear"
+          icon={<SocialIcon type="facebook" />}
+          onPress={signIn}
+        />
         <Button size="lg" type="clear" icon={<SocialIcon type="google" />} />
         <Button size="lg" type="clear" icon={<SocialIcon type="linkedin" />} />
       </View>
@@ -112,6 +124,9 @@ const styles = StyleSheet.create({
   },
   field: {
     gap: 8,
+  },
+  button: {
+    width: "100%",
   },
   forgotPassword: {
     alignSelf: "flex-end",

@@ -18,16 +18,19 @@ export const AuthContext = createContext<AuthContextProps>({
 export function AuthProvider({ children }: PropsWithChildren) {
   const [[isLoading, session], setSession] = useStorageState("session");
 
+  const signIn = () => {
+    setSession(JSON.stringify({ name: "aaa", email: "bbb" }));
+  };
+
+  const signOut = () => {
+    setSession(null);
+  };
+
   return (
     <AuthContext.Provider
       value={{
-        signIn: () => {
-          // Perform sign-in logic here
-          setSession("xxx");
-        },
-        signOut: () => {
-          setSession(null);
-        },
+        signIn,
+        signOut,
         session,
         isLoading,
       }}

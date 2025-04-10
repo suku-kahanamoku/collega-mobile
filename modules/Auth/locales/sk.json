@@ -1,0 +1,37 @@
+{
+  "$": {
+    "login": {
+      "title": "Prihláste sa do svojho účtu",
+      "account": "Nemáte účet?"
+    },
+    "signup": {
+      "title": "Zaregistrujte sa na účet"
+    },
+    "form": {
+      "email": "Email",
+      "password": "Heslo",
+      "firstname": "Meno",
+      "lastname": "Priezvisko",
+      "repeat_password": "Zopakujte heslo"
+    },
+    "placeholder": {
+      "email": "Zadajte svoj email",
+      "password": "Zadajte svoje heslo",
+      "firstname": "Zadajte svoje meno",
+      "lastname": "Zadajte svoje priezvisko",
+      "repeat_password": "Zopakujte svoje heslo"
+    },
+    "btn": {
+      "login": "Prihlásiť sa",
+      "signup": "Zaregistrujte sa",
+      "back_login": "Späť na prihlásenie",
+      "reset_password": "Obnoviť heslo",
+      "submit": "Odoslať",
+      "forgot_password": "Zabudnuté heslo",
+      "logout": "Odhlásiť sa"
+    },
+    "forgot_password": {
+      "title": "Zabudli ste svoje heslo?"
+    }
+  }
+}

@@ -49,11 +49,11 @@ const MenuListCmp: React.FC<MenuListProps> = ({ menus, onPress }) => {
   );
 };
 
-export default MenuListCmp;
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingVertical: 30,
   },
 });
+
+export default MenuListCmp;

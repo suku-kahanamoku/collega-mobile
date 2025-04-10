@@ -1,10 +1,10 @@
 import { Redirect, Stack } from "expo-router";
 
-import { useSession } from "@/modules/Auth/hooks/useAuth";
+import { useAuth } from "@/modules/Auth/hooks/useAuth";
 import { useRoute } from "@/hooks/useRoute";
 
 export default function PagesLayout() {
-  const { session, isLoading } = useSession();
+  const { session, isLoading } = useAuth();
   const { menuList, menus } = useRoute();
   const settingsMenu = menuList.settings;
 

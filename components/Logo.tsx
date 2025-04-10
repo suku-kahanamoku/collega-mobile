@@ -2,13 +2,13 @@ import React from "react";
 import { StyleSheet, Image } from "react-native";
 import { Link } from "expo-router";
 
-import { useSession } from "@/modules/Auth/hooks/useAuth";
+import { useAuth } from "@/modules/Auth/hooks/useAuth";
 import { useRoute } from "@/hooks/useRoute";
 
 const logoImg = require("@/assets/images/logo.png");
 
 export default function LogoCmp() {
-  const { session } = useSession();
+  const { session } = useAuth();
   const { menuList } = useRoute();
   const loginMenu = menuList.login;
 

@@ -58,7 +58,12 @@ const ResetPasswordCmp = () => {
         ))}
       </View>
 
-      <Button title={t("btn.submit")} onPress={handleSubmit} />
+      <Button
+        title={t("btn.submit")}
+        uppercase={true}
+        titleStyle={styles.button}
+        onPress={handleSubmit}
+      />
 
       <Link href={loginMenu.href}>
         <View style={styles.backLinkContent}>
@@ -82,6 +87,9 @@ const styles = StyleSheet.create({
   },
   field: {
     gap: 8,
+  },
+  button: {
+    width: "100%",
   },
   backLinkContent: {
     flexDirection: "row",

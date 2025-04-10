@@ -2,11 +2,11 @@ import { Link } from "expo-router";
 import { StyleSheet, View } from "react-native";
 import { Text } from "@rneui/themed";
 
-import { useSession } from "@/modules/Auth/hooks/useAuth";
+import { useAuth } from "@/modules/Auth/hooks/useAuth";
 import { useRoute } from "@/hooks/useRoute";
 
 export default function NotFoundScreen() {
-  const { session } = useSession();
+  const { session } = useAuth();
   const { menuList } = useRoute();
   const loginMenu = menuList.login;
 

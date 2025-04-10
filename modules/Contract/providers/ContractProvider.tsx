@@ -56,6 +56,7 @@ export const ContractProvider = ({ children }: { children: ReactNode }) => {
         /* params: { ...query }, */
       });
       const data = await response.json();
+      // todo - v pripade chyby backend nevraci error napr. 404, 401, ale 200 a status.status = 401
       setContracts(data);
       setLoading(false);
     } catch (err) {

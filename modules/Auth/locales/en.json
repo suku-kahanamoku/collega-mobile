@@ -1,0 +1,37 @@
+{
+  "$": {
+    "login": {
+      "title": "Log in to your account",
+      "account": "Don't have an account?"
+    },
+    "signup": {
+      "title": "Sign up for an account"
+    },
+    "form": {
+      "email": "Email",
+      "password": "Password",
+      "firstname": "First name",
+      "lastname": "Last name",
+      "repeat_password": "Repeat password"
+    },
+    "placeholder": {
+      "email": "Enter your email",
+      "password": "Enter your password",
+      "firstname": "Enter your first name",
+      "lastname": "Enter your last name",
+      "repeat_password": "Repeat your password"
+    },
+    "btn": {
+      "login": "Login",
+      "signup": "Sign up",
+      "back_login": "Back to login",
+      "reset_password": "Reset password",
+      "submit": "Submit",
+      "forgot_password": "Forgot password",
+      "logout": "Logout"
+    },
+    "forgot_password": {
+      "title": "Forgot your password?"
+    }
+  }
+}

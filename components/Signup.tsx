@@ -100,7 +100,12 @@ const SignupCmp = () => {
         ))}
       </View>
 
-      <Button title={t("btn.signup")} onPress={handleSubmit} />
+      <Button
+        title={t("btn.signup")}
+        uppercase={true}
+        titleStyle={styles.button}
+        onPress={handleSubmit}
+      />
 
       <Link href={loginMenu.href}>
         <View style={styles.backLinkContent}>
@@ -124,6 +129,9 @@ const styles = StyleSheet.create({
   },
   field: {
     gap: 8,
+  },
+  button: {
+    width: "100%",
   },
   backLinkContent: {
     flexDirection: "row",
