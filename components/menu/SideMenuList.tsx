@@ -9,11 +9,46 @@ import { useLocale } from "@/modules/Lang/hooks/useLocale";
 import { useRoute } from "@/hooks/useRoute";
 import MenuListCmp from "./MenuList";
 
+/**
+ * Parametry pro komponentu `SideMenuList`.
+ *
+ * @interface ISideMenuListProps
+ * @property {IMenu[]} menus - Pole položek menu, které se zobrazí v bočním menu.
+ * @property {(value: boolean) => void} [setOpen] - Nepovinný callback pro nastavení stavu otevření bočního menu.
+ */
 interface ISideMenuListProps {
   menus: IMenu[];
   setOpen?: (value: boolean) => void;
 }
 
+/**
+ * SideMenuListCmp je React funkční komponenta, která vykresluje boční menu
+ * a poskytuje funkčnost přihlášení/odhlášení na základě stavu uživatelské relace.
+ *
+ * @component
+ * @param {ISideMenuListProps} props - Parametry komponenty.
+ * @param {IMenu[]} props.menus - Pole položek menu, které se zobrazí v bočním menu.
+ * @param {(open: boolean) => void} [props.setOpen] - Nepovinný callback pro nastavení stavu otevření menu.
+ *
+ * @returns {JSX.Element} Vykreslená komponenta bočního menu.
+ *
+ * @remarks
+ * - Tato komponenta používá hook `useLocale` pro lokalizaci, `useAuth` pro správu relace,
+ *   `useTheme` pro barvy tématu a `useRoute` pro navigaci.
+ * - Pokud je uživatel přihlášen, zobrazí se tlačítko pro odhlášení. Jinak se zobrazí tlačítka pro přihlášení a registraci.
+ * - Handler `onPress` naviguje na příslušnou trasu a volitelně zavře menu.
+ *
+ * @example
+ * ```tsx
+ * <SideMenuListCmp
+ *   menus={[
+ *     { id: 1, title: "Domů", href: "/home" },
+ *     { id: 2, title: "Profil", href: "/profile" },
+ *   ]}
+ *   setOpen={(open) => console.log("Stav otevření menu:", open)}
+ * />
+ * ```
+ */
 const SideMenuListCmp: React.FC<ISideMenuListProps> = ({ menus, setOpen }) => {
   const { t } = useLocale();
   const { session, signOut } = useAuth();

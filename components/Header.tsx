@@ -10,6 +10,18 @@ import { useRoute } from "@/hooks/useRoute";
 const logoImg = require("@/assets/images/logo.png");
 
 /**
+ * Vstupní parametry pro komponentu Header.
+ *
+ * @interface IHeaderCmpProps
+ * @property {boolean} [hideTitle] - Volitelný příznak pro skrytí názvu v hlavičce.
+ * @property {React.Dispatch<React.SetStateAction<boolean>>} setOpen - Funkce pro nastavení stavu otevření.
+ */
+interface IHeaderCmpProps {
+  hideTitle?: boolean;
+  setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+/**
  * HeaderCmp je funkční React komponenta, která vykresluje přizpůsobitelnou hlavičku
  * pro aplikaci. Obsahuje logo, navigační odkazy a volitelný text s názvem.
  *
@@ -20,7 +32,7 @@ const logoImg = require("@/assets/images/logo.png");
  *
  * @returns {JSX.Element} Vykreslená hlavička komponenty.
  *
- * @poznámka
+ * @description
  * - Komponenta využívá `@rneui/themed` pro stylování a rozvržení.
  * - Integruje se s `expo-router` pro navigaci.
  * - Hooky `useAuth`, `useTheme` a `useRoute` jsou použity pro správu autentizace,
@@ -39,11 +51,6 @@ const logoImg = require("@/assets/images/logo.png");
  * };
  * ```
  */
-interface IHeaderCmpProps {
-  hideTitle?: boolean;
-  setOpen: React.Dispatch<React.SetStateAction<boolean>>;
-}
-
 const HeaderCmp: React.FC<IHeaderCmpProps> = ({ hideTitle, setOpen }) => {
   const { session } = useAuth();
   const { Colors } = useTheme();
