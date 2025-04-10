@@ -1,10 +1,4 @@
-import React, {
-  createContext,
-  useContext,
-  useState,
-  useEffect,
-  ReactNode,
-} from "react";
+import React, { createContext, useState, useEffect, ReactNode } from "react";
 import {
   ThemeProvider,
   DarkTheme,
@@ -21,20 +15,14 @@ export type ITheme = "light" | "dark";
 interface ThemeContextProps {
   theme: ITheme;
   isDark: boolean;
-  colors: Theme["colors"] & typeof Colors.light;
+  colors: typeof Colors.light;
   Colors: typeof Colors;
   changeTheme: (value: ITheme) => Promise<void>;
 }
 
-const ThemeContext = createContext<ThemeContextProps | undefined>(undefined);
-
-export const useTheme = () => {
-  const context = useContext(ThemeContext);
-  if (!context) {
-    throw new Error("useTheme must be used within a ThemeProviderCmp");
-  }
-  return context;
-};
+export const ThemeContext = createContext<ThemeContextProps | undefined>(
+  undefined
+);
 
 export const ThemeProviderCmp = ({ children }: { children: ReactNode }) => {
   const [theme, setTheme] = useState<ITheme>("light");
@@ -61,15 +49,9 @@ export const ThemeProviderCmp = ({ children }: { children: ReactNode }) => {
 
   const isDark = theme === "dark";
   const currentTheme = isDark ? DarkTheme : DefaultTheme;
-  const colors = {
-    ...currentTheme.colors,
-    secondary: isDark ? Colors.dark.secondary : Colors.light.secondary,
-    info: isDark ? Colors.dark.info : Colors.light.info,
-    warning: isDark ? Colors.dark.warning : Colors.light.warning,
-    error: isDark ? Colors.dark.error : Colors.light.error,
-    success: isDark ? Colors.dark.success : Colors.light.success,
-    primary2: isDark ? Colors.dark.primary2 : Colors.light.primary2,
-  };
+  currentTheme.colors = (isDark
+    ? Colors.dark
+    : Colors.light) as unknown as Theme["colors"];
 
   const uiTheme = createTheme({
     lightColors: Colors.light,
@@ -78,6 +60,11 @@ export const ThemeProviderCmp = ({ children }: { children: ReactNode }) => {
     components: {
       Text: FontSizes,
       CardTitle: FontSizes,
+      Card: {
+        containerStyle: {
+          backgroundColor: currentTheme.colors.background,
+        },
+      },
     },
   });
 
@@ -86,7 +73,7 @@ export const ThemeProviderCmp = ({ children }: { children: ReactNode }) => {
       value={{
         theme,
         isDark,
-        colors,
+        colors: currentTheme.colors as unknown as typeof Colors.light,
         Colors,
         changeTheme,
       }}

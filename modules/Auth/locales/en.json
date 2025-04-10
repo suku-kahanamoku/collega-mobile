@@ -12,9 +12,11 @@
       "password": "Password",
       "firstname": "First name",
       "lastname": "Last name",
-      "repeat_password": "Repeat password"
+      "repeat_password": "Repeat password",
+      "login": "Login"
     },
     "placeholder": {
+      "login": "Enter your login",
       "email": "Enter your email",
       "password": "Enter your password",
       "firstname": "Enter your first name",

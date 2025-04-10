@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet } from "react-native";
 
-import { useTheme } from "@/providers/ThemeProvider";
+import { useTheme } from "@/hooks/useTheme";
 import { useLocale } from "@/modules/Lang/hooks/useLocale";
 import RowCmp from "@/modules/Ui/components/Row";
 import { Switch } from "@rneui/themed";

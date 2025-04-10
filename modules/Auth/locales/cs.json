@@ -12,9 +12,11 @@
       "password": "Heslo",
       "firstname": "Jméno",
       "lastname": "Příjmení",
-      "repeat_password": "Zopakujte heslo"
+      "repeat_password": "Zopakujte heslo",
+      "login": "Login"
     },
     "placeholder": {
+      "login": "Zadejte svůj login",
       "email": "Zadejte svůj email",
       "password": "Zadejte své heslo",
       "firstname": "Zadejte své jméno",

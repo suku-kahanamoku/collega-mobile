@@ -5,8 +5,10 @@ import { Card, Icon, ListItem, Rating, Text } from "@rneui/themed";
 import RowCmp from "@/modules/Ui/components/Row";
 import { useContract } from "@/modules/Contract/hooks/useContract";
 import RecordNotFoundPage from "@/modules/Ui/components/RecordNotFound";
-import { useTheme } from "@/providers/ThemeProvider";
+import { useTheme } from "@/hooks/useTheme";
 import { useLocale } from "@/modules/Lang/hooks/useLocale";
+
+const logoImg = require("@/assets/images/collega_brokers.png");
 
 export default function ContractScreen() {
   const { t } = useLocale();
@@ -31,7 +33,9 @@ export default function ContractScreen() {
         <Card.Divider />
 
         <Card.Image
-          source={{ uri: contract.partner_logo }}
+          source={
+            contract.partner_logo ? { uri: contract.partner_logo } : logoImg
+          }
           style={{ height: 100 }}
         />
 

@@ -1,14 +1,16 @@
 import { createContext, useState, type PropsWithChildren } from "react";
 import { useTranslation } from "react-i18next";
 
+import { Field, SelectField } from "@/modules/Form/type";
+
 import { useStorageState } from "../hooks/useStorageState";
 import { FETCH_OPTIONS, FIELDS } from "../configs/auth";
-import { Field, SelectField } from "@/modules/Form/type";
+import { Session } from "../types/auth";
 
 interface AuthContextProps {
   signIn: () => void;
   signOut: () => void;
-  session?: string | null;
+  session?: Session | null;
   loading: boolean;
   fields: Field[];
   fieldList: Record<string, Field>;
@@ -27,6 +29,9 @@ export function AuthProvider({ children }: PropsWithChildren) {
   const fields = FIELDS.map((field) => {
     // provede preklad
     const result = { ...field, label: t(field.label) } as SelectField;
+    if (result.placeholder) {
+      result.placeholder = t((field as Field).placeholder!);
+    }
     // provede preklad option.label
     result.options?.forEach(
       (option) => (option.label = option.label ? t(option.label) : option.label)
@@ -49,8 +54,23 @@ export function AuthProvider({ children }: PropsWithChildren) {
     return acc;
   }, {} as Record<string, Field & { optionList?: Record<string, string> }>);
 
-  const signIn = () => {
-    setSession(JSON.stringify({ name: "aaa", email: "bbb" }));
+  const signIn = async () => {
+    try {
+      const body = new FormData();
+      
+      const response = await fetch(FETCH_OPTIONS.url, {
+        method: FETCH_OPTIONS.method,
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+        body,
+      });
+      const data = await response.json();
+
+      setSession(data);
+    } catch (error) {
+      console.error("Error during signIn:", error);
+    }
   };
 
   const signOut = () => {

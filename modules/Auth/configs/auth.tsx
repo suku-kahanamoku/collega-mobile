@@ -7,7 +7,7 @@ import {
 } from "@/modules/Form/type";
 
 export const FETCH_OPTIONS = {
-  url: "https://collega.cz/security/hook/get-contract?client_id=4703",
+  url: "https://collega.cz/security/hook/log-in",
   method: "POST",
 };
 
@@ -18,6 +18,13 @@ export const FIELDS: (
   | RadioField
   | TextareaField
 )[] = [
+  {
+    type: "text",
+    name: "login",
+    label: "form.login",
+    inputMode: "text",
+    placeholder: "placeholder.login",
+  },
   {
     type: "text",
     name: "email",
@@ -46,7 +53,7 @@ export const FIELDS: (
   },
   {
     type: "password",
-    name: "password",
+    name: "pass",
     label: "form.password",
     inputMode: "text",
     autoComplete: "password",

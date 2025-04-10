@@ -4,6 +4,7 @@ import { Contract } from "../type";
 import { useTranslation } from "react-i18next";
 import { FETCH_OPTIONS, FIELDS } from "../configs/contract";
 import { Field, SelectField } from "@/modules/Form/type";
+import { useAuth } from "@/modules/Auth/hooks/useAuth";
 
 interface ContractContextProps {
   contracts: Contract[];
@@ -19,6 +20,7 @@ export const ContractContext = createContext<ContractContextProps | undefined>(
 
 export const ContractProvider = ({ children }: { children: ReactNode }) => {
   const { t } = useTranslation("$");
+  const { session } = useAuth();
   const [contracts, setContracts] = useState<Contract[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
@@ -52,7 +54,9 @@ export const ContractProvider = ({ children }: { children: ReactNode }) => {
     try {
       const response = await fetch(FETCH_OPTIONS.url, {
         method: FETCH_OPTIONS.method,
-        headers: FETCH_OPTIONS.headers,
+        headers: {
+          Authorization: `Bearer ${session?.bearer}`,
+        },
         /* params: { ...query }, */
       });
       const data = await response.json();

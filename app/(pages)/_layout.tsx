@@ -4,7 +4,7 @@ import { useAuth } from "@/modules/Auth/hooks/useAuth";
 import { useRoute } from "@/hooks/useRoute";
 
 export default function PagesLayout() {
-  const { session, isLoading } = useAuth();
+  const { session } = useAuth();
   const { menuList, menus } = useRoute();
   const settingsMenu = menuList.settings;
 
@@ -27,7 +27,7 @@ export default function PagesLayout() {
       <Stack.Screen
         name={settingsMenu.name}
         options={{
-          headerTitle: "Nazev prihlaseneho uzivatele",
+          headerTitle: session?.user?.name,
           presentation: "modal",
         }}
       />

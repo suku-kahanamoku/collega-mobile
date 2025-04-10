@@ -36,7 +36,7 @@ const LoginCmp = () => {
       <Card.Divider />
 
       <View style={styles.field}>
-        {[fieldList.email, fieldList.password].map((field) => (
+        {[fieldList.login, fieldList.pass].map((field) => (
           <Field
             key={field.name}
             field={field}

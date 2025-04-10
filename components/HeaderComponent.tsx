@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet, View } from "react-native";
 import { Button, Icon, Header, Text } from "@rneui/themed";
-import { useTheme } from "@/providers/ThemeProvider";
+import { useTheme } from "@/hooks/useTheme";
 import LogoCmp from "@/components/Logo";
 import { useRoute } from "@/hooks/useRoute";
 import { IMenu } from "@/types/menu";

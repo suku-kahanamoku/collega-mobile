@@ -37,18 +37,20 @@ const SignupCmp = () => {
       <Card.Divider />
 
       <View style={styles.field}>
-        {fields.map((field) => (
-          <Field
-            key={field.name}
-            field={field}
-            style={{
-              container: { gap: 4 },
-              label: { fontSize: 16 },
-              children: { height: 46 },
-            }}
-            onChange={(value) => handleChange(field.name, value)}
-          />
-        ))}
+        {fields
+          .filter((field) => field.name !== "login")
+          .map((field) => (
+            <Field
+              key={field.name}
+              field={field}
+              style={{
+                container: { gap: 4 },
+                label: { fontSize: 16 },
+                children: { height: 46 },
+              }}
+              onChange={(value) => handleChange(field.name, value)}
+            />
+          ))}
       </View>
 
       <Button

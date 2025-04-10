@@ -5,7 +5,7 @@ import { Input } from "@rneui/themed";
 
 import { StyleProps } from "@/types/component";
 import { SelectField as SelectFieldType } from "../../type";
-import { useTheme } from "@/providers/ThemeProvider";
+import { useTheme } from "@/hooks/useTheme";
 
 interface FieldProps {
   field: SelectFieldType;

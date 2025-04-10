@@ -8,12 +8,8 @@ import {
 } from "@/modules/Form/type";
 
 export const FETCH_OPTIONS = {
-  url: "https://collega.cz/security/hook/get-contract?client_id=4703",
+  url: "https://collega.cz/security/hook/get-contract",
   method: "GET",
-  headers: {
-    Authorization:
-      "Bearer def50200b939e8396d98ef29a9ae1eee3050929dc56f3aecdce7a001de95a4aa9431ff3486f47e20c86127bb3316ddb5db6ee8a2990b1b2f9fe03d7d37d0f5ca0eb001f80893412a3f4fce7d130272a804d9bf3a4598ed8e",
-  },
 };
 
 export const STATUS_OPTIONS: Option[] = [

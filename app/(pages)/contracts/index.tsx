@@ -6,7 +6,9 @@ import { useRoute } from "@/hooks/useRoute";
 import { useContract } from "@/modules/Contract/hooks/useContract";
 import LoadingPage from "@/modules/Ui/components/Loading";
 import RecordNotFoundPage from "@/modules/Ui/components/RecordNotFound";
-import { useTheme } from "@/providers/ThemeProvider";
+import { useTheme } from "@/hooks/useTheme";
+
+const logoImg = require("@/assets/images/logo.png");
 
 export default function ContractsScreen() {
   const { contracts, loading, error } = useContract();
@@ -44,7 +46,10 @@ export default function ContractsScreen() {
           )}
           onPress={() => navigate(`${contractsMenu.href}/${item.id}`)}
         >
-          <Avatar rounded source={{ uri: item.partner_logo }} />
+          <Avatar
+            rounded
+            source={item.partner_logo ? { uri: item.partner_logo } : logoImg}
+          />
           <ListItem.Content>
             <ListItem.Title>
               <Text h3>{item.partner_name}</Text>

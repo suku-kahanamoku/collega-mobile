@@ -20,5 +20,5 @@ export default function LogoCmp() {
 }
 
 const styles = StyleSheet.create({
-  image: { width: 60, height: 30 },
+  image: { width: 60, height: 32 },
 });
