@@ -1,6 +1,6 @@
 import React from "react";
-import { ScrollView, StyleSheet, View } from "react-native";
-import LoginCmp from "@/components/Login";
+import { ScrollView } from "react-native";
+import LoginCmp from "@/modules/Auth/components/Login";
 
 export default function LoginScreen() {
   return (

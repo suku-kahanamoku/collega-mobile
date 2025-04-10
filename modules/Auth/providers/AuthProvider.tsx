@@ -2,7 +2,7 @@ import { createContext, useState, type PropsWithChildren } from "react";
 import { useTranslation } from "react-i18next";
 
 import { useStorageState } from "../hooks/useStorageState";
-import { FETCH_OPTIONS, FIELDS } from "../configs/login";
+import { FETCH_OPTIONS, FIELDS } from "../configs/auth";
 import { Field, SelectField } from "@/modules/Form/type";
 
 interface AuthContextProps {
@@ -12,7 +12,6 @@ interface AuthContextProps {
   loading: boolean;
   fields: Field[];
   fieldList: Record<string, Field>;
-  loginFields: Field[];
 }
 
 export const AuthContext = createContext<AuthContextProps | undefined>(
@@ -67,9 +66,6 @@ export function AuthProvider({ children }: PropsWithChildren) {
         loading,
         fields,
         fieldList,
-        loginFields: fields.filter((field) =>
-          ["email", "password"].includes(field.name)
-        ),
       }}
     >
       {children}

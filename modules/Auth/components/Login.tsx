@@ -4,13 +4,14 @@ import { Link } from "expo-router";
 import { Text, Button, SocialIcon, Card } from "@rneui/themed";
 
 import { useLocale } from "@/modules/Lang/hooks/useLocale";
-import { useAuth } from "@/modules/Auth/hooks/useAuth";
 import { useRoute } from "@/hooks/useRoute";
 import Field from "@/modules/Form/components/fields/Field";
 
+import { useAuth } from "../hooks/useAuth";
+
 const LoginCmp = () => {
   const { t } = useLocale();
-  const { loginFields, signIn } = useAuth();
+  const { fieldList, signIn } = useAuth();
   const { menuList } = useRoute();
   const signupMenu = menuList.signup;
   const resetPasswordMenu = menuList.reset_password;
@@ -35,7 +36,7 @@ const LoginCmp = () => {
       <Card.Divider />
 
       <View style={styles.field}>
-        {loginFields.map((field) => (
+        {[fieldList.email, fieldList.password].map((field) => (
           <Field
             key={field.name}
             field={field}

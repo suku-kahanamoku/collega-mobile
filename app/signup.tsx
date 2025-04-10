@@ -1,6 +1,6 @@
 import React from "react";
-import { ScrollView, StyleSheet, View } from "react-native";
-import SignupCmp from "@/components/Signup";
+import { ScrollView } from "react-native";
+import SignupCmp from "@/modules/Auth/components/Signup";
 
 export default function SignupScreen() {
   return (

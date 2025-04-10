@@ -6,28 +6,19 @@ import { Text, Button, Icon, Card } from "@rneui/themed";
 import { useLocale } from "@/modules/Lang/hooks/useLocale";
 import { useRoute } from "@/hooks/useRoute";
 import Field from "@/modules/Form/components/fields/Field";
-import { Field as FieldType } from "@/modules/Form/type";
+
+import { useAuth } from "../hooks/useAuth";
 
 const ResetPasswordCmp = () => {
   const { t } = useLocale();
+  const { fieldList } = useAuth();
   const { menuList } = useRoute();
   const loginMenu = menuList.login;
 
   const [formData, setFormData] = useState({
     email: "",
   });
-
-  const fields: FieldType[] = [
-    {
-      type: "text",
-      name: "email",
-      label: t("form.email"),
-      inputMode: "email",
-      autoComplete: "email",
-      placeholder: t("placeholder.email"),
-      required: true,
-    },
-  ];
+  const emailField = fieldList.email;
 
   const handleChange = (name: string, value: string) => {
     setFormData((prev) => ({ ...prev, [name]: value }));
@@ -44,18 +35,16 @@ const ResetPasswordCmp = () => {
       <Card.Divider />
 
       <View style={styles.field}>
-        {fields.map((field) => (
-          <Field
-            key={field.name}
-            field={field}
-            style={{
-              container: { gap: 4 },
-              label: { fontSize: 16 },
-              children: { height: 46 },
-            }}
-            onChange={(value) => handleChange(field.name, value)}
-          />
-        ))}
+        <Field
+          key={emailField.name}
+          field={emailField}
+          style={{
+            container: { gap: 4 },
+            label: { fontSize: 16 },
+            children: { height: 46 },
+          }}
+          onChange={(value) => handleChange(emailField.name, value)}
+        />
       </View>
 
       <Button
