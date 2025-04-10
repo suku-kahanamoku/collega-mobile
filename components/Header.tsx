@@ -1,8 +1,8 @@
 /**
- * HeaderComponent je funkční React komponenta, která vykresluje přizpůsobitelnou hlavičku
+ * HeaderCmp je funkční React komponenta, která vykresluje přizpůsobitelnou hlavičku
  * pro aplikaci. Obsahuje logo, navigační odkazy a volitelný text s názvem.
  *
- * @param {Object} props - Vstupní parametry pro komponentu HeaderComponent.
+ * @param {Object} props - Vstupní parametry pro komponentu HeaderCmp.
  * @param {boolean} [props.hideTitle] - Určuje, zda má být text s názvem skryt.
  * @param {React.Dispatch<React.SetStateAction<boolean>>} props.setOpen - Funkce pro nastavení
  * stavu, která přepíná otevření/zavření menu nebo panelu.
@@ -17,13 +17,13 @@
  *
  * @příklad
  * ```tsx
- * import HeaderComponent from "./HeaderComponent";
+ * import HeaderCmp from "./HeaderCmp";
  *
  * const App = () => {
  *   const [isMenuOpen, setMenuOpen] = React.useState(false);
  *
  *   return (
- *     <HeaderComponent hideTitle={false} setOpen={setMenuOpen} />
+ *     <HeaderCmp hideTitle={false} setOpen={setMenuOpen} />
  *   );
  * };
  * ```
@@ -39,12 +39,12 @@ import { useRoute } from "@/hooks/useRoute";
 
 const logoImg = require("@/assets/images/logo.png");
 
-interface IHeaderComponentProps {
+interface IHeaderCmpProps {
   hideTitle?: boolean;
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const HeaderComponent: React.FC<IHeaderComponentProps> = ({
+const HeaderCmp: React.FC<IHeaderCmpProps> = ({
   hideTitle,
   setOpen,
 }) => {
@@ -102,4 +102,4 @@ const styles = StyleSheet.create({
   image: { width: 60, height: 32 },
 });
 
-export default HeaderComponent;
+export default HeaderCmp;

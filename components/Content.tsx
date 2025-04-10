@@ -3,7 +3,7 @@ import { Stack } from "expo-router";
 
 import { useRoute } from "@/hooks/useRoute";
 import SideMenuCmp from "@/components/menu/SideMenu";
-import HeaderComponent from "@/components/HeaderComponent";
+import HeaderCmp from "@/components/Header";
 
 export default function Content() {
   const { menuList, menus } = useRoute();
@@ -18,7 +18,7 @@ export default function Content() {
         <Stack.Screen
           name="(pages)"
           options={{
-            header: () => <HeaderComponent setOpen={setOpen} />,
+            header: () => <HeaderCmp setOpen={setOpen} />,
           }}
         />
 
@@ -26,7 +26,7 @@ export default function Content() {
         <Stack.Screen
           name={notFoundMenu.name}
           options={{
-            header: () => <HeaderComponent setOpen={setOpen} />,
+            header: () => <HeaderCmp setOpen={setOpen} />,
             headerTitle: notFoundMenu.title,
             headerTitleAlign: "center",
           }}
@@ -36,9 +36,7 @@ export default function Content() {
         <Stack.Screen
           name="login"
           options={{
-            header: () => (
-              <HeaderComponent hideTitle={true} setOpen={setOpen} />
-            ),
+            header: () => <HeaderCmp hideTitle={true} setOpen={setOpen} />,
           }}
         />
 
@@ -46,9 +44,7 @@ export default function Content() {
         <Stack.Screen
           name="signup"
           options={{
-            header: () => (
-              <HeaderComponent hideTitle={true} setOpen={setOpen} />
-            ),
+            header: () => <HeaderCmp hideTitle={true} setOpen={setOpen} />,
           }}
         />
 
@@ -56,9 +52,7 @@ export default function Content() {
         <Stack.Screen
           name="reset-password"
           options={{
-            header: () => (
-              <HeaderComponent hideTitle={true} setOpen={setOpen} />
-            ),
+            header: () => <HeaderCmp hideTitle={true} setOpen={setOpen} />,
           }}
         />
       </Stack>
