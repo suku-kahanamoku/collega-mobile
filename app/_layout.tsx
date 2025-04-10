@@ -4,7 +4,7 @@ import { LangProvider } from "@/modules/Lang/providers/LangProvider";
 import { AuthProvider } from "@/modules/Auth/providers/AuthProvider";
 import { RouteProvider } from "@/providers/RouteProvider";
 import { ThemeProviderCmp } from "@/providers/ThemeProvider";
-import Content from "@/components/Content";
+import ContentCmp from "@/components/Content";
 
 export default function RootLayout() {
   return (
@@ -13,7 +13,7 @@ export default function RootLayout() {
         <RouteProvider>
           <ThemeProviderCmp>
             <StatusBar barStyle={"default"} />
-            <Content />
+            <ContentCmp />
           </ThemeProviderCmp>
         </RouteProvider>
       </AuthProvider>

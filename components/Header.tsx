@@ -1,3 +1,14 @@
+import React from "react";
+import { StyleSheet, View, Image } from "react-native";
+import { Link } from "expo-router";
+import { Button, Icon, Header, Text } from "@rneui/themed";
+
+import { useAuth } from "@/modules/Auth/hooks/useAuth";
+import { useTheme } from "@/hooks/useTheme";
+import { useRoute } from "@/hooks/useRoute";
+
+const logoImg = require("@/assets/images/logo.png");
+
 /**
  * HeaderCmp je funkční React komponenta, která vykresluje přizpůsobitelnou hlavičku
  * pro aplikaci. Obsahuje logo, navigační odkazy a volitelný text s názvem.
@@ -28,26 +39,12 @@
  * };
  * ```
  */
-import React from "react";
-import { StyleSheet, View, Image } from "react-native";
-import { Link } from "expo-router";
-import { Button, Icon, Header, Text } from "@rneui/themed";
-
-import { useAuth } from "@/modules/Auth/hooks/useAuth";
-import { useTheme } from "@/hooks/useTheme";
-import { useRoute } from "@/hooks/useRoute";
-
-const logoImg = require("@/assets/images/logo.png");
-
 interface IHeaderCmpProps {
   hideTitle?: boolean;
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const HeaderCmp: React.FC<IHeaderCmpProps> = ({
-  hideTitle,
-  setOpen,
-}) => {
+const HeaderCmp: React.FC<IHeaderCmpProps> = ({ hideTitle, setOpen }) => {
   const { session } = useAuth();
   const { Colors } = useTheme();
   const { menuList, activeMenu, navigate } = useRoute();
