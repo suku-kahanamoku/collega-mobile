@@ -8,7 +8,7 @@ import { FETCH_OPTIONS, FIELDS } from "../configs/auth";
 import { ISession } from "../types/auth";
 
 interface IAuthContextProps {
-  signIn: () => void;
+  signIn: (login: string, password: string) => void;
   signOut: () => void;
   session?: ISession | null;
   loading: boolean;
@@ -54,9 +54,11 @@ export function AuthProvider({ children }: PropsWithChildren) {
     return acc;
   }, {} as Record<string, IField & { optionList?: Record<string, string> }>);
 
-  const signIn = async () => {
+  const signIn = async (login: string, password: string) => {
     try {
       const body = new FormData();
+      body.append("login", login);
+      body.append("pass", password);
 
       const response = await fetch(FETCH_OPTIONS.url, {
         method: FETCH_OPTIONS.method,

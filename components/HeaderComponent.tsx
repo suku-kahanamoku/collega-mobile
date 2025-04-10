@@ -1,10 +1,14 @@
 import React from "react";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, View, Image } from "react-native";
+import { Link } from "expo-router";
 import { Button, Icon, Header, Text } from "@rneui/themed";
+
+import { useAuth } from "@/modules/Auth/hooks/useAuth";
 import { useTheme } from "@/hooks/useTheme";
-import LogoCmp from "@/components/Logo";
 import { useRoute } from "@/hooks/useRoute";
 import { IMenu } from "@/types/menu";
+
+const logoImg = require("@/assets/images/logo.png");
 
 interface IHeaderComponentProps {
   activeMenu: IMenu;
@@ -17,8 +21,15 @@ const HeaderComponent: React.FC<IHeaderComponentProps> = ({
   settingsMenu,
   setOpen,
 }) => {
+  const { session } = useAuth();
   const { Colors } = useTheme();
-  const { navigate } = useRoute();
+  const { menuList, navigate } = useRoute();
+
+  const LogoCmp = () => (
+    <Link href={session ? "/" : menuList.login.href}>
+      <Image source={logoImg} style={styles.image} resizeMode="contain" />
+    </Link>
+  );
 
   const HeaderRightCmp = () => (
     <View style={{ flexDirection: "row" }}>
@@ -59,6 +70,7 @@ const styles = StyleSheet.create({
     fontSize: 26,
     fontWeight: 600,
   },
+  image: { width: 60, height: 32 },
 });
 
 export default HeaderComponent;
