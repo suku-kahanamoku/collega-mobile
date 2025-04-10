@@ -1,3 +1,33 @@
+/**
+ * HeaderComponent je funkční React komponenta, která vykresluje přizpůsobitelnou hlavičku
+ * pro aplikaci. Obsahuje logo, navigační odkazy a volitelný text s názvem.
+ *
+ * @param {Object} props - Vstupní parametry pro komponentu HeaderComponent.
+ * @param {boolean} [props.hideTitle] - Určuje, zda má být text s názvem skryt.
+ * @param {React.Dispatch<React.SetStateAction<boolean>>} props.setOpen - Funkce pro nastavení
+ * stavu, která přepíná otevření/zavření menu nebo panelu.
+ *
+ * @returns {JSX.Element} Vykreslená hlavička komponenty.
+ *
+ * @poznámka
+ * - Komponenta využívá `@rneui/themed` pro stylování a rozvržení.
+ * - Integruje se s `expo-router` pro navigaci.
+ * - Hooky `useAuth`, `useTheme` a `useRoute` jsou použity pro správu autentizace,
+ *   témat a logiky směrování.
+ *
+ * @příklad
+ * ```tsx
+ * import HeaderComponent from "./HeaderComponent";
+ *
+ * const App = () => {
+ *   const [isMenuOpen, setMenuOpen] = React.useState(false);
+ *
+ *   return (
+ *     <HeaderComponent hideTitle={false} setOpen={setMenuOpen} />
+ *   );
+ * };
+ * ```
+ */
 import React from "react";
 import { StyleSheet, View, Image } from "react-native";
 import { Link } from "expo-router";

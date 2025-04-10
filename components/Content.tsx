@@ -6,7 +6,7 @@ import SideMenuCmp from "@/components/menu/SideMenu";
 import HeaderComponent from "@/components/HeaderComponent";
 
 export default function Content() {
-  const { menuList, menus, activeMenu } = useRoute();
+  const { menuList, menus } = useRoute();
 
   const [open, setOpen] = useState(false);
   const notFoundMenu = menuList["404"];
