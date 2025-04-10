@@ -10,7 +10,6 @@ export default function Content() {
 
   const [open, setOpen] = useState(false);
   const notFoundMenu = menuList["404"];
-  const settingsMenu = menuList.settings;
 
   return (
     <SideMenuCmp open={open} setOpen={setOpen} menus={menus}>
@@ -19,13 +18,7 @@ export default function Content() {
         <Stack.Screen
           name="(pages)"
           options={{
-            header: () => (
-              <HeaderComponent
-                activeMenu={activeMenu}
-                settingsMenu={settingsMenu}
-                setOpen={setOpen}
-              />
-            ),
+            header: () => <HeaderComponent setOpen={setOpen} />,
           }}
         />
 
@@ -33,13 +26,7 @@ export default function Content() {
         <Stack.Screen
           name={notFoundMenu.name}
           options={{
-            header: () => (
-              <HeaderComponent
-                activeMenu={activeMenu}
-                settingsMenu={settingsMenu}
-                setOpen={setOpen}
-              />
-            ),
+            header: () => <HeaderComponent setOpen={setOpen} />,
             headerTitle: notFoundMenu.title,
             headerTitleAlign: "center",
           }}
@@ -50,11 +37,7 @@ export default function Content() {
           name="login"
           options={{
             header: () => (
-              <HeaderComponent
-                activeMenu={{ ...activeMenu, title: "" }}
-                settingsMenu={settingsMenu}
-                setOpen={setOpen}
-              />
+              <HeaderComponent hideTitle={true} setOpen={setOpen} />
             ),
           }}
         />
@@ -64,11 +47,7 @@ export default function Content() {
           name="signup"
           options={{
             header: () => (
-              <HeaderComponent
-                activeMenu={{ ...activeMenu, title: "" }}
-                settingsMenu={settingsMenu}
-                setOpen={setOpen}
-              />
+              <HeaderComponent hideTitle={true} setOpen={setOpen} />
             ),
           }}
         />
@@ -78,11 +57,7 @@ export default function Content() {
           name="reset-password"
           options={{
             header: () => (
-              <HeaderComponent
-                activeMenu={{ ...activeMenu, title: "" }}
-                settingsMenu={settingsMenu}
-                setOpen={setOpen}
-              />
+              <HeaderComponent hideTitle={true} setOpen={setOpen} />
             ),
           }}
         />

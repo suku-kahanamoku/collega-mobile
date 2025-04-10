@@ -6,32 +6,31 @@ import { Button, Icon, Header, Text } from "@rneui/themed";
 import { useAuth } from "@/modules/Auth/hooks/useAuth";
 import { useTheme } from "@/hooks/useTheme";
 import { useRoute } from "@/hooks/useRoute";
-import { IMenu } from "@/types/menu";
 
 const logoImg = require("@/assets/images/logo.png");
 
 interface IHeaderComponentProps {
-  activeMenu: IMenu;
-  settingsMenu: IMenu;
+  hideTitle?: boolean;
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const HeaderComponent: React.FC<IHeaderComponentProps> = ({
-  activeMenu,
-  settingsMenu,
+  hideTitle,
   setOpen,
 }) => {
   const { session } = useAuth();
   const { Colors } = useTheme();
-  const { menuList, navigate } = useRoute();
+  const { menuList, activeMenu, navigate } = useRoute();
+  const loginMenu = menuList.login;
+  const settingsMenu = menuList.settings;
 
-  const LogoCmp = () => (
-    <Link href={session ? "/" : menuList.login.href}>
+  const LeftCmp = () => (
+    <Link href={session ? "/" : loginMenu.href}>
       <Image source={logoImg} style={styles.image} resizeMode="contain" />
     </Link>
   );
 
-  const HeaderRightCmp = () => (
+  const RightCmp = () => (
     <View style={{ flexDirection: "row" }}>
       {activeMenu !== settingsMenu && (
         <Button
@@ -52,14 +51,14 @@ const HeaderComponent: React.FC<IHeaderComponentProps> = ({
 
   return (
     <Header
-      leftComponent={<LogoCmp />}
-      rightComponent={<HeaderRightCmp />}
+      leftComponent={<LeftCmp />}
+      rightComponent={<RightCmp />}
       centerComponent={
-        activeMenu.title ? (
+        hideTitle ? undefined : (
           <Text h1 h1Style={[styles.title, { color: Colors.dark.secondary }]}>
             {activeMenu.title}
           </Text>
-        ) : undefined
+        )
       }
     />
   );
