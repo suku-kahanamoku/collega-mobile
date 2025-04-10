@@ -57,8 +57,6 @@ export function AuthProvider({ children }: PropsWithChildren) {
   const signIn = async () => {
     try {
       const body = new FormData();
-      body.append("login", "collega promo");
-      body.append("pass", "CollegaPromo2024");
 
       const response = await fetch(FETCH_OPTIONS.url, {
         method: FETCH_OPTIONS.method,
