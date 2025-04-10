@@ -3,21 +3,14 @@ import { Input } from "@rneui/themed";
 
 import { DEBOUNCE } from "@/modules/Common/utils/delay";
 import { ITextField } from "../../types/field";
-import { IStyleProps } from "../../types/component";
 
 interface IFieldProps {
   field: ITextField;
-  style?: IStyleProps;
   onChange?: (text: string) => void;
   [rest: string]: any;
 }
 
-const TextField: React.FC<IFieldProps> = ({
-  field,
-  style,
-  onChange,
-  ...rest
-}) => {
+const TextField: React.FC<IFieldProps> = ({ field, onChange, ...rest }) => {
   const handleChange = useCallback(
     DEBOUNCE((text: string) => {
       onChange && onChange(text);

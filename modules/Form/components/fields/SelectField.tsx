@@ -5,21 +5,14 @@ import { Input } from "@rneui/themed";
 
 import { useTheme } from "@/hooks/useTheme";
 import { ISelectField } from "../../types/field";
-import { IStyleProps } from "../../types/component";
 
 interface IFieldProps {
   field: ISelectField;
-  style?: IStyleProps;
   onChange?: (text: string) => void;
   [rest: string]: any;
 }
 
-const SelectField: React.FC<IFieldProps> = ({
-  field,
-  style,
-  onChange,
-  ...rest
-}) => {
+const SelectField: React.FC<IFieldProps> = ({ field, onChange, ...rest }) => {
   const { colors } = useTheme();
   const [value, setValue] = useState(field.value);
   const [selectedValue, setSelectedValue] = useState("canceled");

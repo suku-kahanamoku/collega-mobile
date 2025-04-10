@@ -38,13 +38,8 @@ const LoginCmp = () => {
       <View style={styles.field}>
         {[fieldList.login, fieldList.pass].map((field) => (
           <Field
-            key={field.name}
             field={field}
-            style={{
-              container: { gap: 4 },
-              label: { fontSize: 16 },
-              children: { height: 46 },
-            }}
+            key={field.name}
             onChange={(value) => handleChange(field.name, value)}
           />
         ))}

@@ -10,7 +10,7 @@ export default function FilterScreen() {
   return (
     <ScrollView contentContainerStyle={styles.container}>
       {fields.map((field) => (
-        <Field key={field.name} field={field} />
+        <Field field={field} key={field.name} />
       ))}
     </ScrollView>
   );

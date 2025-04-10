@@ -45,9 +45,9 @@ export default function ContractsLayout() {
             ),
             headerTitle: () => (
               <Field
-                key={searchField.name}
                 field={searchField}
                 renderErrorMessage={false}
+                key={searchField.name}
               />
             ),
             headerTitleContainerStyle: {

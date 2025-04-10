@@ -36,13 +36,8 @@ const ResetPasswordCmp = () => {
 
       <View style={styles.field}>
         <Field
-          key={emailField.name}
           field={emailField}
-          style={{
-            container: { gap: 4 },
-            label: { fontSize: 16 },
-            children: { height: 46 },
-          }}
+          key={emailField.name}
           onChange={(value) => handleChange(emailField.name, value)}
         />
       </View>

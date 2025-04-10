@@ -1,8 +1,12 @@
 import React from "react";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, TextStyle, View, ViewStyle } from "react-native";
 import { Text } from "@rneui/themed";
 
-import { IStyleProps } from "@/modules/Form/types/component";
+interface IStyleProps {
+  container?: ViewStyle;
+  label?: TextStyle;
+  children?: ViewStyle;
+}
 
 interface IRowProps {
   label: string;
