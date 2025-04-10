@@ -49,9 +49,10 @@ export const ThemeProviderCmp = ({ children }: { children: ReactNode }) => {
 
   const isDark = theme === "dark";
   const currentTheme = isDark ? DarkTheme : DefaultTheme;
-  currentTheme.colors = (isDark
-    ? Colors.dark
-    : Colors.light) as unknown as Theme["colors"];
+  currentTheme.colors = {
+    ...currentTheme.colors,
+    ...((isDark ? Colors.dark : Colors.light) as unknown as Theme["colors"]),
+  };
 
   const uiTheme = createTheme({
     lightColors: Colors.light,
