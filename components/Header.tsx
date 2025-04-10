@@ -26,7 +26,7 @@ const logoImg = require("@/assets/images/logo.png");
  * - Hooky `useAuth`, `useTheme` a `useRoute` jsou použity pro správu autentizace,
  *   témat a logiky směrování.
  *
- * @příklad
+ * @example
  * ```tsx
  * import HeaderCmp from "./HeaderCmp";
  *

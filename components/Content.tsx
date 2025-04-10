@@ -14,13 +14,13 @@ import HeaderCmp from "@/components/Header";
  *
  * @returns {JSX.Element} Vykreslená komponenta `ContentCmp`.
  *
- * @poznámky
+ * @remarks
  * - Tato komponenta obsahuje boční menu (`SideMenuCmp`), které lze otevřít nebo zavřít.
  * - Definuje několik obrazovek pomocí navigátoru `Stack`, včetně stránky 404 "Not Found",
  *   přihlašovací obrazovky, registrace a resetování hesla.
  * - Každá obrazovka může mít vlastní komponentu záhlaví (`HeaderCmp`) s konfigurovatelnými možnostmi.
  *
- * @příklad
+ * @example
  * ```tsx
  * import ContentCmp from './components/Content';
  *
