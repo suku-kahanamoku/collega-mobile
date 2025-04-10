@@ -1,7 +1,7 @@
 import { createContext, useState, type PropsWithChildren } from "react";
 import { useTranslation } from "react-i18next";
 
-import { IField, ISelectField } from "@/modules/Form/type";
+import { IField, ISelectField } from "@/modules/Form/types/field";
 
 import { useStorageState } from "../hooks/useStorageState";
 import { FETCH_OPTIONS, FIELDS } from "../configs/auth";

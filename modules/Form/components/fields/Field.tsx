@@ -1,7 +1,7 @@
 import React from "react";
 
-import { IStyleProps } from "@/types/component";
-import { IField } from "../../type";
+import { IField } from "../../types/field";
+import { IStyleProps } from "../../types/component";
 import TextField from "./TextField";
 import SelectField from "./SelectField";
 import CheckboxField from "./CheckboxField";

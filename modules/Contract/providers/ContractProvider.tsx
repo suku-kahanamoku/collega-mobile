@@ -3,7 +3,7 @@ import React, { createContext, useState, useEffect, ReactNode } from "react";
 import { IContract } from "../type";
 import { useTranslation } from "react-i18next";
 import { FETCH_OPTIONS, FIELDS } from "../configs/contract";
-import { IField, ISelectField } from "@/modules/Form/type";
+import { IField, ISelectField } from "@/modules/Form/types/field";
 import { useAuth } from "@/modules/Auth/hooks/useAuth";
 
 interface IContractContextProps {

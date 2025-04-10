@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { StyleSheet } from "react-native";
-
-import { IStyleProps } from "@/types/component";
-import { ICheckboxField } from "../../type";
 import { CheckBox } from "@rneui/themed";
+
+import { ICheckboxField } from "../../types/field";
+import { IStyleProps } from "../../types/component";
 
 interface IFieldProps {
   field: ICheckboxField;

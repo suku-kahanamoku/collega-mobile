@@ -3,9 +3,9 @@ import { StyleSheet } from "react-native";
 import { Picker } from "@react-native-picker/picker";
 import { Input } from "@rneui/themed";
 
-import { IStyleProps } from "@/types/component";
-import { ISelectField } from "../../type";
 import { useTheme } from "@/hooks/useTheme";
+import { ISelectField } from "../../types/field";
+import { IStyleProps } from "../../types/component";
 
 interface IFieldProps {
   field: ISelectField;

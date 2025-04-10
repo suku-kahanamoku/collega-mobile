@@ -63,4 +63,9 @@ i18n.use(initReactI18next).init({
   },
 });
 
+/**
+ * Výchozí export modulu i18n, který je zodpovědný za zpracování
+ * internacionalizace (i18n) v aplikaci. To obvykle zahrnuje
+ * správu překladů, nastavení lokalizace a další související funkce.
+ */
 export default i18n;

@@ -4,7 +4,7 @@ import {
   ICheckboxField,
   IRadioField,
   ITextareaField,
-} from "@/modules/Form/type";
+} from "@/modules/Form/types/field";
 
 export const FETCH_OPTIONS = {
   url: "https://collega.cz/security/hook/log-in",
