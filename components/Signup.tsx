@@ -4,12 +4,13 @@ import { Link } from "expo-router";
 import { Text, Button, Icon, Card } from "@rneui/themed";
 
 import { useLocale } from "@/modules/Lang/hooks/useLocale";
+import { useAuth } from "@/modules/Auth/hooks/useAuth";
 import { useRoute } from "@/hooks/useRoute";
 import Field from "@/modules/Form/components/fields/Field";
-import { Field as FieldType } from "@/modules/Form/type";
 
 const SignupCmp = () => {
   const { t } = useLocale();
+  const { fields } = useAuth();
   const { menuList } = useRoute();
   const loginMenu = menuList.login;
 
@@ -20,56 +21,6 @@ const SignupCmp = () => {
     password: "",
     repeat_password: "",
   });
-
-  const fields: FieldType[] = [
-    {
-      type: "text",
-      name: "email",
-      label: t("form.email"),
-      inputMode: "email",
-      autoComplete: "email",
-      placeholder: t("placeholder.email"),
-      required: true,
-    },
-    {
-      type: "text",
-      name: "firstname",
-      label: t("form.firstname"),
-      inputMode: "text",
-      autoComplete: "given-name",
-      placeholder: t("placeholder.firstname"),
-      required: true,
-    },
-    {
-      type: "text",
-      name: "lastname",
-      label: t("form.lastname"),
-      inputMode: "text",
-      autoComplete: "family-name",
-      placeholder: t("placeholder.lastname"),
-      required: true,
-    },
-    {
-      type: "password",
-      name: "password",
-      label: t("form.password"),
-      inputMode: "text",
-      autoComplete: "new-password",
-      placeholder: t("placeholder.password"),
-      required: true,
-      secureTextEntry: true,
-    },
-    {
-      type: "password",
-      name: "repeat_password",
-      label: t("form.repeat_password"),
-      inputMode: "text",
-      autoComplete: "new-password",
-      placeholder: t("placeholder.repeat_password"),
-      required: true,
-      secureTextEntry: true,
-    },
-  ];
 
   const handleChange = (name: string, value: string) => {
     setFormData((prev) => ({ ...prev, [name]: value }));

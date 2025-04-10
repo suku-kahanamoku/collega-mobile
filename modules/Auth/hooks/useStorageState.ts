@@ -4,7 +4,7 @@ import { Platform } from "react-native";
 
 type UseStateHook<T> = [[boolean, T | null], (value: T | null) => void];
 
-function useAsyncState<T>(
+function _useAsyncState<T>(
   initialValue: [boolean, T | null] = [true, null]
 ): UseStateHook<T> {
   return useReducer(
@@ -16,7 +16,7 @@ function useAsyncState<T>(
   ) as UseStateHook<T>;
 }
 
-export async function setStorageItemAsync(key: string, value: string | null) {
+async function _setStorageItemAsync(key: string, value: string | null) {
   if (Platform.OS === "web") {
     try {
       if (value === null) {
@@ -38,7 +38,7 @@ export async function setStorageItemAsync(key: string, value: string | null) {
 
 export function useStorageState(key: string): UseStateHook<string> {
   // Public
-  const [state, setState] = useAsyncState<string>();
+  const [state, setState] = _useAsyncState<string>();
 
   // Get
   useEffect(() => {
@@ -61,7 +61,7 @@ export function useStorageState(key: string): UseStateHook<string> {
   const setValue = useCallback(
     (value: string | null) => {
       setState(value);
-      setStorageItemAsync(key, value);
+      _setStorageItemAsync(key, value);
     },
     [key]
   );

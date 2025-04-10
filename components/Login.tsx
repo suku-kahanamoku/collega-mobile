@@ -7,11 +7,10 @@ import { useLocale } from "@/modules/Lang/hooks/useLocale";
 import { useAuth } from "@/modules/Auth/hooks/useAuth";
 import { useRoute } from "@/hooks/useRoute";
 import Field from "@/modules/Form/components/fields/Field";
-import { Field as FieldType } from "@/modules/Form/type";
 
 const LoginCmp = () => {
   const { t } = useLocale();
-  const { session, signIn } = useAuth();
+  const { loginFields, signIn } = useAuth();
   const { menuList } = useRoute();
   const signupMenu = menuList.signup;
   const resetPasswordMenu = menuList.reset_password;
@@ -20,26 +19,6 @@ const LoginCmp = () => {
     email: "",
     password: "",
   });
-
-  const fields: FieldType[] = [
-    {
-      type: "text",
-      name: "email",
-      label: t("form.email"),
-      inputMode: "email",
-      autoComplete: "email",
-      placeholder: t("placeholder.email"),
-    },
-    {
-      type: "password",
-      name: "password",
-      label: t("form.password"),
-      inputMode: "text",
-      autoComplete: "password",
-      placeholder: t("placeholder.password"),
-      secureTextEntry: true,
-    },
-  ];
 
   const handleChange = (name: string, value: string) => {
     setFormData((prev) => ({ ...prev, [name]: value }));
@@ -56,7 +35,7 @@ const LoginCmp = () => {
       <Card.Divider />
 
       <View style={styles.field}>
-        {fields.map((field) => (
+        {loginFields.map((field) => (
           <Field
             key={field.name}
             field={field}

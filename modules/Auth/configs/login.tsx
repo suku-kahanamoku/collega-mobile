@@ -1,0 +1,66 @@
+import {
+  SelectField,
+  TextField,
+  CheckboxField,
+  RadioField,
+  TextareaField,
+} from "@/modules/Form/type";
+
+export const FETCH_OPTIONS = {
+  url: "https://collega.cz/security/hook/get-contract?client_id=4703",
+  method: "POST",
+};
+
+export const FIELDS: (
+  | TextField
+  | SelectField
+  | CheckboxField
+  | RadioField
+  | TextareaField
+)[] = [
+  {
+    type: "text",
+    name: "email",
+    label: "form.email",
+    inputMode: "email",
+    autoComplete: "email",
+    placeholder: "placeholder.email",
+  },
+  {
+    type: "text",
+    name: "firstname",
+    label: "form.firstname",
+    inputMode: "text",
+    autoComplete: "given-name",
+    placeholder: "placeholder.firstname",
+    required: true,
+  },
+  {
+    type: "text",
+    name: "lastname",
+    label: "form.lastname",
+    inputMode: "text",
+    autoComplete: "family-name",
+    placeholder: "placeholder.lastname",
+    required: true,
+  },
+  {
+    type: "password",
+    name: "password",
+    label: "form.password",
+    inputMode: "text",
+    autoComplete: "password",
+    placeholder: "placeholder.password",
+    secureTextEntry: true,
+  },
+  {
+    type: "password",
+    name: "repeat_password",
+    label: "form.repeat_password",
+    inputMode: "text",
+    autoComplete: "new-password",
+    placeholder: "placeholder.repeat_password",
+    required: true,
+    secureTextEntry: true,
+  },
+];
