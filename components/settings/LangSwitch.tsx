@@ -5,6 +5,37 @@ import Flag from "react-native-flags";
 import { useLocale } from "@/modules/Lang/hooks/useLocale";
 import RowCmp from "@/modules/Ui/components/Row";
 
+/**
+ * Funkční komponenta, která zobrazuje přepínač jazyka pro aplikaci.
+ * Zobrazuje seznam dostupných jazyků jako vlajky a umožňuje uživateli
+ * změnit jazyk aplikace výběrem vlajky.
+ *
+ * @komponenta
+ * @returns {JSX.Element} Vykreslená komponenta přepínače jazyka.
+ *
+ * @poznámky
+ * - Tato komponenta používá hook `useLocale` pro přístup k aktuálnímu jazyku,
+ *   dostupným jazykům, překladové funkci a handleru pro změnu jazyka.
+ * - Komponenta `RowCmp` je použita pro rozložení přepínače jazyka v řádku.
+ * - Vlajky jsou zobrazeny pomocí komponenty `Flag` a aktuálně vybraný jazyk
+ *   je vizuálně zvýrazněn.
+ *
+ * @example
+ * ```tsx
+ * <LangSwitchCmp />
+ * ```
+ *
+ * @dependencies
+ * - `useLocale`: Vlastní hook poskytující lokalizační funkce.
+ * - `RowCmp`: Komponenta pro rozložení.
+ * - `TouchableOpacity`: Wrapper pro dotykové prvky.
+ * - `Flag`: Komponenta pro zobrazení vlajek zemí.
+ *
+ * @styles
+ * - `styles.flagsContainer`: Styl pro kontejner obsahující vlajky.
+ * - `styles.selectedFlag`: Styl aplikovaný na aktuálně vybranou vlajku.
+ * - `styles.flag`: Styl aplikovaný na nevybrané vlajky.
+ */
 const LangSwitchCmp = () => {
   const { locale, locales, t, changeLanguage } = useLocale();
 
@@ -30,8 +61,6 @@ const LangSwitchCmp = () => {
   );
 };
 
-export default LangSwitchCmp;
-
 const styles = StyleSheet.create({
   flagsContainer: {
     flexDirection: "row",
@@ -45,3 +74,5 @@ const styles = StyleSheet.create({
     opacity: 0.6,
   },
 });
+
+export default LangSwitchCmp;
