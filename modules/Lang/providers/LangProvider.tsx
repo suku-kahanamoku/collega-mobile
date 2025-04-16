@@ -1,26 +1,27 @@
-import React, { createContext, useState, useEffect, ReactNode } from "react";
+import React, { createContext, useEffect, ReactNode } from "react";
 import { I18nextProvider, useTranslation } from "react-i18next";
-import i18n, { locales } from "@/i18n";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-interface ILocaleContextProps {
+import i18n, { locales } from "@/i18n";
+
+interface ILangContextProps {
   locale: string;
-  locales: typeof locales;
+  locales: Array<{ code: string; mark: string; iso: string }>;
   changeLanguage: (value: string) => Promise<void>;
   t: (key: string) => string;
+  i18n: typeof i18n;
 }
 
-export const LocaleContext = createContext<ILocaleContextProps | undefined>(
+export const LangContext = createContext<ILangContextProps | undefined>(
   undefined
 );
 
 export const LangProvider = ({ children }: { children: ReactNode }) => {
   const { t } = useTranslation("$");
-  const [locale, setLocale] = useState(i18n.language);
 
   const changeLanguage = async (value: string) => {
     await AsyncStorage.setItem("LOCALE", value);
-    i18n.changeLanguage(value);
+    await i18n.changeLanguage(value);
   };
 
   const _loadLanguage = async () => {
@@ -36,16 +37,13 @@ export const LangProvider = ({ children }: { children: ReactNode }) => {
 
   useEffect(() => {
     _loadLanguage();
-    i18n.on("languageChanged", setLocale);
-
-    return () => {
-      i18n.off("languageChanged", setLocale);
-    };
   }, []);
 
   return (
-    <LocaleContext.Provider value={{ locale, locales, changeLanguage, t }}>
+    <LangContext.Provider
+      value={{ locale: i18n.language, locales, i18n, changeLanguage, t }}
+    >
       <I18nextProvider i18n={i18n}>{children}</I18nextProvider>
-    </LocaleContext.Provider>
+    </LangContext.Provider>
   );
 };
