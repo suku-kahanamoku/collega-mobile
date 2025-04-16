@@ -6,17 +6,16 @@ import {
   Theme,
 } from "@react-navigation/native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { createTheme, ThemeProvider as UiThemeProvider } from "@rneui/themed";
+import { ThemeProvider as UiThemeProvider, type Colors } from "@rneui/themed";
 
-import uiConfig from "@/ui.config.json";
-
-type ITheme = "light" | "dark";
+import { colors, createUiTheme } from "../ui.module";
+import { ITheme } from "../types/theme.interface";
 
 interface IThemeContextProps {
   theme: ITheme;
   isDark: boolean;
-  colors: typeof uiConfig.colors.light;
-  Colors: typeof uiConfig.colors;
+  colors: Colors;
+  Colors: typeof colors;
   changeTheme: (value: ITheme) => Promise<void>;
 }
 
@@ -51,33 +50,18 @@ export const ThemeProviderCmp = ({ children }: { children: ReactNode }) => {
   const currentTheme = isDark ? DarkTheme : DefaultTheme;
   currentTheme.colors = {
     ...currentTheme.colors,
-    ...((isDark
-      ? uiConfig.colors.dark
-      : uiConfig.colors.light) as unknown as Theme["colors"]),
+    ...((isDark ? colors.dark : colors.light) as unknown as Theme["colors"]),
   };
 
-  const uiTheme = createTheme({
-    lightColors: uiConfig.colors.light,
-    darkColors: uiConfig.colors.dark,
-    mode: theme,
-    components: {
-      Text: uiConfig.fontSizes,
-      CardTitle: uiConfig.fontSizes,
-      Card: {
-        containerStyle: {
-          backgroundColor: currentTheme.colors.background,
-        },
-      },
-    },
-  });
+  const uiTheme = createUiTheme(theme);
 
   return (
     <ThemeContext.Provider
       value={{
         theme,
         isDark,
-        colors: currentTheme.colors as unknown as typeof uiConfig.colors.light,
-        Colors: uiConfig.colors,
+        colors: currentTheme.colors as unknown as Colors,
+        Colors: colors,
         changeTheme,
       }}
     >
