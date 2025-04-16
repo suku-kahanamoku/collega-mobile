@@ -3,7 +3,7 @@ import { StyleSheet, View } from "react-native";
 import { Button } from "@rneui/themed";
 
 import { useAuth } from "@/modules/Auth/hooks/useAuth";
-import { useTheme } from "@/hooks/useTheme";
+import { useTheme } from "@/modules/Ui/hooks/useTheme";
 import { IMenu } from "@/types/menu";
 import { useLocale } from "@/modules/Lang/hooks/useLocale";
 import { useRoute } from "@/hooks/useRoute";

@@ -6,7 +6,7 @@ import { useRoute } from "@/hooks/useRoute";
 import { useContract } from "@/modules/Contract/hooks/useContract";
 import LoadingPage from "@/modules/Ui/components/Loading";
 import RecordNotFoundPage from "@/modules/Ui/components/RecordNotFound";
-import { useTheme } from "@/hooks/useTheme";
+import { useTheme } from "@/modules/Ui/hooks/useTheme";
 
 const logoImg = require("@/assets/images/logo.png");
 

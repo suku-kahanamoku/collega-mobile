@@ -4,7 +4,7 @@ import { Link } from "expo-router";
 import { Button, Icon, Header, Text } from "@rneui/themed";
 
 import { useAuth } from "@/modules/Auth/hooks/useAuth";
-import { useTheme } from "@/hooks/useTheme";
+import { useTheme } from "@/modules/Ui/hooks/useTheme";
 import { useRoute } from "@/hooks/useRoute";
 
 const logoImg = require("@/assets/images/logo.png");

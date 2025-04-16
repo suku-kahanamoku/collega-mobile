@@ -4,7 +4,7 @@ import { ListItem, Text } from "@rneui/themed";
 import TouchableScale from "react-native-touchable-scale";
 import { LinearGradient } from "expo-linear-gradient";
 
-import { useTheme } from "@/hooks/useTheme";
+import { useTheme } from "@/modules/Ui/hooks/useTheme";
 import { IMenu } from "@/types/menu";
 
 /**

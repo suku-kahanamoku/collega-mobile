@@ -4,7 +4,7 @@ import { Platform } from "react-native";
 import { Icon } from "@rneui/themed";
 
 import { useRoute } from "@/hooks/useRoute";
-import { useTheme } from "@/hooks/useTheme";
+import { useTheme } from "@/modules/Ui/hooks/useTheme";
 import { ContractProvider } from "@/modules/Contract/providers/ContractProvider";
 import Field from "@/modules/Form/components/fields/Field";
 

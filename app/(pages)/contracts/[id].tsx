@@ -5,7 +5,7 @@ import { Card, Icon, ListItem, Rating, Text } from "@rneui/themed";
 import RowCmp from "@/modules/Ui/components/Row";
 import { useContract } from "@/modules/Contract/hooks/useContract";
 import RecordNotFoundPage from "@/modules/Ui/components/RecordNotFound";
-import { useTheme } from "@/hooks/useTheme";
+import { useTheme } from "@/modules/Ui/hooks/useTheme";
 import { useLocale } from "@/modules/Lang/hooks/useLocale";
 
 const logoImg = require("@/assets/images/collega_brokers.png");
