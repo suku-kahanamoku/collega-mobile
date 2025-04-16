@@ -1,9 +1,7 @@
 import React, { createContext, useState, useEffect, ReactNode } from "react";
-import { I18nextProvider } from "react-i18next";
-import AsyncStorage from "@react-native-async-storage/async-storage";
-import { useTranslation } from "react-i18next";
-
+import { I18nextProvider, useTranslation } from "react-i18next";
 import i18n, { locales } from "@/i18n";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 interface ILocaleContextProps {
   locale: string;

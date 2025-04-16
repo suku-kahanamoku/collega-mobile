@@ -1,13 +1,14 @@
 import React, { createContext, ReactNode } from "react";
 import { RelativePathString, usePathname, useRouter } from "expo-router";
-import { useTranslation } from "react-i18next";
+
 import { IMenu } from "@/types/menu";
+import { useLocale } from "@/modules/Lang/hooks/useLocale";
 
 interface IRouteContextProps {
   menuList: Record<string, IMenu>;
   menus: IMenu[];
   activeMenu: IMenu;
-  navigate: (href: RelativePathString) => void; // Add navigate function type
+  navigate: (href: RelativePathString) => void;
 }
 
 export const RouteContext = createContext<IRouteContextProps | undefined>(
@@ -15,7 +16,7 @@ export const RouteContext = createContext<IRouteContextProps | undefined>(
 );
 
 export const RouteProvider = ({ children }: { children: ReactNode }) => {
-  const { t } = useTranslation("$");
+  const { t } = useLocale();
   const pathname = usePathname();
   const router = useRouter();
 

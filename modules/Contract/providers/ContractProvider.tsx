@@ -1,10 +1,11 @@
 import React, { createContext, useState, useEffect, ReactNode } from "react";
 
-import { IContract } from "../type";
-import { useTranslation } from "react-i18next";
-import { FETCH_OPTIONS, FIELDS } from "../configs/contract";
 import { IField, ISelectField } from "@/modules/Form/types/field";
+import { useLocale } from "@/modules/Lang/hooks/useLocale";
 import { useAuth } from "@/modules/Auth/hooks/useAuth";
+
+import { IContract } from "../type";
+import { FETCH_OPTIONS, FIELDS } from "../configs/contract";
 
 interface IContractContextProps {
   contracts: IContract[];
@@ -19,7 +20,7 @@ export const ContractContext = createContext<IContractContextProps | undefined>(
 );
 
 export const ContractProvider = ({ children }: { children: ReactNode }) => {
-  const { t } = useTranslation("$");
+  const { t } = useLocale();
   const { session } = useAuth();
   const [contracts, setContracts] = useState<IContract[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
