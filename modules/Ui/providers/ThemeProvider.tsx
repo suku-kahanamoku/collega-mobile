@@ -1,15 +1,15 @@
-import React, { createContext, useState, useEffect, ReactNode } from "react";
+import React, { createContext, ReactNode } from "react";
 import {
   ThemeProvider,
   DarkTheme,
   DefaultTheme,
   Theme,
 } from "@react-navigation/native";
-import AsyncStorage from "@react-native-async-storage/async-storage";
 import { ThemeProvider as UiThemeProvider, type Colors } from "@rneui/themed";
 
 import { colors, createUiTheme } from "../module";
 import { ITheme } from "../types/theme.interface";
+import { useStorageTheme } from "../hooks/useStorageTheme";
 
 interface IThemeContextProps {
   theme: ITheme;
@@ -24,27 +24,11 @@ export const ThemeContext = createContext<IThemeContextProps | undefined>(
 );
 
 export const ThemeProviderCmp = ({ children }: { children: ReactNode }) => {
-  const [theme, setTheme] = useState<ITheme>("light");
+  const [[isLoading, theme], setTheme] = useStorageTheme("THEME");
 
   const changeTheme = async (value: ITheme) => {
-    await AsyncStorage.setItem("THEME", value);
     setTheme(value);
   };
-
-  const loadTheme = async () => {
-    try {
-      const storedTheme = await AsyncStorage.getItem("THEME");
-      if (storedTheme) {
-        setTheme(storedTheme as ITheme);
-      }
-    } catch (e) {
-      console.error(e);
-    }
-  };
-
-  useEffect(() => {
-    loadTheme();
-  }, []);
 
   const isDark = theme === "dark";
   const currentTheme = isDark ? DarkTheme : DefaultTheme;
@@ -53,12 +37,12 @@ export const ThemeProviderCmp = ({ children }: { children: ReactNode }) => {
     ...((isDark ? colors.dark : colors.light) as unknown as Theme["colors"]),
   };
 
-  const uiTheme = createUiTheme(theme);
+  const uiTheme = createUiTheme(theme || "light");
 
   return (
     <ThemeContext.Provider
       value={{
-        theme,
+        theme: theme || "light",
         isDark,
         colors: currentTheme.colors as typeof colors.light &
           typeof DefaultTheme.colors,
