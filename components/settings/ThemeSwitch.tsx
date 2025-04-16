@@ -2,7 +2,7 @@ import React from "react";
 import { StyleSheet } from "react-native";
 
 import { useTheme } from "@/modules/Ui/hooks/useTheme";
-import { useLocale } from "@/modules/Lang/hooks/useLocale";
+import { useLang } from "@/modules/Lang/hooks/useLang";
 import RowCmp from "@/modules/Ui/components/Row";
 import { Switch } from "@rneui/themed";
 
@@ -16,7 +16,7 @@ import { Switch } from "@rneui/themed";
  * pro přepínání tmavého režimu.
  *
  * @remarks
- * - Hook `useLocale` se používá k získání lokalizovaného řetězce pro popisek.
+ * - Hook `useLang` se používá k získání lokalizovaného řetězce pro popisek.
  * - Hook `useTheme` poskytuje aktuální stav tématu (`isDark`) a metodu
  *   (`changeTheme`) pro přepínání mezi světlým a tmavým tématem.
  *
@@ -32,7 +32,7 @@ import { Switch } from "@rneui/themed";
  * ```
  */
 const ThemeSwitchCmp = () => {
-  const { t } = useLocale();
+  const { t } = useLang();
   const { changeTheme, isDark } = useTheme();
 
   const toggleDarkMode = () => {

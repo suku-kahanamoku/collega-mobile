@@ -3,13 +3,13 @@ import { StyleSheet, View } from "react-native";
 import { Link } from "expo-router";
 import { Text, Button, Icon, Card } from "@rneui/themed";
 
-import { useLocale } from "@/modules/Lang/hooks/useLocale";
+import { useLang } from "@/modules/Lang/hooks/useLang";
 import { useAuth } from "@/modules/Auth/hooks/useAuth";
 import { useRoute } from "@/hooks/useRoute";
 import Field from "@/modules/Form/components/fields/Field";
 
 const SignupCmp = () => {
-  const { t } = useLocale();
+  const { t } = useLang();
   const { fields } = useAuth();
   const { menuList } = useRoute();
   const loginMenu = menuList.login;

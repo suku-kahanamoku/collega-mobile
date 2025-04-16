@@ -39,7 +39,7 @@ export const ThemeProviderCmp = ({ children }: { children: ReactNode }) => {
         setTheme(storedTheme as ITheme);
       }
     } catch (e) {
-      console.log(e);
+      console.error(e);
     }
   };
 

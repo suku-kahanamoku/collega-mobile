@@ -1,7 +1,7 @@
 import { createContext, useState, type PropsWithChildren } from "react";
 
 import { IField, ISelectField } from "@/modules/Form/types/field";
-import { useLocale } from "@/modules/Lang/hooks/useLocale";
+import { useLang } from "@/modules/Lang/hooks/useLang";
 
 import { useStorageState } from "../hooks/useStorageState";
 import { FETCH_OPTIONS, FIELDS } from "../configs/auth";
@@ -21,7 +21,7 @@ export const AuthContext = createContext<IAuthContextProps | undefined>(
 );
 
 export function AuthProvider({ children }: PropsWithChildren) {
-  const { t } = useLocale();
+  const { t } = useLang();
   const [[isLoading, session], setSession] = useStorageState("session");
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);

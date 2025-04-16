@@ -1,7 +1,4 @@
-import i18n from "i18next";
-import { initReactI18next } from "react-i18next";
-import { getLocales } from "expo-localization";
-import defu from "defu";
+import { initializeLocales, initializeI18n } from "@/modules/Lang/module";
 
 import _en from "./locales/en.json";
 import _cs from "./locales/cs.json";
@@ -17,11 +14,11 @@ import cSk from "@/modules/Contract/locales/sk.json";
 
 import uEn from "@/modules/User/locales/en.json";
 import uCs from "@/modules/User/locales/cs.json";
-import uSk from "@/modules/User/locales/sk.json";
+import uSk from "@/modules/User/locales/cs.json";
 
-const en = defu(_en, aEn, cEn, uEn);
-const cs = defu(_cs, aCs, cCs, uCs);
-const sk = defu(_sk, aSk, cSk, uSk);
+const en = initializeLocales([_en, aEn, cEn, uEn]);
+const cs = initializeLocales([_cs, aCs, cCs, uCs]);
+const sk = initializeLocales([_sk, aSk, cSk, uSk]);
 
 export const locales = [
   {
@@ -41,31 +38,6 @@ export const locales = [
   },
 ];
 
-const deviceLocales = getLocales();
+const i18n = initializeI18n({ en, cs, sk }, locales);
 
-const deviceLocale = deviceLocales.length
-  ? deviceLocales[0]?.languageCode
-  : locales[0].code;
-
-const defaultLocale =
-  locales?.find((loc) => loc.code === deviceLocale)?.code || locales[0].code;
-
-i18n.use(initReactI18next).init({
-  resources: {
-    en,
-    cs,
-    sk,
-  },
-  lng: defaultLocale,
-  fallbackLng: defaultLocale,
-  interpolation: {
-    escapeValue: false,
-  },
-});
-
-/**
- * Výchozí export modulu i18n, který je zodpovědný za zpracování
- * internacionalizace (i18n) v aplikaci. To obvykle zahrnuje
- * správu překladů, nastavení lokalizace a další související funkce.
- */
 export default i18n;

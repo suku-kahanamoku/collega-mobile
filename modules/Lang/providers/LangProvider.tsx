@@ -5,9 +5,9 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 
 interface ILocaleContextProps {
   locale: string;
+  locales: typeof locales;
   changeLanguage: (value: string) => Promise<void>;
   t: (key: string) => string;
-  locales: typeof locales;
 }
 
 export const LocaleContext = createContext<ILocaleContextProps | undefined>(
@@ -30,7 +30,7 @@ export const LangProvider = ({ children }: { children: ReactNode }) => {
         i18n.changeLanguage(storedLanguage);
       }
     } catch (e) {
-      console.log(e);
+      console.error(e);
     }
   };
 
@@ -44,7 +44,7 @@ export const LangProvider = ({ children }: { children: ReactNode }) => {
   }, []);
 
   return (
-    <LocaleContext.Provider value={{ locale, changeLanguage, t, locales }}>
+    <LocaleContext.Provider value={{ locale, locales, changeLanguage, t }}>
       <I18nextProvider i18n={i18n}>{children}</I18nextProvider>
     </LocaleContext.Provider>
   );

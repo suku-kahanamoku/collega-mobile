@@ -1,7 +1,7 @@
 import React, { createContext, useState, useEffect, ReactNode } from "react";
 
 import { IField, ISelectField } from "@/modules/Form/types/field";
-import { useLocale } from "@/modules/Lang/hooks/useLocale";
+import { useLang } from "@/modules/Lang/hooks/useLang";
 import { useAuth } from "@/modules/Auth/hooks/useAuth";
 
 import { IContract } from "../type";
@@ -20,7 +20,7 @@ export const ContractContext = createContext<IContractContextProps | undefined>(
 );
 
 export const ContractProvider = ({ children }: { children: ReactNode }) => {
-  const { t } = useLocale();
+  const { t } = useLang();
   const { session } = useAuth();
   const [contracts, setContracts] = useState<IContract[]>([]);
   const [loading, setLoading] = useState<boolean>(true);

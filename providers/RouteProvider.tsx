@@ -2,7 +2,7 @@ import React, { createContext, ReactNode } from "react";
 import { RelativePathString, usePathname, useRouter } from "expo-router";
 
 import { IMenu } from "@/types/menu";
-import { useLocale } from "@/modules/Lang/hooks/useLocale";
+import { useLang } from "@/modules/Lang/hooks/useLang";
 
 interface IRouteContextProps {
   menuList: Record<string, IMenu>;
@@ -16,7 +16,7 @@ export const RouteContext = createContext<IRouteContextProps | undefined>(
 );
 
 export const RouteProvider = ({ children }: { children: ReactNode }) => {
-  const { t } = useLocale();
+  const { t } = useLang();
   const pathname = usePathname();
   const router = useRouter();
 

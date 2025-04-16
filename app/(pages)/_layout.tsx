@@ -8,9 +8,7 @@ export default function PagesLayout() {
   const { menuList, menus } = useRoute();
   const settingsMenu = menuList.settings;
 
-  console.log(session, 'fdsa')
   if (!session) {
-    console.log(session)
     return <Redirect href={menuList.login.href} />;
   }
 

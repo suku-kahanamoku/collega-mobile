@@ -6,12 +6,12 @@ import RowCmp from "@/modules/Ui/components/Row";
 import { useContract } from "@/modules/Contract/hooks/useContract";
 import RecordNotFoundPage from "@/modules/Ui/components/RecordNotFound";
 import { useTheme } from "@/modules/Ui/hooks/useTheme";
-import { useLocale } from "@/modules/Lang/hooks/useLocale";
+import { useLang } from "@/modules/Lang/hooks/useLang";
 
 const logoImg = require("@/assets/images/collega_brokers.png");
 
 export default function ContractScreen() {
-  const { t } = useLocale();
+  const { t } = useLang();
   const { colors } = useTheme();
   const { id } = useLocalSearchParams();
   const { contracts, fieldList } = useContract();

@@ -2,14 +2,14 @@ import React from "react";
 import { StyleSheet, View } from "react-native";
 import { Text } from "@rneui/themed";
 
-import { useLocale } from "@/modules/Lang/hooks/useLocale";
+import { useLang } from "@/modules/Lang/hooks/useLang";
 
 export default function LoadingPage({
   message = "global.loading",
 }: {
   message?: string;
 }) {
-  const { t } = useLocale();
+  const { t } = useLang();
 
   return (
     <View style={styles.container}>

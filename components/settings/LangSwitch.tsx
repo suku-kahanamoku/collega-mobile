@@ -2,7 +2,7 @@ import React from "react";
 import { TouchableOpacity, StyleSheet } from "react-native";
 import Flag from "react-native-flags";
 
-import { useLocale } from "@/modules/Lang/hooks/useLocale";
+import { useLang } from "@/modules/Lang/hooks/useLang";
 import RowCmp from "@/modules/Ui/components/Row";
 
 /**
@@ -14,7 +14,7 @@ import RowCmp from "@/modules/Ui/components/Row";
  * @returns {JSX.Element} Vykreslená komponenta přepínače jazyka.
  *
  * @poznámky
- * - Tato komponenta používá hook `useLocale` pro přístup k aktuálnímu jazyku,
+ * - Tato komponenta používá hook `useLang` pro přístup k aktuálnímu jazyku,
  *   dostupným jazykům, překladové funkci a handleru pro změnu jazyka.
  * - Komponenta `RowCmp` je použita pro rozložení přepínače jazyka v řádku.
  * - Vlajky jsou zobrazeny pomocí komponenty `Flag` a aktuálně vybraný jazyk
@@ -26,7 +26,7 @@ import RowCmp from "@/modules/Ui/components/Row";
  * ```
  *
  * @dependencies
- * - `useLocale`: Vlastní hook poskytující lokalizační funkce.
+ * - `useLang`: Vlastní hook poskytující lokalizační funkce.
  * - `RowCmp`: Komponenta pro rozložení.
  * - `TouchableOpacity`: Wrapper pro dotykové prvky.
  * - `Flag`: Komponenta pro zobrazení vlajek zemí.
@@ -37,7 +37,7 @@ import RowCmp from "@/modules/Ui/components/Row";
  * - `styles.flag`: Styl aplikovaný na nevybrané vlajky.
  */
 const LangSwitchCmp = () => {
-  const { locale, locales, t, changeLanguage } = useLocale();
+  const { locale, locales, t, changeLanguage } = useLang();
 
   return (
     <RowCmp

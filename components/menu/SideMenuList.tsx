@@ -5,7 +5,7 @@ import { Button } from "@rneui/themed";
 import { useAuth } from "@/modules/Auth/hooks/useAuth";
 import { useTheme } from "@/modules/Ui/hooks/useTheme";
 import { IMenu } from "@/types/menu";
-import { useLocale } from "@/modules/Lang/hooks/useLocale";
+import { useLang } from "@/modules/Lang/hooks/useLang";
 import { useRoute } from "@/hooks/useRoute";
 import MenuListCmp from "./MenuList";
 
@@ -33,7 +33,7 @@ interface ISideMenuListProps {
  * @returns {JSX.Element} Vykreslená komponenta bočního menu.
  *
  * @remarks
- * - Tato komponenta používá hook `useLocale` pro lokalizaci, `useAuth` pro správu relace,
+ * - Tato komponenta používá hook `useLang` pro lokalizaci, `useAuth` pro správu relace,
  *   `useTheme` pro barvy tématu a `useRoute` pro navigaci.
  * - Pokud je uživatel přihlášen, zobrazí se tlačítko pro odhlášení. Jinak se zobrazí tlačítka pro přihlášení a registraci.
  * - Handler `onPress` naviguje na příslušnou trasu a volitelně zavře menu.
@@ -50,7 +50,7 @@ interface ISideMenuListProps {
  * ```
  */
 const SideMenuListCmp: React.FC<ISideMenuListProps> = ({ menus, setOpen }) => {
-  const { t } = useLocale();
+  const { t } = useLang();
   const { session, signOut } = useAuth();
   const { Colors } = useTheme();
   const { menuList, navigate } = useRoute();
