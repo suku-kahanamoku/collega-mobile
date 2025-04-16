@@ -1,7 +1,7 @@
 import React from "react";
 import { Drawer } from "react-native-drawer-layout";
 
-import { IMenu } from "@/types/menu";
+import { IMenu } from "@/types/menu.interface";
 import SideMenuListCmp from "./SideMenuList";
 
 /**

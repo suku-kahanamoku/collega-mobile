@@ -5,7 +5,7 @@ import defu from "defu";
 
 import { ILocale } from "./types/lang.interface";
 
-export const initializeLocales = (locales: ILocale[]) => {
+export const initializeLocales = (locales: Array<{ [key: string]: any }>) => {
   return locales.reduce((acc, locale) => defu(acc, locale), {});
 };
 

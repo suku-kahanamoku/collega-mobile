@@ -1,7 +1,7 @@
 import React, { createContext, ReactNode } from "react";
 import { RelativePathString, usePathname, useRouter } from "expo-router";
 
-import { IMenu } from "@/types/menu";
+import { IMenu } from "@/types/menu.interface";
 import { useLang } from "@/modules/Lang/hooks/useLang";
 
 interface IRouteContextProps {

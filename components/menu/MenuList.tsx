@@ -5,7 +5,7 @@ import TouchableScale from "react-native-touchable-scale";
 import { LinearGradient } from "expo-linear-gradient";
 
 import { useTheme } from "@/modules/Ui/hooks/useTheme";
-import { IMenu } from "@/types/menu";
+import { IMenu } from "@/types/menu.interface";
 
 /**
  * Vlastnosti pro komponentu MenuList.

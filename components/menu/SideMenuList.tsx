@@ -4,7 +4,7 @@ import { Button } from "@rneui/themed";
 
 import { useAuth } from "@/modules/Auth/hooks/useAuth";
 import { useTheme } from "@/modules/Ui/hooks/useTheme";
-import { IMenu } from "@/types/menu";
+import { IMenu } from "@/types/menu.interface";
 import { useLang } from "@/modules/Lang/hooks/useLang";
 import { useRoute } from "@/hooks/useRoute";
 import MenuListCmp from "./MenuList";

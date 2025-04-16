@@ -8,15 +8,15 @@ import {
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { createTheme, ThemeProvider as UiThemeProvider } from "@rneui/themed";
 
-import { Colors, FontSizes } from "@/configs/Theme";
+import uiConfig from "@/ui.config.json";
 
 type ITheme = "light" | "dark";
 
 interface IThemeContextProps {
   theme: ITheme;
   isDark: boolean;
-  colors: typeof Colors.light;
-  Colors: typeof Colors;
+  colors: typeof uiConfig.colors.light;
+  Colors: typeof uiConfig.colors;
   changeTheme: (value: ITheme) => Promise<void>;
 }
 
@@ -51,16 +51,18 @@ export const ThemeProviderCmp = ({ children }: { children: ReactNode }) => {
   const currentTheme = isDark ? DarkTheme : DefaultTheme;
   currentTheme.colors = {
     ...currentTheme.colors,
-    ...((isDark ? Colors.dark : Colors.light) as unknown as Theme["colors"]),
+    ...((isDark
+      ? uiConfig.colors.dark
+      : uiConfig.colors.light) as unknown as Theme["colors"]),
   };
 
   const uiTheme = createTheme({
-    lightColors: Colors.light,
-    darkColors: Colors.dark,
+    lightColors: uiConfig.colors.light,
+    darkColors: uiConfig.colors.dark,
     mode: theme,
     components: {
-      Text: FontSizes,
-      CardTitle: FontSizes,
+      Text: uiConfig.fontSizes,
+      CardTitle: uiConfig.fontSizes,
       Card: {
         containerStyle: {
           backgroundColor: currentTheme.colors.background,
@@ -74,8 +76,8 @@ export const ThemeProviderCmp = ({ children }: { children: ReactNode }) => {
       value={{
         theme,
         isDark,
-        colors: currentTheme.colors as unknown as typeof Colors.light,
-        Colors,
+        colors: currentTheme.colors as unknown as typeof uiConfig.colors.light,
+        Colors: uiConfig.colors,
         changeTheme,
       }}
     >
