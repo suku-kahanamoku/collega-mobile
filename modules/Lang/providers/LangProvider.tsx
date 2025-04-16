@@ -3,7 +3,7 @@ import { I18nextProvider, useTranslation } from "react-i18next";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 import i18n, { locales } from "@/i18n";
-import { ILocale } from "@/modules/Lang/types";
+import { ILocale } from "@/modules/Lang/types/lang.interface";
 
 interface ILangContextProps {
   locale: string;

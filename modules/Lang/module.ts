@@ -3,7 +3,7 @@ import { initReactI18next } from "react-i18next";
 import { getLocales } from "expo-localization";
 import defu from "defu";
 
-import { ILocale } from "./types";
+import { ILocale } from "./types/lang.interface";
 
 export const initializeLocales = (locales: ILocale[]) => {
   return locales.reduce((acc, locale) => defu(acc, locale), {});

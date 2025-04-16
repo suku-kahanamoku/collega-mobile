@@ -1,5 +1,5 @@
 import { initializeLocales, initializeI18n } from "@/modules/Lang/module";
-import { ILocale } from "@/modules/Lang/types";
+import { ILocale } from "@/modules/Lang/types/lang.interface";
 
 import _en from "./locales/en.json";
 import _cs from "./locales/cs.json";
