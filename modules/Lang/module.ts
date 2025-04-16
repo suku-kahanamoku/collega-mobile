@@ -3,13 +3,15 @@ import { initReactI18next } from "react-i18next";
 import { getLocales } from "expo-localization";
 import defu from "defu";
 
-export const initializeLocales = (locales: Array<{ [key: string]: any }>) => {
+import { ILocale } from "./types";
+
+export const initializeLocales = (locales: ILocale[]) => {
   return locales.reduce((acc, locale) => defu(acc, locale), {});
 };
 
 export const initializeI18n = (
   resources: { [key: string]: any },
-  locales: Array<{ code: string }>
+  locales: ILocale[]
 ) => {
   const deviceLocales = getLocales();
 

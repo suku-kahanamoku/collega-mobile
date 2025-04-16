@@ -3,10 +3,11 @@ import { I18nextProvider, useTranslation } from "react-i18next";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 import i18n, { locales } from "@/i18n";
+import { ILocale } from "@/modules/Lang/types";
 
 interface ILangContextProps {
   locale: string;
-  locales: Array<{ code: string; mark: string; iso: string }>;
+  locales: ILocale[];
   changeLanguage: (value: string) => Promise<void>;
   t: (key: string) => string;
   i18n: typeof i18n;
