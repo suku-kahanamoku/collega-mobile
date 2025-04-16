@@ -14,7 +14,7 @@ import { ITheme } from "../types/theme.interface";
 interface IThemeContextProps {
   theme: ITheme;
   isDark: boolean;
-  colors: Colors;
+  colors: typeof colors.light & typeof DefaultTheme.colors;
   Colors: typeof colors;
   changeTheme: (value: ITheme) => Promise<void>;
 }
@@ -60,7 +60,8 @@ export const ThemeProviderCmp = ({ children }: { children: ReactNode }) => {
       value={{
         theme,
         isDark,
-        colors: currentTheme.colors as unknown as Colors,
+        colors: currentTheme.colors as typeof colors.light &
+          typeof DefaultTheme.colors,
         Colors: colors,
         changeTheme,
       }}
