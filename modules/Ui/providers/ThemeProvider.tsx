@@ -8,7 +8,7 @@ import {
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { ThemeProvider as UiThemeProvider, type Colors } from "@rneui/themed";
 
-import { colors, createUiTheme } from "../ui.module";
+import { colors, createUiTheme } from "../module";
 import { ITheme } from "../types/theme.interface";
 
 interface IThemeContextProps {
