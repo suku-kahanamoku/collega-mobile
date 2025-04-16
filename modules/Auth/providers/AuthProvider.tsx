@@ -5,7 +5,7 @@ import { useLang } from "@/modules/Lang/hooks/useLang";
 
 import { useStorageState } from "../hooks/useStorageState";
 import { FETCH_OPTIONS, FIELDS } from "../configs/auth";
-import { ISession } from "../types/auth";
+import { ISession } from "../types/auth.interface";
 
 interface IAuthContextProps {
   signIn: (login: string, password: string) => void;

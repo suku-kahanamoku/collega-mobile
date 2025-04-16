@@ -1,7 +1,7 @@
 import { useEffect, useCallback, useReducer } from "react";
 import * as SecureStore from "expo-secure-store";
 import { Platform } from "react-native";
-import { ISession } from "../types/auth";
+import { ISession } from "../types/auth.interface";
 
 type UseStateHook<T> = [[boolean, T | null], (value: T | null) => void];
 
