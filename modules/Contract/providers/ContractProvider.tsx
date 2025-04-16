@@ -1,6 +1,6 @@
 import React, { createContext, useState, useEffect, ReactNode } from "react";
 
-import { IField, ISelectField } from "@/modules/Form/types/field";
+import { IField, ISelectField } from "@/modules/Form/types/field.interface";
 import { useLang } from "@/modules/Lang/hooks/useLang";
 import { useAuth } from "@/modules/Auth/hooks/useAuth";
 

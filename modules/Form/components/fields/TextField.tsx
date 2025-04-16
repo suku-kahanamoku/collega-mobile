@@ -2,7 +2,7 @@ import React, { useCallback } from "react";
 import { Input } from "@rneui/themed";
 
 import { DEBOUNCE } from "@/modules/Common/utils/delay";
-import { ITextField } from "../../types/field";
+import { ITextField } from "../../types/field.interface";
 
 interface IFieldProps {
   field: ITextField;

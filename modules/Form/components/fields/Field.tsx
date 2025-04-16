@@ -1,6 +1,6 @@
 import React from "react";
 
-import { IField } from "../../types/field";
+import { IField } from "../../types/field.interface";
 import TextField from "./TextField";
 import SelectField from "./SelectField";
 import CheckboxField from "./CheckboxField";

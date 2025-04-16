@@ -1,4 +1,4 @@
-import { IOption, ISelectField, ITextField } from "@/modules/Form/types/field";
+import { IOption, ISelectField, ITextField } from "@/modules/Form/types/field.interface";
 
 export const STATUS_OPTIONS: IOption[] = [
   { value: "active", label: "user.status.active" },

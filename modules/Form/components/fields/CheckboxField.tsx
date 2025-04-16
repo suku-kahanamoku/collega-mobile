@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { StyleSheet } from "react-native";
 import { CheckBox } from "@rneui/themed";
 
-import { ICheckboxField } from "../../types/field";
+import { ICheckboxField } from "../../types/field.interface";
 
 interface IFieldProps {
   field: ICheckboxField;
