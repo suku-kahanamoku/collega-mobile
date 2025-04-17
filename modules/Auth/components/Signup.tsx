@@ -6,28 +6,19 @@ import { Text, Button, Icon, Card } from "@rneui/themed";
 import { useLang } from "@/modules/Lang/hooks/useLang";
 import { useAuth } from "@/modules/Auth/hooks/useAuth";
 import { useRoute } from "@/hooks/useRoute";
-import Field from "@/modules/Form/components/fields/Field";
+import FieldCmp from "@/modules/Form/components/fields/Field";
+import { useForm } from "@/modules/Form/hooks/useForm";
 
 const SignupCmp = () => {
   const { t } = useLang();
-  const { fields } = useAuth();
   const { menuList } = useRoute();
   const loginMenu = menuList.login;
 
-  const [formData, setFormData] = useState({
-    firstname: "",
-    lastname: "",
-    email: "",
-    password: "",
-    repeat_password: "",
-  });
+  const { fields } = useAuth();
+  const { control, handleSubmit } = useForm(fields);
 
-  const handleChange = (name: string, value: string) => {
-    setFormData((prev) => ({ ...prev, [name]: value }));
-  };
-
-  const handleSubmit = () => {
-    console.log("Form Data:", formData);
+  const onSubmit = () => {
+    console.log("Form Data:");
   };
 
   return (
@@ -40,11 +31,7 @@ const SignupCmp = () => {
         {fields
           .filter((field) => field.name !== "login")
           .map((field) => (
-            <Field
-              field={field}
-              key={field.name}
-              onChange={(value) => handleChange(field.name, value)}
-            />
+            <FieldCmp key={field.name} field={field} control={control} />
           ))}
       </View>
 
@@ -52,7 +39,7 @@ const SignupCmp = () => {
         title={t("btn.signup")}
         uppercase={true}
         titleStyle={styles.button}
-        onPress={handleSubmit}
+        onPress={handleSubmit(onSubmit)}
       />
 
       <Link href={loginMenu.href}>

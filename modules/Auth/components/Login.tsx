@@ -5,17 +5,19 @@ import { Text, Button, SocialIcon, Card } from "@rneui/themed";
 
 import { useLang } from "@/modules/Lang/hooks/useLang";
 import { useRoute } from "@/hooks/useRoute";
-import Field from "@/modules/Form/components/fields/Field";
+import FieldCmp from "@/modules/Form/components/fields/Field";
 
 import { useAuth } from "../hooks/useAuth";
 import { useForm } from "@/modules/Form/hooks/useForm";
 
 const LoginCmp = () => {
   const { t } = useLang();
-  const { fieldList, signIn } = useAuth();
+
   const { menuList } = useRoute();
   const signupMenu = menuList.signup;
   const resetPasswordMenu = menuList.reset_password;
+
+  const { fieldList, signIn } = useAuth();
   const fields = [fieldList.login, fieldList.pass];
   const { control, handleSubmit } = useForm(fields);
 
@@ -31,7 +33,7 @@ const LoginCmp = () => {
 
       <View style={styles.field}>
         {fields.map((field) => (
-          <Field key={field.name} field={field} control={control} />
+          <FieldCmp key={field.name} field={field} control={control} />
         ))}
       </View>
 

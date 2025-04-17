@@ -12,7 +12,7 @@ interface IFieldProps {
   [rest: string]: any;
 }
 
-const Field: React.FC<IFieldProps> = ({ field, control, ...rest }) => {
+const FieldCmp: React.FC<IFieldProps> = ({ field, control, ...rest }) => {
   switch (field.type) {
     case "select":
       return <SelectFieldCmp field={field} control={control} {...rest} />;
@@ -23,4 +23,4 @@ const Field: React.FC<IFieldProps> = ({ field, control, ...rest }) => {
   }
 };
 
-export default Field;
+export default FieldCmp;

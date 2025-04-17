@@ -5,27 +5,23 @@ import { Text, Button, Icon, Card } from "@rneui/themed";
 
 import { useLang } from "@/modules/Lang/hooks/useLang";
 import { useRoute } from "@/hooks/useRoute";
-import Field from "@/modules/Form/components/fields/Field";
+import FieldCmp from "@/modules/Form/components/fields/Field";
 
 import { useAuth } from "../hooks/useAuth";
+import { useForm } from "@/modules/Form/hooks/useForm";
 
 const ResetPasswordCmp = () => {
   const { t } = useLang();
-  const { fieldList } = useAuth();
+
   const { menuList } = useRoute();
   const loginMenu = menuList.login;
 
-  const [formData, setFormData] = useState({
-    email: "",
-  });
+  const { fieldList } = useAuth();
   const emailField = fieldList.email;
+  const { control, handleSubmit } = useForm([emailField]);
 
-  const handleChange = (name: string, value: string) => {
-    setFormData((prev) => ({ ...prev, [name]: value }));
-  };
-
-  const handleSubmit = () => {
-    console.log("Form Data:", formData);
+  const onSubmit = () => {
+    console.log("Form Data:");
   };
 
   return (
@@ -35,18 +31,14 @@ const ResetPasswordCmp = () => {
       <Card.Divider />
 
       <View style={styles.field}>
-        <Field
-          field={emailField}
-          key={emailField.name}
-          onChange={(value) => handleChange(emailField.name, value)}
-        />
+        <FieldCmp key={emailField.name} field={emailField} control={control} />
       </View>
 
       <Button
         title={t("btn.submit")}
         uppercase={true}
         titleStyle={styles.button}
-        onPress={handleSubmit}
+        onPress={handleSubmit(onSubmit)}
       />
 
       <Link href={loginMenu.href}>
