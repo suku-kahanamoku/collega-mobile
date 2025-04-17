@@ -19,6 +19,8 @@ export interface IFieldItem {
   validation?: { pattern: string; message: string }[];
   min?: number;
   max?: number;
+  minLength?: number;
+  maxLength?: number;
 }
 
 export interface ITextField extends IFieldItem, TextInputProps {}

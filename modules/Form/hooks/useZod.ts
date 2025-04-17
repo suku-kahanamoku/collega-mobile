@@ -25,18 +25,14 @@ export function useZod() {
       case "email":
         schema = z.string().email(t("message.invalid_email"));
         if (field.required) {
-          schema = schema.nonempty(
-            t("message.required", { label: field.label })
-          );
+          schema = schema.nonempty(t("message.required"));
         }
         break;
 
       case "url":
         schema = z.string().url(t("message.invalid_url"));
         if (field.required) {
-          schema = schema.nonempty(
-            t("message.required", { label: field.label })
-          );
+          schema = schema.nonempty(t("message.required"));
         }
         break;
 
@@ -45,7 +41,7 @@ export function useZod() {
         if (field.required) {
           schema = schema.refine(
             (val: number | undefined) => val !== undefined,
-            t("message.required", { label: field.label })
+            t("message.required")
           );
         }
         if (field.min !== undefined) {
@@ -67,7 +63,7 @@ export function useZod() {
         if (field.required) {
           schema = schema.refine(
             (val: boolean) => val === true,
-            t("message.required", { label: field.label })
+            t("message.required")
           );
         }
         break;
@@ -76,17 +72,25 @@ export function useZod() {
       case "radio":
         schema = z.string();
         if (field.required) {
-          schema = schema.nonempty(
-            t("message.required", { label: field.label })
-          );
+          schema = schema.nonempty(t("message.required"));
         }
         break;
 
       default:
         schema = z.string();
         if (field.required) {
-          schema = schema.nonempty(
-            t("message.required", { label: field.label })
+          schema = schema.nonempty(t("message.required"));
+        }
+        if (field.minLength !== undefined) {
+          schema = schema.min(
+            field.minLength,
+            t("message.min_length", { minLength: field.minLength })
+          );
+        }
+        if (field.maxLength !== undefined) {
+          schema = schema.max(
+            field.maxLength,
+            t("message.max_length", { maxLength: field.maxLength })
           );
         }
         if (field.validation) {
