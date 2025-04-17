@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet } from "react-native";
+import { InputModeOptions, StyleSheet } from "react-native";
 import { Input } from "@rneui/themed";
 import { Controller, Control } from "react-hook-form";
 
@@ -11,6 +11,15 @@ interface IFieldProps {
   [rest: string]: any;
 }
 
+const inputModeMap: Record<string, InputModeOptions> = {
+  number: "numeric",
+  email: "email",
+  url: "url",
+  tel: "tel",
+  text: "text",
+  password: "text",
+};
+
 const TextFieldCmp: React.FC<IFieldProps> = ({ field, control, ...rest }) => {
   return (
     <Controller
@@ -20,7 +29,7 @@ const TextFieldCmp: React.FC<IFieldProps> = ({ field, control, ...rest }) => {
         <Input
           label={field.label}
           placeholder={field.placeholder}
-          inputMode={field.inputMode}
+          inputMode={inputModeMap[field.type || "text"]}
           autoComplete={field.autoComplete}
           autoFocus={field.autoFocus}
           value={value}

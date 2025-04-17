@@ -1,13 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import { StyleSheet, View } from "react-native";
 import { Link } from "expo-router";
 import { Text, Button, SocialIcon, Card } from "@rneui/themed";
 
 import { useLang } from "@/modules/Lang/hooks/useLang";
 import { useRoute } from "@/hooks/useRoute";
-import FormCmp from "@/modules/Form/components/Form";
+import Field from "@/modules/Form/components/fields/Field";
 
 import { useAuth } from "../hooks/useAuth";
+import { useForm } from "@/modules/Form/hooks/useForm";
 
 const LoginCmp = () => {
   const { t } = useLang();
@@ -15,14 +16,11 @@ const LoginCmp = () => {
   const { menuList } = useRoute();
   const signupMenu = menuList.signup;
   const resetPasswordMenu = menuList.reset_password;
+  const fields = [fieldList.login, fieldList.pass];
+  const { control, handleSubmit } = useForm(fields);
 
-  const formConfig = {
-    fields: [fieldList.login, fieldList.pass],
-    submitButtonText: t("btn.login"),
-  };
-
-  const handleSubmit = (data: any) => {
-    console.log("Form Data:", data);
+  const onSubmit = () => {
+    console.log("Form Data:");
   };
 
   return (
@@ -31,7 +29,11 @@ const LoginCmp = () => {
 
       <Card.Divider />
 
-      <FormCmp config={formConfig} onSubmit={handleSubmit} />
+      <View style={styles.field}>
+        {fields.map((field) => (
+          <Field key={field.name} field={field} control={control} />
+        ))}
+      </View>
 
       <View style={styles.forgotPassword}>
         <Link
@@ -43,6 +45,13 @@ const LoginCmp = () => {
           <Text h4>{t("btn.forgot_password")}</Text>
         </Link>
       </View>
+
+      <Button
+        title={t("btn.login")}
+        uppercase={true}
+        titleStyle={styles.button}
+        onPress={handleSubmit(onSubmit)}
+      />
 
       <View style={styles.toSignup}>
         <Text>{t("login.account")}</Text>

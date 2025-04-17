@@ -13,7 +13,8 @@ export interface IFieldItem {
     | "checkbox"
     | "radio"
     | "textarea"
-    | "url";
+    | "url"
+    | "tel";
   variant?: "inline";
   required?: boolean;
   validation?: { pattern: string; message: string }[];
