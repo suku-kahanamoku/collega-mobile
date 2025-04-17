@@ -24,6 +24,7 @@ export const FIELDS: (
     label: "form.login",
     inputMode: "text",
     placeholder: "placeholder.login",
+    required: true
   },
   {
     type: "text",

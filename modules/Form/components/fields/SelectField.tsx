@@ -1,57 +1,52 @@
-import React, { useState } from "react";
-import { StyleSheet } from "react-native";
+import React from "react";
 import { Picker } from "@react-native-picker/picker";
 import { Input } from "@rneui/themed";
+import { Controller, Control } from "react-hook-form";
 
 import { useTheme } from "@/modules/Ui/hooks/useTheme";
 import { ISelectField } from "../../types/field.interface";
 
 interface IFieldProps {
   field: ISelectField;
-  onChange?: (text: string) => void;
+  control: Control<any>;
   [rest: string]: any;
 }
 
-const SelectField: React.FC<IFieldProps> = ({ field, onChange, ...rest }) => {
+const SelectField: React.FC<IFieldProps> = ({ field, control, ...rest }) => {
   const { colors } = useTheme();
-  const [value, setValue] = useState(field.value);
-  const [selectedValue, setSelectedValue] = useState("canceled");
-
-  const handleChange = (value: string) => {
-    setSelectedValue(value);
-    onChange && onChange(value);
-  };
-
-  const PickerComponent = React.forwardRef((props, ref) => (
-    <Picker
-      ref={ref as any}
-      selectedValue={selectedValue}
-      prompt={field.prompt}
-      style={{
-        color: colors.text,
-        width: "100%",
-      }}
-      onValueChange={handleChange}
-    >
-      {field.options?.map((option) => (
-        <Picker.Item
-          key={option.value}
-          label={option.label}
-          value={option.value}
-        />
-      ))}
-    </Picker>
-  ));
 
   return (
-    <>
-      <Input
-        label={field.label}
-        placeholder={field.placeholder}
-        InputComponent={PickerComponent}
-        {...rest}
-      />
-    </>
+    <Controller
+      name={field.name}
+      control={control}
+      render={({ field: { onChange, value }, fieldState: { error } }) => (
+        <Input
+          label={field.label}
+          placeholder={field.placeholder}
+          errorMessage={error?.message}
+          InputComponent={() => (
+            <Picker
+              selectedValue={value}
+              prompt={field.prompt}
+              style={{
+                color: colors.text,
+                width: "100%",
+              }}
+              onValueChange={onChange}
+            >
+              {field.options?.map((option) => (
+                <Picker.Item
+                  key={option.value}
+                  label={option.label}
+                  value={option.value}
+                />
+              ))}
+            </Picker>
+          )}
+          {...rest}
+        />
+      )}
+    />
   );
 };
 

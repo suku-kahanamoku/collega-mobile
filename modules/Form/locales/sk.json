@@ -1,0 +1,40 @@
+{
+  "$": {
+    "btn": {
+      "submit": "Odoslať",
+      "reset": "Resetovať",
+      "cancel": "Zrušiť",
+      "back": "Späť",
+      "yes": "Áno",
+      "no": "Nie",
+      "close": "Zatvoriť",
+      "delete": "Zmazať"
+    },
+    "message": {
+      "required": "Povinné",
+      "invalid_email": "Neplatný e-mail",
+      "invalid_url": "Neplatný formát URL",
+      "invalid_date": "Neplatný formát dátumu",
+      "invalid_file": "Neplatný typ súboru ({type})",
+      "min_value": "Minimálna hodnota je {min}",
+      "max_value": "Maximálna hodnota je {max}",
+      "decimal_places": "Hodnota musí mať maximálne {precision} desatinných miest",
+      "date_after": "Dátum musí byť po {minDate}",
+      "date_before": "Dátum musí byť pred {maxDate}",
+      "min_length": "Musí mať aspoň {minLength} znakov",
+      "max_length": "Musí mať najviac {maxLength} znakov",
+      "bad_request": "Zlý požiadavok",
+      "miss_fields": "Chýbajú povinné polia",
+      "max_file": "Maximálna veľkosť súboru je \"{size}\" MB",
+      "load_error": "Nie je možné načítať dáta.",
+      "post_error": "Nie je možné vytvoriť záznam.",
+      "patch_error": "Nie je možné aktualizovať záznam.",
+      "delete_error": "Nie je možné zmazať \"{name}\".",
+      "not_found": "Žiadny záznam nebol nájdený.",
+      "401_error": "Nemáte oprávnenie.",
+      "403_post_error": "Nemáte oprávnenie vytvoriť záznam.",
+      "403_patch_error": "Nemáte oprávnenie aktualizovať záznam.",
+      "403_delete_error": "Nemáte oprávnenie zmazať \"{name}\"."
+    }
+  }
+}

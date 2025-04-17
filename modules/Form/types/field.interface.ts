@@ -4,9 +4,21 @@ import { PickerProps } from "@react-native-picker/picker";
 export interface IFieldItem {
   name: string;
   label: string;
-  type?: "text" | "password" | "select" | "checkbox" | "radio" | "textarea";
+  type?:
+    | "text"
+    | "number"
+    | "email"
+    | "password"
+    | "select"
+    | "checkbox"
+    | "radio"
+    | "textarea"
+    | "url";
   variant?: "inline";
   required?: boolean;
+  validation?: { pattern: string; message: string }[];
+  min?: number;
+  max?: number;
 }
 
 export interface ITextField extends IFieldItem, TextInputProps {}

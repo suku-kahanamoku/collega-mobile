@@ -9,7 +9,7 @@ interface ILangContextProps {
   locale: string;
   locales: ILocale[];
   changeLanguage: (value: string) => Promise<void>;
-  t: (key: string) => string;
+  t: (key: string, options?: any) => string;
   i18n: typeof i18n;
 }
 

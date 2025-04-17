@@ -1,4 +1,5 @@
 import React from "react";
+import { Control } from "react-hook-form";
 
 import { IField } from "../../types/field.interface";
 import TextField from "./TextField";
@@ -7,18 +8,18 @@ import CheckboxField from "./CheckboxField";
 
 interface IFieldProps {
   field: IField;
-  onChange?: (value: any) => void;
+  control: Control<any>;
   [rest: string]: any;
 }
 
-const Field: React.FC<IFieldProps> = ({ field, onChange, ...rest }) => {
+const Field: React.FC<IFieldProps> = ({ field, control, ...rest }) => {
   switch (field.type) {
     case "select":
-      return <SelectField field={field} onChange={onChange} {...rest} />;
+      return <SelectField field={field} control={control} {...rest} />;
     case "checkbox":
-      return <CheckboxField field={field} onChange={onChange} {...rest} />;
+      return <CheckboxField field={field} control={control} {...rest} />;
     default:
-      return <TextField field={field} onChange={onChange} {...rest} />;
+      return <TextField field={field} control={control} {...rest} />;
   }
 };
 

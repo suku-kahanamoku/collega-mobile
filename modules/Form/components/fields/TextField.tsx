@@ -1,34 +1,35 @@
-import React, { useCallback } from "react";
+import React from "react";
+import { StyleSheet } from "react-native";
 import { Input } from "@rneui/themed";
+import { Controller, Control } from "react-hook-form";
 
-import { DEBOUNCE } from "@/modules/Common/utils/delay";
 import { ITextField } from "../../types/field.interface";
 
 interface IFieldProps {
   field: ITextField;
-  onChange?: (text: string) => void;
+  control: Control<any>;
   [rest: string]: any;
 }
 
-const TextField: React.FC<IFieldProps> = ({ field, onChange, ...rest }) => {
-  const handleChange = useCallback(
-    DEBOUNCE((text: string) => {
-      onChange && onChange(text);
-    }),
-    []
-  );
-
+const TextField: React.FC<IFieldProps> = ({ field, control, ...rest }) => {
   return (
-    <Input
-      label={field.label}
-      placeholder={field.placeholder}
-      inputMode={field.inputMode}
-      autoComplete={field.autoComplete}
-      autoFocus={field.autoFocus}
-      value={field.value}
-      secureTextEntry={field.type === "password" ? true : false}
-      {...rest}
-      onChangeText={handleChange}
+    <Controller
+      name={field.name}
+      control={control}
+      render={({ field: { onChange, value }, fieldState: { error } }) => (
+        <Input
+          label={field.label}
+          placeholder={field.placeholder}
+          inputMode={field.inputMode}
+          autoComplete={field.autoComplete}
+          autoFocus={field.autoFocus}
+          value={value}
+          secureTextEntry={field.type === "password"}
+          errorMessage={error?.message}
+          {...rest}
+          onChangeText={onChange}
+        />
+      )}
     />
   );
 };

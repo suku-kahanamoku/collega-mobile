@@ -1,31 +1,30 @@
-import React, { useState } from "react";
+import React from "react";
 import { StyleSheet } from "react-native";
 import { CheckBox } from "@rneui/themed";
+import { Controller, Control } from "react-hook-form";
 
 import { ICheckboxField } from "../../types/field.interface";
 
 interface IFieldProps {
   field: ICheckboxField;
-  onChange?: (value: boolean) => void;
+  control: Control<any>;
   [rest: string]: any;
 }
 
-const CheckboxField: React.FC<IFieldProps> = ({ field, onChange, ...rest }) => {
-  const [isChecked, setIsChecked] = useState(field.value || false);
-
-  const handleChange = () => {
-    const value = !isChecked;
-    setIsChecked(value);
-    onChange && onChange(value);
-  };
-
+const CheckboxField: React.FC<IFieldProps> = ({ field, control, ...rest }) => {
   return (
-    <CheckBox
-      checked={isChecked}
-      title={field.label}
-      containerStyle={styles.container}
-      {...rest}
-      onPress={handleChange}
+    <Controller
+      name={field.name}
+      control={control}
+      render={({ field: { onChange, value } }) => (
+        <CheckBox
+          checked={value}
+          title={field.label}
+          containerStyle={styles.container}
+          {...rest}
+          onPress={() => onChange(!value)}
+        />
+      )}
     />
   );
 };

@@ -1,0 +1,40 @@
+{
+  "$": {
+    "btn": {
+      "submit": "Submit",
+      "reset": "Reset",
+      "cancel": "Cancel",
+      "back": "Back",
+      "yes": "Yes",
+      "no": "No",
+      "close": "Close",
+      "delete": "Delete"
+    },
+    "message": {
+      "required": "Required",
+      "invalid_email": "Invalid e-mail",
+      "invalid_url": "Invalid URL format",
+      "invalid_date": "Invalid date format",
+      "invalid_file": "Invalid file type ({type})",
+      "min_value": "Minimum value is {min}",
+      "max_value": "Maximum value is {max}",
+      "decimal_places": "Value must have at most {precision} decimal places",
+      "date_after": "Date must be after {minDate}",
+      "date_before": "Date must be before {maxDate}",
+      "min_length": "Must be at least {minLength} characters",
+      "max_length": "Must be at most {maxLength} characters",
+      "bad_request": "Bad request",
+      "miss_fields": "Missing required fields",
+      "max_file": "The maximum file size is \"{size}\" MB",
+      "load_error": "Can not load data.",
+      "post_error": "Can not create record.",
+      "patch_error": "Can not update record.",
+      "delete_error": "Can not delete \"{name}\".",
+      "not_found": "No record found.",
+      "401_error": "You do not have the permission.",
+      "403_post_error": "You do not have permission to create a record.",
+      "403_patch_error": "You do not have permission to update a record.",
+      "403_delete_error": "You do not have permission to delete \"{name}\"."
+    }
+  }
+}
