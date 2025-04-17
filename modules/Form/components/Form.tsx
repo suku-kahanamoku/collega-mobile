@@ -4,7 +4,6 @@ import { Button, StyleSheet, View } from "react-native";
 import Field from "./fields/Field";
 import { IFormConfig } from "../types/form.interface";
 import { useZod } from "../hooks/useZod";
-import { useLang } from "@/modules/Lang/hooks/useLang";
 
 interface IFormProps {
   config: IFormConfig;
@@ -12,13 +11,13 @@ interface IFormProps {
 }
 
 const FormCmp: React.FC<IFormProps> = ({ config, onSubmit }) => {
-  const { useZodForm } = useZod();
+  const { useForm } = useZod();
 
   const {
     control,
     handleSubmit,
     formState: { errors },
-  } = useZodForm(config.fields);
+  } = useForm(config.fields);
 
   return (
     <View style={styles.container}>

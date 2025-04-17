@@ -12,7 +12,7 @@ interface IFieldProps {
   [rest: string]: any;
 }
 
-const SelectField: React.FC<IFieldProps> = ({ field, control, ...rest }) => {
+const SelectFieldCmp: React.FC<IFieldProps> = ({ field, control, ...rest }) => {
   const { colors } = useTheme();
 
   return (
@@ -50,4 +50,4 @@ const SelectField: React.FC<IFieldProps> = ({ field, control, ...rest }) => {
   );
 };
 
-export default SelectField;
+export default SelectFieldCmp;

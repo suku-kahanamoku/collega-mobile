@@ -11,7 +11,7 @@ interface IFieldProps {
   [rest: string]: any;
 }
 
-const TextField: React.FC<IFieldProps> = ({ field, control, ...rest }) => {
+const TextFieldCmp: React.FC<IFieldProps> = ({ field, control, ...rest }) => {
   return (
     <Controller
       name={field.name}
@@ -34,4 +34,4 @@ const TextField: React.FC<IFieldProps> = ({ field, control, ...rest }) => {
   );
 };
 
-export default TextField;
+export default TextFieldCmp;

@@ -1,5 +1,5 @@
 import { z, ZodTypeAny } from "zod";
-import { useForm, UseFormReturn } from "react-hook-form";
+import { useForm as useFormRn, UseFormReturn } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 import { useLang } from "@/modules/Lang/hooks/useLang";
@@ -8,7 +8,6 @@ import { IField } from "../types/field.interface";
 
 /**
  * Hook to generate Zod schemas and integrate with react-hook-form.
- * @param t Translation function for localized messages.
  */
 export function useZod() {
   const { t } = useLang();
@@ -128,9 +127,9 @@ export function useZod() {
    * @param fields The list of field configurations.
    * @returns The react-hook-form instance.
    */
-  function useZodForm(fields: IField[]): UseFormReturn<any> {
+  function useForm(fields: IField[]): UseFormReturn<any> {
     const schema = getFormSchema(fields);
-    return useForm({
+    return useFormRn({
       resolver: zodResolver(schema),
       defaultValues: fields.reduce((acc, field) => {
         acc[field.name] = field.value || "";
@@ -139,5 +138,5 @@ export function useZod() {
     });
   }
 
-  return { getSchema, getFormSchema, useZodForm };
+  return { getSchema, getFormSchema, useForm };
 }

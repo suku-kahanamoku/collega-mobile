@@ -11,7 +11,11 @@ interface IFieldProps {
   [rest: string]: any;
 }
 
-const CheckboxField: React.FC<IFieldProps> = ({ field, control, ...rest }) => {
+const CheckboxFieldCmp: React.FC<IFieldProps> = ({
+  field,
+  control,
+  ...rest
+}) => {
   return (
     <Controller
       name={field.name}
@@ -35,4 +39,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default CheckboxField;
+export default CheckboxFieldCmp;
