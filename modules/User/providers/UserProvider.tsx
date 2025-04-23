@@ -1,6 +1,7 @@
 import React, { createContext, useState, useEffect, ReactNode } from "react";
 
-import { FETCH } from "@/modules/Common/utils/api";
+import { useAuth } from "@/modules/Auth/hooks/useAuth";
+
 import config from "../configs/config.json";
 
 interface IUser {
@@ -21,12 +22,13 @@ export const UserContext = createContext<IUserContextProps | undefined>(
 );
 
 export const UserProvider = ({ children }: { children: ReactNode }) => {
+  const { $fetch } = useAuth();
   const [users, setUsers] = useState<IUser[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
 
   const fetchUsers = async () => {
     try {
-      const result = await FETCH(config.restUrl);
+      const result = await $fetch(config.restUrl);
       setUsers(result);
       setLoading(false);
     } catch (error) {

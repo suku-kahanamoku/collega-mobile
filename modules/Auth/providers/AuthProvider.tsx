@@ -22,6 +22,7 @@ interface IAuthContextProps {
   loading: boolean;
   signIn: (params: ISignIn) => Promise<ISession>;
   signOut: () => void;
+  $fetch: (url: string, options?: RequestInit) => Promise<any>;
 }
 
 export const AuthContext = createContext<IAuthContextProps | undefined>(
@@ -34,16 +35,19 @@ export function AuthProvider({ children }: PropsWithChildren) {
   const [loading, setLoading] = useState<boolean>(false);
   const { fields, fieldList } = useResolver(config.fields as IField[]);
 
+  const $fetch = async (url: string, options: RequestInit = {}) => {
+    const headers = {
+      ...options.headers,
+      ...(session?.bearer && { Authorization: `Bearer ${session.bearer}` }),
+    };
+
+    return FETCH(url, { ...options, headers });
+  };
+
   const checkSession = async () => {
     if (session) {
       try {
-        const result = await FETCH(config.checkUrl, {
-          method: "GET",
-          headers: {
-            Authorization: `Bearer ${session?.bearer}`,
-          },
-          /* params: { ...query }, */
-        });
+        const result = await $fetch(config.checkUrl);
         console.log(result);
       } catch (error) {
         signOut();
@@ -64,7 +68,7 @@ export function AuthProvider({ children }: PropsWithChildren) {
 
     let result;
     try {
-      result = await FETCH(config.loginUrl, {
+      result = await $fetch(config.loginUrl, {
         method: "POST",
         body,
       });
@@ -100,6 +104,7 @@ export function AuthProvider({ children }: PropsWithChildren) {
         loading,
         signIn,
         signOut,
+        $fetch,
       }}
     >
       {children}

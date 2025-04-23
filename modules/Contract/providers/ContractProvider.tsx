@@ -2,7 +2,6 @@ import React, { createContext, useState, useEffect, ReactNode } from "react";
 
 import { IField } from "@/modules/Form/types/field.interface";
 import { useAuth } from "@/modules/Auth/hooks/useAuth";
-import { FETCH } from "@/modules/Common/utils/api";
 import { useResolver } from "@/modules/Form/hooks/useResolver";
 
 import { IContract } from "../type";
@@ -20,20 +19,14 @@ export const ContractContext = createContext<IContractContextProps | undefined>(
 );
 
 export const ContractProvider = ({ children }: { children: ReactNode }) => {
-  const { session } = useAuth();
+  const { $fetch } = useAuth();
   const [contracts, setContracts] = useState<IContract[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const { fields, fieldList } = useResolver(config.fields as IField[]);
 
   const fetchContracts = async () => {
     try {
-      const result = await FETCH(config.restUrl, {
-        method: "GET",
-        headers: {
-          Authorization: `Bearer ${session?.bearer}`,
-        },
-        /* params: { ...query }, */
-      });
+      const result = await $fetch(config.restUrl);
       setContracts(result);
       setLoading(false);
     } catch (error) {
