@@ -1,4 +1,9 @@
-import { createContext, useState, type PropsWithChildren } from "react";
+import {
+  createContext,
+  useEffect,
+  useState,
+  type PropsWithChildren,
+} from "react";
 import Toast from "react-native-toast-message";
 
 import { IField } from "@/modules/Form/types/field.interface";
@@ -28,6 +33,27 @@ export function AuthProvider({ children }: PropsWithChildren) {
   const [[isLoading, session], setSession] = useStorageState("session");
   const [loading, setLoading] = useState<boolean>(false);
   const { fields, fieldList } = useResolver(FIELDS as IField[]);
+
+  const checkSession = async () => {
+    if (session) {
+      try {
+        const result = await FETCH(FETCH_OPTIONS.checkUrl, {
+          method: FETCH_OPTIONS.method,
+          headers: {
+            Authorization: `Bearer ${session?.bearer}`,
+          },
+          /* params: { ...query }, */
+        });
+        console.log(result);
+      } catch (error) {
+        signOut();
+      }
+    }
+  };
+
+  useEffect(() => {
+    checkSession();
+  }, [session]);
 
   const signIn = async ({ login, pass }: ISignIn) => {
     setLoading(true);

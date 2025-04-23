@@ -28,7 +28,7 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
       const result = await FETCH("https://jsonplaceholder.typicode.com/users");
       setUsers(result);
       setLoading(false);
-    } catch (err) {
+    } catch (error) {
       setLoading(false);
     }
   };

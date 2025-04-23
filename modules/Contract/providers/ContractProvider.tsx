@@ -36,7 +36,7 @@ export const ContractProvider = ({ children }: { children: ReactNode }) => {
       });
       setContracts(result);
       setLoading(false);
-    } catch (err) {
+    } catch (error) {
       setLoading(false);
     }
   };

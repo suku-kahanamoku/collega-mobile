@@ -9,6 +9,7 @@ import {
 export const FETCH_OPTIONS = {
   url: "https://collega.cz/security/hook/log-in",
   method: "POST",
+  checkUrl: "https://collega.cz/security/hook/whoiam",
 };
 
 export const FIELDS: (
