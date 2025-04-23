@@ -20,6 +20,7 @@ interface IAuthContextProps {
   fieldList: Record<string, IField>;
   session: ISession | null;
   loading: boolean;
+  checkSession: () => Promise<void>;
   signIn: (params: ISignIn) => Promise<ISession>;
   signOut: () => void;
   $fetch: (url: string, options?: RequestInit) => Promise<any>;
@@ -35,6 +36,10 @@ export function AuthProvider({ children }: PropsWithChildren) {
   const [loading, setLoading] = useState<boolean>(false);
   const { fields, fieldList } = useResolver(config.fields as IField[]);
 
+  useEffect(() => {
+    checkSession();
+  }, [session]);
+
   const $fetch = async (url: string, options: RequestInit = {}) => {
     const headers = {
       ...options.headers,
@@ -48,16 +53,14 @@ export function AuthProvider({ children }: PropsWithChildren) {
     if (session) {
       try {
         const result = await $fetch(config.checkUrl);
-        console.log(result);
+        if (result.status !== "200" || new Date(result.expire) <= new Date()) {
+          signOut();
+        }
       } catch (error) {
         signOut();
       }
     }
   };
-
-  useEffect(() => {
-    checkSession();
-  }, [session]);
 
   const signIn = async ({ login, pass }: ISignIn) => {
     setLoading(true);
@@ -102,9 +105,10 @@ export function AuthProvider({ children }: PropsWithChildren) {
         fieldList,
         session,
         loading,
+        $fetch,
         signIn,
         signOut,
-        $fetch,
+        checkSession,
       }}
     >
       {children}
