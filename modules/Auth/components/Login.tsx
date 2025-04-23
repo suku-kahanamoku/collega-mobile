@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { StyleSheet, View } from "react-native";
 import { Link } from "expo-router";
 import { Text, Button, SocialIcon, Card } from "@rneui/themed";
-import { UseFormReturn } from "react-hook-form";
 
 import { useLang } from "@/modules/Lang/hooks/useLang";
 import { useRoute } from "@/hooks/useRoute";

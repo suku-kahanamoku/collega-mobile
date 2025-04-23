@@ -34,6 +34,13 @@
     },
     "forgot_password": {
       "title": "Zapomněli jste své heslo?"
+    },
+    "message": {
+      "login_error": "Přihlášení selhalo.",
+      "login_note_error": "Zkontrolujte své údaje a zkuste to znovu.",
+      "login_success": "Přihlášení bylo úspěšné.",
+      "network_error": "Chyba sítě. Zkuste to znovu později.",
+      "unknown_error": "Došlo k neočekávané chybě. Zkuste to znovu."
     }
   }
 }

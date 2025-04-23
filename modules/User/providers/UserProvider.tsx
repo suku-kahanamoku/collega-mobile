@@ -1,5 +1,7 @@
 import React, { createContext, useState, useEffect, ReactNode } from "react";
 
+import { FETCH } from "@/modules/Common/utils/api";
+
 interface IUser {
   id: number;
   name: string;
@@ -25,11 +27,8 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
 
   const fetchUsers = async () => {
     try {
-      const response = await fetch(
-        "https://jsonplaceholder.typicode.com/users"
-      );
-      const data = await response.json();
-      setUsers(data);
+      const result = await FETCH("https://jsonplaceholder.typicode.com/users");
+      setUsers(result);
       setLoading(false);
     } catch (err) {
       setError("Failed to fetch users");

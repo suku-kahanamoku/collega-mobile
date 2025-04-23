@@ -3,6 +3,7 @@ import React, { createContext, useState, useEffect, ReactNode } from "react";
 import { IField, ISelectField } from "@/modules/Form/types/field.interface";
 import { useLang } from "@/modules/Lang/hooks/useLang";
 import { useAuth } from "@/modules/Auth/hooks/useAuth";
+import { FETCH } from "@/modules/Common/utils/api";
 
 import { IContract } from "../type";
 import { FETCH_OPTIONS, FIELDS } from "../configs/contract";
@@ -53,16 +54,14 @@ export const ContractProvider = ({ children }: { children: ReactNode }) => {
 
   const fetchContracts = async () => {
     try {
-      const response = await fetch(FETCH_OPTIONS.url, {
+      const result = await FETCH(FETCH_OPTIONS.url, {
         method: FETCH_OPTIONS.method,
         headers: {
           Authorization: `Bearer ${session?.bearer}`,
         },
         /* params: { ...query }, */
       });
-      const data = await response.json();
-      // todo - v pripade chyby backend nevraci error napr. 404, 401, ale 200 a status.status = 401
-      setContracts(data);
+      setContracts(result);
       setLoading(false);
     } catch (err) {
       setError("Failed to fetch contracts");

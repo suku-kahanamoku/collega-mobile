@@ -5,6 +5,7 @@ import { AuthProvider } from "@/modules/Auth/providers/AuthProvider";
 import { RouteProvider } from "@/providers/RouteProvider";
 import { ThemeProviderCmp } from "@/modules/Ui/providers/ThemeProvider";
 import ContentCmp from "@/components/Content";
+import Toast from "react-native-toast-message";
 
 export default function RootLayout() {
   return (
@@ -14,6 +15,7 @@ export default function RootLayout() {
           <ThemeProviderCmp>
             <StatusBar barStyle={"default"} />
             <ContentCmp />
+            <Toast />
           </ThemeProviderCmp>
         </RouteProvider>
       </AuthProvider>

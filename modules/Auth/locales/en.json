@@ -34,6 +34,13 @@
     },
     "forgot_password": {
       "title": "Forgot your password?"
+    },
+    "message": {
+      "login_error": "Login failed.",
+      "login_note_error": "Please check your credentials and try again.",
+      "login_success": "Login was successful.",
+      "network_error": "Network error. Please try again later.",
+      "unknown_error": "An unexpected error occurred. Please try again."
     }
   }
 }
