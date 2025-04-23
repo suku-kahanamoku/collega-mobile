@@ -64,24 +64,25 @@ const HeaderCmp: React.FC<IHeaderCmpProps> = ({ hideTitle, setOpen }) => {
     </Link>
   );
 
-  const RightCmp = () => (
-    <View style={{ flexDirection: "row" }}>
-      {activeMenu !== settingsMenu && (
+  const RightCmp = () =>
+    session && (
+      <View style={{ flexDirection: "row" }}>
+        {activeMenu !== settingsMenu && (
+          <Button
+            radius="sm"
+            type="clear"
+            icon={<Icon name={settingsMenu.icon!} color={Colors.dark.text} />}
+            onPress={() => navigate(settingsMenu.href)}
+          />
+        )}
         <Button
           radius="sm"
           type="clear"
-          icon={<Icon name={settingsMenu.icon!} color={Colors.dark.text} />}
-          onPress={() => navigate(settingsMenu.href)}
+          icon={<Icon name="menu" color={Colors.dark.text} />}
+          onPress={() => setOpen((prevOpen) => !prevOpen)}
         />
-      )}
-      <Button
-        radius="sm"
-        type="clear"
-        icon={<Icon name="menu" color={Colors.dark.text} />}
-        onPress={() => setOpen((prevOpen) => !prevOpen)}
-      />
-    </View>
-  );
+      </View>
+    );
 
   return (
     <Header

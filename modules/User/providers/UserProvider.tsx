@@ -13,7 +13,6 @@ interface IUser {
 interface IUserContextProps {
   users: IUser[];
   loading: boolean;
-  error: string | null;
 }
 
 export const UserContext = createContext<IUserContextProps | undefined>(
@@ -23,7 +22,6 @@ export const UserContext = createContext<IUserContextProps | undefined>(
 export const UserProvider = ({ children }: { children: ReactNode }) => {
   const [users, setUsers] = useState<IUser[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
-  const [error, setError] = useState<string | null>(null);
 
   const fetchUsers = async () => {
     try {
@@ -31,7 +29,6 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
       setUsers(result);
       setLoading(false);
     } catch (err) {
-      setError("Failed to fetch users");
       setLoading(false);
     }
   };
@@ -41,7 +38,7 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
   }, []);
 
   return (
-    <UserContext.Provider value={{ users, loading, error }}>
+    <UserContext.Provider value={{ users, loading }}>
       {children}
     </UserContext.Provider>
   );

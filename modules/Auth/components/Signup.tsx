@@ -14,7 +14,7 @@ const SignupCmp = () => {
   const { menuList } = useRoute();
   const loginMenu = menuList.login;
 
-  const { fields } = useAuth();
+  const { fields, loading } = useAuth();
   const { control, handleSubmit } = useForm(fields);
 
   const onSubmit = () => {
@@ -40,9 +40,10 @@ const SignupCmp = () => {
         uppercase={true}
         titleStyle={styles.button}
         onPress={handleSubmit(onSubmit)}
+        loading={loading}
       />
 
-      <Link href={loginMenu.href}>
+      <Link href={loginMenu.href} disabled={loading}>
         <View style={styles.backLinkContent}>
           <Icon name="chevron-left" size={20} />
           <Text h4 style={styles.backLinkText}>

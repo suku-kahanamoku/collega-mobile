@@ -8,7 +8,7 @@ import LoadingPage from "@/modules/Ui/components/Loading";
 import RecordNotFoundPage from "@/modules/Ui/components/RecordNotFound";
 
 export default function UsersScreen() {
-  const { users, loading, error } = useUser();
+  const { users, loading } = useUser();
   const { menuList } = useRoute();
   const usersMenu = menuList.users;
 
@@ -16,7 +16,7 @@ export default function UsersScreen() {
     return <LoadingPage />;
   }
 
-  if (error) {
+  if (!users.length) {
     return <RecordNotFoundPage message="global.records_404" />;
   }
 

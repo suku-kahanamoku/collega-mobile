@@ -1,11 +1,11 @@
 {
   "$": {
     "login": {
-      "title": "Prihláste sa do svojho účtu",
+      "title": "Prihláste sa",
       "account": "Nemáte účet?"
     },
     "signup": {
-      "title": "Zaregistrujte sa na účet"
+      "title": "Zaregistrujte sa"
     },
     "form": {
       "email": "Email",

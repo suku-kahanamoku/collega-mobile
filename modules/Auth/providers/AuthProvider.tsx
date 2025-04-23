@@ -25,7 +25,7 @@ export const AuthContext = createContext<IAuthContextProps | undefined>(
 export function AuthProvider({ children }: PropsWithChildren) {
   const { t } = useLang();
   const [[isLoading, session], setSession] = useStorageState("session");
-  const [loading, setLoading] = useState<boolean>(true);
+  const [loading, setLoading] = useState<boolean>(false);
 
   const fields = FIELDS.map((field) => {
     // provede preklad

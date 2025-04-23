@@ -1,9 +1,7 @@
 export async function FETCH(url: string, options?: RequestInit) {
   let result;
-  const method = options?.method || "GET";
-  const body = options?.body;
   try {
-    const response = await fetch(url, { method, body });
+    const response = await fetch(url, options);
 
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);

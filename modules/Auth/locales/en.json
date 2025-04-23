@@ -1,11 +1,11 @@
 {
   "$": {
     "login": {
-      "title": "Log in to your account",
+      "title": "Log in",
       "account": "Don't have an account?"
     },
     "signup": {
-      "title": "Sign up for an account"
+      "title": "Sign up"
     },
     "form": {
       "email": "Email",

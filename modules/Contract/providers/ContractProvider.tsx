@@ -11,7 +11,6 @@ import { FETCH_OPTIONS, FIELDS } from "../configs/contract";
 interface IContractContextProps {
   contracts: IContract[];
   loading: boolean;
-  error: string | null;
   fields: IField[];
   fieldList: Record<string, IField>;
 }
@@ -25,7 +24,6 @@ export const ContractProvider = ({ children }: { children: ReactNode }) => {
   const { session } = useAuth();
   const [contracts, setContracts] = useState<IContract[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
-  const [error, setError] = useState<string | null>(null);
 
   const fields = FIELDS.map((field) => {
     // provede preklad
@@ -64,7 +62,6 @@ export const ContractProvider = ({ children }: { children: ReactNode }) => {
       setContracts(result);
       setLoading(false);
     } catch (err) {
-      setError("Failed to fetch contracts");
       setLoading(false);
     }
   };
@@ -74,9 +71,7 @@ export const ContractProvider = ({ children }: { children: ReactNode }) => {
   }, []);
 
   return (
-    <ContractContext.Provider
-      value={{ contracts, loading, error, fields, fieldList }}
-    >
+    <ContractContext.Provider value={{ contracts, loading, fields, fieldList }}>
       {children}
     </ContractContext.Provider>
   );

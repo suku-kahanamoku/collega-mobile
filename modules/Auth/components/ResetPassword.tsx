@@ -16,7 +16,7 @@ const ResetPasswordCmp = () => {
   const { menuList } = useRoute();
   const loginMenu = menuList.login;
 
-  const { fieldList } = useAuth();
+  const { fieldList, loading } = useAuth();
   const emailField = fieldList.email;
   const { control, handleSubmit } = useForm([emailField]);
 
@@ -39,9 +39,10 @@ const ResetPasswordCmp = () => {
         uppercase={true}
         titleStyle={styles.button}
         onPress={handleSubmit(onSubmit)}
+        loading={loading}
       />
 
-      <Link href={loginMenu.href}>
+      <Link href={loginMenu.href} disabled={loading}>
         <View style={styles.backLinkContent}>
           <Icon name="chevron-left" size={20} />
           <Text h4 style={styles.backLinkText}>

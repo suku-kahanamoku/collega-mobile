@@ -11,7 +11,7 @@ import { useTheme } from "@/modules/Ui/hooks/useTheme";
 const logoImg = require("@/assets/images/logo.png");
 
 export default function ContractsScreen() {
-  const { contracts, loading, error } = useContract();
+  const { contracts, loading } = useContract();
   const { menuList, navigate } = useRoute();
   const { colors } = useTheme();
   const contractsMenu = menuList.contracts;
@@ -20,7 +20,7 @@ export default function ContractsScreen() {
     return <LoadingPage />;
   }
 
-  if (error) {
+  if (!contracts?.length) {
     return <RecordNotFoundPage message="global.records_404" />;
   }
 

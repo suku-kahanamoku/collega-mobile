@@ -19,7 +19,7 @@ const LoginCmp = () => {
   const resetPasswordMenu = menuList.reset_password;
   const dashboardMenu = menuList.dashboard;
 
-  const { fieldList, signIn } = useAuth();
+  const { fieldList, loading, signIn } = useAuth();
   const fields = [fieldList.login, fieldList.pass];
   const { control, handleSubmit } = useForm(fields);
 
@@ -45,6 +45,7 @@ const LoginCmp = () => {
       <View style={styles.forgotPassword}>
         <Link
           href={resetPasswordMenu.href}
+          disabled={loading}
           style={{
             textDecorationLine: "underline",
           }}
@@ -57,6 +58,7 @@ const LoginCmp = () => {
         title={t("btn.login")}
         uppercase={true}
         titleStyle={styles.button}
+        loading={loading}
         onPress={handleSubmit(onSubmit)}
       />
 
@@ -64,6 +66,7 @@ const LoginCmp = () => {
         <Text>{t("login.account")}</Text>
         <Link
           href={signupMenu.href}
+          disabled={loading}
           style={{
             textDecorationLine: "underline",
           }}
@@ -73,9 +76,24 @@ const LoginCmp = () => {
       </View>
 
       <View style={styles.socialButtons}>
-        <Button size="lg" type="clear" icon={<SocialIcon type="facebook" />} />
-        <Button size="lg" type="clear" icon={<SocialIcon type="google" />} />
-        <Button size="lg" type="clear" icon={<SocialIcon type="linkedin" />} />
+        <Button
+          size="lg"
+          type="clear"
+          icon={<SocialIcon type="facebook" />}
+          disabled={loading}
+        />
+        <Button
+          size="lg"
+          type="clear"
+          icon={<SocialIcon type="google" />}
+          disabled={loading}
+        />
+        <Button
+          size="lg"
+          type="clear"
+          icon={<SocialIcon type="linkedin" />}
+          disabled={loading}
+        />
       </View>
     </Card>
   );

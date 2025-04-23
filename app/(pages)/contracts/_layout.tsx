@@ -51,6 +51,7 @@ export default function ContractsLayout() {
                 key={searchField.name}
                 field={searchField}
                 control={control}
+                renderErrorMessage={false}
               />
             ),
             headerTitleContainerStyle: {
