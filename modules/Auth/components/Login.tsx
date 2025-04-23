@@ -2,27 +2,33 @@ import React, { useState } from "react";
 import { StyleSheet, View } from "react-native";
 import { Link } from "expo-router";
 import { Text, Button, SocialIcon, Card } from "@rneui/themed";
+import { UseFormReturn } from "react-hook-form";
 
 import { useLang } from "@/modules/Lang/hooks/useLang";
 import { useRoute } from "@/hooks/useRoute";
 import FieldCmp from "@/modules/Form/components/fields/Field";
+import { useForm } from "@/modules/Form/hooks/useForm";
 
 import { useAuth } from "../hooks/useAuth";
-import { useForm } from "@/modules/Form/hooks/useForm";
+import { ISignIn } from "../types/auth.interface";
 
 const LoginCmp = () => {
   const { t } = useLang();
 
-  const { menuList } = useRoute();
+  const { menuList, navigate } = useRoute();
   const signupMenu = menuList.signup;
   const resetPasswordMenu = menuList.reset_password;
+  const dashboardMenu = menuList.dashboard;
 
   const { fieldList, signIn } = useAuth();
   const fields = [fieldList.login, fieldList.pass];
   const { control, handleSubmit } = useForm(fields);
 
-  const onSubmit = () => {
-    console.log("Form Data:");
+  const onSubmit = async (data: Record<string, any>) => {
+    const result = await signIn(data as ISignIn);
+    if (result.bearer) {
+      navigate(dashboardMenu.href);
+    }
   };
 
   return (
@@ -68,12 +74,7 @@ const LoginCmp = () => {
       </View>
 
       <View style={styles.socialButtons}>
-        <Button
-          size="lg"
-          type="clear"
-          icon={<SocialIcon type="facebook" />}
-          onPress={signIn}
-        />
+        <Button size="lg" type="clear" icon={<SocialIcon type="facebook" />} />
         <Button size="lg" type="clear" icon={<SocialIcon type="google" />} />
         <Button size="lg" type="clear" icon={<SocialIcon type="linkedin" />} />
       </View>

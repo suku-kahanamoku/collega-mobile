@@ -10,3 +10,8 @@ export interface ISession {
   bearer: string;
   user: IUser;
 }
+
+export interface ISignIn {
+  login: string;
+  pass: string;
+}

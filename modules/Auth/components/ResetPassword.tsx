@@ -6,9 +6,9 @@ import { Text, Button, Icon, Card } from "@rneui/themed";
 import { useLang } from "@/modules/Lang/hooks/useLang";
 import { useRoute } from "@/hooks/useRoute";
 import FieldCmp from "@/modules/Form/components/fields/Field";
+import { useForm } from "@/modules/Form/hooks/useForm";
 
 import { useAuth } from "../hooks/useAuth";
-import { useForm } from "@/modules/Form/hooks/useForm";
 
 const ResetPasswordCmp = () => {
   const { t } = useLang();
