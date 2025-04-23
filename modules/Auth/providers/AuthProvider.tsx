@@ -12,8 +12,8 @@ import { FETCH } from "@/modules/Common/utils/api";
 import { useResolver } from "@/modules/Form/hooks/useResolver";
 
 import { useStorageState } from "../hooks/useStorageState";
-import { FETCH_OPTIONS, FIELDS } from "../configs/auth";
 import { ISession, ISignIn } from "../types/auth.interface";
+import config from "../configs/config.json";
 
 interface IAuthContextProps {
   fields: IField[];
@@ -32,13 +32,13 @@ export function AuthProvider({ children }: PropsWithChildren) {
   const { t } = useLang();
   const [[isLoading, session], setSession] = useStorageState("session");
   const [loading, setLoading] = useState<boolean>(false);
-  const { fields, fieldList } = useResolver(FIELDS as IField[]);
+  const { fields, fieldList } = useResolver(config.fields as IField[]);
 
   const checkSession = async () => {
     if (session) {
       try {
-        const result = await FETCH(FETCH_OPTIONS.checkUrl, {
-          method: FETCH_OPTIONS.method,
+        const result = await FETCH(config.checkUrl, {
+          method: "GET",
           headers: {
             Authorization: `Bearer ${session?.bearer}`,
           },
@@ -64,8 +64,8 @@ export function AuthProvider({ children }: PropsWithChildren) {
 
     let result;
     try {
-      result = await FETCH(FETCH_OPTIONS.url, {
-        method: FETCH_OPTIONS.method,
+      result = await FETCH(config.loginUrl, {
+        method: "POST",
         body,
       });
 

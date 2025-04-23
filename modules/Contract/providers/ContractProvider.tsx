@@ -6,7 +6,7 @@ import { FETCH } from "@/modules/Common/utils/api";
 import { useResolver } from "@/modules/Form/hooks/useResolver";
 
 import { IContract } from "../type";
-import { FETCH_OPTIONS, FIELDS } from "../configs/contract";
+import config from "../configs/config.json";
 
 interface IContractContextProps {
   contracts: IContract[];
@@ -23,12 +23,12 @@ export const ContractProvider = ({ children }: { children: ReactNode }) => {
   const { session } = useAuth();
   const [contracts, setContracts] = useState<IContract[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
-  const { fields, fieldList } = useResolver(FIELDS as IField[]);
+  const { fields, fieldList } = useResolver(config.fields as IField[]);
 
   const fetchContracts = async () => {
     try {
-      const result = await FETCH(FETCH_OPTIONS.url, {
-        method: FETCH_OPTIONS.method,
+      const result = await FETCH(config.restUrl, {
+        method: "GET",
         headers: {
           Authorization: `Bearer ${session?.bearer}`,
         },

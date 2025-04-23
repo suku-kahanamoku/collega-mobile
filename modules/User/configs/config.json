@@ -1,0 +1,32 @@
+{
+  "restUrl": "https://jsonplaceholder.typicode.com/users",
+  "fields": [
+    {
+      "name": "name",
+      "label": "user.attr.name",
+      "autoComplete": "name",
+      "autoFocus": true
+    },
+    {
+      "name": "username",
+      "label": "user.attr.username",
+      "autoComplete": "username"
+    },
+    {
+      "name": "email",
+      "label": "user.attr.email",
+      "autoComplete": "email"
+    },
+    {
+      "type": "select",
+      "name": "status",
+      "label": "user.attr.status",
+      "autoComplete": "off",
+      "options": [
+        { "value": "active", "label": "user.status.active" },
+        { "value": "inactive", "label": "user.status.inactive" },
+        { "value": "pending", "label": "user.status.pending" }
+      ]
+    }
+  ]
+}
