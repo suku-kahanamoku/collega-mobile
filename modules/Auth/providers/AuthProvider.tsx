@@ -14,13 +14,17 @@ import { useResolver } from "@/modules/Form/hooks/useResolver";
 import { useStorageState } from "../hooks/useStorageState";
 import { ISession, ISignIn } from "../types/auth.interface";
 import config from "../configs/config.json";
+import { SplashScreen } from "expo-router";
+
+SplashScreen.preventAutoHideAsync();
 
 interface IAuthContextProps {
   fields: IField[];
   fieldList: Record<string, IField>;
   session: ISession | null;
   loading: boolean;
-  checkSession: () => Promise<void>;
+  sessionLoading: boolean;
+  fetchSession: () => Promise<void>;
   signIn: (params: ISignIn) => Promise<ISession>;
   signOut: () => void;
   $fetch: (url: string, options?: RequestInit) => Promise<any>;
@@ -32,13 +36,21 @@ export const AuthContext = createContext<IAuthContextProps | undefined>(
 
 export function AuthProvider({ children }: PropsWithChildren) {
   const { t } = useLang();
-  const [[isLoading, session], setSession] = useStorageState("session");
+  const [[sessionLoading, session], setSession] = useStorageState("session");
   const [loading, setLoading] = useState<boolean>(false);
   const { fields, fieldList } = useResolver(config.fields as IField[]);
 
   useEffect(() => {
-    checkSession();
+    if (session) {
+      fetchSession();
+    }
   }, [session]);
+
+  useEffect(() => {
+    if (!sessionLoading) {
+      SplashScreen.hideAsync();
+    }
+  }, [sessionLoading]);
 
   const $fetch = async (url: string, options: RequestInit = {}) => {
     const headers = {
@@ -49,16 +61,14 @@ export function AuthProvider({ children }: PropsWithChildren) {
     return FETCH(url, { ...options, headers });
   };
 
-  const checkSession = async () => {
-    if (session) {
-      try {
-        const result = await $fetch(config.checkUrl);
-        if (result.status !== "200" || new Date(result.expire) <= new Date()) {
-          signOut();
-        }
-      } catch (error) {
+  const fetchSession = async () => {
+    try {
+      const result = await $fetch(config.checkUrl);
+      if (result.status !== "200" || new Date(result.expire) <= new Date()) {
         signOut();
       }
+    } catch (error) {
+      signOut();
     }
   };
 
@@ -105,10 +115,11 @@ export function AuthProvider({ children }: PropsWithChildren) {
         fieldList,
         session,
         loading,
+        sessionLoading,
         $fetch,
         signIn,
         signOut,
-        checkSession,
+        fetchSession,
       }}
     >
       {children}

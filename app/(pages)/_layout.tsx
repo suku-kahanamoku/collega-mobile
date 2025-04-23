@@ -4,9 +4,13 @@ import { useAuth } from "@/modules/Auth/hooks/useAuth";
 import { useRoute } from "@/hooks/useRoute";
 
 export default function PagesLayout() {
-  const { session } = useAuth();
+  const { sessionLoading, session } = useAuth();
   const { menuList, menus } = useRoute();
   const settingsMenu = menuList.settings;
+
+  if (sessionLoading) {
+    return null;
+  }
 
   if (!session) {
     return <Redirect href={menuList.login.href} />;
