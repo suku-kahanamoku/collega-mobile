@@ -39,7 +39,7 @@ export default function ContentCmp() {
       <Stack>
         {/* vsechny podstranky */}
         <Stack.Screen
-          name="(pages)"
+          name="(protected)"
           options={{
             header: () => <HeaderCmp setOpen={setOpen} />,
           }}
