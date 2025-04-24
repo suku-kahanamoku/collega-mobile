@@ -4,13 +4,8 @@ import { useAuth } from "@/modules/Auth/hooks/useAuth";
 import { useRoute } from "@/hooks/useRoute";
 
 export default function PagesLayout() {
-  const { sessionLoading, session } = useAuth();
+  const { session } = useAuth();
   const { menuList, menus } = useRoute();
-  const settingsMenu = menuList.settings;
-
-  if (sessionLoading) {
-    return null;
-  }
 
   if (!session) {
     return <Redirect href={menuList.login.href} />;
@@ -29,7 +24,7 @@ export default function PagesLayout() {
       ))}
 
       <Stack.Screen
-        name={settingsMenu.name}
+        name={menuList.settings.name}
         options={{
           headerTitle: session?.user?.name,
           presentation: "modal",

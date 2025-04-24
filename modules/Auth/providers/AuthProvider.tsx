@@ -4,7 +4,6 @@ import {
   useState,
   type PropsWithChildren,
 } from "react";
-import { SplashScreen } from "expo-router";
 import Toast from "react-native-toast-message";
 
 import { IField } from "@/modules/Form/types/field.interface";
@@ -15,8 +14,6 @@ import { useResolver } from "@/modules/Form/hooks/useResolver";
 import { useStorageState } from "../hooks/useStorageState";
 import { ISession, ISignIn } from "../types/auth.interface";
 import config from "../configs/config.json";
-
-SplashScreen.preventAutoHideAsync();
 
 interface IAuthContextProps {
   fields: IField[];
@@ -45,12 +42,6 @@ export function AuthProvider({ children }: PropsWithChildren) {
       fetchSession();
     }
   }, [session]);
-
-  useEffect(() => {
-    if (!sessionLoading) {
-      SplashScreen.hideAsync();
-    }
-  }, [sessionLoading]);
 
   const $fetch = async (url: string, options: RequestInit = {}) => {
     const headers = {

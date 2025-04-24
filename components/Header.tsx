@@ -84,17 +84,18 @@ const HeaderCmp: React.FC<IHeaderCmpProps> = ({ hideTitle, setOpen }) => {
       </View>
     );
 
+  const CenterCmp = () =>
+    !hideTitle && (
+      <Text h1 h1Style={[styles.title, { color: Colors.dark.secondary }]}>
+        {activeMenu.title}
+      </Text>
+    );
+
   return (
     <Header
       leftComponent={<LeftCmp />}
       rightComponent={<RightCmp />}
-      centerComponent={
-        hideTitle ? undefined : (
-          <Text h1 h1Style={[styles.title, { color: Colors.dark.secondary }]}>
-            {activeMenu.title}
-          </Text>
-        )
-      }
+      centerComponent={<CenterCmp />}
     />
   );
 };
