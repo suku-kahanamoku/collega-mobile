@@ -1,4 +1,4 @@
-import React from "react";
+import React, { forwardRef } from "react";
 import { Picker } from "@react-native-picker/picker";
 import { Input } from "@rneui/themed";
 import { Controller, Control } from "react-hook-form";
@@ -24,7 +24,7 @@ const SelectFieldCmp: React.FC<IFieldProps> = ({ field, control, ...rest }) => {
           label={field.label}
           placeholder={field.placeholder}
           errorMessage={error?.message}
-          InputComponent={() => (
+          InputComponent={forwardRef(() => (
             <Picker
               selectedValue={value}
               prompt={field.prompt}
@@ -42,7 +42,7 @@ const SelectFieldCmp: React.FC<IFieldProps> = ({ field, control, ...rest }) => {
                 />
               ))}
             </Picker>
-          )}
+          ))}
           {...rest}
         />
       )}
