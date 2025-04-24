@@ -1,11 +1,11 @@
 import { StatusBar } from "react-native";
+import Toast from "react-native-toast-message";
 
 import { LangProvider } from "@/modules/Lang/providers/LangProvider";
 import { AuthProvider } from "@/modules/Auth/providers/AuthProvider";
 import { RouteProvider } from "@/providers/RouteProvider";
 import { ThemeProviderCmp } from "@/modules/Ui/providers/ThemeProvider";
 import ContentCmp from "@/components/Content";
-import Toast from "react-native-toast-message";
 
 export default function RootLayout() {
   return (

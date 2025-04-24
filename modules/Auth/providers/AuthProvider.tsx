@@ -4,6 +4,7 @@ import {
   useState,
   type PropsWithChildren,
 } from "react";
+import { SplashScreen } from "expo-router";
 import Toast from "react-native-toast-message";
 
 import { IField } from "@/modules/Form/types/field.interface";
@@ -14,7 +15,6 @@ import { useResolver } from "@/modules/Form/hooks/useResolver";
 import { useStorageState } from "../hooks/useStorageState";
 import { ISession, ISignIn } from "../types/auth.interface";
 import config from "../configs/config.json";
-import { SplashScreen } from "expo-router";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -62,6 +62,8 @@ export function AuthProvider({ children }: PropsWithChildren) {
   };
 
   const fetchSession = async () => {
+    setLoading(true);
+
     try {
       const result = await $fetch(config.checkUrl);
       if (result.status !== "200" || new Date(result.expire) <= new Date()) {
@@ -70,6 +72,8 @@ export function AuthProvider({ children }: PropsWithChildren) {
     } catch (error) {
       signOut();
     }
+
+    setLoading(false);
   };
 
   const signIn = async ({ login, pass }: ISignIn) => {
