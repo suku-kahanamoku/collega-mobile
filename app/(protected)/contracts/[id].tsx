@@ -71,7 +71,7 @@ export default function ContractScreen() {
               <Icon name="picture-as-pdf" color={colors.secondary} />
               <ListItem.Content>
                 <ListItem.Title>
-                  <Link href={doc.link as any}>{doc.name}</Link>
+                  <Link href={doc.link}>{doc.name}</Link>
                 </ListItem.Title>
               </ListItem.Content>
             </ListItem>

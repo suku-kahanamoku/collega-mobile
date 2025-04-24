@@ -1,9 +1,11 @@
+import { RelativePathString } from "expo-router";
+
 export interface IInstruction {
   id: number;
 }
 
 export interface IDocument {
-  link: string;
+  link: RelativePathString;
   name: string;
   type: string;
 }
