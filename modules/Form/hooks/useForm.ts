@@ -1,3 +1,5 @@
+import { createRef, useRef } from "react";
+import { TextInput } from "react-native";
 import { z, ZodTypeAny } from "zod";
 import { useForm as useFormRn } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -8,6 +10,12 @@ import { IField } from "../types/field.interface";
 
 export function useForm(fields: IField[]) {
   const { t } = useLang();
+  const fieldRefs = useRef<Record<string, React.RefObject<TextInput>>>(
+    fields.reduce((acc, field) => {
+      acc[field.name] = createRef();
+      return acc;
+    }, {} as Record<string, React.RefObject<TextInput>>)
+  );
   const schema = getFormSchema(fields);
   const form = useFormRn({
     resolver: zodResolver(schema),
@@ -127,5 +135,5 @@ export function useForm(fields: IField[]) {
     return z.object(schemaObject);
   }
 
-  return { getSchema, getFormSchema, ...form };
+  return { fieldRefs, getSchema, getFormSchema, ...form };
 }

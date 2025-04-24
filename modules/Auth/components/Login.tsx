@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { StyleSheet, View } from "react-native";
 import { Link } from "expo-router";
 import { Text, Button, SocialIcon, Card } from "@rneui/themed";
@@ -21,7 +21,21 @@ const LoginCmp = () => {
 
   const { fieldList, loading, signIn } = useAuth();
   const fields = [fieldList.login, fieldList.pass];
-  const { control, handleSubmit } = useForm(fields);
+  const { fieldRefs, control, handleSubmit } = useForm(fields);
+
+  const handleFieldSubmit = (fieldName: string) => {
+    const fieldNames = fields.map((field) => field.name);
+    const currentIndex = fieldNames.indexOf(fieldName);
+
+    if (currentIndex < fieldNames.length - 1) {
+      // Focus na další pole podle názvu
+      const nextFieldName = fieldNames[currentIndex + 1];
+      fieldRefs.current[nextFieldName]?.current?.focus();
+    } else {
+      // Zavolání handleSubmit, pokud je to poslední pole
+      handleSubmit(onSubmit)();
+    }
+  };
 
   const onSubmit = async (data: Record<string, any>) => {
     const result = await signIn(data as ISignIn);
@@ -38,7 +52,13 @@ const LoginCmp = () => {
 
       <View style={styles.field}>
         {fields.map((field) => (
-          <FieldCmp key={field.name} field={field} control={control} />
+          <FieldCmp
+            ref={fieldRefs.current[field.name]}
+            key={field.name}
+            field={field}
+            control={control}
+            onSubmitEditing={() => handleFieldSubmit(field.name)}
+          />
         ))}
       </View>
 
