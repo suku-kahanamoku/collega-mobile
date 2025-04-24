@@ -1,6 +1,8 @@
 import { RelativePathString } from "expo-router";
 import { Icon } from "@rneui/base";
 
+import config from "../route.config.json";
+
 /**
  * Reprezentuje položku menu v aplikaci.
  *
@@ -16,13 +18,13 @@ import { Icon } from "@rneui/base";
  * @property {"system"} [group] - Skupina, do které položka menu patří, např. "system" (volitelné).
  */
 export interface IMenu {
-  syscode: string;
+  syscode: keyof typeof config;
   name: string;
   title: string;
   href: RelativePathString;
   active?: boolean;
   icon?: React.ComponentProps<typeof Icon>["name"];
   children?: IMenu[];
-  parentSyscode?: string;
+  parentSyscode?: keyof typeof config;
   group?: "system";
 }

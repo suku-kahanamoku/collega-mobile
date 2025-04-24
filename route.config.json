@@ -1,0 +1,83 @@
+{
+  "404": {
+    "syscode": "404",
+    "name": "+not-found",
+    "title": "404.title",
+    "href": "/not-found",
+    "group": "system"
+  },
+  "login": {
+    "syscode": "login",
+    "name": "login",
+    "title": "login.title",
+    "href": "/login",
+    "group": "system"
+  },
+  "signup": {
+    "syscode": "signup",
+    "name": "signup",
+    "title": "signup.title",
+    "href": "/signup",
+    "group": "system"
+  },
+  "reset_password": {
+    "syscode": "reset_password",
+    "name": "reset-password",
+    "title": "forgot_password.title",
+    "href": "/reset-password",
+    "group": "system"
+  },
+  "settings": {
+    "syscode": "settings",
+    "name": "settings",
+    "title": "settings.title",
+    "href": "/settings",
+    "icon": "settings",
+    "group": "system"
+  },
+  "dashboard": {
+    "syscode": "dashboard",
+    "name": "index",
+    "title": "dashboard.title",
+    "href": "/",
+    "icon": "dashboard"
+  },
+  "users": {
+    "syscode": "users",
+    "name": "users",
+    "title": "users.title",
+    "href": "/users",
+    "icon": "list-alt"
+  },
+  "user": {
+    "syscode": "user",
+    "name": "users/[id]",
+    "title": "user.title",
+    "href": "/users/[id]",
+    "icon": "person",
+    "parentSyscode": "users"
+  },
+  "contracts": {
+    "syscode": "contracts",
+    "name": "contracts",
+    "title": "contracts.title",
+    "href": "/contracts",
+    "icon": "list-alt"
+  },
+  "contracts_filter": {
+    "syscode": "contracts_filter",
+    "name": "contracts/filter",
+    "title": "global.filter",
+    "href": "/contracts/filter",
+    "icon": "filter-alt",
+    "parentSyscode": "contracts"
+  },
+  "contract": {
+    "syscode": "contract",
+    "name": "contracts/[id]",
+    "title": "contract.title",
+    "href": "/contracts/[id]",
+    "icon": "description",
+    "parentSyscode": "contracts"
+  }
+}
