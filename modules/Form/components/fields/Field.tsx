@@ -9,11 +9,12 @@ import CheckboxFieldCmp from "./CheckboxField";
 interface IFieldProps {
   field: IField;
   control: Control<any>;
+  onReset?: (field: IField) => void;
   [rest: string]: any;
 }
 
 const FieldCmp = forwardRef<any, IFieldProps>(
-  ({ field, control, ...rest }, ref) => {
+  ({ field, control, onReset, ...rest }, ref) => {
     switch (field.type) {
       case "select":
         return (
@@ -23,7 +24,13 @@ const FieldCmp = forwardRef<any, IFieldProps>(
         return <CheckboxFieldCmp field={field} control={control} {...rest} />;
       default:
         return (
-          <TextFieldCmp ref={ref} field={field} control={control} {...rest} />
+          <TextFieldCmp
+            ref={ref}
+            field={field}
+            control={control}
+            onReset={onReset}
+            {...rest}
+          />
         );
     }
   }

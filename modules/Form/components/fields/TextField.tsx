@@ -1,6 +1,6 @@
 import React, { forwardRef } from "react";
 import { InputModeOptions, StyleSheet } from "react-native";
-import { Input } from "@rneui/themed";
+import { Icon, Input } from "@rneui/themed";
 import { Controller, Control } from "react-hook-form";
 
 import { ITextField } from "../../types/field.interface";
@@ -8,6 +8,7 @@ import { ITextField } from "../../types/field.interface";
 interface IFieldProps {
   field: ITextField;
   control: Control<any>;
+  onReset?: (field: ITextField) => void;
   [rest: string]: any;
 }
 
@@ -21,7 +22,7 @@ const inputModeMap: Record<string, InputModeOptions> = {
 };
 
 const TextFieldCmp = forwardRef<any, IFieldProps>(
-  ({ field, control, ...rest }, ref) => {
+  ({ field, control, onReset, ...rest }, ref) => {
     return (
       <Controller
         name={field.name}
@@ -37,6 +38,18 @@ const TextFieldCmp = forwardRef<any, IFieldProps>(
             value={value}
             secureTextEntry={field.type === "password"}
             errorMessage={error?.message}
+            rightIcon={
+              field.clearable && value?.toString()?.length ? (
+                <Icon
+                  name="close"
+                  size={20}
+                  onPress={() => {
+                    onChange(""); // Clear the input value
+                    onReset?.(field); // Call the onReset method
+                  }}
+                />
+              ) : undefined
+            }
             {...rest}
             onChangeText={onChange}
           />

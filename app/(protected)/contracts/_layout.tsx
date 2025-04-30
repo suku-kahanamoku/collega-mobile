@@ -6,8 +6,7 @@ import { Icon } from "@rneui/themed";
 import { useRoute } from "@/hooks/useRoute";
 import { useTheme } from "@/modules/Ui/hooks/useTheme";
 import { ContractProvider } from "@/modules/Contract/providers/ContractProvider";
-import FieldCmp from "@/modules/Form/components/fields/Field";
-import { useForm } from "@/modules/Form/hooks/useForm";
+import SearchCmp from "@/modules/Contract/components/SearchCmp";
 
 export default function ContractsLayout() {
   const { colors } = useTheme();
@@ -15,13 +14,6 @@ export default function ContractsLayout() {
   const contractsMenu = menuList.contracts;
   const contractMenu = menuList.contract;
   const filterMenu = menuList.contracts_filter;
-
-  const searchField = {
-    name: "search",
-    label: "",
-    placeholder: "Search",
-  };
-  const { control, handleSubmit } = useForm([searchField]);
 
   return (
     <ContractProvider>
@@ -46,14 +38,7 @@ export default function ContractsLayout() {
             tabBarIcon: ({ color }) => (
               <Icon name={contractsMenu.icon!} color={color} />
             ),
-            headerTitle: () => (
-              <FieldCmp
-                key={searchField.name}
-                field={searchField}
-                control={control}
-                renderErrorMessage={false}
-              />
-            ),
+            headerTitle: () => <SearchCmp />,
             headerTitleContainerStyle: {
               width: "100%",
             },

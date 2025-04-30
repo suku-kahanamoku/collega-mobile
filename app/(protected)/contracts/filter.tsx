@@ -6,7 +6,7 @@ import FieldCmp from "@/modules/Form/components/fields/Field";
 import { useForm } from "@/modules/Form/hooks/useForm";
 
 export default function FilterScreen() {
-  const { fields } = useContract();
+  const { fields, updateQueryParams } = useContract();
   const { fieldRefs, control, handleSubmit } = useForm(fields);
 
   const handleFieldSubmit = (fieldName: string) => {
@@ -17,14 +17,13 @@ export default function FilterScreen() {
       // Focus na další pole podle názvu
       const nextFieldName = fieldNames[currentIndex + 1];
       fieldRefs.current[nextFieldName]?.current?.focus();
-    } else {
-      // Zavolání handleSubmit, pokud je to poslední pole
-      handleSubmit(onSubmit)();
     }
+    // Zavolání handleSubmit, pokud je to poslední pole
+    handleSubmit(onSubmit)();
   };
 
   const onSubmit = async (data: Record<string, any>) => {
-    console.log(data);
+    updateQueryParams(data); // Update queryParams with form data
     /* navigate(dashboardMenu.href); */
   };
 

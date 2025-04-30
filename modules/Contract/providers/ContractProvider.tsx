@@ -12,6 +12,8 @@ interface IContractContextProps {
   loading: boolean;
   fields: IField[];
   fieldList: Record<string, IField>;
+  updateSearch: (value: string) => void;
+  updateQueryParams: (params: Record<string, string>) => void;
 }
 
 export const ContractContext = createContext<IContractContextProps | undefined>(
@@ -22,11 +24,37 @@ export const ContractProvider = ({ children }: { children: ReactNode }) => {
   const { $fetch } = useAuth();
   const [contracts, setContracts] = useState<IContract[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
+  const [search, setSearch] = useState<string>("");
+  const [queryParams, setQueryParams] = useState<Record<string, string>>({});
   const { fields, fieldList } = useResolver(config.fields as IField[]);
 
-  const fetchContracts = async () => {
+  const updateSearch = (value: string) => {
+    setSearch(value);
+    setQueryParams({}); // Reset queryParams when search changes
+  };
+
+  const updateQueryParams = (params: Record<string, any>) => {
+    setQueryParams(params);
+    setSearch(""); // Reset search when queryParams changes
+  };
+
+  const _fetchContracts = async () => {
     try {
-      const result = await $fetch(config.restUrl);
+      let url = config.restUrl;
+
+      if (search) {
+        url += `?search=${encodeURIComponent(search)}`;
+      } else if (Object.keys(queryParams).length > 0) {
+        const queryString = Object.entries(queryParams)
+          .map(
+            ([key, value]) =>
+              `${encodeURIComponent(key)}=${encodeURIComponent(value)}`
+          )
+          .join("&");
+        url += `?${queryString}`;
+      }
+
+      const result = await $fetch(url);
       setContracts(result);
       setLoading(false);
     } catch (error) {
@@ -35,11 +63,20 @@ export const ContractProvider = ({ children }: { children: ReactNode }) => {
   };
 
   useEffect(() => {
-    fetchContracts();
-  }, []);
+    _fetchContracts();
+  }, [search, queryParams]);
 
   return (
-    <ContractContext.Provider value={{ contracts, loading, fields, fieldList }}>
+    <ContractContext.Provider
+      value={{
+        contracts,
+        loading,
+        fields,
+        fieldList,
+        updateSearch,
+        updateQueryParams,
+      }}
+    >
       {children}
     </ContractContext.Provider>
   );

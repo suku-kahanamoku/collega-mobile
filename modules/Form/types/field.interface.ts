@@ -3,7 +3,7 @@ import { PickerProps } from "@react-native-picker/picker";
 
 export interface IFieldItem {
   name: string;
-  label: string;
+  label?: string;
   type?:
     | "text"
     | "number"
@@ -15,16 +15,17 @@ export interface IFieldItem {
     | "textarea"
     | "url"
     | "tel";
-  variant?: "inline";
   required?: boolean;
-  validation?: { pattern: string; message: string }[];
   min?: number;
   max?: number;
+  clearable?: boolean;
+}
+
+export interface ITextField extends IFieldItem, TextInputProps {
+  validation?: { pattern: string; message: string }[];
   minLength?: number;
   maxLength?: number;
 }
-
-export interface ITextField extends IFieldItem, TextInputProps {}
 
 export interface IOption {
   value: any;
