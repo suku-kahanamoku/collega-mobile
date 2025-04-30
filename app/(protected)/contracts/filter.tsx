@@ -18,7 +18,7 @@ export default function FilterScreen() {
       const nextFieldName = fieldNames[currentIndex + 1];
       fieldRefs.current[nextFieldName]?.current?.focus();
     }
-    // Zavolání handleSubmit, pokud je to poslední pole
+    // Zavolání handleSubmit - pokazde
     handleSubmit(onSubmit)();
   };
 

@@ -26,7 +26,7 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
   const [users, setUsers] = useState<IUser[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
 
-  const fetchUsers = async () => {
+  const _fetchUsers = async () => {
     try {
       const result = await $fetch(config.restUrl);
       setUsers(result);
@@ -37,7 +37,7 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
   };
 
   useEffect(() => {
-    fetchUsers();
+    _fetchUsers();
   }, []);
 
   return (

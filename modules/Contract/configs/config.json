@@ -25,7 +25,7 @@
     },
     {
       "type": "text",
-      "name": "client",
+      "name": "client_name",
       "label": "contract.attr.client",
       "autoComplete": "name",
       "placeholder": "Enter client name"

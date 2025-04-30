@@ -46,6 +46,7 @@ export const ContractProvider = ({ children }: { children: ReactNode }) => {
         url += `?search=${encodeURIComponent(search)}`;
       } else if (Object.keys(queryParams).length > 0) {
         const queryString = Object.entries(queryParams)
+          .filter(([key, value]) => value)
           .map(
             ([key, value]) =>
               `${encodeURIComponent(key)}=${encodeURIComponent(value)}`
@@ -53,6 +54,7 @@ export const ContractProvider = ({ children }: { children: ReactNode }) => {
           .join("&");
         url += `?${queryString}`;
       }
+      /* console.log(url); */
 
       const result = await $fetch(url);
       setContracts(result);
