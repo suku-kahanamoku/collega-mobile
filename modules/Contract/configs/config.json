@@ -75,7 +75,8 @@
         { "value": "free", "label": "contract.status.free" },
         { "value": "missing", "label": "contract.status.missing" }
       ],
-      "prompt": "Pick one, just one"
+      "prompt": "Pick one, just one",
+      "value": null
     },
     {
       "type": "text",
@@ -95,7 +96,14 @@
       "type": "checkbox",
       "name": "is_active",
       "label": "contract.attr.is_active",
-      "value": true
+      "required": true,
+      "value": false
+    },
+    {
+      "type": "textarea",
+      "name": "description",
+      "label": "contract.attr.description",
+      "placeholder": "Enter description"
     },
     {
       "type": "radio",
@@ -106,12 +114,6 @@
         { "value": "medium", "label": "Medium" },
         { "value": "low", "label": "Low" }
       ]
-    },
-    {
-      "type": "textarea",
-      "name": "description",
-      "label": "contract.attr.description",
-      "placeholder": "Enter description"
     }
   ]
 }

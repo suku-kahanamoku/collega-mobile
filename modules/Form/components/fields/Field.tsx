@@ -5,6 +5,7 @@ import { IField } from "../../types/field.interface";
 import TextFieldCmp from "./TextField";
 import SelectFieldCmp from "./SelectField";
 import CheckboxFieldCmp from "./CheckboxField";
+import RadioFieldCmp from "./RadioField";
 
 interface IFieldProps {
   field: IField;
@@ -21,6 +22,8 @@ const FieldCmp = forwardRef<any, IFieldProps>(
         );
       case "checkbox":
         return <CheckboxFieldCmp field={field} control={control} {...rest} />;
+      case "radio":
+        return <RadioFieldCmp field={field} control={control} {...rest} />;
       default:
         return (
           <TextFieldCmp ref={ref} field={field} control={control} {...rest} />
