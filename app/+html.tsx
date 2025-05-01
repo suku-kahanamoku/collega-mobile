@@ -1,6 +1,7 @@
 import { ScrollViewStyleReset } from "expo-router/html";
 import "react-native-reanimated";
-import "react-native-gesture-handler";
+
+import "../gesture-handler";
 
 export default function Root({ children }: { children: React.ReactNode }) {
   return (
