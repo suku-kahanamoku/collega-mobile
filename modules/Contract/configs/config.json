@@ -109,6 +109,7 @@
       "type": "radio",
       "name": "priority",
       "label": "contract.attr.priority",
+      "required": true,
       "options": [
         { "value": "high", "label": "High" },
         { "value": "medium", "label": "Medium" },

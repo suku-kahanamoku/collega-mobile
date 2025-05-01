@@ -48,6 +48,30 @@
       "autoComplete": "new-password",
       "placeholder": "placeholder.repeat_password",
       "required": true
+    },
+    {
+      "type": "checkbox",
+      "name": "is_active",
+      "label": "contract.attr.is_active",
+      "required": true,
+      "value": false
+    },
+    {
+      "type": "textarea",
+      "name": "description",
+      "label": "contract.attr.description",
+      "placeholder": "Enter description"
+    },
+    {
+      "type": "radio",
+      "name": "priority",
+      "label": "contract.attr.priority",
+      "required": true,
+      "options": [
+        { "value": "high", "label": "High" },
+        { "value": "medium", "label": "Medium" },
+        { "value": "low", "label": "Low" }
+      ]
     }
   ]
 }

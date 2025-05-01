@@ -1,9 +1,11 @@
-import React from "react";
+import React, { forwardRef } from "react";
 import { StyleSheet } from "react-native";
-import { CheckBox } from "@rneui/themed";
+import { CheckBox, Input } from "@rneui/themed";
 import { Controller, Control } from "react-hook-form";
 
-import { IRadioField } from "../../types/field.interface";
+import { useTheme } from "@/modules/Ui/hooks/useTheme";
+
+import { IOption, IRadioField } from "../../types/field.interface";
 
 interface IFieldProps {
   field: IRadioField;
@@ -11,38 +13,60 @@ interface IFieldProps {
   [rest: string]: any;
 }
 
-const RadioFieldCmp: React.FC<IFieldProps> = ({ field, control, ...rest }) => {
-  return (
-    <Controller
-      name={field.name}
-      control={control}
-      render={({ field: { value, onChange } }) => (
-        <React.Fragment>
-          {field.options?.map((option, index) => (
-            <CheckBox
-              key={index}
-              checked={value === option.value} // Check if value matches the option's value
-              title={option.label || option.value}
-              containerStyle={styles.container}
-              checkedIcon="dot-circle-o"
-              uncheckedIcon="circle-o"
-              {...rest}
-              onPress={() => {
-                const newValue = value === option.value ? null : option.value; // Toggle the value
-                onChange(newValue);
-                rest.onChange?.(newValue);
-              }}
-            />
-          ))}
-        </React.Fragment>
-      )}
-    />
-  );
-};
+const RadioFieldCmp = forwardRef<any, IFieldProps>(
+  ({ field, control, ...rest }, ref) => {
+    const { colors } = useTheme();
+
+    return (
+      <Controller
+        name={field.name}
+        control={control}
+        render={({
+          field: { value, onChange },
+          fieldState: { error, invalid },
+        }) => (
+          <Input
+            ref={ref}
+            label={field.required ? `${field.label} *` : field.label}
+            labelStyle={invalid && { color: colors.error, opacity: 0.7 }}
+            placeholder={field.placeholder}
+            value={value}
+            errorMessage={error?.message}
+            InputComponent={forwardRef(() => (
+              <React.Fragment>
+                {field.options?.map((option: IOption) => (
+                  <CheckBox
+                    key={option.value}
+                    checked={value === option.value}
+                    title={option.label || option.value}
+                    checkedIcon="dot-circle-o"
+                    uncheckedIcon="circle-o"
+                    containerStyle={styles.container}
+                    onPress={() => {
+                      const newValue =
+                        value === option.value ? "" : option.value; // Toggle the value
+                      onChange(newValue);
+                      rest.onChange?.(newValue);
+                    }}
+                  />
+                ))}
+              </React.Fragment>
+            ))}
+            inputContainerStyle={{ borderBottomWidth: 0 }}
+            {...rest}
+          />
+        )}
+      />
+    );
+  }
+);
 
 const styles = StyleSheet.create({
   container: {
     backgroundColor: "transparent",
+    marginBottom: 0,
+    marginLeft: 0,
+    marginRight: 0,
   },
 });
 
