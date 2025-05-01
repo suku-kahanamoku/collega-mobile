@@ -21,18 +21,13 @@ const LoginCmp = () => {
 
   const { fieldList, loading, signIn } = useAuth();
   const fields = [fieldList.login, fieldList.pass];
-  const { fieldRefs, control, handleSubmit } = useForm(fields);
+  const { fieldRefs, control, onSubmitField, handleSubmit } = useForm(fields);
 
   const handleFieldSubmit = (fieldName: string) => {
-    const fieldNames = fields.map((field) => field.name);
-    const currentIndex = fieldNames.indexOf(fieldName);
+    const currentIndex = onSubmitField(fieldName);
 
-    if (currentIndex < fieldNames.length - 1) {
-      // Focus na další pole podle názvu
-      const nextFieldName = fieldNames[currentIndex + 1];
-      fieldRefs.current[nextFieldName]?.current?.focus();
-    } else {
-      // Zavolání handleSubmit, pokud je to poslední pole
+    // Zavolání handleSubmit, pokud je to poslední pole
+    if (currentIndex + 1 >= fields.length) {
       handleSubmit(onSubmit)();
     }
   };

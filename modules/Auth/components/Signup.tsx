@@ -15,7 +15,16 @@ const SignupCmp = () => {
   const loginMenu = menuList.login;
 
   const { fields, loading } = useAuth();
-  const { control, handleSubmit } = useForm(fields);
+  const { fieldRefs, control, onSubmitField, handleSubmit } = useForm(fields);
+
+  const handleFieldSubmit = (fieldName: string) => {
+    const currentIndex = onSubmitField(fieldName);
+
+    // Zavolání handleSubmit, pokud je to poslední pole
+    if (currentIndex + 1 >= fields.length) {
+      handleSubmit(onSubmit)();
+    }
+  };
 
   const onSubmit = () => {
     console.log("Form Data:");
@@ -31,7 +40,13 @@ const SignupCmp = () => {
         {fields
           .filter((field) => field.name !== "login")
           .map((field) => (
-            <FieldCmp key={field.name} field={field} control={control} />
+            <FieldCmp
+              ref={fieldRefs.current[field.name]}
+              key={field.name}
+              field={field}
+              control={control}
+              onSubmitEditing={() => handleFieldSubmit(field.name)}
+            />
           ))}
       </View>
 

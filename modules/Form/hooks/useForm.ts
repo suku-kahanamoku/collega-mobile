@@ -136,5 +136,18 @@ export function useForm(fields: IField[]) {
     return z.object(schemaObject);
   }
 
-  return { fieldRefs, getSchema, getFormSchema, ...form };
+  function onSubmitField(fieldName: string): number {
+    const fieldNames = fields.map((field) => field.name);
+    const currentIndex = fieldNames.indexOf(fieldName);
+
+    if (currentIndex < fieldNames.length - 1) {
+      // Focus na další pole podle názvu
+      const nextFieldName = fieldNames[currentIndex + 1];
+      fieldRefs.current[nextFieldName]?.current?.focus();
+    }
+
+    return currentIndex;
+  }
+
+  return { fieldRefs, getSchema, getFormSchema, onSubmitField, ...form };
 }
