@@ -21,11 +21,9 @@ const CheckboxFieldCmp = forwardRef<any, IFieldProps>(
       <Controller
         name={field.name}
         control={control}
-        render={({
-          field: { value, onChange },
-          fieldState: { error, invalid },
-        }) => (
+        render={({ field: { value, onChange }, fieldState: { error } }) => (
           <Input
+            ref={ref}
             value={value}
             errorMessage={error?.message}
             InputComponent={forwardRef(() => (
@@ -33,7 +31,6 @@ const CheckboxFieldCmp = forwardRef<any, IFieldProps>(
                 checked={!!value} // Ensure value is treated as a boolean
                 title={field.label} // Display the label in the checkbox
                 containerStyle={styles.checkbox}
-                center={true}
                 onPress={() => {
                   const newValue = !value; // Toggle the boolean value
                   onChange(newValue);

@@ -35,6 +35,9 @@
       "403_post_error": "You do not have permission to create a record.",
       "403_patch_error": "You do not have permission to update a record.",
       "403_delete_error": "You do not have permission to delete \"{name}\"."
+    },
+    "form": {
+      "select": "Select"
     }
   }
 }

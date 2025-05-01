@@ -35,6 +35,9 @@
       "403_post_error": "Nemáte oprávnenie vytvoriť záznam.",
       "403_patch_error": "Nemáte oprávnenie aktualizovať záznam.",
       "403_delete_error": "Nemáte oprávnenie zmazať \"{name}\"."
+    },
+    "form": {
+      "select": "Vyberte"
     }
   }
 }

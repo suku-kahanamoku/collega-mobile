@@ -1,12 +1,13 @@
 import React, { forwardRef } from "react";
 import { StyleSheet } from "react-native";
-import { Icon, Input } from "@rneui/themed";
+import { Input } from "@rneui/themed";
 import { Picker } from "@react-native-picker/picker";
 import { Controller, Control } from "react-hook-form";
 
 import { useTheme } from "@/modules/Ui/hooks/useTheme";
 
 import { IOption, ISelectField } from "../../types/field.interface";
+import { useLang } from "@/modules/Lang/hooks/useLang";
 
 interface IFieldProps {
   field: ISelectField;
@@ -17,6 +18,7 @@ interface IFieldProps {
 const SelectFieldCmp = forwardRef<any, IFieldProps>(
   ({ field, control, ...rest }, ref) => {
     const { colors } = useTheme();
+    const { t } = useLang();
 
     return (
       <Controller
@@ -27,25 +29,27 @@ const SelectFieldCmp = forwardRef<any, IFieldProps>(
           fieldState: { error, invalid },
         }) => (
           <Input
-            label={field.label}
+            ref={ref}
+            label={field.required ? `${field.label} *` : field.label}
             labelStyle={invalid && { color: colors.error, opacity: 0.7 }}
             placeholder={field.placeholder}
             value={value}
             errorMessage={error?.message}
             InputComponent={forwardRef(() => (
               <Picker
-                ref={ref}
                 selectedValue={value}
                 prompt={field.prompt}
-                style={{
-                  color: colors.text,
-                  width: "100%",
-                }}
+                style={styles.picker}
                 onValueChange={(e) => {
                   onChange(e);
                   rest.onChange?.(e);
                 }}
               >
+                <Picker.Item
+                  label={t("form.select")}
+                  value=""
+                  style={styles.empty}
+                />
                 {field.options?.map((option: IOption) => (
                   <Picker.Item
                     key={option.value}
@@ -56,20 +60,6 @@ const SelectFieldCmp = forwardRef<any, IFieldProps>(
               </Picker>
             ))}
             inputContainerStyle={invalid && { borderColor: colors.error }}
-            rightIcon={
-              !field.clearableDisabled && value?.toString()?.length ? (
-                <Icon
-                  name="close"
-                  size={20}
-                  style={styles.icon}
-                  onPress={() => {
-                    onChange(""); // Clear the input value
-                    rest.onReset?.(field); // Call the onReset method
-                  }}
-                />
-              ) : undefined
-            }
-            rightIconContainerStyle={styles.right}
             {...rest}
           />
         )}
@@ -79,11 +69,11 @@ const SelectFieldCmp = forwardRef<any, IFieldProps>(
 );
 
 const styles = StyleSheet.create({
-  right: {
-    marginVertical: 0,
+  picker: {
+    width: "100%",
   },
-  icon: {
-    opacity: 0.5,
+  empty: {
+    color: "gray",
   },
 });
 
