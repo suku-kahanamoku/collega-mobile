@@ -41,7 +41,7 @@ const RadioFieldCmp = forwardRef<any, IFieldProps>(
                     title={option.label || option.value}
                     checkedIcon="dot-circle-o"
                     uncheckedIcon="circle-o"
-                    containerStyle={styles.container}
+                    containerStyle={styles.checkbox}
                     onPress={() => {
                       const newValue =
                         value === option.value ? "" : option.value; // Toggle the value
@@ -52,7 +52,7 @@ const RadioFieldCmp = forwardRef<any, IFieldProps>(
                 ))}
               </React.Fragment>
             ))}
-            inputContainerStyle={{ borderBottomWidth: 0 }}
+            inputContainerStyle={styles.container}
             {...rest}
           />
         )}
@@ -62,11 +62,13 @@ const RadioFieldCmp = forwardRef<any, IFieldProps>(
 );
 
 const styles = StyleSheet.create({
-  container: {
+  container: { borderBottomWidth: 0, flex: 1, gap: 10 },
+  checkbox: {
     backgroundColor: "transparent",
     marginBottom: 0,
     marginLeft: 0,
     marginRight: 0,
+    paddingHorizontal: 0,
   },
 });
 
