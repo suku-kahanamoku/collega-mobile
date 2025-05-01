@@ -1,10 +1,11 @@
 import React, { forwardRef } from "react";
-import { InputModeOptions, StyleSheet, Text } from "react-native";
+import { InputModeOptions, StyleSheet } from "react-native";
 import { Icon, Input } from "@rneui/themed";
 import { Controller, Control } from "react-hook-form";
 
-import { ITextField } from "../../types/field.interface";
 import { useTheme } from "@/modules/Ui/hooks/useTheme";
+
+import { ITextField } from "../../types/field.interface";
 
 interface IFieldProps {
   field: ITextField;
@@ -30,15 +31,13 @@ const TextFieldCmp = forwardRef<any, IFieldProps>(
         name={field.name}
         control={control}
         render={({
-          field: { onChange, onBlur, value },
+          field: { value, onChange, onBlur },
           fieldState: { error, invalid },
         }) => (
           <Input
             ref={ref}
             label={field.required ? `${field.label} *` : field.label}
-            inputContainerStyle={{
-              borderColor: invalid ? colors.error : undefined,
-            }}
+            labelStyle={invalid && { color: colors.error, opacity: 0.7 }}
             placeholder={field.placeholder}
             inputMode={inputModeMap[field.type || "text"]}
             autoComplete={field.autoComplete}
@@ -51,6 +50,7 @@ const TextFieldCmp = forwardRef<any, IFieldProps>(
                 <Icon
                   name="close"
                   size={20}
+                  style={styles.icon}
                   onPress={() => {
                     onChange(""); // Clear the input value
                     rest.onReset?.(field); // Call the onReset method
@@ -59,8 +59,12 @@ const TextFieldCmp = forwardRef<any, IFieldProps>(
               ) : undefined
             }
             rightIconContainerStyle={styles.right}
+            inputContainerStyle={invalid && { borderColor: colors.error }}
             {...rest}
-            onChangeText={onChange}
+            onChangeText={(e) => {
+              onChange(e);
+              rest.onChange?.(e);
+            }}
             onBlur={(e) => {
               onBlur(); // Mark the field as touched
               rest.onBlur?.(e); // Call the onBlur method
@@ -75,6 +79,9 @@ const TextFieldCmp = forwardRef<any, IFieldProps>(
 const styles = StyleSheet.create({
   right: {
     marginVertical: 0,
+  },
+  icon: {
+    opacity: 0.5,
   },
 });
 

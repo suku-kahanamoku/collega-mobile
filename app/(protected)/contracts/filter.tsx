@@ -7,7 +7,7 @@ import { useForm } from "@/modules/Form/hooks/useForm";
 
 export default function FilterScreen() {
   const { fields, updateQueryParams } = useContract();
-  const { fieldRefs, control, handleSubmit } = useForm(fields);
+  const { fieldRefs, control, handleSubmit, getValues } = useForm(fields);
 
   const handleFieldSubmit = (fieldName: string) => {
     const fieldNames = fields.map((field) => field.name);
@@ -18,8 +18,9 @@ export default function FilterScreen() {
       const nextFieldName = fieldNames[currentIndex + 1];
       fieldRefs.current[nextFieldName]?.current?.focus();
     }
-    // Zavolání handleSubmit - pokazde
-    handleSubmit(onSubmit)();
+    //
+    const values = getValues();
+    onSubmit(values);
   };
 
   const onSubmit = async (data: Record<string, any>) => {

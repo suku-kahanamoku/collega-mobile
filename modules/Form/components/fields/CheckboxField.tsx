@@ -26,7 +26,10 @@ const CheckboxFieldCmp: React.FC<IFieldProps> = ({
           title={field.label}
           containerStyle={styles.container}
           {...rest}
-          onPress={() => onChange(!value)}
+          onPress={() => {
+            onChange(!value);
+            rest.onChange?.(!value);
+          }}
         />
       )}
     />

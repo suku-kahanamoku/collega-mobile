@@ -23,6 +23,7 @@ export function useForm(fields: IField[]) {
       acc[field.name] = field.value || "";
       return acc;
     }, {} as Record<string, any>),
+    mode: "all",
   });
 
   /**
