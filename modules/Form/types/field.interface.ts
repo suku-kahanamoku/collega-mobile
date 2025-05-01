@@ -18,7 +18,7 @@ export interface IFieldItem {
   required?: boolean;
   min?: number;
   max?: number;
-  clearable?: boolean;
+  clearableDisabled?: boolean;
 }
 
 export interface ITextField extends IFieldItem, TextInputProps {

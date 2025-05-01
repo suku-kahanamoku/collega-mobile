@@ -9,7 +9,7 @@ interface IStyleProps {
 }
 
 interface IRowProps {
-  label: string;
+  label?: string;
   variant?: "inline";
   style?: IStyleProps;
   children: React.ReactNode;
@@ -26,9 +26,11 @@ export default function RowCmp({
   if (variant === "inline") {
     return (
       <View style={[styles.container, style?.container]} {...rest}>
-        <Text style={[styles.label, styles.inlineLabel, style?.label]}>
-          {label}:
-        </Text>
+        {label && (
+          <Text style={[styles.label, styles.inlineLabel, style?.label]}>
+            {label}:
+          </Text>
+        )}
         <View style={[styles.children, style?.children]}>{children}</View>
       </View>
     );
@@ -36,7 +38,7 @@ export default function RowCmp({
 
   return (
     <View style={style?.container} {...rest}>
-      <Text style={[styles.label, style?.label]}>{label}</Text>
+      {label && <Text style={[styles.label, style?.label]}>{label}</Text>}
       <View style={style?.children}>{children}</View>
     </View>
   );

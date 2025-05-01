@@ -1,6 +1,6 @@
 import { StyleSheet, ScrollView, View } from "react-native";
 import { Link, useLocalSearchParams } from "expo-router";
-import { Card, Icon, ListItem, Rating, Text } from "@rneui/themed";
+import { Card, Icon, ListItem, Text } from "@rneui/themed";
 
 import RowCmp from "@/modules/Ui/components/Row";
 import { useContract } from "@/modules/Contract/hooks/useContract";
@@ -40,7 +40,7 @@ export default function ContractScreen() {
         />
 
         <View style={styles.content}>
-          <RowCmp label={fieldList.client.label} variant="inline">
+          <RowCmp label={fieldList.client_name.label} variant="inline">
             <Text>{contract.client || "---"}</Text>
           </RowCmp>
 

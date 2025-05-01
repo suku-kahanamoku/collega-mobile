@@ -1,14 +1,14 @@
 import React, { forwardRef } from "react";
-import { InputModeOptions, StyleSheet } from "react-native";
+import { InputModeOptions, StyleSheet, Text } from "react-native";
 import { Icon, Input } from "@rneui/themed";
 import { Controller, Control } from "react-hook-form";
 
 import { ITextField } from "../../types/field.interface";
+import { useTheme } from "@/modules/Ui/hooks/useTheme";
 
 interface IFieldProps {
   field: ITextField;
   control: Control<any>;
-  onReset?: (field: ITextField) => void;
   [rest: string]: any;
 }
 
@@ -22,15 +22,23 @@ const inputModeMap: Record<string, InputModeOptions> = {
 };
 
 const TextFieldCmp = forwardRef<any, IFieldProps>(
-  ({ field, control, onReset, ...rest }, ref) => {
+  ({ field, control, ...rest }, ref) => {
+    const { colors } = useTheme();
+
     return (
       <Controller
         name={field.name}
         control={control}
-        render={({ field: { onChange, value }, fieldState: { error } }) => (
+        render={({
+          field: { onChange, onBlur, value },
+          fieldState: { error, invalid },
+        }) => (
           <Input
             ref={ref}
-            label={field.label}
+            label={field.required ? `${field.label} *` : field.label}
+            inputContainerStyle={{
+              borderColor: invalid ? colors.error : undefined,
+            }}
             placeholder={field.placeholder}
             inputMode={inputModeMap[field.type || "text"]}
             autoComplete={field.autoComplete}
@@ -39,24 +47,35 @@ const TextFieldCmp = forwardRef<any, IFieldProps>(
             secureTextEntry={field.type === "password"}
             errorMessage={error?.message}
             rightIcon={
-              field.clearable && value?.toString()?.length ? (
+              !field.clearableDisabled && value?.toString()?.length ? (
                 <Icon
                   name="close"
                   size={20}
                   onPress={() => {
                     onChange(""); // Clear the input value
-                    onReset?.(field); // Call the onReset method
+                    rest.onReset?.(field); // Call the onReset method
                   }}
                 />
               ) : undefined
             }
+            rightIconContainerStyle={styles.right}
             {...rest}
             onChangeText={onChange}
+            onBlur={(e) => {
+              onBlur(); // Mark the field as touched
+              rest.onBlur?.(e); // Call the onBlur method
+            }}
           />
         )}
       />
     );
   }
 );
+
+const styles = StyleSheet.create({
+  right: {
+    marginVertical: 0,
+  },
+});
 
 export default TextFieldCmp;

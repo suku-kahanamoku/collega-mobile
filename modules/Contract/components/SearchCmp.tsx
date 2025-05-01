@@ -10,7 +10,6 @@ export default function SearchCmp() {
   const searchField = {
     name: "search",
     placeholder: "Search",
-    clearable: true,
   };
   const { control, handleSubmit } = useForm([searchField]);
 
