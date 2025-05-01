@@ -37,6 +37,7 @@ const SelectFieldCmp = forwardRef<any, IFieldProps>(
             errorMessage={error?.message}
             InputComponent={forwardRef(() => (
               <Picker
+                ref={ref}
                 selectedValue={value}
                 prompt={field.prompt}
                 style={styles.picker}
@@ -47,7 +48,7 @@ const SelectFieldCmp = forwardRef<any, IFieldProps>(
               >
                 <Picker.Item
                   label={t("form.select")}
-                  value=""
+                  value={null}
                   style={styles.empty}
                 />
                 {field.options?.map((option: IOption) => (

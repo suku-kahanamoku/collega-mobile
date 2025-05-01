@@ -141,9 +141,12 @@ export function useForm(fields: IField[]) {
     const currentIndex = fieldNames.indexOf(fieldName);
 
     if (currentIndex < fieldNames.length - 1) {
-      // Focus na další pole podle názvu
       const nextFieldName = fieldNames[currentIndex + 1];
-      fieldRefs.current[nextFieldName]?.current?.focus();
+      const nextFieldRef = fieldRefs.current[nextFieldName]?.current;
+
+      if (nextFieldRef) {
+        nextFieldRef.focus();
+      }
     }
 
     return currentIndex;

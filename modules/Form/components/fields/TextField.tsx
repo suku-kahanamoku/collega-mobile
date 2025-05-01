@@ -44,6 +44,7 @@ const TextFieldCmp = forwardRef<any, IFieldProps>(
             autoFocus={field.autoFocus}
             value={value}
             secureTextEntry={field.type === "password"}
+            submitBehavior="newline"
             errorMessage={error?.message}
             rightIcon={
               !field.clearableDisabled && value?.toString()?.length ? (
