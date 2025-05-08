@@ -6,8 +6,10 @@ import { Icon } from "@rneui/themed";
 import { useRoute } from "@/hooks/useRoute";
 import { useTheme } from "@/modules/Ui/hooks/useTheme";
 import { UserProvider } from "@/modules/User/providers/UserProvider";
+import { useLang } from "@/modules/Lang/hooks/useLang";
 
 export default function UsersLayout() {
+  const { t } = useLang();
   const { colors } = useTheme();
   const { menuList } = useRoute();
   const usersMenu = menuList.users;
@@ -31,7 +33,7 @@ export default function UsersLayout() {
         <Tabs.Screen
           name="index"
           options={{
-            title: usersMenu.title,
+            title: t(usersMenu.title),
             tabBarIcon: ({ color }) => (
               <Icon name={usersMenu.icon!} color={color} />
             ),
@@ -40,7 +42,7 @@ export default function UsersLayout() {
         <Tabs.Screen
           name="[id]"
           options={{
-            title: "User",
+            title: t(userMenu.title),
             tabBarIcon: ({ color }) => (
               <Icon name={userMenu.icon!} color={color} />
             ),

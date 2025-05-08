@@ -2,8 +2,10 @@ import { StyleSheet, View } from "react-native";
 import { Link } from "expo-router";
 
 import { useRoute } from "@/hooks/useRoute";
+import { useLang } from "@/modules/Lang/hooks/useLang";
 
 export default function DashboardScreen() {
+  const { t } = useLang();
   const { menuList } = useRoute();
   const loginMenu = menuList.login;
   const signupMenu = menuList.signup;
@@ -12,13 +14,13 @@ export default function DashboardScreen() {
   return (
     <View style={styles.container}>
       <Link href={loginMenu.href} style={styles.link}>
-        {loginMenu.title}
+        {t(loginMenu.title)}
       </Link>
       <Link href={signupMenu.href} style={styles.link}>
-        {signupMenu.title}
+        {t(signupMenu.title)}
       </Link>
       <Link href={resetPasswordMenu.href} style={styles.link}>
-        {resetPasswordMenu.title}
+        {t(resetPasswordMenu.title)}
       </Link>
     </View>
   );

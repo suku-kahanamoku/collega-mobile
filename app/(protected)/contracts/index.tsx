@@ -1,4 +1,4 @@
-import { ScrollView } from "react-native";
+import { StyleSheet, ScrollView, View } from "react-native";
 import { Avatar, Button, ListItem, Text } from "@rneui/themed";
 import TouchableScale from "react-native-touchable-scale";
 
@@ -32,38 +32,48 @@ export default function ContractsScreen() {
           bottomDivider
           rightWidth={60}
           key={i}
-          containerStyle={{ backgroundColor: colors.background }}
           rightContent={(close) => (
             <Button
               type="clear"
               icon={{ name: "delete-outline", color: colors.error, size: 32 }}
-              containerStyle={{
-                flex: 1,
-                justifyContent: "center",
-              }}
+              containerStyle={styles.deleteBtn}
               onPress={() => console.log("delete", item, close())}
             />
           )}
           onPress={() => navigate(`${contractsMenu.href}/${item.id}`)}
         >
-          <Avatar
-            rounded
-            source={item.partner_logo ? { uri: item.partner_logo } : logoImg}
-          />
-          <ListItem.Content>
-            <ListItem.Title>
-              <Text h3>{item.partner_name}</Text>
-            </ListItem.Title>
-            <ListItem.Title>
-              <Text h4>{item.product_name}</Text>
-            </ListItem.Title>
-            <ListItem.Subtitle style={{ color: colors.secondary }}>
-              {item.client}
-            </ListItem.Subtitle>
-          </ListItem.Content>
-          <ListItem.Chevron />
+          <View style={styles.listItem}>
+            <Avatar
+              rounded
+              source={item.partner_logo ? { uri: item.partner_logo } : logoImg}
+              containerStyle={styles.imgContainer}
+              avatarStyle={styles.img}
+            />
+            <ListItem.Content>
+              <ListItem.Title>
+                <Text h3>{item.partner_name}</Text>
+              </ListItem.Title>
+              <ListItem.Title>
+                <Text h4>{item.product_name}</Text>
+              </ListItem.Title>
+              <ListItem.Subtitle style={{ color: colors.secondary }}>
+                {item.client}
+              </ListItem.Subtitle>
+            </ListItem.Content>
+            <ListItem.Chevron />
+          </View>
         </ListItem.Swipeable>
       ))}
     </ScrollView>
   );
 }
+
+const styles = StyleSheet.create({
+  listItem: { flex: 1, flexDirection: "row", alignItems: "center" },
+  imgContainer: { marginRight: 16 },
+  img: { width: "auto", height: "auto" },
+  deleteBtn: {
+    flex: 1,
+    justifyContent: "center",
+  },
+});

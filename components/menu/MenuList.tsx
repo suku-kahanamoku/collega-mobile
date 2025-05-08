@@ -6,6 +6,7 @@ import { LinearGradient } from "expo-linear-gradient";
 
 import { useTheme } from "@/modules/Ui/hooks/useTheme";
 import { IMenu } from "@/types/menu.interface";
+import { useLang } from "@/modules/Lang/hooks/useLang";
 
 /**
  * Vlastnosti pro komponentu MenuList.
@@ -46,6 +47,7 @@ interface IMenuListProps {
  * ```
  */
 const MenuListCmp: React.FC<IMenuListProps> = ({ menus, onPress }) => {
+  const { t } = useLang();
   const { Colors } = useTheme();
 
   return (
@@ -72,7 +74,7 @@ const MenuListCmp: React.FC<IMenuListProps> = ({ menus, onPress }) => {
                   color: Colors.dark.secondary,
                 }}
               >
-                {menu.title}
+                {t(menu.title)}
               </Text>
             </ListItem.Title>
           </ListItem.Content>

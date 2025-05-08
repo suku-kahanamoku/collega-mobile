@@ -7,8 +7,10 @@ import { useRoute } from "@/hooks/useRoute";
 import { useTheme } from "@/modules/Ui/hooks/useTheme";
 import { ContractProvider } from "@/modules/Contract/providers/ContractProvider";
 import SearchCmp from "@/modules/Contract/components/SearchCmp";
+import { useLang } from "@/modules/Lang/hooks/useLang";
 
 export default function ContractsLayout() {
+  const { t } = useLang();
   const { colors } = useTheme();
   const { menuList } = useRoute();
   const contractsMenu = menuList.contracts;
@@ -34,7 +36,7 @@ export default function ContractsLayout() {
           name="index"
           options={{
             headerShown: true,
-            title: contractsMenu.title,
+            title: t(contractsMenu.title),
             tabBarIcon: ({ color }) => (
               <Icon name={contractsMenu.icon!} color={color} />
             ),
@@ -48,7 +50,7 @@ export default function ContractsLayout() {
         <Tabs.Screen
           name="[id]"
           options={{
-            title: contractMenu.title,
+            title: t(contractMenu.title),
             tabBarIcon: ({ color }) => (
               <Icon name={contractMenu.icon!} color={color} />
             ),
@@ -58,7 +60,7 @@ export default function ContractsLayout() {
         <Tabs.Screen
           name="filter"
           options={{
-            title: filterMenu.title,
+            title: t(filterMenu.title),
             tabBarIcon: ({ color }) => (
               <Icon name={filterMenu.icon!} color={color} />
             ),

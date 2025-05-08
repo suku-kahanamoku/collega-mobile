@@ -6,6 +6,7 @@ import { Button, Icon, Header, Text } from "@rneui/themed";
 import { useAuth } from "@/modules/Auth/hooks/useAuth";
 import { useTheme } from "@/modules/Ui/hooks/useTheme";
 import { useRoute } from "@/hooks/useRoute";
+import { useLang } from "@/modules/Lang/hooks/useLang";
 
 const logoImg = require("@/assets/images/logo.png");
 
@@ -52,6 +53,7 @@ interface IHeaderCmpProps {
  * ```
  */
 const HeaderCmp: React.FC<IHeaderCmpProps> = ({ hideTitle, setOpen }) => {
+  const { t } = useLang();
   const { session } = useAuth();
   const { Colors } = useTheme();
   const { menuList, activeMenu, navigate } = useRoute();
@@ -87,7 +89,7 @@ const HeaderCmp: React.FC<IHeaderCmpProps> = ({ hideTitle, setOpen }) => {
   const CenterCmp = () =>
     !hideTitle && (
       <Text h1 h1Style={[styles.title, { color: Colors.dark.secondary }]}>
-        {activeMenu.title}
+        {t(activeMenu.title)}
       </Text>
     );
 

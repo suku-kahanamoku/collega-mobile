@@ -5,6 +5,7 @@ import { useRoute } from "@/hooks/useRoute";
 import SideMenuCmp from "@/components/menu/SideMenu";
 import HeaderCmp from "@/components/Header";
 import { useAuth } from "@/modules/Auth/hooks/useAuth";
+import { useLang } from "@/modules/Lang/hooks/useLang";
 
 // Dokud aplikace neni nactena, nic nezobrazuji
 SplashScreen.preventAutoHideAsync();
@@ -34,6 +35,7 @@ SplashScreen.preventAutoHideAsync();
  * ```
  */
 export default function ContentCmp() {
+  const { t } = useLang();
   const { sessionLoading } = useAuth();
   const { menuList, menus } = useRoute();
   const [open, setOpen] = useState(false);
@@ -66,7 +68,7 @@ export default function ContentCmp() {
           name={notFoundMenu.name}
           options={{
             header: () => <HeaderCmp setOpen={setOpen} />,
-            headerTitle: notFoundMenu.title,
+            headerTitle: t(notFoundMenu.title),
             headerTitleAlign: "center",
           }}
         />

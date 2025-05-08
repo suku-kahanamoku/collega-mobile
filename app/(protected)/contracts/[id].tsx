@@ -66,14 +66,20 @@ export default function ContractScreen() {
         <View style={styles.content}>
           <Text h4>{t("global.documents")}</Text>
 
-          {contract.documents?.map((doc, index) => (
-            <ListItem bottomDivider key={index}>
-              <Icon name="picture-as-pdf" color={colors.secondary} />
-              <ListItem.Content>
-                <ListItem.Title>
-                  <Link href={doc.link}>{doc.name}</Link>
-                </ListItem.Title>
-              </ListItem.Content>
+          {contract.documents?.map((doc, i) => (
+            <ListItem bottomDivider key={i}>
+              <View style={styles.listItem}>
+                <Icon
+                  name="picture-as-pdf"
+                  color={colors.secondary}
+                  containerStyle={styles.imgContainer}
+                />
+                <ListItem.Content>
+                  <ListItem.Title>
+                    <Link href={doc.link}>{doc.name}</Link>
+                  </ListItem.Title>
+                </ListItem.Content>
+              </View>
             </ListItem>
           ))}
         </View>
@@ -86,4 +92,6 @@ const styles = StyleSheet.create({
   content: {
     paddingVertical: 20,
   },
+  listItem: { flex: 1, flexDirection: "row", alignItems: "center" },
+  imgContainer: { marginRight: 16 },
 });

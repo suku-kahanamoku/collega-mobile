@@ -2,9 +2,7 @@ import React, { createContext, ReactNode } from "react";
 import { RelativePathString, usePathname, useRouter } from "expo-router";
 
 import { IMenu } from "@/types/menu.interface";
-import { useLang } from "@/modules/Lang/hooks/useLang";
-
-import config from "../route.config.json";
+import config from "@/route.config.json";
 
 interface IRouteContextProps {
   menuList: Record<string, IMenu>;
@@ -19,7 +17,6 @@ export const RouteContext = createContext<IRouteContextProps | undefined>(
 );
 
 export const RouteProvider = ({ children }: { children: ReactNode }) => {
-  const { t } = useLang();
   const pathname = usePathname();
   const router = useRouter();
 
@@ -35,8 +32,6 @@ export const RouteProvider = ({ children }: { children: ReactNode }) => {
    * Provede resolve na jednotlivych menu polozkach
    */
   for (const menu of Object.values(menuList)) {
-    // Provede preklad
-    menu.title = t(menu.title);
     // Vlozi potomky do rodicu (vytvori strom)
     const parentMenu = menuList[menu.parentSyscode!];
     if (parentMenu) {
