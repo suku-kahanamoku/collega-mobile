@@ -43,7 +43,9 @@ const SideMenuCmp: React.FC<ISideMenuProps> = ({
     <Drawer
       open={open}
       drawerPosition="right"
-      renderDrawerContent={() => SideMenuListCmp({ menus, setOpen })}
+      renderDrawerContent={() => (
+        <SideMenuListCmp menus={menus} setOpen={setOpen} />
+      )}
       onOpen={() => setOpen(true)}
       onClose={() => setOpen(false)}
     >

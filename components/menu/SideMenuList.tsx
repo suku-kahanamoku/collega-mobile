@@ -64,7 +64,10 @@ const SideMenuListCmp: React.FC<ISideMenuListProps> = ({ menus, setOpen }) => {
 
   return (
     <>
+      {/* bocni menu - seznam */}
       <MenuListCmp menus={menus} onPress={onPress} />
+
+      {/* signin tlacitka */}
       <View
         style={[styles.container, { backgroundColor: Colors.dark.primary }]}
       >

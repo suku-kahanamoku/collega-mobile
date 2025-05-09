@@ -52,6 +52,8 @@ const ThemeSwitchCmp = () => {
 
 const styles = StyleSheet.create({
   children: {
+    flexDirection: "row",
+    gap: 8,
     justifyContent: "flex-end",
   },
 });

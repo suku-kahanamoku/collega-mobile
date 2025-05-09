@@ -103,7 +103,7 @@ export default function ContentCmp() {
           name={settingsMenu.name}
           options={{
             headerTitle: t(settingsMenu.title),
-            presentation: "formSheet",
+            presentation: "modal",
           }}
         />
       </Stack>
