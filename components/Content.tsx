@@ -37,10 +37,11 @@ SplashScreen.preventAutoHideAsync();
 export default function ContentCmp() {
   const { t } = useLang();
   const { sessionLoading } = useAuth();
-  const { menuList, menus } = useRoute();
+  const { menuList, protectedRootMenus } = useRoute();
   const [open, setOpen] = useState(false);
 
   const notFoundMenu = menuList["404"];
+  const settingsMenu = menuList.settings;
 
   useEffect(() => {
     if (!sessionLoading) {
@@ -53,7 +54,7 @@ export default function ContentCmp() {
   }
 
   return (
-    <SideMenuCmp open={open} setOpen={setOpen} menus={menus}>
+    <SideMenuCmp open={open} setOpen={setOpen} menus={protectedRootMenus}>
       <Stack>
         {/* vsechny zabezpecene podstranky */}
         <Stack.Screen
@@ -94,6 +95,15 @@ export default function ContentCmp() {
           name={menuList.reset_password.name}
           options={{
             header: () => <HeaderCmp hideTitle={true} setOpen={setOpen} />,
+          }}
+        />
+
+        {/* settings screen */}
+        <Stack.Screen
+          name={settingsMenu.name}
+          options={{
+            headerTitle: t(settingsMenu.title),
+            presentation: "formSheet",
           }}
         />
       </Stack>

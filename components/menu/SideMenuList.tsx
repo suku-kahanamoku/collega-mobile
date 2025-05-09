@@ -69,12 +69,13 @@ const SideMenuListCmp: React.FC<ISideMenuListProps> = ({ menus, setOpen }) => {
         style={[styles.container, { backgroundColor: Colors.dark.primary }]}
       >
         {session ? (
+          /* pokud je prihlaseny, dole je videt logout tlacitko */
           <Button
             title={t("btn.logout")}
             uppercase={true}
             color={Colors.dark.info}
             icon={{ name: "logout", color: Colors.dark.text }}
-            iconContainerStyle={{ marginRight: 8 }}
+            iconContainerStyle={styles.logoutBtn}
             onPress={() => {
               signOut();
               navigate(loginMenu.href);
@@ -82,18 +83,13 @@ const SideMenuListCmp: React.FC<ISideMenuListProps> = ({ menus, setOpen }) => {
             }}
           />
         ) : (
-          <View
-            style={{
-              flexDirection: "row",
-              justifyContent: "space-between",
-              gap: 10,
-            }}
-          >
+          /* jinak je videt login a signup tlacitka */
+          <View style={styles.signInBtns}>
             <Button
               title={t("btn.login")}
               uppercase={true}
               color={Colors.dark.info}
-              containerStyle={{ flex: 1 }}
+              containerStyle={styles.signInBtn}
               onPress={() => {
                 navigate(loginMenu.href);
                 setOpen && setOpen(false);
@@ -103,7 +99,7 @@ const SideMenuListCmp: React.FC<ISideMenuListProps> = ({ menus, setOpen }) => {
               title={t("btn.signup")}
               uppercase={true}
               color={Colors.dark.secondary}
-              containerStyle={{ flex: 1 }}
+              containerStyle={styles.signInBtn}
               onPress={() => {
                 navigate(signupMenu.href);
                 setOpen && setOpen(false);
@@ -121,6 +117,13 @@ const styles = StyleSheet.create({
     width: "100%",
     padding: 10,
   },
+  logoutBtn: { marginRight: 8 },
+  signInBtns: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    gap: 10,
+  },
+  signInBtn: { flex: 1 },
 });
 
 export default SideMenuListCmp;

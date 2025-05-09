@@ -6,7 +6,7 @@ import config from "@/route.config.json";
 
 interface IRouteContextProps {
   menuList: Record<string, IMenu>;
-  menus: IMenu[];
+  protectedRootMenus: IMenu[];
   activeMenu: IMenu;
   navigate: (href: RelativePathString) => void;
   replace: (href: RelativePathString) => void;
@@ -41,9 +41,9 @@ export const RouteProvider = ({ children }: { children: ReactNode }) => {
   }
 
   /**
-   * Menus, ktera maji byt videt v navigaci
+   * ProtectedRootMenus, ktera maji byt videt v navigaci
    */
-  const menus: IMenu[] = Object.values(menuList).filter(
+  const protectedRootMenus: IMenu[] = Object.values(menuList).filter(
     (menu) => !menu.parentSyscode && menu.group !== "system"
   );
 
@@ -78,7 +78,7 @@ export const RouteProvider = ({ children }: { children: ReactNode }) => {
     <RouteContext.Provider
       value={{
         menuList,
-        menus,
+        protectedRootMenus,
         activeMenu,
         navigate,
         replace,

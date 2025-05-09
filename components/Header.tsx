@@ -57,34 +57,32 @@ const HeaderCmp: React.FC<IHeaderCmpProps> = ({ hideTitle, setOpen }) => {
   const { session } = useAuth();
   const { Colors } = useTheme();
   const { menuList, activeMenu, navigate } = useRoute();
-  const loginMenu = menuList.login;
   const settingsMenu = menuList.settings;
 
   const LeftCmp = () => (
-    <Link href={session ? "/" : loginMenu.href}>
+    <Link href={session ? "/" : menuList.login.href}>
       <Image source={logoImg} style={styles.image} resizeMode="contain" />
     </Link>
   );
 
-  const RightCmp = () =>
-    session && (
-      <View style={{ flexDirection: "row" }}>
-        {activeMenu !== settingsMenu && (
-          <Button
-            radius="sm"
-            type="clear"
-            icon={<Icon name={settingsMenu.icon!} color={Colors.dark.text} />}
-            onPress={() => navigate(settingsMenu.href)}
-          />
-        )}
+  const RightCmp = () => (
+    <View style={{ flexDirection: "row" }}>
+      <Button
+        radius="sm"
+        type="clear"
+        icon={<Icon name={settingsMenu.icon!} color={Colors.dark.text} />}
+        onPress={() => navigate(settingsMenu.href)}
+      />
+      {session && (
         <Button
           radius="sm"
           type="clear"
           icon={<Icon name="menu" color={Colors.dark.text} />}
           onPress={() => setOpen((prevOpen) => !prevOpen)}
         />
-      </View>
-    );
+      )}
+    </View>
+  );
 
   const CenterCmp = () =>
     !hideTitle && (
