@@ -3,14 +3,7 @@ import React, { createContext, useState, useEffect, ReactNode } from "react";
 import { useAuth } from "@/modules/Auth/hooks/useAuth";
 
 import config from "../configs/config.json";
-
-interface IUser {
-  id: number;
-  name: string;
-  username: string;
-  email: string;
-  [key: string]: any;
-}
+import { IUser } from "../type";
 
 interface IUserContextProps {
   users: IUser[];

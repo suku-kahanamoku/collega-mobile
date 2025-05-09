@@ -6,7 +6,7 @@ import { IUser } from "../type";
 
 const logoImg = require("@/assets/images/logo.png");
 
-export default function UserListItem({
+export default function UserListItemCmp({
   item,
   onPress,
 }: {

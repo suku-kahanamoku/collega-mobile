@@ -1,9 +1,9 @@
 import { ScrollView, StyleSheet } from "react-native";
 import { useLocalSearchParams } from "expo-router";
-import { Text } from "@rneui/themed";
 
 import { useUser } from "@/modules/User/hooks/useUser";
 import RecordNotFoundPage from "@/modules/Ui/components/RecordNotFound";
+import UserCardCmp from "@/modules/User/components/UserCard";
 
 export default function UserScreen() {
   const { id } = useLocalSearchParams();
@@ -16,9 +16,7 @@ export default function UserScreen() {
 
   return (
     <ScrollView>
-      <Text style={styles.title}>{user.name}</Text>
-      <Text>{user.email}</Text>
-      <Text>{user.username}</Text>
+      <UserCardCmp item={user} />
     </ScrollView>
   );
 }

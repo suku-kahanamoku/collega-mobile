@@ -1,15 +1,14 @@
 import { ScrollView, StyleSheet } from "react-native";
-import { Link } from "expo-router";
-import { ListItem } from "@rneui/themed";
 
 import { useRoute } from "@/hooks/useRoute";
 import { useUser } from "@/modules/User/hooks/useUser";
 import LoadingPage from "@/modules/Ui/components/Loading";
 import RecordNotFoundPage from "@/modules/Ui/components/RecordNotFound";
+import UserListItemCmp from "@/modules/User/components/UserListItem";
 
 export default function UsersScreen() {
   const { users, loading } = useUser();
-  const { menuList } = useRoute();
+  const { menuList, navigate } = useRoute();
   const usersMenu = menuList.users;
 
   if (loading) {
@@ -23,14 +22,11 @@ export default function UsersScreen() {
   return (
     <ScrollView>
       {users.map((item, i) => (
-        <ListItem key={i} bottomDivider>
-          <Link href={`${usersMenu.href}/${item.id}`} style={styles.item}>
-            <ListItem.Content>
-              <ListItem.Title>{item.name}</ListItem.Title>
-              <ListItem.Subtitle>{item.email}</ListItem.Subtitle>
-            </ListItem.Content>
-          </Link>
-        </ListItem>
+        <UserListItemCmp
+          key={i}
+          item={item}
+          onPress={() => navigate(`${usersMenu.href}/${item.id}`)}
+        />
       ))}
     </ScrollView>
   );

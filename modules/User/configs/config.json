@@ -1,5 +1,5 @@
 {
-  "restUrl": "https://jsonplaceholder.typicode.com/users",
+  "restUrl": "https://collega.cz/security/hook/get-entity?dev&rep=users&conditions[id]=2",
   "fields": [
     {
       "name": "name",
