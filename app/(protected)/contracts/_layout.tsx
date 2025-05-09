@@ -6,7 +6,7 @@ import { Icon } from "@rneui/themed";
 import { useRoute } from "@/hooks/useRoute";
 import { useTheme } from "@/modules/Ui/hooks/useTheme";
 import { ContractProvider } from "@/modules/Contract/providers/ContractProvider";
-import SearchCmp from "@/modules/Contract/components/SearchCmp";
+import SearchCmp from "@/modules/Contract/components/Search";
 import { useLang } from "@/modules/Lang/hooks/useLang";
 
 export default function ContractsLayout() {

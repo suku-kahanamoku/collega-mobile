@@ -6,7 +6,7 @@ import { useTheme } from "@/modules/Ui/hooks/useTheme";
 
 import { IUser } from "../type";
 
-export default function UserCard({ item }: { item: IUser }) {
+export default function UserCardCmp({ item }: { item: IUser }) {
   const { colors } = useTheme();
 
   return (

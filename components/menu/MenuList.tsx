@@ -56,8 +56,8 @@ const MenuListCmp: React.FC<IMenuListProps> = ({ menus, onPress }) => {
     >
       {menus.map((menu, index) => (
         <ListItem
-          Component={TouchableScale}
-          ViewComponent={LinearGradient}
+          Component={TouchableScale as any}
+          ViewComponent={LinearGradient as any}
           linearGradientProps={{
             colors: [Colors.dark.primary2, Colors.dark.primary],
             start: { x: 2, y: 0 },

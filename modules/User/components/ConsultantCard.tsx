@@ -6,7 +6,7 @@ import { useTheme } from "@/modules/Ui/hooks/useTheme";
 
 import { IConsultant } from "../type";
 
-export default function ConsultantCard({ item }: { item: IConsultant }) {
+export default function ConsultantCardCmp({ item }: { item: IConsultant }) {
   const { colors } = useTheme();
 
   return (

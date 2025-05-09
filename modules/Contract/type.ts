@@ -1,5 +1,7 @@
 import { RelativePathString } from "expo-router";
 
+import { IModelItem } from "@/types/menu.interface";
+
 export interface IInstruction {
   id: number;
 }
@@ -42,8 +44,7 @@ export type IFrequencyType =
   | "one-time"
   | "unspecified";
 
-export interface IContract {
-  id: number;
+export interface IContract extends IModelItem {
   /* client: { id: string; name?: string }; */
   client: string;
   account_number?: string;
