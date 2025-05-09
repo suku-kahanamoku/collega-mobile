@@ -28,3 +28,25 @@ export interface IMenu {
   parentSyscode?: keyof typeof config;
   group?: "system";
 }
+
+/**
+ * Reprezentuje základní modelovou položku.
+ *
+ * @interface IModelItem
+ * @property {number} id - Jedinečný identifikátor položky.
+ * @property {number} createdBy - ID uživatele, který položku vytvořil.
+ * @property {string} createdAt - Datum a čas vytvoření položky.
+ * @property {number} updatedBy - ID uživatele, který položku naposledy aktualizoval.
+ * @property {string} updatedAt - Datum a čas poslední aktualizace položky.
+ * @property {boolean} deleted - Určuje, zda je položka označena jako smazaná.
+ * @property {boolean} active - Určuje, zda je položka aktivní.
+ */
+export interface IModelItem {
+  id: number;
+  createdBy: number;
+  createdAt: string;
+  updatedBy: number;
+  updatedAt: string;
+  deleted: boolean;
+  active: boolean;
+}
