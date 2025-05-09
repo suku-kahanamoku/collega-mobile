@@ -64,14 +64,6 @@
     "href": "/contracts",
     "icon": "list-alt"
   },
-  "contracts_filter": {
-    "syscode": "contracts_filter",
-    "name": "contracts/filter",
-    "title": "global.filter",
-    "href": "/contracts/filter",
-    "icon": "filter-alt",
-    "parentSyscode": "contracts"
-  },
   "contract": {
     "syscode": "contract",
     "name": "contracts/[id]",

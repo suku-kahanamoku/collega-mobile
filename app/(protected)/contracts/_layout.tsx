@@ -15,7 +15,6 @@ export default function ContractsLayout() {
   const { menuList } = useRoute();
   const contractsMenu = menuList.contracts;
   const contractMenu = menuList.contract;
-  const filterMenu = menuList.contracts_filter;
 
   return (
     <ContractProvider>
@@ -53,16 +52,6 @@ export default function ContractsLayout() {
             title: t(contractMenu.title),
             tabBarIcon: ({ color }) => (
               <Icon name={contractMenu.icon!} color={color} />
-            ),
-          }}
-        />
-
-        <Tabs.Screen
-          name="filter"
-          options={{
-            title: t(filterMenu.title),
-            tabBarIcon: ({ color }) => (
-              <Icon name={filterMenu.icon!} color={color} />
             ),
           }}
         />

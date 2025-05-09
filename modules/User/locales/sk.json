@@ -15,8 +15,7 @@
         "username": "Používateľské meno",
         "email": "Email",
         "status": "Stav"
-      },
-      "filter": "Filter"
+      }
     }
   }
 }
